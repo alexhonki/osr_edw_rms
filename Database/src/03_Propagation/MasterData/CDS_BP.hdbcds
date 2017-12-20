@@ -20,7 +20,7 @@ using DataWarehouse.DataStore :: Annotations as DataStore;
 
 context CDS_BP {
 
-    /*@@layout{"layoutInfo":{"x":253,"y":152.5}}*/
+    /*@@layout{"layoutInfo":{"x":-1662,"y":-356.5}}*/
     context DSO {
         @DataStore.isDSO
         @DataStore.entity.activeData         : 'active_data'
@@ -35,288 +35,881 @@ context CDS_BP {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : true
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":365,"y":196.5}}*/
-        context BUT000 {
+        context ADRC {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
                     @DataStore.aggregation : #NOP
-                key CLIENT           : String(3)      not null;
+                key CLIENT           : String(3)    not null;
 
                     @DataStore.aggregation : #NOP
-                key PARTNER          : String(10)     not null;
+                key ADDRNUMBER       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    TYPE             : String(1)      not null;
+                key DATE_FROM        : String(8)    not null;
 
                     @DataStore.aggregation : #NOP
-                    BPKIND           : String(4)      not null;
+                key NATION           : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    BU_GROUP         : String(4)      not null;
+                key Z_RUN_ROW_NO     : Integer      not null default 0;
 
                     @DataStore.aggregation : #NOP
-                    BPEXT            : String(20)     not null;
+                key Z_RUN_SEQ_ID     : Integer      not null default 0;
 
                     @DataStore.aggregation : #NOP
-                    BU_SORT1         : String(20)     not null;
+                    Z_CURR_FLAG      : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    BU_SORT2         : String(20)     not null;
+                    Z_VALID_FROM     : LocalDate    not null default '1900-01-01';
 
                     @DataStore.aggregation : #NOP
-                    SOURCE           : String(4)      not null;
+                    Z_VALID_TO       : LocalDate    not null default '1900-01-01';
 
                     @DataStore.aggregation : #NOP
-                    TITLE            : String(4)      not null;
+                    Z_CHANGE_TYPE    : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    XDELE            : String(1)      not null;
+                    Z_CHANGE_TIME    : UTCTimestamp not null default '1900-01-01 23:59:59';
 
                     @DataStore.aggregation : #NOP
-                    XBLCK            : String(1)      not null;
+                    Z_SOURCE_SYS     : String(5)    not null;
 
                     @DataStore.aggregation : #NOP
-                    AUGRP            : String(4)      not null;
+                    DATE_TO          : String(8)    not null;
 
                     @DataStore.aggregation : #NOP
-                    TITLE_LET        : String(50)     not null;
+                    TITLE            : String(4)    not null;
 
                     @DataStore.aggregation : #NOP
-                    BU_LOGSYS        : String(10)     not null;
+                    NAME1            : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    CONTACT          : String(1)      not null;
+                    NAME2            : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NOT_RELEASED     : String(1)      not null;
+                    NAME3            : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NOT_LG_COMPETENT : String(1)      not null;
+                    NAME4            : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PRINT_MODE       : String(1)      not null;
+                    NAME_TEXT        : String(50)   not null;
 
                     @DataStore.aggregation : #NOP
-                    BP_EEW_DUMMY     : String(1)      not null;
+                    NAME_CO          : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    ZZELMREFEREN     : String(28)     not null;
+                    CITY1            : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    ZZLANDTAXMOR     : String(1)      not null;
+                    CITY2            : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    ZZCALENDARRE     : String(1)      not null;
+                    CITY_CODE        : String(12)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_ORG1        : String(40)     not null;
+                    CITYP_CODE       : String(8)    not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_ORG2        : String(40)     not null;
+                    HOME_CITY        : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_ORG3        : String(40)     not null;
+                    CITYH_CODE       : String(12)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_ORG4        : String(40)     not null;
+                    CHCKSTATUS       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    LEGAL_ENTY       : String(2)      not null;
+                    REGIOGROUP       : String(8)    not null;
 
                     @DataStore.aggregation : #NOP
-                    IND_SECTOR       : String(10)     not null;
+                    POST_CODE1       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    LEGAL_ORG        : String(2)      not null;
+                    POST_CODE2       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    FOUND_DAT        : String(8)      not null;
+                    POST_CODE3       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    LIQUID_DAT       : String(8)      not null;
+                    PCODE1_EXT       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    LOCATION_1       : String(7)      not null;
+                    PCODE2_EXT       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    LOCATION_2       : String(5)      not null;
+                    PCODE3_EXT       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    LOCATION_3       : String(1)      not null;
+                    PO_BOX           : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_LAST        : String(40)     not null;
+                    DONT_USE_P       : String(4)    not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_FIRST       : String(40)     not null;
+                    PO_BOX_NUM       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_LST2        : String(40)     not null;
+                    PO_BOX_LOC       : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_LAST2       : String(40)     not null;
+                    CITY_CODE2       : String(12)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAMEMIDDLE       : String(40)     not null;
+                    PO_BOX_REG       : String(3)    not null;
 
                     @DataStore.aggregation : #NOP
-                    TITLE_ACA1       : String(4)      not null;
+                    PO_BOX_CTY       : String(3)    not null;
 
                     @DataStore.aggregation : #NOP
-                    TITLE_ACA2       : String(4)      not null;
+                    POSTALAREA       : String(15)   not null;
 
                     @DataStore.aggregation : #NOP
-                    TITLE_ROYL       : String(4)      not null;
+                    TRANSPZONE       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PREFIX1          : String(4)      not null;
+                    STREET           : String(60)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PREFIX2          : String(4)      not null;
+                    DONT_USE_S       : String(4)    not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME1_TEXT       : String(80)     not null;
+                    STREETCODE       : String(12)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NICKNAME         : String(40)     not null;
+                    STREETABBR       : String(2)    not null;
 
                     @DataStore.aggregation : #NOP
-                    INITIALS         : String(10)     not null;
+                    HOUSE_NUM1       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAMEFORMAT       : String(2)      not null;
+                    HOUSE_NUM2       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAMCOUNTRY       : String(3)      not null;
+                    HOUSE_NUM3       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    LANGU_CORR       : String(1)      not null;
+                    STR_SUPPL1       : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    XSEXM            : String(1)      not null;
+                    STR_SUPPL2       : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    XSEXF            : String(1)      not null;
+                    STR_SUPPL3       : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    BIRTHPL          : String(40)     not null;
+                    LOCATION         : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    MARST            : String(1)      not null;
+                    BUILDING         : String(20)   not null;
 
                     @DataStore.aggregation : #NOP
-                    EMPLO            : String(35)     not null;
+                    FLOOR            : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    JOBGR            : String(4)      not null;
+                    ROOMNUMBER       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NATIO            : String(3)      not null;
+                    COUNTRY          : String(3)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CNTAX            : String(3)      not null;
+                    LANGU            : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CNDSC            : String(3)      not null;
+                    REGION           : String(3)    not null;
 
                     @DataStore.aggregation : #NOP
-                    PERSNUMBER       : String(10)     not null;
+                    ADDR_GROUP       : String(4)    not null;
 
                     @DataStore.aggregation : #NOP
-                    XSEXU            : String(1)      not null;
+                    FLAGGROUPS       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    XUBNAME          : String(12)     not null;
+                    PERS_ADDR        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    BU_LANGU         : String(1)      not null;
+                    SORT1            : String(20)   not null;
 
                     @DataStore.aggregation : #NOP
-                    BIRTHDT          : String(8)      not null;
+                    SORT2            : String(20)   not null;
 
                     @DataStore.aggregation : #NOP
-                    DEATHDT          : String(8)      not null;
+                    SORT_PHN         : String(20)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PERNO            : String(8)      not null;
+                    DEFLT_COMM       : String(3)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CHILDREN         : String(2)      not null;
+                    TEL_NUMBER       : String(30)   not null;
 
                     @DataStore.aggregation : #NOP
-                    MEM_HOUSE        : Decimal(2, 0)  not null;
+                    TEL_EXTENS       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTGRPTYP       : String(4)      not null;
+                    FAX_NUMBER       : String(30)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_GRP1        : String(40)     not null;
+                    FAX_EXTENS       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NAME_GRP2        : String(40)     not null;
+                    FLAGCOMM2        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    MC_NAME1         : String(35)     not null;
+                    FLAGCOMM3        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    MC_NAME2         : String(35)     not null;
+                    FLAGCOMM4        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CRUSR            : String(12)     not null;
+                    FLAGCOMM5        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CRDAT            : String(8)      not null;
+                    FLAGCOMM6        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CRTIM            : String(6)      not null;
+                    FLAGCOMM7        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CHUSR            : String(12)     not null;
+                    FLAGCOMM8        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CHDAT            : String(8)      not null;
+                    FLAGCOMM9        : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    CHTIM            : String(6)      not null;
+                    FLAGCOMM10       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTNER_GUID     : Binary(16)     not null;
+                    FLAGCOMM11       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    ADDRCOMM         : String(10)     not null;
+                    FLAGCOMM12       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    TD_SWITCH        : String(1)      not null;
+                    FLAGCOMM13       : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    IS_ORG_CENTRE    : String(1)      not null;
+                    ADDRORIGIN       : String(4)    not null;
 
                     @DataStore.aggregation : #NOP
-                    DB_KEY           : Binary(16)     not null;
+                    MC_NAME1         : String(25)   not null;
 
                     @DataStore.aggregation : #NOP
-                    VALID_FROM       : Decimal(15, 0) not null;
+                    MC_CITY1         : String(25)   not null;
 
                     @DataStore.aggregation : #NOP
-                    VALID_TO         : Decimal(15, 0) not null;
+                    MC_STREET        : String(25)   not null;
 
                     @DataStore.aggregation : #NOP
-                    XPCPT            : String(1)      not null;
+                    EXTENSION1       : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    NATPERS          : String(1)      not null;
+                    EXTENSION2       : String(40)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PAR_REL          : String(1)      not null;
+                    TIME_ZONE        : String(6)    not null;
 
                     @DataStore.aggregation : #NOP
-                    BP_SORT          : String(20)     not null;
+                    TAXJURCODE       : String(15)   not null;
 
                     @DataStore.aggregation : #NOP
-                    KBANKS           : String(3)      not null;
+                    ADDRESS_ID       : String(10)   not null;
 
                     @DataStore.aggregation : #NOP
-                    KBANKL           : String(15)     not null;
+                    LANGU_CREA       : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    ADRC_UUID        : Binary(16)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    UUID_BELATED     : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    ID_CATEGORY      : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    ADRC_ERR_STATUS  : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    PO_BOX_LOBBY     : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    DELI_SERV_TYPE   : String(4)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    DELI_SERV_NUMBER : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    COUNTY_CODE      : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    COUNTY           : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOWNSHIP_CODE    : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOWNSHIP         : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    MC_COUNTY        : String(25)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    MC_TOWNSHIP      : String(25)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    XPCPT            : String(1)    not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key CLIENT              : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key ADDRNUMBER          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key DATE_FROM           : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key NATION              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_ROW_NO        : Integer                not null default 0;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_SEQ_ID        : Integer                not null default 0;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM        : LocalDate              not null default '1900-01-01';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO          : LocalDate              not null default '1900-01-01';
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    DATE_TO             : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TITLE               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    NAME1               : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    NAME2               : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    NAME3               : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    NAME4               : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    NAME_TEXT           : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    NAME_CO             : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CITY1               : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CITY2               : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CITY_CODE           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CITYP_CODE          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    HOME_CITY           : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CITYH_CODE          : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHCKSTATUS          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    REGIOGROUP          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    POST_CODE1          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    POST_CODE2          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    POST_CODE3          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PCODE1_EXT          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PCODE2_EXT          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PCODE3_EXT          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PO_BOX              : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DONT_USE_P          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PO_BOX_NUM          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PO_BOX_LOC          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CITY_CODE2          : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PO_BOX_REG          : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PO_BOX_CTY          : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    POSTALAREA          : String(15)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    TRANSPZONE          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STREET              : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DONT_USE_S          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    STREETCODE          : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STREETABBR          : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    HOUSE_NUM1          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    HOUSE_NUM2          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    HOUSE_NUM3          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STR_SUPPL1          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STR_SUPPL2          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STR_SUPPL3          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    LOCATION            : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    BUILDING            : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLOOR               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ROOMNUMBER          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    COUNTRY             : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LANGU               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    REGION              : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADDR_GROUP          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGGROUPS          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PERS_ADDR           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    SORT1               : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SORT2               : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SORT_PHN            : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DEFLT_COMM          : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TEL_NUMBER          : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    TEL_EXTENS          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FAX_NUMBER          : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FAX_EXTENS          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM2           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM3           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM4           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM5           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM6           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM7           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM8           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM9           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM10          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM11          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM12          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLAGCOMM13          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADDRORIGIN          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    MC_NAME1            : String(25)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    MC_CITY1            : String(25)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    MC_STREET           : String(25)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    EXTENSION1          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    EXTENSION2          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    TIME_ZONE           : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXJURCODE          : String(15)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADDRESS_ID          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    LANGU_CREA          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADRC_UUID           : Binary(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    UUID_BELATED        : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ID_CATEGORY         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADRC_ERR_STATUS     : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PO_BOX_LOBBY        : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DELI_SERV_TYPE      : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    DELI_SERV_NUMBER    : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    COUNTY_CODE         : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    COUNTY              : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOWNSHIP_CODE       : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOWNSHIP            : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    MC_COUNTY           : String(25)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    MC_TOWNSHIP         : String(25)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    XPCPT               : String(1)              not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key CLIENT              : String(3)           not null;
+                key ADDRNUMBER          : String(10)          not null;
+                key DATE_FROM           : String(8)           not null;
+                key NATION              : String(1)           not null;
+                key Z_RUN_ROW_NO        : Integer             not null default 0;
+                key Z_RUN_SEQ_ID        : Integer             not null default 0;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : LocalDate           not null default '1900-01-01';
+                    Z_VALID_TO          : LocalDate           not null default '1900-01-01';
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    DATE_TO             : String(8)           not null;
+                    TITLE               : String(4)           not null;
+                    NAME1               : String(40)          not null;
+                    NAME2               : String(40)          not null;
+                    NAME3               : String(40)          not null;
+                    NAME4               : String(40)          not null;
+                    NAME_TEXT           : String(50)          not null;
+                    NAME_CO             : String(40)          not null;
+                    CITY1               : String(40)          not null;
+                    CITY2               : String(40)          not null;
+                    CITY_CODE           : String(12)          not null;
+                    CITYP_CODE          : String(8)           not null;
+                    HOME_CITY           : String(40)          not null;
+                    CITYH_CODE          : String(12)          not null;
+                    CHCKSTATUS          : String(1)           not null;
+                    REGIOGROUP          : String(8)           not null;
+                    POST_CODE1          : String(10)          not null;
+                    POST_CODE2          : String(10)          not null;
+                    POST_CODE3          : String(10)          not null;
+                    PCODE1_EXT          : String(10)          not null;
+                    PCODE2_EXT          : String(10)          not null;
+                    PCODE3_EXT          : String(10)          not null;
+                    PO_BOX              : String(10)          not null;
+                    DONT_USE_P          : String(4)           not null;
+                    PO_BOX_NUM          : String(1)           not null;
+                    PO_BOX_LOC          : String(40)          not null;
+                    CITY_CODE2          : String(12)          not null;
+                    PO_BOX_REG          : String(3)           not null;
+                    PO_BOX_CTY          : String(3)           not null;
+                    POSTALAREA          : String(15)          not null;
+                    TRANSPZONE          : String(10)          not null;
+                    STREET              : String(60)          not null;
+                    DONT_USE_S          : String(4)           not null;
+                    STREETCODE          : String(12)          not null;
+                    STREETABBR          : String(2)           not null;
+                    HOUSE_NUM1          : String(10)          not null;
+                    HOUSE_NUM2          : String(10)          not null;
+                    HOUSE_NUM3          : String(10)          not null;
+                    STR_SUPPL1          : String(40)          not null;
+                    STR_SUPPL2          : String(40)          not null;
+                    STR_SUPPL3          : String(40)          not null;
+                    LOCATION            : String(40)          not null;
+                    BUILDING            : String(20)          not null;
+                    FLOOR               : String(10)          not null;
+                    ROOMNUMBER          : String(10)          not null;
+                    COUNTRY             : String(3)           not null;
+                    LANGU               : String(1)           not null;
+                    REGION              : String(3)           not null;
+                    ADDR_GROUP          : String(4)           not null;
+                    FLAGGROUPS          : String(1)           not null;
+                    PERS_ADDR           : String(1)           not null;
+                    SORT1               : String(20)          not null;
+                    SORT2               : String(20)          not null;
+                    SORT_PHN            : String(20)          not null;
+                    DEFLT_COMM          : String(3)           not null;
+                    TEL_NUMBER          : String(30)          not null;
+                    TEL_EXTENS          : String(10)          not null;
+                    FAX_NUMBER          : String(30)          not null;
+                    FAX_EXTENS          : String(10)          not null;
+                    FLAGCOMM2           : String(1)           not null;
+                    FLAGCOMM3           : String(1)           not null;
+                    FLAGCOMM4           : String(1)           not null;
+                    FLAGCOMM5           : String(1)           not null;
+                    FLAGCOMM6           : String(1)           not null;
+                    FLAGCOMM7           : String(1)           not null;
+                    FLAGCOMM8           : String(1)           not null;
+                    FLAGCOMM9           : String(1)           not null;
+                    FLAGCOMM10          : String(1)           not null;
+                    FLAGCOMM11          : String(1)           not null;
+                    FLAGCOMM12          : String(1)           not null;
+                    FLAGCOMM13          : String(1)           not null;
+                    ADDRORIGIN          : String(4)           not null;
+                    MC_NAME1            : String(25)          not null;
+                    MC_CITY1            : String(25)          not null;
+                    MC_STREET           : String(25)          not null;
+                    EXTENSION1          : String(40)          not null;
+                    EXTENSION2          : String(40)          not null;
+                    TIME_ZONE           : String(6)           not null;
+                    TAXJURCODE          : String(15)          not null;
+                    ADDRESS_ID          : String(10)          not null;
+                    LANGU_CREA          : String(1)           not null;
+                    ADRC_UUID           : Binary(16)          not null;
+                    UUID_BELATED        : String(1)           not null;
+                    ID_CATEGORY         : String(1)           not null;
+                    ADRC_ERR_STATUS     : String(1)           not null;
+                    PO_BOX_LOBBY        : String(40)          not null;
+                    DELI_SERV_TYPE      : String(4)           not null;
+                    DELI_SERV_NUMBER    : String(10)          not null;
+                    COUNTY_CODE         : String(8)           not null;
+                    COUNTY              : String(40)          not null;
+                    TOWNSHIP_CODE       : String(8)           not null;
+                    TOWNSHIP            : String(40)          not null;
+                    MC_COUNTY           : String(25)          not null;
+                    MC_TOWNSHIP         : String(25)          not null;
+                    XPCPT               : String(1)           not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : true
+        @DataStore.snapshotSupport           : false
+        context BUT021FS {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key CLIENT        : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key PARTNER       : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                key VALID_TO      : Decimal(15, 0) not null;
+
+                    @DataStore.aggregation : #NOP
+                key ADR_KIND      : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                key ADDRNUMBER    : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                key Z_RUN_ROW_NO  : Integer        not null default 0;
+
+                    @DataStore.aggregation : #NOP
+                key Z_RUN_SEQ_ID  : Integer        not null default 0;
+
+                    @DataStore.aggregation : #NOP
+                    VALID_FROM    : Decimal(15, 0) not null;
+
+                    @DataStore.aggregation : #NOP
+                    XDFADU        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG   : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM  : LocalDate      not null default '1900-01-01';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO    : LocalDate      not null default '1900-01-01';
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME : UTCTimestamp   not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS  : String(5)      not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -334,277 +927,43 @@ context CDS_BP {
                 key PARTNER             : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
-                    TYPE                : String(1)              not null;
+                key VALID_TO            : Decimal(15, 0)         not null;
 
                     @DataStore.aggregation : #MOV
-                    BPKIND              : String(4)              not null;
+                key ADR_KIND            : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
-                    BU_GROUP            : String(4)              not null;
+                key ADDRNUMBER          : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
-                    BPEXT               : String(20)             not null;
+                key Z_RUN_ROW_NO        : Integer                not null default 0;
 
                     @DataStore.aggregation : #MOV
-                    BU_SORT1            : String(20)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    BU_SORT2            : String(20)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    SOURCE              : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TITLE               : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XDELE               : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XBLCK               : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    AUGRP               : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TITLE_LET           : String(50)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    BU_LOGSYS           : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CONTACT             : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NOT_RELEASED        : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NOT_LG_COMPETENT    : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PRINT_MODE          : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    BP_EEW_DUMMY        : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZELMREFEREN        : String(28)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZLANDTAXMOR        : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZCALENDARRE        : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_ORG1           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_ORG2           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_ORG3           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_ORG4           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    LEGAL_ENTY          : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    IND_SECTOR          : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    LEGAL_ORG           : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    FOUND_DAT           : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LIQUID_DAT          : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LOCATION_1          : String(7)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LOCATION_2          : String(5)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LOCATION_3          : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_LAST           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_FIRST          : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_LST2           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_LAST2          : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAMEMIDDLE          : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    TITLE_ACA1          : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TITLE_ACA2          : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TITLE_ROYL          : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PREFIX1             : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PREFIX2             : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME1_TEXT          : String(80)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NICKNAME            : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    INITIALS            : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAMEFORMAT          : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAMCOUNTRY          : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LANGU_CORR          : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XSEXM               : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XSEXF               : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    BIRTHPL             : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    MARST               : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    EMPLO               : String(35)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    JOBGR               : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NATIO               : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNTAX               : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNDSC               : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PERSNUMBER          : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    XSEXU               : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XUBNAME             : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    BU_LANGU            : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    BIRTHDT             : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    DEATHDT             : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PERNO               : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHILDREN            : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    MEM_HOUSE           : Decimal(2, 0)          not null;
-
-                    @DataStore.aggregation : #MOV
-                    PARTGRPTYP          : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_GRP1           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NAME_GRP2           : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    MC_NAME1            : String(35)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    MC_NAME2            : String(35)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CRUSR               : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CRDAT               : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CRTIM               : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHUSR               : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHDAT               : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHTIM               : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PARTNER_GUID        : Binary(16)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    ADDRCOMM            : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    TD_SWITCH           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    IS_ORG_CENTRE       : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    DB_KEY              : Binary(16)             not null;
+                key Z_RUN_SEQ_ID        : Integer                not null default 0;
 
                     @DataStore.aggregation : #MOV
                     VALID_FROM          : Decimal(15, 0)         not null;
 
                     @DataStore.aggregation : #MOV
-                    VALID_TO            : Decimal(15, 0)         not null;
+                    XDFADU              : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
-                    XPCPT               : String(1)              not null;
+                    Z_CURR_FLAG         : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
-                    NATPERS             : String(1)              not null;
+                    Z_VALID_FROM        : LocalDate              not null default '1900-01-01';
 
                     @DataStore.aggregation : #MOV
-                    PAR_REL             : String(1)              not null;
+                    Z_VALID_TO          : LocalDate              not null default '1900-01-01';
 
                     @DataStore.aggregation : #MOV
-                    BP_SORT             : String(20)             not null;
+                    Z_CHANGE_TYPE       : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
-                    KBANKS              : String(3)              not null;
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
 
                     @DataStore.aggregation : #MOV
-                    KBANKL              : String(15)             not null;
+                    Z_SOURCE_SYS        : String(5)              not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -616,97 +975,19 @@ context CDS_BP {
                     technicalAttributes : changeLogAttributes not null;
                 key CLIENT              : String(3)           not null;
                 key PARTNER             : String(10)          not null;
-                    TYPE                : String(1)           not null;
-                    BPKIND              : String(4)           not null;
-                    BU_GROUP            : String(4)           not null;
-                    BPEXT               : String(20)          not null;
-                    BU_SORT1            : String(20)          not null;
-                    BU_SORT2            : String(20)          not null;
-                    SOURCE              : String(4)           not null;
-                    TITLE               : String(4)           not null;
-                    XDELE               : String(1)           not null;
-                    XBLCK               : String(1)           not null;
-                    AUGRP               : String(4)           not null;
-                    TITLE_LET           : String(50)          not null;
-                    BU_LOGSYS           : String(10)          not null;
-                    CONTACT             : String(1)           not null;
-                    NOT_RELEASED        : String(1)           not null;
-                    NOT_LG_COMPETENT    : String(1)           not null;
-                    PRINT_MODE          : String(1)           not null;
-                    BP_EEW_DUMMY        : String(1)           not null;
-                    ZZELMREFEREN        : String(28)          not null;
-                    ZZLANDTAXMOR        : String(1)           not null;
-                    ZZCALENDARRE        : String(1)           not null;
-                    NAME_ORG1           : String(40)          not null;
-                    NAME_ORG2           : String(40)          not null;
-                    NAME_ORG3           : String(40)          not null;
-                    NAME_ORG4           : String(40)          not null;
-                    LEGAL_ENTY          : String(2)           not null;
-                    IND_SECTOR          : String(10)          not null;
-                    LEGAL_ORG           : String(2)           not null;
-                    FOUND_DAT           : String(8)           not null;
-                    LIQUID_DAT          : String(8)           not null;
-                    LOCATION_1          : String(7)           not null;
-                    LOCATION_2          : String(5)           not null;
-                    LOCATION_3          : String(1)           not null;
-                    NAME_LAST           : String(40)          not null;
-                    NAME_FIRST          : String(40)          not null;
-                    NAME_LST2           : String(40)          not null;
-                    NAME_LAST2          : String(40)          not null;
-                    NAMEMIDDLE          : String(40)          not null;
-                    TITLE_ACA1          : String(4)           not null;
-                    TITLE_ACA2          : String(4)           not null;
-                    TITLE_ROYL          : String(4)           not null;
-                    PREFIX1             : String(4)           not null;
-                    PREFIX2             : String(4)           not null;
-                    NAME1_TEXT          : String(80)          not null;
-                    NICKNAME            : String(40)          not null;
-                    INITIALS            : String(10)          not null;
-                    NAMEFORMAT          : String(2)           not null;
-                    NAMCOUNTRY          : String(3)           not null;
-                    LANGU_CORR          : String(1)           not null;
-                    XSEXM               : String(1)           not null;
-                    XSEXF               : String(1)           not null;
-                    BIRTHPL             : String(40)          not null;
-                    MARST               : String(1)           not null;
-                    EMPLO               : String(35)          not null;
-                    JOBGR               : String(4)           not null;
-                    NATIO               : String(3)           not null;
-                    CNTAX               : String(3)           not null;
-                    CNDSC               : String(3)           not null;
-                    PERSNUMBER          : String(10)          not null;
-                    XSEXU               : String(1)           not null;
-                    XUBNAME             : String(12)          not null;
-                    BU_LANGU            : String(1)           not null;
-                    BIRTHDT             : String(8)           not null;
-                    DEATHDT             : String(8)           not null;
-                    PERNO               : String(8)           not null;
-                    CHILDREN            : String(2)           not null;
-                    MEM_HOUSE           : Decimal(2, 0)       not null;
-                    PARTGRPTYP          : String(4)           not null;
-                    NAME_GRP1           : String(40)          not null;
-                    NAME_GRP2           : String(40)          not null;
-                    MC_NAME1            : String(35)          not null;
-                    MC_NAME2            : String(35)          not null;
-                    CRUSR               : String(12)          not null;
-                    CRDAT               : String(8)           not null;
-                    CRTIM               : String(6)           not null;
-                    CHUSR               : String(12)          not null;
-                    CHDAT               : String(8)           not null;
-                    CHTIM               : String(6)           not null;
-                    PARTNER_GUID        : Binary(16)          not null;
-                    ADDRCOMM            : String(10)          not null;
-                    TD_SWITCH           : String(1)           not null;
-                    IS_ORG_CENTRE       : String(1)           not null;
-                    DB_KEY              : Binary(16)          not null;
+                key VALID_TO            : Decimal(15, 0)      not null;
+                key ADR_KIND            : String(10)          not null;
+                key ADDRNUMBER          : String(10)          not null;
+                key Z_RUN_ROW_NO        : Integer             not null default 0;
+                key Z_RUN_SEQ_ID        : Integer             not null default 0;
                     VALID_FROM          : Decimal(15, 0)      not null;
-                    VALID_TO            : Decimal(15, 0)      not null;
-                    XPCPT               : String(1)           not null;
-                    NATPERS             : String(1)           not null;
-                    PAR_REL             : String(1)           not null;
-                    BP_SORT             : String(20)          not null;
-                    KBANKS              : String(3)           not null;
-                    KBANKL              : String(15)          not null;
+                    XDFADU              : String(1)           not null;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : LocalDate           not null default '1900-01-01';
+                    Z_VALID_TO          : LocalDate           not null default '1900-01-01';
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
