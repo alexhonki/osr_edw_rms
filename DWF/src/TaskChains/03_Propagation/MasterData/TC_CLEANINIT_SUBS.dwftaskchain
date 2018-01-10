@@ -1,5 +1,5 @@
 {
-  "description": "Load batch BUT021FS",
+  "description": "Cleanse batch Subs Propagation Initial MD RMS",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
@@ -12,13 +12,13 @@
     },
     "2": {
       "inline": {
-        "type": "executeProcedure",
-        "taskGroup": "hanaNative",
-        "description": "Load BUT021FS",
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "Cleanse BUT000 INDV",
         "parameterValues": [
           {
-            "id": "procName",
-            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_BUT021FS_SP"
+            "id": "taskChainId",
+            "value": "osr.edw.propagation.md.rms#TC_CLEANSE_BUT000_INDV"
           }
         ]
       },
@@ -31,13 +31,13 @@
     },
     "3": {
       "inline": {
-        "type": "activate",
-        "taskGroup": "ndso",
-        "description": "Activate DSO_BUT021FS",
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "Cleanse ADRC",
         "parameterValues": [
           {
-            "id": "dataStoreName",
-            "value": "osr.edw.staging.md.rms::CDS_BP.DSO.BUT021FS"
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BUT000"
           }
         ]
       },

@@ -1,5 +1,8 @@
 {
-  "description": "Cleanse batch ADRC",
+  "description": "Load batch Staging BUT000",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
   "taskList": {
     "1": {
       "inline": {
@@ -11,11 +14,11 @@
       "inline": {
         "type": "executeProcedure",
         "taskGroup": "hanaNative",
-        "description": "Cleanse ADRC",
+        "description": "Load BUT000",
         "parameterValues": [
           {
             "id": "procName",
-            "value": "osr.edw.propagation.md.rms::FG_BT_CLEANSE_ADRC_SP"
+            "value": "osr.edw.staging.md.rms::FG_BT_LOADINIT_BUT000_SP"
           }
         ]
       },
@@ -30,11 +33,11 @@
       "inline": {
         "type": "activate",
         "taskGroup": "ndso",
-        "description": "Activate DSO_ADRC",
+        "description": "Activate DSO_BUT000",
         "parameterValues": [
           {
             "id": "dataStoreName",
-            "value": "osr.edw.propagation.md.rms::CDS_BP.DSO.ADRC"
+            "value": "osr.edw.staging.md.rms::CDS_BP.DSO.BUT000"
           }
         ]
       },

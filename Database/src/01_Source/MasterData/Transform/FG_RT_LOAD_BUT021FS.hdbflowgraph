@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="136b5821b26b0063d4009da990234b77" name="FG_RT_LOAD_BUT021FS" runtimeBehavior="BATCH_TASK">
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="136b5821b26b0063d4009da990234b77" name="FG_RT_LOAD_BUT021FS" runtimeBehavior="REALTIME_TASK">
   <annotations key="sap.afm.layout" xmi:id="46ba14820eff591453292d41bce268a4">
     <annotations xmi:id="00fc339f2d6add690e5b20b7705e6cfc" key="x" value="10">
     </annotations>
@@ -133,7 +133,7 @@
     <attributeMappings xmi:id="a37d6fc225cffeea7854f9b3fe5a96fa" source="1edd70f9e6df942a24db15076e11ade0" target="9629bb949bd3eac0bffd775e31cee5c1">
     </attributeMappings>
   </tableMappings>
-  <nodes xmi:id="0d60ab0e9f118186dcafd79f0655e110" xsi:type="flowgraph:FilterNode" name="P__DS" expression="&quot;CLIENT&quot;=&#x27;400&#x27;">
+  <nodes xmi:id="0d60ab0e9f118186dcafd79f0655e110" xsi:type="flowgraph:FilterNode" name="P_DS" expression="&quot;CLIENT&quot;=&#x27;400&#x27;">
     <annotations key="sap.afm.layout" xmi:id="e1d42dc3952d3cea6ac4fda7a5c1621a">
       <annotations xmi:id="e7ebde70bd9fd19cf7a31c3924533454" key="x" value="193">
       </annotations>
@@ -144,7 +144,7 @@
       <annotations xmi:id="57db8b4b1c043ba7e068d73efe72a4b9" key="height" value="115">
       </annotations>
     </annotations>
-    <inputs xmi:id="c6dda8f3dd6c0ee1b55a2f878c9e25d8" name="P__DS_IN">
+    <inputs xmi:id="c6dda8f3dd6c0ee1b55a2f878c9e25d8" name="P_DS_IN">
       <attributes xmi:id="69174398b7677e6ed15c40a5540f4fb3" name="CLIENT" type="NVARCHAR" nullable="false" length="3">
         <annotations xmi:id="cf8ac6bad542700f6cf7affa53461c03" key="sap.im.primaryKey" value="true"/>
       </attributes>
@@ -165,7 +165,7 @@
       <attributes xmi:id="ce869dfcfee85e3f78c25166f4221b83" name="XDFADU" type="NVARCHAR" nullable="false" length="1">
       </attributes>
     </inputs>
-    <outputs xmi:id="4a039757b73d2579823564f96381a43d" name="P__DS_OUT">
+    <outputs xmi:id="4a039757b73d2579823564f96381a43d" name="P_DS_OUT">
       <attributes xmi:id="15d986b81d4d7394962d1302a459dbf9" name="CLIENT" type="NVARCHAR" nullable="true" expression="&quot;CLIENT&quot;" length="3">
         <annotations xmi:id="c34b1b156cd3a0e92295aa2137bb41e7" key="sap.im.primaryKey" value="true"/>
       </attributes>
@@ -200,6 +200,7 @@
       <attributes xmi:id="43eccb515d77a45159bf574a77bd4b79" name="Z_RUN_ROW_NO" type="INTEGER" nullable="true" expression="ROW_NUMBER() over () ">
       </attributes>
       <attributes xmi:id="7e321330d09d9cadc2fecf15d0f2cd1b" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="true" expression="0">
+        <annotations xmi:id="ab21f8224af7e01ab6cf7b5ff075adc7" key="sap.im.primaryKey" value="true"/>
       </attributes>
     </outputs>
   </nodes>
@@ -226,7 +227,7 @@
     </annotations>
     <annotations xmi:id="73f6897b5cc0898dcbbcab8f94dd6674" key="columns" value="[{&quot;name&quot;:&quot;CLIENT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:3,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;PARTNER&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;VALID_TO&quot;,&quot;type&quot;:&quot;DECIMAL&quot;,&quot;length&quot;:15,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;ADR_KIND&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;ADDRNUMBER&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;VALID_FROM&quot;,&quot;type&quot;:&quot;DECIMAL&quot;,&quot;length&quot;:15,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;XDFADU&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;}]">
     </annotations>
-    <annotations xmi:id="740d5d102e900ecad7412b2b60e63a7c" key="sap.im.realtime" value="false">
+    <annotations xmi:id="740d5d102e900ecad7412b2b60e63a7c" key="sap.im.realtime" value="true">
     </annotations>
     <outputs xmi:id="4475464fbf3c92639b00c7a10de95503" name="DS_VT">
       <attributes xmi:id="8dcf4aa887b97f0e03a7a6d140ed78fb" name="CLIENT" type="NVARCHAR" nullable="false" length="3">
@@ -381,6 +382,7 @@
       <attributes xmi:id="c23549b20b7f714fc605f0b2e8fb41e9" name="Z_RUN_ROW_NO" type="INTEGER" nullable="true">
       </attributes>
       <attributes xmi:id="78479731a782c3d143c1c933078515f5" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="true">
+        <annotations xmi:id="cb5b3893adf16ea5a2444253751ba505" key="sap.im.primaryKey" value="true"/>
       </attributes>
     </inputs>
     <outputs xmi:id="2f28c2d06b8f704a8208cea3b596f9a3" name="TC_OUT" kind="TABLE">
