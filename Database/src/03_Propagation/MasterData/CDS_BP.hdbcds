@@ -35,6 +35,7 @@ context CDS_BP {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : true
         @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":-276,"y":-526}}*/
         context BUT000 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -282,7 +283,7 @@ context CDS_BP {
                     CHTIM                    : String(6)      not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTNER_GUID             : Binary(16)     not null;
+                    PARTNER_GUID             : String(200)    not null;
 
                     @DataStore.aggregation : #NOP
                     ADDRCOMM                 : String(10)     not null;
@@ -672,7 +673,7 @@ context CDS_BP {
                     CHTIM                    : String(6)              not null;
 
                     @DataStore.aggregation : #MOV
-                    PARTNER_GUID             : Binary(16)             not null;
+                    PARTNER_GUID             : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     ADDRCOMM                 : String(10)             not null;
@@ -898,7 +899,7 @@ context CDS_BP {
                     CHUSR                    : String(12)          not null;
                     CHDAT                    : String(8)           not null;
                     CHTIM                    : String(6)           not null;
-                    PARTNER_GUID             : Binary(16)          not null;
+                    PARTNER_GUID             : String(200)         not null;
                     ADDRCOMM                 : String(10)          not null;
                     TD_SWITCH                : String(1)           not null;
                     IS_ORG_CENTRE            : String(1)           not null;
@@ -1442,7 +1443,7 @@ context CDS_BP {
                     STD_PHONE2                : String(30)   not null;
 
                     @DataStore.aggregation : #NOP
-                    PHONE_INFO_CODE           : String(1024) not null;
+                    PHONE_INFO_CODE           : String(200)  not null;
 
                     @DataStore.aggregation : #NOP
                     MATCH_PHONE               : String(30)   not null;
@@ -1451,10 +1452,10 @@ context CDS_BP {
                     MATCH_PHONE2              : String(30)   not null;
 
                     @DataStore.aggregation : #NOP
-                    ADDR_LATITUDE             : BinaryFloat  not null;
+                    ADDR_LATITUDE             : BinaryFloat  not null default 0.00;
 
                     @DataStore.aggregation : #NOP
-                    ADDR_LONGITUDE            : BinaryFloat  not null;
+                    ADDR_LONGITUDE            : BinaryFloat  not null default 0.00;
 
                     @DataStore.aggregation : #NOP
                     GEO_SIDE_OF_STREET        : String(1)    not null;
@@ -1916,7 +1917,7 @@ context CDS_BP {
                     STD_PHONE2                : String(30)             not null;
 
                     @DataStore.aggregation : #MOV
-                    PHONE_INFO_CODE           : String(1024)           not null;
+                    PHONE_INFO_CODE           : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     MATCH_PHONE               : String(30)             not null;
@@ -1925,10 +1926,10 @@ context CDS_BP {
                     MATCH_PHONE2              : String(30)             not null;
 
                     @DataStore.aggregation : #MOV
-                    ADDR_LATITUDE             : BinaryFloat            not null;
+                    ADDR_LATITUDE             : BinaryFloat            not null default 0.00;
 
                     @DataStore.aggregation : #MOV
-                    ADDR_LONGITUDE            : BinaryFloat            not null;
+                    ADDR_LONGITUDE            : BinaryFloat            not null default 0.00;
 
                     @DataStore.aggregation : #MOV
                     GEO_SIDE_OF_STREET        : String(1)              not null;
@@ -2098,11 +2099,11 @@ context CDS_BP {
                     ADDR_SCRIPT_CODE          : String(4)           not null;
                     STD_PHONE                 : String(30)          not null;
                     STD_PHONE2                : String(30)          not null;
-                    PHONE_INFO_CODE           : String(1024)        not null;
+                    PHONE_INFO_CODE           : String(200)         not null;
                     MATCH_PHONE               : String(30)          not null;
                     MATCH_PHONE2              : String(30)          not null;
-                    ADDR_LATITUDE             : BinaryFloat         not null;
-                    ADDR_LONGITUDE            : BinaryFloat         not null;
+                    ADDR_LATITUDE             : BinaryFloat         not null default 0.00;
+                    ADDR_LONGITUDE            : BinaryFloat         not null default 0.00;
                     GEO_SIDE_OF_STREET        : String(1)           not null;
                     GEO_INFO_CODE             : String(4)           not null;
                     GEO_ASMT_LEVEL            : String(3)           not null;
