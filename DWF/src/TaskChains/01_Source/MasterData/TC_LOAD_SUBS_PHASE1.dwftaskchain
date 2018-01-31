@@ -1,9 +1,8 @@
 {
-  "description": "TC Group Master Data RMS",
+  "description": "Load batch Subs Source MD RMS PHASE1",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
-  "taskTimeout": 432000,
   "taskList": {
     "1": {
       "inline": {
@@ -15,11 +14,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "Subs Source MD RMS",
+        "description": "TC LOAD BUT000",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.md.rms#TC_LOAD_SUBS"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BUT000"
           }
         ]
       },
@@ -34,11 +33,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "Subs Staging MD RMS",
+        "description": "TC LOAD BUT021FS",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOADINIT_SUBS"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BUT021FS"
           }
         ]
       },
@@ -53,11 +52,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "Subs Propagation MD RMS",
+        "description": "TC LOAD ADRC",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.propagation.md.rms#TC_CLEANINIT_SUBS"
+            "value": "osr.edw.source.md.rms#TC_LOAD_ADRC"
           }
         ]
       },

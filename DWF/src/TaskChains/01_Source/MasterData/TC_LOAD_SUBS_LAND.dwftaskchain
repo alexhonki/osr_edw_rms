@@ -1,0 +1,147 @@
+{
+  "description": "Load batch Subs Source MD RMS LAND",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VILMPL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_VILMPL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VIBPOBJREL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_VIBPOBJREL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTLNDUSE",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_LTLNDUSE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTLGA",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_LTLGA"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTAXRATE",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_LTAXRATE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VIBDMEAS",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_VIBDMEAS"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
+          "status": "OK"
+        }
+      ]
+    },
+    "8": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTCNEXMD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_LTCNEXMD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "7",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}

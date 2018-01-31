@@ -1,0 +1,33 @@
+{
+  "description": "Load real time Source LTCNRES",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load LTCNRES",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.td.rms::FG_RT_LOAD_LTCNRES_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}

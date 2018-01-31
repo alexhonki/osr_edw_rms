@@ -1,0 +1,223 @@
+{
+  "description": "Load batch Subs Source TD RMS LAND",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTNAPLVL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_LTNAPLVL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VILMNAVAL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_VILMNAVAL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTPLRES",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_LTPLRES"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTPLRESB",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_LTPLRESB"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTCNRESP",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRESP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VICNCN",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_VICNCN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
+          "status": "OK"
+        }
+      ]
+    },
+    "8": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTCNRES",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRES"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "7",
+          "status": "OK"
+        }
+      ]
+    },
+    "9": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VILMRCPLREL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_VILMRCPLREL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "10": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VILMRC",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_VILMRC"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "9",
+          "status": "OK"
+        }
+      ]
+    },
+    "11": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD TIVLMRCTYPE",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_TIVLMRCTYPE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "10",
+          "status": "OK"
+        }
+      ]
+    },
+    "12": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD DFKKINVDOC_H",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_DFKKINVDOC_H"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "11",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}

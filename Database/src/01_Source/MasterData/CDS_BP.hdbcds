@@ -249,13 +249,76 @@ context CDS_BP {
             key Z_RUN_SEQ_ID      : Integer default 0;
                 VALID_FROM        : Decimal(15, 0);
                 XDFADU            : String(1);
+                _COMMIT_TIMESTAMP : UTCTimestamp;
                 Z_CURR_FLAG       : String(1);
                 Z_VALID_FROM      : LocalDate;
                 Z_VALID_TO        : LocalDate;
                 Z_CHANGE_TYPE     : String(1);
                 Z_CHANGE_TIME     : UTCTimestamp;
                 Z_SOURCE_SYS      : String(5);
-                _COMMIT_TIMESTAMP : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{"x":261,"y":-515.5}}*/
+        entity BUT0ID {
+            key CLIENT          : String(3);
+            key PARTNER         : String(10);
+            key TYPE            : String(6);
+            key IDNUMBER        : String(60);
+                INSTITUTE       : String(40);
+                ENTRY_DATE      : String(8);
+                VALID_DATE_FROM : String(8);
+                VALID_DATE_TO   : String(8);
+                COUNTRY         : String(3);
+                REGION          : String(3);
+                IDNUMBER_GUID   : String(200);
+                BP_EEW_BUT0ID   : String(1);
+                Z_CURR_FLAG     : String(1);
+                Z_VALID_FROM    : LocalDate    default '1900-01-01';
+                Z_VALID_TO      : LocalDate    default '1900-01-01';
+                Z_CHANGE_TYPE   : String(1);
+                Z_CHANGE_TIME   : UTCTimestamp default '1900-01-01 23:59:59';
+                Z_SOURCE_SYS    : String(5);
+                Z_RUN_ROW_NO    : Integer      default '0';
+            key Z_RUN_SEQ_ID    : Integer      default '0';
+        };
+
+        /*@@layout{"layoutInfo":{"x":540,"y":-510.5}}*/
+        entity ZBUT0000UZQMZ7 {
+            key CLIENT        : String(3);
+            key PARTNER       : String(10);
+            key PERIODBEGIN   : String(8);
+            key DATE_TO       : Decimal(15, 0);
+                DATE_FROM     : Decimal(15, 0);
+                PERIODEND     : String(8);
+                CODEID        : String(2);
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : LocalDate;
+                Z_VALID_TO    : LocalDate;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":900,"y":-511.5}}*/
+        entity BUT100 {
+            key MANDT         : String(3);
+            key PARTNER       : String(10);
+            key RLTYP         : String(6);
+            key DFVAL         : String(20);
+                VALID_FROM    : Decimal(15, 0);
+                VALID_TO      : Decimal(15, 0);
+                ROLE          : String(4);
+                AUTHORITY     : String(4);
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : LocalDate;
+                Z_VALID_TO    : LocalDate;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
     };
 };

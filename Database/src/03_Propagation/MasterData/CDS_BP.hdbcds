@@ -33,7 +33,7 @@ context CDS_BP {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
         /*@@layout{"layoutInfo":{"x":-276,"y":-526}}*/
         context BUT000 {
@@ -49,7 +49,7 @@ context CDS_BP {
                     Z_RUN_ROW_NO             : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                    Z_RUN_SEQ_ID             : Integer        not null;
+                key Z_RUN_SEQ_ID             : Integer        not null;
 
                     @DataStore.aggregation : #NOP
                     TYPE                     : String(1)      not null;
@@ -1002,7 +1002,7 @@ context CDS_BP {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
         context ADRC {
             @DataStore.entityCategory : #ACTIVE_DATA
@@ -1023,7 +1023,7 @@ context CDS_BP {
                     Z_RUN_ROW_NO              : Integer      not null;
 
                     @DataStore.aggregation : #NOP
-                    Z_RUN_SEQ_ID              : Integer      not null;
+                key Z_RUN_SEQ_ID              : Integer      not null;
 
                     @DataStore.aggregation : #NOP
                     Z_CURR_FLAG               : String(1)    not null;

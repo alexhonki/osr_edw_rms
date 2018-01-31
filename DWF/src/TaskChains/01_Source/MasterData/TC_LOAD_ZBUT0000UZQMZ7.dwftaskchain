@@ -1,0 +1,33 @@
+{
+  "description": "Load real time Source ZBUT0000UZQMZ7",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load ZBUT0000UZQMZ7",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.md.rms::FG_RT_LOAD_ZBUT0000UZQMZ7_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}

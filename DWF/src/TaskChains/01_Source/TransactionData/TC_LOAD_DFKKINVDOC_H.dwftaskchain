@@ -1,0 +1,33 @@
+{
+  "description": "Load real time Source DFKKINVDOC_H",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load DFKKINVDOC_H",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.td.rms::FG_RT_LOAD_DFKKINVDOC_H_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
