@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="d9a1f60ae6920a1f86ac927689e0ac4a" name="FG_RT_LOAD_DFKKINVDOC_H" runtimeBehavior="BATCH_TASK">
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="d9a1f60ae6920a1f86ac927689e0ac4a" name="FG_RT_LOAD_DFKKINVDOC_H" runtimeBehavior="REALTIME_TASK">
   <annotations key="sap.afm.layout" xmi:id="aad256326694071345bbf1d142c6aa89">
     <annotations xmi:id="b35872daabe86cba5335579351fd244d" key="x" value="10">
     </annotations>
@@ -18,6 +18,8 @@
   <annotations xmi:id="d053055e8375c9bf9ca0ecb0abd1d0a0" key="sap.afm.nodeInputs">
   </annotations>
   <annotations xmi:id="40dd94f796dca15dba50cc6af56e8482" key="sap.afm.nodeOutputs">
+  </annotations>
+  <annotations xmi:id="5d4715ed06cd3032826dbb3f86cc3ac3" key="sap.im.explicitTypeConversion">
   </annotations>
   <nodes xmi:id="9e4b372c538aab035c906940a8a84e54" xsi:type="flowgraph:FilterNode" name="P_DS">
     <annotations key="sap.afm.layout" xmi:id="e0f4c3b7a3e5411317ae8f4c83cf8229">
@@ -277,9 +279,9 @@
       </attributes>
       <attributes xmi:id="d3f99fc5664446370dc6c9eff9b8789e" name="PRLINV_CNT" type="NVARCHAR" nullable="true" expression="&quot;PRLINV_CNT&quot;" length="2">
       </attributes>
-      <attributes xmi:id="f42c6288b5ca52876e0c5dd87f09a8a1" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="500" expression="&#x27;RMS&#x27;">
+      <attributes xmi:id="f42c6288b5ca52876e0c5dd87f09a8a1" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="5" expression="&#x27;RMS&#x27;">
       </attributes>
-      <attributes xmi:id="8d8039243d2976ad47345214d9b27ca6" name="Z_RUN_ROW_NO" type="NVARCHAR" nullable="true" length="500" expression="ROW_NUMBER() over ()">
+      <attributes xmi:id="8d8039243d2976ad47345214d9b27ca6" name="Z_RUN_ROW_NO" type="INTEGER" nullable="true" expression="ROW_NUMBER() over ()">
       </attributes>
     </outputs>
   </nodes>
@@ -300,8 +302,7 @@
         </annotations>
       </attributes>
       <attributes xmi:id="b32226a6136ebef9fcd0c4c529626a72" name="INVDOCNO" type="NVARCHAR" nullable="true" length="12">
-        <annotations xmi:id="9cf0b80487d4e78447989fdd00270b60" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="9cf0b80487d4e78447989fdd00270b60" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="e186033e137c3d0527460e26343d0663" name="APPLK" type="NVARCHAR" nullable="true" length="1">
       </attributes>
@@ -417,19 +418,17 @@
       </attributes>
       <attributes xmi:id="25d1859511c7e5b71c9e734df35b72fc" name="PRLINV_CNT" type="NVARCHAR" nullable="true" length="2">
       </attributes>
-      <attributes xmi:id="c839aab279baf7499da39cea7b11a99a" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="500">
+      <attributes xmi:id="c839aab279baf7499da39cea7b11a99a" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="5">
       </attributes>
-      <attributes xmi:id="b539131a386528a919f45887c33a009e" name="Z_RUN_ROW_NO" type="NVARCHAR" nullable="true" length="500">
+      <attributes xmi:id="b539131a386528a919f45887c33a009e" name="Z_RUN_ROW_NO" type="INTEGER" nullable="true">
       </attributes>
     </inputs>
     <outputs xmi:id="f5398bb67e71835f2f188a5d4ca23f65" name="TC_OUT" kind="TABLE">
       <attributes xmi:id="2c944dd93f84af9f4da441d89c419051" name="MANDT" type="NVARCHAR" nullable="false" mappedName="MANDT" length="3">
-        <annotations xmi:id="2373074690ba494492b4fa9e9f15d897" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="2373074690ba494492b4fa9e9f15d897" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="0fc8f815c72c0f37202fb6911f8d6102" name="INVDOCNO" type="NVARCHAR" nullable="false" mappedName="INVDOCNO" length="12">
-        <annotations xmi:id="00b7611e31c768422e5df339e6af055a" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="00b7611e31c768422e5df339e6af055a" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="9c4059dfa4175aedaaa4fb86ade026b5" name="APPLK" type="NVARCHAR" nullable="true" mappedName="APPLK" length="1">
       </attributes>
@@ -576,12 +575,10 @@
     </annotations>
     <inputs xmi:id="b880e8970e8ae098624a01d8e832df9d" name="HP_IN" kind="TABLE">
       <attributes xmi:id="6fff7d5888475e5b8eff56e74fa30153" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="3289cbbb0f3dd2b738be7e0571d2a204" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="3289cbbb0f3dd2b738be7e0571d2a204" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="28f94b85253773b6bee281fd2c95f87b" name="INVDOCNO" type="NVARCHAR" nullable="false" length="12">
-        <annotations xmi:id="b222e8dc507e422b01ad9c6cb25e024e" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="b222e8dc507e422b01ad9c6cb25e024e" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="0f8471ad649f3ddc524d558635bfb7f7" name="APPLK" type="NVARCHAR" nullable="true" length="1">
       </attributes>
@@ -716,12 +713,10 @@
     </inputs>
     <outputs xmi:id="981f6dc042373cb04bbd06d791c91f30" name="HP_OUT" kind="TABLE">
       <attributes xmi:id="79dd9319603f6e097e27f8210ba84b93" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="414bf241b01ee990f42c382a941e05c2" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="414bf241b01ee990f42c382a941e05c2" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="82ef2923b8813dcc2805b5dab14f6e7c" name="INVDOCNO" type="NVARCHAR" nullable="false" length="12">
-        <annotations xmi:id="9b5c5a869361ce6234657a43b0915d7b" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="9b5c5a869361ce6234657a43b0915d7b" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="d63f57673298725fec614ec027f5428c" name="APPLK" type="NVARCHAR" nullable="true" length="1">
       </attributes>
@@ -1013,6 +1008,8 @@
     <annotations xmi:id="4ba2fee5c58592c557132f3f034a9170" key="sap.afm.displayName" value="Data Source">
     </annotations>
     <annotations xmi:id="8bc919368d3ee8518a8d1388ea7e3d5a" key="columns" value="[{&quot;name&quot;:&quot;MANDT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:3,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;INVDOCNO&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;APPLK&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INV_PROCESS&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INV_TYPE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INV_CATEGORY&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;TECHDOCTYPE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;TARGPROCESS&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;GPART&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;VKONT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;MDCAT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;ABWVK&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;ABWBL&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CRNAME&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CRDATE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CRTIME&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:6,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CRMODE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;RECNUM&quot;,&quot;type&quot;:&quot;INTEGER&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;FIKEY&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;BUDAT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;BLDAT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;FAEDN&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;FAEDS&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;SKTPZ&quot;,&quot;type&quot;:&quot;DECIMAL&quot;,&quot;length&quot;:5,&quot;scale&quot;:3,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;TOTAL_CURR&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:5,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;TOTAL_AMT&quot;,&quot;type&quot;:&quot;DECIMAL&quot;,&quot;length&quot;:13,&quot;scale&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INVOICED&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;SIMULATED&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;REVREASON&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;REVERSALDOC&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;REVERSEDDOC&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PRINTDATE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PRINTLOCK&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PYMET&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;NRZAS&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;FORMKEY&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:30,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;ZLSCH&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;DOCTYPE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;EXKID&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;EXBEL&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:16,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INVOICE_BASEDATE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INVPERCAT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INVPERIOD&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;INVPERIOD_FROM&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;MAZAE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:6,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CHGDOC_EX&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CFCSIMULATED&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;BOLLOTAX&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;XSUBINV&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;SEPA_PRENOT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;EXT_INVDOCNO&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:22,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PRELIMINARY&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PRLINV_CAT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CORRCAT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PTSRL&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;BUKRS&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;BUPLA&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;XINVDOC_X&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;PRLINV_CNT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;}]">
+    </annotations>
+    <annotations xmi:id="986fe2ed97a7ff5e1e23c1d5992145ec" key="sap.im.realtime" value="true">
     </annotations>
     <outputs xmi:id="71d97bcd1ea7ad0a97bd91a9443c3e50" name="DS_VT">
       <attributes xmi:id="346209cc069291bb53595efb2e5f1336" name="MANDT" type="NVARCHAR" nullable="false" length="3">

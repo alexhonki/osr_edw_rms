@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="d9a1f60ae6920a1f86ac927689e0ac4a" name="FG_RT_LOAD_VILMRC" runtimeBehavior="BATCH_TASK">
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="d9a1f60ae6920a1f86ac927689e0ac4a" name="FG_RT_LOAD_VILMRC" runtimeBehavior="REALTIME_TASK">
   <annotations key="sap.afm.layout" xmi:id="aad256326694071345bbf1d142c6aa89">
     <annotations xmi:id="b35872daabe86cba5335579351fd244d" key="x" value="10">
     </annotations>
@@ -32,10 +32,12 @@
     </annotations>
     <inputs xmi:id="a5fb28b59bd4e149dddbcecf45644ebe" name="P_DS_IN">
       <attributes xmi:id="fafc6da55450a8cc606e4394bc50fc78" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="dedf4a4990cec150ddc445349a429b77" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="dedf4a4990cec150ddc445349a429b77" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="3f09d1fe16a11ea6cb5fee3785b340af" name="INTRENO" type="NVARCHAR" nullable="false" length="13">
-        <annotations xmi:id="2de72b00d8810eccb94cc80fd7333683" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="2de72b00d8810eccb94cc80fd7333683" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="18ecc29e8f98c4f095c47d72d826d3ff" name="RCCATEGORY" type="NVARCHAR" nullable="false" length="2">
       </attributes>
@@ -84,10 +86,12 @@
     </inputs>
     <outputs xmi:id="9ddf6bfc482651212e32e2879dbb1e57" name="P_DS_OUT">
       <attributes xmi:id="e00028aaf1568ef030bbb9d3757b7c86" name="MANDT" type="NVARCHAR" nullable="true" expression="&quot;MANDT&quot;" length="3">
-        <annotations xmi:id="dfa01b014a71ef429171a23be6b550e5" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="dfa01b014a71ef429171a23be6b550e5" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="9d74d369b826718da4ac404e6cde2ec8" name="INTRENO" type="NVARCHAR" nullable="true" expression="&quot;INTRENO&quot;" length="13">
-        <annotations xmi:id="9d66f2616677f2c5ca40acf526c6e86f" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="9d66f2616677f2c5ca40acf526c6e86f" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="d7c92d706dad4f6cbbe5fbdc81247321" name="RCCATEGORY" type="NVARCHAR" nullable="true" expression="&quot;RCCATEGORY&quot;" length="2">
       </attributes>
@@ -133,9 +137,9 @@
       </attributes>
       <attributes xmi:id="1541916b19b93f19633acbb87d5208ed" name="MEASUNIT" type="NVARCHAR" nullable="true" expression="&quot;MEASUNIT&quot;" length="3">
       </attributes>
-      <attributes xmi:id="141cbd39c68b4316c73a0654c235e3e5" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="500" expression="&#x27;RMS&#x27;">
+      <attributes xmi:id="141cbd39c68b4316c73a0654c235e3e5" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="5" expression="&#x27;RMS&#x27;">
       </attributes>
-      <attributes xmi:id="78d592b023499aa3c072e97848f28b50" name="Z_RUN_ROW_NO" type="NVARCHAR" nullable="true" length="500" expression="ROW_NUMBER() over ()">
+      <attributes xmi:id="78d592b023499aa3c072e97848f28b50" name="Z_RUN_ROW_NO" type="INTEGER" nullable="true" expression="ROW_NUMBER() over ()">
       </attributes>
     </outputs>
   </nodes>
@@ -202,9 +206,9 @@
       </attributes>
       <attributes xmi:id="168a885311dc9c40288f3b9e4e58011a" name="MEASUNIT" type="NVARCHAR" nullable="true" length="3">
       </attributes>
-      <attributes xmi:id="d40c6bceac84493d02ae9e8af6f15ead" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="500">
+      <attributes xmi:id="d40c6bceac84493d02ae9e8af6f15ead" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="true" length="5">
       </attributes>
-      <attributes xmi:id="af426ee1313fcbae9e12551b48ee4abd" name="Z_RUN_ROW_NO" type="NVARCHAR" nullable="true" length="500">
+      <attributes xmi:id="af426ee1313fcbae9e12551b48ee4abd" name="Z_RUN_ROW_NO" type="INTEGER" nullable="true">
       </attributes>
     </inputs>
     <outputs xmi:id="f5398bb67e71835f2f188a5d4ca23f65" name="TC_OUT" kind="TABLE">
@@ -269,12 +273,10 @@
       <attributes xmi:id="b709fd3476658d3856478ca12fd63d5c" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="true" mappedName="Z_RUN_SEQ_ID" length="10">
       </attributes>
       <attributes xmi:id="f02e16c0471ec964506f38c26d1efaff" name="MANDT" type="NVARCHAR" nullable="false" mappedName="MANDT" length="3">
-        <annotations xmi:id="32533845fad19b4c988a4bb89656e066" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="32533845fad19b4c988a4bb89656e066" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="08b5e9981f0f074a4b2d7eff619bb963" name="INTRENO" type="NVARCHAR" nullable="false" mappedName="INTRENO" length="13">
-        <annotations xmi:id="1ebbd97f61b684d5f884c50d43b7ceb0" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="1ebbd97f61b684d5f884c50d43b7ceb0" key="sap.im.primaryKey" value="true"/>
       </attributes>
     </outputs>
   </nodes>
@@ -351,12 +353,10 @@
       <attributes xmi:id="4c8c154d8c2dccbf3f746b0ac59896a3" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="true" length="10">
       </attributes>
       <attributes xmi:id="c37253c2f6b4fd2274419885e566fed5" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="5e398c91631cd4ab632c4e7031d9b2f7" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="5e398c91631cd4ab632c4e7031d9b2f7" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="4a641e615f144f3fad558426e0644861" name="INTRENO" type="NVARCHAR" nullable="false" length="13">
-        <annotations xmi:id="406bbcece21977a2722815fdf117fc61" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="406bbcece21977a2722815fdf117fc61" key="sap.im.primaryKey" value="true"/>
       </attributes>
     </inputs>
     <outputs xmi:id="981f6dc042373cb04bbd06d791c91f30" name="HP_OUT" kind="TABLE">
@@ -421,12 +421,10 @@
       <attributes xmi:id="09002fe474a1cf228f920cc35ea8ce59" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="true" mappedName="Z_RUN_SEQ_ID" length="10">
       </attributes>
       <attributes xmi:id="2ee2ff78c6faec838fbbfc0375ee7450" name="MANDT" type="NVARCHAR" nullable="false" mappedName="MANDT" length="3">
-        <annotations xmi:id="fd1f47f070f10b6d16613783f4c8d3c0" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="fd1f47f070f10b6d16613783f4c8d3c0" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="c4bb7930b8a01f6b0f8b34259119216e" name="INTRENO" type="NVARCHAR" nullable="false" mappedName="INTRENO" length="13">
-        <annotations xmi:id="f8267c75919d7d3bed55edfb74a5cf6d" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="f8267c75919d7d3bed55edfb74a5cf6d" key="sap.im.primaryKey" value="true"/>
       </attributes>
     </outputs>
     <tableMappings xmi:id="5d81932af4abccda1a50bcee5868b3ae" source="b880e8970e8ae098624a01d8e832df9d" target="981f6dc042373cb04bbd06d791c91f30">
@@ -519,12 +517,16 @@
     </annotations>
     <annotations xmi:id="707549017e9b2127cd2259d845003468" key="columns" value="[{&quot;name&quot;:&quot;MANDT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:3,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;INTRENO&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:13,&quot;nullable&quot;:&quot;false&quot;,&quot;primarykey&quot;:true},{&quot;name&quot;:&quot;RCCATEGORY&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:2,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;SURVEYOFFICE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;RCNO&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:25,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;OBJNR&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:22,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;CREATIONTYPE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:1,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;RERF&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;DERF&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;TERF&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:6,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;REHER&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;RBEAR&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;DBEAR&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;TBEAR&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:6,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;RBHER&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:10,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;RESPONSIBLE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;USEREXCLUSIVE&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:12,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;AUTHGRP&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:40,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;XRC&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:60,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;VALIDFROM&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;VALIDTO&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:8,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;MEASCHANGE&quot;,&quot;type&quot;:&quot;DECIMAL&quot;,&quot;length&quot;:17,&quot;scale&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;MEASDIFF&quot;,&quot;type&quot;:&quot;DECIMAL&quot;,&quot;length&quot;:17,&quot;scale&quot;:4,&quot;nullable&quot;:&quot;false&quot;},{&quot;name&quot;:&quot;MEASUNIT&quot;,&quot;type&quot;:&quot;NVARCHAR&quot;,&quot;length&quot;:3,&quot;nullable&quot;:&quot;false&quot;}]">
     </annotations>
+    <annotations xmi:id="eac197cd6e9f5602e06cd72cc4f74354" key="sap.im.realtime" value="true">
+    </annotations>
     <outputs xmi:id="71d97bcd1ea7ad0a97bd91a9443c3e50" name="DS_VT">
       <attributes xmi:id="6ead474f34e3db21f0ce2ed2cb00a09f" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="350d6d4243af47a9af3befd6d4035176" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="350d6d4243af47a9af3befd6d4035176" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="468d55927f5f3f497a0746fa430aea35" name="INTRENO" type="NVARCHAR" nullable="false" length="13">
-        <annotations xmi:id="518ec0d2f889fd24339af2fb5759f042" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="518ec0d2f889fd24339af2fb5759f042" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="98cd83f0868f5ab68d0a27bcf5b0788d" name="RCCATEGORY" type="NVARCHAR" nullable="false" length="2">
       </attributes>
