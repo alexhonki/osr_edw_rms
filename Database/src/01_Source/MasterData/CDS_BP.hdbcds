@@ -26,8 +26,8 @@ context CDS_BP {
             key CLIENT            : String(3);
             key PARTNER           : String(10);
                 Z_RUN_ROW_NO      : Integer default 0;
-            key Z_RUN_SEQ_ID      : Integer default 0;
                 TYPE              : String(1);
+            key Z_RUN_SEQ_ID      : Integer default 0;
                 BPKIND            : String(4);
                 BU_GROUP          : String(4);
                 BPEXT             : String(20);
@@ -117,13 +117,13 @@ context CDS_BP {
                 BP_SORT           : String(20);
                 KBANKS            : String(3);
                 KBANKL            : String(15);
+                _COMMIT_TIMESTAMP : UTCTimestamp;
                 Z_CHANGE_TIME     : UTCTimestamp;
                 Z_CURR_FLAG       : String(1);
                 Z_VALID_FROM      : LocalDate;
                 Z_VALID_TO        : LocalDate;
                 Z_CHANGE_TYPE     : String(1);
                 Z_SOURCE_SYS      : String(5);
-                _COMMIT_TIMESTAMP : UTCTimestamp;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -258,7 +258,7 @@ context CDS_BP {
                 Z_SOURCE_SYS      : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":261,"y":-515.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity BUT0ID {
             key CLIENT          : String(3);
             key PARTNER         : String(10);
@@ -282,7 +282,7 @@ context CDS_BP {
             key Z_RUN_SEQ_ID    : Integer      default '0';
         };
 
-        /*@@layout{"layoutInfo":{"x":540,"y":-510.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity ZBUT0000UZQMZ7 {
             key CLIENT        : String(3);
             key PARTNER       : String(10);
@@ -301,7 +301,40 @@ context CDS_BP {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":900,"y":-511.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
+        entity BUT050 {
+            key CLIENT        : String(3);
+            key RELNR         : String(12);
+            key PARTNER1      : String(10);
+            key PARTNER2      : String(10);
+            key DATE_TO       : String(8);
+                DATE_FROM     : String(8);
+                RELTYP        : String(6);
+                XRF           : String(1);
+                DFTVAL        : String(20);
+                RLTYP         : String(6);
+                RELKIND       : String(4);
+                CRUSR         : String(12);
+                CRDAT         : String(8);
+                CRTIM         : String(6);
+                CHUSR         : String(12);
+                CHDAT         : String(8);
+                CHTIM         : String(6);
+                XDFREL        : String(1);
+                XDFREL2       : String(1);
+                DB_KEY        : String(200);
+                DB_KEY_TD     : String(200);
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : LocalDate    default '1900-01-01';
+                Z_VALID_TO    : LocalDate    default '1900-01-01';
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
         entity BUT100 {
             key MANDT         : String(3);
             key PARTNER       : String(10);

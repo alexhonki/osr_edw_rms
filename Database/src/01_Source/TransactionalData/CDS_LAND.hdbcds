@@ -1,6 +1,7 @@
 namespace osr.edw.source.td.rms;
 
 context CDS_LAND {
+    /*@@layout{"layoutInfo":{"x":-279,"y":-171}}*/
     context TAB {
 
         /*@@layout{"layoutInfo":{}}*/
@@ -21,7 +22,7 @@ context CDS_LAND {
                 NANO            : String(40);
                 OBJNRNA         : String(22);
                 NAVALVALIDFROM  : String(8);
-                SIGNATURE       : Binary(16);
+                SIGNATURE       : String(200);
                 DISTVALUE       : Decimal(31, 9);
                 DISTBASIS       : Decimal(31, 9);
                 DISTMETH        : String(1);
@@ -34,7 +35,7 @@ context CDS_LAND {
                 AREAUNIT        : String(3);
                 PLAREA          : Decimal(17, 4);
                 PLAREAUNIT      : String(3);
-                NARESSTAT       : Binary(3);
+                NARESSTAT       : String(200);
                 IGNOREDISTERROR : String(1);
                 PLNO            : String(20);
                 OBJNRPL         : String(22);
@@ -113,64 +114,9 @@ context CDS_LAND {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+                Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{}}*/
-        entity LTPLRES {
-            key MANDT          : String(3);
-            key INTRENOPL      : String(13);
-            key TAXYRSTARTDT   : String(8);
-                PARISH         : String(5);
-                LGA            : String(6);
-                TENURE         : String(2);
-                LANDUSECODE    : String(3);
-                BALANCELOTFLAG : String(1);
-                LAYEREDSCHEME  : String(1);
-                LOTENTTLMNT    : Decimal(31, 2);
-                TOTALENTTLMNT  : Decimal(31, 2);
-                LHFLAG         : String(1);
-                NVFLAG         : String(1);
-                UNIMPVALFACT   : Decimal(15, 2);
-                PLRELVALFACT   : Decimal(15, 2);
-                LANDTAXYR      : String(4);
-                UNIMPRVAL      : Decimal(15, 2);
-                AVG3YRVAL      : Decimal(15, 2);
-                FACTORVAL      : Decimal(15, 2);
-                CAPPEDVAL      : Decimal(15, 2);
-                RELVNTVAL      : Decimal(15, 2);
-                VALTYPE        : String(1);
-                VALCURR        : String(5);
-                ZEROVALPL      : String(1);
-                NANO           : String(40);
-                OBJNRNA        : String(22);
-                NAVALVALIDFROM : String(8);
-                SIGNATURE      : Binary(16);
-                DISTVALUE      : Decimal(31, 9);
-                DISTBASIS      : Decimal(31, 9);
-                DISTMETH       : String(1);
-                DISTSHARE      : Decimal(10, 6);
-                AREA           : Decimal(17, 4);
-                AREAUNIT       : String(3);
-                PLAREA         : Decimal(17, 4);
-                PLAREAUNIT     : String(3);
-                PLRESSTAT      : Binary(3);
-                PLNO           : String(20);
-                OBJNRPL        : String(22);
-                INTRENONA      : String(13);
-                OWNERCNT       : hana.SMALLINT;
-                CHUSER         : String(12);
-                CHDATE         : String(8);
-                CHTIME         : String(6);
-                Z_CURR_FLAG    : String(1);
-                Z_VALID_FROM   : LocalDate;
-                Z_VALID_TO     : LocalDate;
-                Z_CHANGE_TYPE  : String(1);
-                Z_CHANGE_TIME  : UTCTimestamp;
-                Z_SOURCE_SYS   : String(5);
-                Z_RUN_ROW_NO   : Integer;
-            key Z_RUN_SEQ_ID   : Integer;
-        };
 
         /*@@layout{"layoutInfo":{}}*/
         entity LTPLRESB {
@@ -184,7 +130,7 @@ context CDS_LAND {
                 BPRELVNTVAL   : Decimal(15, 2);
                 VALIDFROM     : String(8);
                 VALIDTO       : String(8);
-                PLRESBSTAT    : Binary(3);
+                PLRESBSTAT    : String(200);
                 BUKRS         : String(4);
                 RECNNR        : String(13);
                 INTRENOCN     : String(13);
@@ -199,7 +145,7 @@ context CDS_LAND {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+                Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -208,7 +154,7 @@ context CDS_LAND {
             key INTRENOCN      : String(13);
             key TAXYRSTARTDT   : String(8);
             key INTRENOPL      : String(13);
-                SIGNATURE      : Binary(16);
+                SIGNATURE      : String(200);
                 NANO           : String(40);
                 OWNERFRACTION  : Decimal(9, 3);
                 OWNERFACTOR    : String(6);
@@ -229,7 +175,7 @@ context CDS_LAND {
                 ENTITLEMENT    : String(1);
                 LHFLAG         : String(1);
                 NVFLAG         : String(1);
-                CNRESPSTAT     : Binary(3);
+                CNRESPSTAT     : String(200);
                 STATUSICON     : String(4);
                 CHUSER         : String(12);
                 CHDATE         : String(8);
@@ -334,7 +280,7 @@ context CDS_LAND {
                 TAXAMOUNT       : Decimal(15, 2);
                 TAXESTIMATE     : Decimal(15, 2);
                 ZEROVALCN       : String(1);
-                CNRESSTAT       : Binary(3);
+                CNRESSTAT       : String(200);
                 PROPERTYCNT     : hana.SMALLINT;
                 PARCELCNT       : hana.SMALLINT;
                 SDDPLCNT        : Integer;
@@ -351,7 +297,7 @@ context CDS_LAND {
                 Z_CHANGE_TIME   : UTCTimestamp;
                 Z_SOURCE_SYS    : String(5);
                 Z_RUN_ROW_NO    : Integer;
-            key Z_RUN_SEQ_ID    : Integer;
+                Z_RUN_SEQ_ID    : Integer;
         };
 
 
@@ -366,7 +312,7 @@ context CDS_LAND {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+                Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -437,7 +383,7 @@ context CDS_LAND {
                 Z_CHANGE_TIME    : UTCTimestamp;
                 Z_SOURCE_SYS     : String(5);
                 Z_RUN_ROW_NO     : Integer;
-            key Z_RUN_SEQ_ID     : Integer;
+                Z_RUN_SEQ_ID     : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -491,7 +437,63 @@ context CDS_LAND {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+                Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity LTPLRES {
+            key MANDT          : String(3);
+            key INTRENOPL      : String(13);
+            key TAXYRSTARTDT   : String(8);
+                PARISH         : String(5);
+                LGA            : String(6);
+                TENURE         : String(2);
+                BALANCELOTFLAG : String(1);
+                LANDUSECODE    : String(3);
+                LAYEREDSCHEME  : String(1);
+                LOTENTTLMNT    : Decimal(31, 2);
+                TOTALENTTLMNT  : Decimal(31, 2);
+                LHFLAG         : String(1);
+                NVFLAG         : String(1);
+                UNIMPVALFACT   : Decimal(15, 2);
+                PLRELVALFACT   : Decimal(15, 2);
+                LANDTAXYR      : String(4);
+                UNIMPRVAL      : Decimal(15, 2);
+                AVG3YRVAL      : Decimal(15, 2);
+                FACTORVAL      : Decimal(15, 2);
+                CAPPEDVAL      : Decimal(15, 2);
+                RELVNTVAL      : Decimal(15, 2);
+                VALTYPE        : String(1);
+                VALCURR        : String(5);
+                ZEROVALPL      : String(1);
+                NANO           : String(40);
+                OBJNRNA        : String(22);
+                NAVALVALIDFROM : String(8);
+                SIGNATURE      : String(200);
+                DISTVALUE      : Decimal(31, 9);
+                DISTBASIS      : Decimal(31, 9);
+                DISTMETH       : String(1);
+                DISTSHARE      : Decimal(10, 6);
+                AREA           : Decimal(17, 4);
+                AREAUNIT       : String(3);
+                PLAREA         : Decimal(17, 4);
+                PLAREAUNIT     : String(3);
+                PLRESSTAT      : String(200);
+                PLNO           : String(20);
+                OBJNRPL        : String(22);
+                INTRENONA      : String(13);
+                OWNERCNT       : hana.SMALLINT;
+                CHUSER         : String(12);
+                CHDATE         : String(8);
+                CHTIME         : String(6);
+                Z_CURR_FLAG    : String(1);
+                Z_VALID_FROM   : LocalDate;
+                Z_VALID_TO     : LocalDate;
+                Z_CHANGE_TYPE  : String(1);
+                Z_CHANGE_TIME  : UTCTimestamp;
+                Z_SOURCE_SYS   : String(5);
+                Z_RUN_ROW_NO   : Integer;
+                Z_RUN_SEQ_ID   : Integer;
         };
     };
 };

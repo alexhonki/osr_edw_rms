@@ -171,7 +171,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO    : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID    : Integer        not null;
+                    Z_RUN_SEQ_ID    : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -610,7 +610,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO  : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID  : Integer        not null;
+                    Z_RUN_SEQ_ID  : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -1052,7 +1052,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO   : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID   : Integer        not null;
+                    Z_RUN_SEQ_ID   : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -1496,7 +1496,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO     : Integer      not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID     : Integer      not null;
+                    Z_RUN_SEQ_ID     : Integer      not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -1939,7 +1939,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO    : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID    : Integer        not null;
+                    Z_RUN_SEQ_ID    : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -2188,7 +2188,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO  : Integer      not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID  : Integer      not null;
+                    Z_RUN_SEQ_ID  : Integer      not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -2656,7 +2656,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO  : Integer      not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID  : Integer      not null;
+                    Z_RUN_SEQ_ID  : Integer      not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -2976,7 +2976,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO     : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID     : Integer        not null;
+                    Z_RUN_SEQ_ID     : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -3320,7 +3320,7 @@ context CDS_LAND {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
         context LTPLRESB {
             @DataStore.entityCategory : #ACTIVE_DATA
@@ -3356,7 +3356,7 @@ context CDS_LAND {
                     VALIDTO       : String(8)      not null;
 
                     @DataStore.aggregation : #NOP
-                    PLRESBSTAT    : Binary(3)      not null;
+                    PLRESBSTAT    : String(200)    not null;
 
                     @DataStore.aggregation : #NOP
                     BUKRS         : String(4)      not null;
@@ -3401,7 +3401,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO  : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID  : Integer        not null;
+                    Z_RUN_SEQ_ID  : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -3443,7 +3443,7 @@ context CDS_LAND {
                     VALIDTO             : String(8)              not null;
 
                     @DataStore.aggregation : #MOV
-                    PLRESBSTAT          : Binary(3)              not null;
+                    PLRESBSTAT          : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     BUKRS               : String(4)              not null;
@@ -3488,7 +3488,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
-                key Z_RUN_SEQ_ID        : Integer                not null;
+                    Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -3508,7 +3508,7 @@ context CDS_LAND {
                     BPRELVNTVAL         : Decimal(15, 2)      not null;
                     VALIDFROM           : String(8)           not null;
                     VALIDTO             : String(8)           not null;
-                    PLRESBSTAT          : Binary(3)           not null;
+                    PLRESBSTAT          : String(200)         not null;
                     BUKRS               : String(4)           not null;
                     RECNNR              : String(13)          not null;
                     INTRENOCN           : String(13)          not null;
@@ -3523,7 +3523,7 @@ context CDS_LAND {
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;
                     Z_RUN_ROW_NO        : Integer             not null;
-                key Z_RUN_SEQ_ID        : Integer             not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
@@ -3740,7 +3740,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO   : Integer        not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID   : Integer        not null;
+                    Z_RUN_SEQ_ID   : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
