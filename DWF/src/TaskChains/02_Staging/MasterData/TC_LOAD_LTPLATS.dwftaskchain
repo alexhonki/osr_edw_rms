@@ -1,5 +1,5 @@
 {
-  "description": "Load batch Staging LTNAPLVL",
+  "description": "Load batch Staging LTLGA",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
@@ -14,11 +14,11 @@
       "inline": {
         "type": "executeProcedure",
         "taskGroup": "hanaNative",
-        "description": "Load LTNAPLVL",
+        "description": "Load LTPLATS",
         "parameterValues": [
           {
             "id": "procName",
-            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_LTNAPLVL_SP"
+            "value": "osr.edw.source.md.rms::FG_RT_LOAD_LTPLATS_SP"
           }
         ]
       },
@@ -33,11 +33,11 @@
       "inline": {
         "type": "activate",
         "taskGroup": "ndso",
-        "description": "Activate LTNAPLVL",
+        "description": "Activate LTPLATS",
         "parameterValues": [
           {
             "id": "dataStoreName",
-            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.LTNAPLVL"
+            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.LTPLATS"
           }
         ]
       },
