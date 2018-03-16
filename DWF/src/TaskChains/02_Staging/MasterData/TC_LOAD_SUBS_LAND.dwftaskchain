@@ -138,7 +138,7 @@
       },
       "preconditions": [
         {
-          "from": "7",
+          "from": "11",
           "status": "OK"
         }
       ]
@@ -157,7 +157,7 @@
       },
       "preconditions": [
         {
-          "from": "8",
+          "from": "7",
           "status": "OK"
         }
       ]
@@ -196,6 +196,63 @@
       "preconditions": [
         {
           "from": "10",
+          "status": "OK"
+        }
+      ]
+    },
+    "12": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTAXBPPL ",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.md.rms#TC_LOAD_LTAXBPPL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "13": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD ATSDTTX",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.propagation.md.rms#TC_CLEAN_BUT000_INDV"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "12",
+          "status": "OK"
+        }
+      ]
+    },
+    "14": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTPLATS",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_LTPLATS"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "13",
           "status": "OK"
         }
       ]

@@ -1,0 +1,43 @@
+namespace osr.edw.source.md.rms;
+
+context CDS_PSCD {
+
+    /*@@layout{"layoutInfo":{"x":344,"y":173.5}}*/
+    context TAB {
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity T009 {
+            key MANDT         : String(3);
+            key PERIV         : String(2);
+                XKALE         : String(1);
+                XJABH         : String(1);
+                ANZBP         : String(3);
+                ANZSP         : String(2);
+                XWEEK         : String(1);
+                FYOFB         : String(2);
+                FYOFE         : String(2);
+                XWEEKQUART    : String(1);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity T009B {
+            key MANDT         : String(3);
+            key PERIV         : String(2);
+            key BDATJ         : String(4);
+            key BUMON         : String(2);
+            key BUTAG         : String(2);
+                POPER         : String(3);
+                RELJR         : String(2);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+    };
+};

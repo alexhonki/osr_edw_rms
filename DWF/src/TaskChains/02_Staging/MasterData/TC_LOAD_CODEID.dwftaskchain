@@ -1,5 +1,5 @@
 {
-  "description": "Load batch Staging LTLGA",
+  "description": "Load batch Staging CODEID",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
@@ -14,11 +14,11 @@
       "inline": {
         "type": "executeProcedure",
         "taskGroup": "hanaNative",
-        "description": "Load LTLGA",
+        "description": "Load CODEID",
         "parameterValues": [
           {
             "id": "procName",
-            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_LTLGA_SP"
+            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_CODEID_SP"
           }
         ]
       },
@@ -33,11 +33,11 @@
       "inline": {
         "type": "activate",
         "taskGroup": "ndso",
-        "description": "Activate LTLGA",
+        "description": "Activate CODEID",
         "parameterValues": [
           {
             "id": "dataStoreName",
-            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.LTLGA"
+            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.CODEID"
           }
         ]
       },

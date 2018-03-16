@@ -1,0 +1,52 @@
+{
+  "description": "Load batch Staging DFKKPPD",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load DFKKPPD",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_DFKKPPD_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Activate DFKKPPD",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_PSCD.DSO.DFKKPPD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}

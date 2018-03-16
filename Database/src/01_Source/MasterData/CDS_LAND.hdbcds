@@ -282,7 +282,7 @@ context CDS_LAND {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID    : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -328,6 +328,24 @@ context CDS_LAND {
                 Z_CURR_FLAG   : String(1);
                 Z_VALID_FROM  : LocalDate;
                 Z_VALID_TO    : LocalDate;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":270,"y":78.5}}*/
+        entity CODEID {
+            key MANDT         : String(3);
+            key CODE_ID       : String(2);
+            key PERIOD_BEGIN  : String(8);
+                PERIOD_END    : String(8);
+                CODE_DESC     : String(60);
+                ACTIVE        : String(1);
+                INDIVORG      : String(3);
+                TAX_RATE      : String(4);
+                ABSURCHARGE   : String(1);
                 Z_CHANGE_TYPE : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
