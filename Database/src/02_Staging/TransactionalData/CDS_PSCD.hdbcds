@@ -20,7 +20,7 @@ using DataWarehouse.DataStore :: Annotations as DataStore;
 
 context CDS_PSCD {
 
-    /*@@layout{"layoutInfo":{"x":349,"y":144.5}}*/
+    /*@@layout{"layoutInfo":{"x":254,"y":145.5}}*/
     context DSO {
         @DataStore.isDSO
         @DataStore.entity.activeData         : 'active_data'
@@ -33,7 +33,7 @@ context CDS_PSCD {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
         context DFKKOP {
             @DataStore.entityCategory : #ACTIVE_DATA
@@ -1379,8 +1379,9 @@ context CDS_PSCD {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":319,"y":-513.5}}*/
         context DFKKPP {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -2300,8 +2301,9 @@ context CDS_PSCD {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":543,"y":-516.5}}*/
         context FKKMAKO {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -2822,7 +2824,7 @@ context CDS_PSCD {
                     Z_RUN_ROW_NO        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
-                    Z_RUN_SEQ_ID        : Integer                not null;
+                key Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -2916,7 +2918,7 @@ context CDS_PSCD {
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;
                     Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
