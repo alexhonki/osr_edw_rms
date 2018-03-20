@@ -20,8 +20,1118 @@ using DataWarehouse.DataStore :: Annotations as DataStore;
 
 context CDS_LAND {
 
-    /*@@layout{"layoutInfo":{"x":349,"y":144.5}}*/
+    /*@@layout{"layoutInfo":{"x":345,"y":142.5}}*/
     context DSO {
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        context LTCNRESV {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key MANDT           : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key INTRENOCN       : String(13)     not null;
+
+                    @DataStore.aggregation : #NOP
+                key TAXYRSTARTDT    : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key INTRENOPL       : String(13)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SIGNATURE       : String(200)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID    : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS    : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO    : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME   : UTCTimestamp   not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE   : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    NANO            : String(40)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    OWNERFRACTION   : Decimal(9, 3)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    OWNERFACTOR     : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    OWNERPERCENT    : Decimal(10, 6) not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZEROVALPL       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    UNIMPRVAL       : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    RELVNTVAL       : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    VALTYPECN       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    BPRELVNTVAL     : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    BPCONCESSVAL    : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    BPTAXABLEVAL    : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    PROPTAXAMT      : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    CONCESSCODE     : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CONCESSPCT      : Decimal(3, 0)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    LANDUSECODE     : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    BALANCELOTFLAG  : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TENURE          : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ENTITLEMENT     : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LHFLAG          : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    NVFLAG          : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CNRESPSTAT      : String(200)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    STATUSICON      : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHUSERP         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHDATEP         : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHTIMEP         : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PLNO            : String(20)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    OBJNRPL         : String(22)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    ABSURCHARGE     : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    BUKRS           : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNNR          : String(13)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    OBJNR           : String(22)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RERF            : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    DERF            : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TERF            : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    REHER           : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RBEAR           : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    DBEAR           : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TBEAR           : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNDACTIV      : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_NOIA_DATE    : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_INV_DATE     : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_STAT_COMMENT : String(80)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_PARTNER      : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    CNRESCALC       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    REAS            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    DNIS            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    XMIG            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LT12            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNTYPE        : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ACTIVE          : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    OWNERTYPE       : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    INDIVORG        : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXRATECODE     : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOTBPRELVNTVAL  : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOTBPCONCESSVAL : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOTBPTAXABLEVAL : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    ADJUSTMENT      : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXAMOUNT       : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXESTIMATE     : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZEROVALCN       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CNRESSTAT       : String(200)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    PROPERTYCNT     : hana.SMALLINT  not null;
+
+                    @DataStore.aggregation : #NOP
+                    PARCELCNT       : hana.SMALLINT  not null;
+
+                    @DataStore.aggregation : #NOP
+                    SDDPLCNT        : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    CONCPLCNT       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXYRENDDT      : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHDATE          : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHTIME          : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHUSER          : String(12)     not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key MANDT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key INTRENOCN           : String(13)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key TAXYRSTARTDT        : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key INTRENOPL           : String(13)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SIGNATURE           : String(200)            not null;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_SEQ_ID        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    NANO                : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    OWNERFRACTION       : Decimal(9, 3)          not null;
+
+                    @DataStore.aggregation : #MOV
+                    OWNERFACTOR         : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    OWNERPERCENT        : Decimal(10, 6)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZEROVALPL           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    UNIMPRVAL           : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    RELVNTVAL           : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    VALTYPECN           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BPRELVNTVAL         : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    BPCONCESSVAL        : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    BPTAXABLEVAL        : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    PROPTAXAMT          : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    CONCESSCODE         : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CONCESSPCT          : Decimal(3, 0)          not null;
+
+                    @DataStore.aggregation : #MOV
+                    LANDUSECODE         : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BALANCELOTFLAG      : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TENURE              : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ENTITLEMENT         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LHFLAG              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    NVFLAG              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CNRESPSTAT          : String(200)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    STATUSICON          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHUSERP             : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHDATEP             : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHTIMEP             : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PLNO                : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    OBJNRPL             : String(22)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ABSURCHARGE         : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    BUKRS               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNNR              : String(13)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    OBJNR               : String(22)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RERF                : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DERF                : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TERF                : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    REHER               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RBEAR               : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DBEAR               : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TBEAR               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNDACTIV          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_NOIA_DATE        : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_INV_DATE         : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_STAT_COMMENT     : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_PARTNER          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CNRESCALC           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    REAS                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    DNIS                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    XMIG                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LT12                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNTYPE            : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ACTIVE              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    OWNERTYPE           : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    INDIVORG            : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXRATECODE         : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOTBPRELVNTVAL      : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOTBPCONCESSVAL     : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOTBPTAXABLEVAL     : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADJUSTMENT          : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXAMOUNT           : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXESTIMATE         : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZEROVALCN           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CNRESSTAT           : String(200)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    PROPERTYCNT         : hana.SMALLINT          not null;
+
+                    @DataStore.aggregation : #MOV
+                    PARCELCNT           : hana.SMALLINT          not null;
+
+                    @DataStore.aggregation : #MOV
+                    SDDPLCNT            : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    CONCPLCNT           : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXYRENDDT          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHDATE              : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHTIME              : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHUSER              : String(12)             not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key MANDT               : String(3)           not null;
+                key INTRENOCN           : String(13)          not null;
+                key TAXYRSTARTDT        : String(8)           not null;
+                key INTRENOPL           : String(13)          not null;
+                    SIGNATURE           : String(200)         not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    NANO                : String(40)          not null;
+                    OWNERFRACTION       : Decimal(9, 3)       not null;
+                    OWNERFACTOR         : String(6)           not null;
+                    OWNERPERCENT        : Decimal(10, 6)      not null;
+                    ZEROVALPL           : String(1)           not null;
+                    UNIMPRVAL           : Decimal(15, 2)      not null;
+                    RELVNTVAL           : Decimal(15, 2)      not null;
+                    VALTYPECN           : String(1)           not null;
+                    BPRELVNTVAL         : Decimal(15, 2)      not null;
+                    BPCONCESSVAL        : Decimal(15, 2)      not null;
+                    BPTAXABLEVAL        : Decimal(15, 2)      not null;
+                    PROPTAXAMT          : Decimal(15, 2)      not null;
+                    CONCESSCODE         : String(2)           not null;
+                    CONCESSPCT          : Decimal(3, 0)       not null;
+                    LANDUSECODE         : String(3)           not null;
+                    BALANCELOTFLAG      : String(1)           not null;
+                    TENURE              : String(2)           not null;
+                    ENTITLEMENT         : String(1)           not null;
+                    LHFLAG              : String(1)           not null;
+                    NVFLAG              : String(1)           not null;
+                    CNRESPSTAT          : String(200)         not null;
+                    STATUSICON          : String(4)           not null;
+                    CHUSERP             : String(12)          not null;
+                    CHDATEP             : String(8)           not null;
+                    CHTIMEP             : String(6)           not null;
+                    PLNO                : String(20)          not null;
+                    OBJNRPL             : String(22)          not null;
+                    ABSURCHARGE         : Decimal(15, 2)      not null;
+                    BUKRS               : String(4)           not null;
+                    RECNNR              : String(13)          not null;
+                    OBJNR               : String(22)          not null;
+                    RERF                : String(12)          not null;
+                    DERF                : String(8)           not null;
+                    TERF                : String(6)           not null;
+                    REHER               : String(10)          not null;
+                    RBEAR               : String(12)          not null;
+                    DBEAR               : String(8)           not null;
+                    TBEAR               : String(6)           not null;
+                    RECNDACTIV          : String(8)           not null;
+                    ZZ_NOIA_DATE        : String(8)           not null;
+                    ZZ_INV_DATE         : String(8)           not null;
+                    ZZ_STAT_COMMENT     : String(80)          not null;
+                    ZZ_PARTNER          : String(10)          not null;
+                    CNRESCALC           : String(1)           not null;
+                    REAS                : String(1)           not null;
+                    DNIS                : String(1)           not null;
+                    XMIG                : String(1)           not null;
+                    LT12                : String(1)           not null;
+                    RECNTYPE            : String(4)           not null;
+                    ACTIVE              : String(1)           not null;
+                    OWNERTYPE           : String(2)           not null;
+                    INDIVORG            : String(3)           not null;
+                    TAXRATECODE         : String(4)           not null;
+                    TOTBPRELVNTVAL      : Decimal(15, 2)      not null;
+                    TOTBPCONCESSVAL     : Decimal(15, 2)      not null;
+                    TOTBPTAXABLEVAL     : Decimal(15, 2)      not null;
+                    ADJUSTMENT          : Decimal(15, 2)      not null;
+                    TAXAMOUNT           : Decimal(15, 2)      not null;
+                    TAXESTIMATE         : Decimal(15, 2)      not null;
+                    ZEROVALCN           : String(1)           not null;
+                    CNRESSTAT           : String(200)         not null;
+                    PROPERTYCNT         : hana.SMALLINT       not null;
+                    PARCELCNT           : hana.SMALLINT       not null;
+                    SDDPLCNT            : Integer             not null;
+                    CONCPLCNT           : Integer             not null;
+                    TAXYRENDDT          : String(8)           not null;
+                    CHDATE              : String(8)           not null;
+                    CHTIME              : String(6)           not null;
+                    CHUSER              : String(12)          not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        context LTCNRESX {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key MANDT           : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key INTRENOCN       : String(13)     not null;
+
+                    @DataStore.aggregation : #NOP
+                key TAXYRSTARTDT    : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNNR          : String(13)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_PARTNER      : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    OWNERTYPE       : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOTBPRELVNTVAL  : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOTBPCONCESSVAL : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOTBPTAXABLEVAL : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    ABSURCHARGE     : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    ADJUSTMENT      : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXAMOUNT       : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXESTIMATE     : Decimal(15, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    CNRESSTAT       : String(200)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    PROPERTYCNT     : hana.SMALLINT  not null;
+
+                    @DataStore.aggregation : #NOP
+                    SDDPLCNT        : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    CONCPLCNT       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    PARCELCNT       : hana.SMALLINT  not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHUSER          : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHDATE          : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHTIME          : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ACTIVE          : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    INDIVORG        : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXRATECODE     : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZEROVALCN       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    BUKRS           : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    OBJNR           : String(22)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    IMKEY           : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CREATIONTYPE    : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RERF            : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    DERF            : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TERF            : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    REHER           : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RBEAR           : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    DBEAR           : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TBEAR           : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    AUTHGRP         : String(40)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNTYPE        : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNBEG         : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNENDABS      : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNTXT         : String(80)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNDACTIV      : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECNCNCURR      : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_NOIA_DATE    : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_INV_DATE     : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ZZ_STAT_COMMENT : String(80)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    REAS            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    DNIS            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    XMIG            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LT12            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TAXYRENDDT      : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CNRESCALC       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE   : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME   : UTCTimestamp   not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS    : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO    : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID    : Integer        not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key MANDT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key INTRENOCN           : String(13)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key TAXYRSTARTDT        : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNNR              : String(13)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_PARTNER          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    OWNERTYPE           : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOTBPRELVNTVAL      : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOTBPCONCESSVAL     : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOTBPTAXABLEVAL     : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    ABSURCHARGE         : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    ADJUSTMENT          : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXAMOUNT           : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXESTIMATE         : Decimal(15, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    CNRESSTAT           : String(200)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    PROPERTYCNT         : hana.SMALLINT          not null;
+
+                    @DataStore.aggregation : #MOV
+                    SDDPLCNT            : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    CONCPLCNT           : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    PARCELCNT           : hana.SMALLINT          not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHUSER              : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHDATE              : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHTIME              : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ACTIVE              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    INDIVORG            : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXRATECODE         : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZEROVALCN           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BUKRS               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    OBJNR               : String(22)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    IMKEY               : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CREATIONTYPE        : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RERF                : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DERF                : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TERF                : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    REHER               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RBEAR               : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DBEAR               : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TBEAR               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    AUTHGRP             : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNTYPE            : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNBEG             : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNENDABS          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNTXT             : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNDACTIV          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECNCNCURR          : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_NOIA_DATE        : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_INV_DATE         : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ZZ_STAT_COMMENT     : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    REAS                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    DNIS                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    XMIG                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LT12                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TAXYRENDDT          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CNRESCALC           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_SEQ_ID        : Integer                not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key MANDT               : String(3)           not null;
+                key INTRENOCN           : String(13)          not null;
+                key TAXYRSTARTDT        : String(8)           not null;
+                    RECNNR              : String(13)          not null;
+                    ZZ_PARTNER          : String(10)          not null;
+                    OWNERTYPE           : String(2)           not null;
+                    TOTBPRELVNTVAL      : Decimal(15, 2)      not null;
+                    TOTBPCONCESSVAL     : Decimal(15, 2)      not null;
+                    TOTBPTAXABLEVAL     : Decimal(15, 2)      not null;
+                    ABSURCHARGE         : Decimal(15, 2)      not null;
+                    ADJUSTMENT          : Decimal(15, 2)      not null;
+                    TAXAMOUNT           : Decimal(15, 2)      not null;
+                    TAXESTIMATE         : Decimal(15, 2)      not null;
+                    CNRESSTAT           : String(200)         not null;
+                    PROPERTYCNT         : hana.SMALLINT       not null;
+                    SDDPLCNT            : Integer             not null;
+                    CONCPLCNT           : Integer             not null;
+                    PARCELCNT           : hana.SMALLINT       not null;
+                    CHUSER              : String(12)          not null;
+                    CHDATE              : String(8)           not null;
+                    CHTIME              : String(6)           not null;
+                    ACTIVE              : String(1)           not null;
+                    INDIVORG            : String(3)           not null;
+                    TAXRATECODE         : String(4)           not null;
+                    ZEROVALCN           : String(1)           not null;
+                    BUKRS               : String(4)           not null;
+                    OBJNR               : String(22)          not null;
+                    IMKEY               : String(8)           not null;
+                    CREATIONTYPE        : String(1)           not null;
+                    RERF                : String(12)          not null;
+                    DERF                : String(8)           not null;
+                    TERF                : String(6)           not null;
+                    REHER               : String(10)          not null;
+                    RBEAR               : String(12)          not null;
+                    DBEAR               : String(8)           not null;
+                    TBEAR               : String(6)           not null;
+                    AUTHGRP             : String(40)          not null;
+                    RECNTYPE            : String(4)           not null;
+                    RECNBEG             : String(8)           not null;
+                    RECNENDABS          : String(8)           not null;
+                    RECNTXT             : String(80)          not null;
+                    RECNDACTIV          : String(8)           not null;
+                    RECNCNCURR          : String(5)           not null;
+                    ZZ_NOIA_DATE        : String(8)           not null;
+                    ZZ_INV_DATE         : String(8)           not null;
+                    ZZ_STAT_COMMENT     : String(80)          not null;
+                    REAS                : String(1)           not null;
+                    DNIS                : String(1)           not null;
+                    XMIG                : String(1)           not null;
+                    LT12                : String(1)           not null;
+                    TAXYRENDDT          : String(8)           not null;
+                    CNRESCALC           : String(1)           not null;
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+
         @DataStore.isDSO
         @DataStore.entity.activeData         : 'active_data'
         @DataStore.entity.changeLog          : 'change_log'
@@ -1184,7 +2294,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
-                    Z_RUN_SEQ_ID        : Integer                not null;
+                key Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -1234,7 +2344,7 @@ context CDS_LAND {
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;
                     Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
@@ -1706,7 +2816,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
-                    Z_RUN_SEQ_ID        : Integer                not null;
+                key Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -1782,7 +2892,7 @@ context CDS_LAND {
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;
                     Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
@@ -1888,7 +2998,7 @@ context CDS_LAND {
                     ZEROVALCN       : String(1)      not null;
 
                     @DataStore.aggregation : #NOP
-                    CNRESSTAT       : Binary(3)      not null;
+                    CNRESSTAT       : String(200)    not null;
 
                     @DataStore.aggregation : #NOP
                     PROPERTYCNT     : hana.SMALLINT  not null;
@@ -1993,7 +3103,7 @@ context CDS_LAND {
                     ZEROVALCN           : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
-                    CNRESSTAT           : Binary(3)              not null;
+                    CNRESSTAT           : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     PROPERTYCNT         : hana.SMALLINT          not null;
@@ -2068,7 +3178,7 @@ context CDS_LAND {
                     TAXAMOUNT           : Decimal(15, 2)      not null;
                     TAXESTIMATE         : Decimal(15, 2)      not null;
                     ZEROVALCN           : String(1)           not null;
-                    CNRESSTAT           : Binary(3)           not null;
+                    CNRESSTAT           : String(200)         not null;
                     PROPERTYCNT         : hana.SMALLINT       not null;
                     PARCELCNT           : hana.SMALLINT       not null;
                     SDDPLCNT            : Integer             not null;
@@ -3078,7 +4188,7 @@ context CDS_LAND {
                     INTRENONA      : String(13)     not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERCNT       : hana.SMALLINT  not null default 0;
+                    OWNERCNT       : hana.SMALLINT  not null default '0';
 
                     @DataStore.aggregation : #NOP
                     CHUSER         : String(12)     not null;
@@ -3243,7 +4353,7 @@ context CDS_LAND {
                     INTRENONA           : String(13)             not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERCNT            : hana.SMALLINT          not null default 0;
+                    OWNERCNT            : hana.SMALLINT          not null default '0';
 
                     @DataStore.aggregation : #MOV
                     CHUSER              : String(12)             not null;
@@ -3326,7 +4436,7 @@ context CDS_LAND {
                     PLNO                : String(20)          not null;
                     OBJNRPL             : String(22)          not null;
                     INTRENONA           : String(13)          not null;
-                    OWNERCNT            : hana.SMALLINT       not null default 0;
+                    OWNERCNT            : hana.SMALLINT       not null default '0';
                     CHUSER              : String(12)          not null;
                     CHDATE              : String(8)           not null;
                     CHTIME              : String(6)           not null;
@@ -3395,9 +4505,8 @@ context CDS_LAND {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":958,"y":-516.5}}*/
         context LTAXASFB {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -3559,1121 +4668,8 @@ context CDS_LAND {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":1265,"y":-504.5}}*/
-        context LTCNRESX {
-            @DataStore.entityCategory : #ACTIVE_DATA
-            entity active_data {
-                    @DataStore.aggregation : #NOP
-                key MANDT           : String(3)      not null;
-
-                    @DataStore.aggregation : #NOP
-                key INTRENOCN       : String(13)     not null;
-
-                    @DataStore.aggregation : #NOP
-                key TAXYRSTARTDT    : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNNR          : String(13)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_PARTNER      : String(10)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    OWNERTYPE       : String(2)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TOTBPRELVNTVAL  : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TOTBPCONCESSVAL : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TOTBPTAXABLEVAL : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    ABSURCHARGE     : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    ADJUSTMENT      : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXAMOUNT       : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXESTIMATE     : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    CNRESSTAT       : String(200)    not null;
-
-                    @DataStore.aggregation : #NOP
-                    PROPERTYCNT     : hana.SMALLINT  not null;
-
-                    @DataStore.aggregation : #NOP
-                    SDDPLCNT        : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    CONCPLCNT       : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    PARCELCNT       : hana.SMALLINT  not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHUSER          : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHDATE          : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHTIME          : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ACTIVE          : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    INDIVORG        : String(3)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXRATECODE     : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZEROVALCN       : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    BUKRS           : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    OBJNR           : String(22)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    IMKEY           : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CREATIONTYPE    : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RERF            : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    DERF            : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TERF            : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    REHER           : String(10)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    RBEAR           : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    DBEAR           : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TBEAR           : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    AUTHGRP         : String(40)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNTYPE        : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNBEG         : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNENDABS      : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNTXT         : String(80)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNDACTIV      : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNCNCURR      : String(5)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_NOIA_DATE    : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_INV_DATE     : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_STAT_COMMENT : String(80)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    REAS            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    DNIS            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    XMIG            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    LT12            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXYRENDDT      : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CNRESCALC       : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_CHANGE_TYPE   : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_CHANGE_TIME   : UTCTimestamp   not null default '1900-01-01 23:59:59';
-
-                    @DataStore.aggregation : #NOP
-                    Z_SOURCE_SYS    : String(5)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_RUN_ROW_NO    : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_RUN_SEQ_ID    : Integer        not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
-            };
-
-            @DataStore.entityCategory : #ACTIVATION_QUEUE
-            entity inbound_queue {
-                key technicalKey        : inboundQueueKey;
-                    technicalAttributes : inboundQueueAttributes not null;
-
-                    @DataStore.aggregation : #MOV
-                key MANDT               : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                key INTRENOCN           : String(13)             not null;
-
-                    @DataStore.aggregation : #MOV
-                key TAXYRSTARTDT        : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNNR              : String(13)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_PARTNER          : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    OWNERTYPE           : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TOTBPRELVNTVAL      : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TOTBPCONCESSVAL     : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TOTBPTAXABLEVAL     : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    ABSURCHARGE         : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    ADJUSTMENT          : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXAMOUNT           : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXESTIMATE         : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNRESSTAT           : String(200)            not null;
-
-                    @DataStore.aggregation : #MOV
-                    PROPERTYCNT         : hana.SMALLINT          not null;
-
-                    @DataStore.aggregation : #MOV
-                    SDDPLCNT            : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    CONCPLCNT           : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    PARCELCNT           : hana.SMALLINT          not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHUSER              : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHDATE              : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHTIME              : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ACTIVE              : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    INDIVORG            : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXRATECODE         : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZEROVALCN           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    BUKRS               : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    OBJNR               : String(22)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    IMKEY               : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CREATIONTYPE        : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RERF                : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    DERF                : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TERF                : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    REHER               : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    RBEAR               : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    DBEAR               : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TBEAR               : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    AUTHGRP             : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNTYPE            : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNBEG             : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNENDABS          : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNTXT             : String(80)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNDACTIV          : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNCNCURR          : String(5)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_NOIA_DATE        : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_INV_DATE         : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_STAT_COMMENT     : String(80)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    REAS                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    DNIS                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XMIG                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LT12                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXYRENDDT          : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNRESCALC           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_CHANGE_TYPE       : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
-
-                    @DataStore.aggregation : #MOV
-                    Z_SOURCE_SYS        : String(5)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_RUN_ROW_NO        : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_RUN_SEQ_ID        : Integer                not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
-            };
-
-            @DataStore.entityCategory : #CHANGE_LOG
-            entity change_log {
-                key technicalKey        : changeLogKey;
-                    technicalAttributes : changeLogAttributes not null;
-                key MANDT               : String(3)           not null;
-                key INTRENOCN           : String(13)          not null;
-                key TAXYRSTARTDT        : String(8)           not null;
-                    RECNNR              : String(13)          not null;
-                    ZZ_PARTNER          : String(10)          not null;
-                    OWNERTYPE           : String(2)           not null;
-                    TOTBPRELVNTVAL      : Decimal(15, 2)      not null;
-                    TOTBPCONCESSVAL     : Decimal(15, 2)      not null;
-                    TOTBPTAXABLEVAL     : Decimal(15, 2)      not null;
-                    ABSURCHARGE         : Decimal(15, 2)      not null;
-                    ADJUSTMENT          : Decimal(15, 2)      not null;
-                    TAXAMOUNT           : Decimal(15, 2)      not null;
-                    TAXESTIMATE         : Decimal(15, 2)      not null;
-                    CNRESSTAT           : String(200)         not null;
-                    PROPERTYCNT         : hana.SMALLINT       not null;
-                    SDDPLCNT            : Integer             not null;
-                    CONCPLCNT           : Integer             not null;
-                    PARCELCNT           : hana.SMALLINT       not null;
-                    CHUSER              : String(12)          not null;
-                    CHDATE              : String(8)           not null;
-                    CHTIME              : String(6)           not null;
-                    ACTIVE              : String(1)           not null;
-                    INDIVORG            : String(3)           not null;
-                    TAXRATECODE         : String(4)           not null;
-                    ZEROVALCN           : String(1)           not null;
-                    BUKRS               : String(4)           not null;
-                    OBJNR               : String(22)          not null;
-                    IMKEY               : String(8)           not null;
-                    CREATIONTYPE        : String(1)           not null;
-                    RERF                : String(12)          not null;
-                    DERF                : String(8)           not null;
-                    TERF                : String(6)           not null;
-                    REHER               : String(10)          not null;
-                    RBEAR               : String(12)          not null;
-                    DBEAR               : String(8)           not null;
-                    TBEAR               : String(6)           not null;
-                    AUTHGRP             : String(40)          not null;
-                    RECNTYPE            : String(4)           not null;
-                    RECNBEG             : String(8)           not null;
-                    RECNENDABS          : String(8)           not null;
-                    RECNTXT             : String(80)          not null;
-                    RECNDACTIV          : String(8)           not null;
-                    RECNCNCURR          : String(5)           not null;
-                    ZZ_NOIA_DATE        : String(8)           not null;
-                    ZZ_INV_DATE         : String(8)           not null;
-                    ZZ_STAT_COMMENT     : String(80)          not null;
-                    REAS                : String(1)           not null;
-                    DNIS                : String(1)           not null;
-                    XMIG                : String(1)           not null;
-                    LT12                : String(1)           not null;
-                    TAXYRENDDT          : String(8)           not null;
-                    CNRESCALC           : String(1)           not null;
-                    Z_CHANGE_TYPE       : String(1)           not null;
-                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
-                    Z_SOURCE_SYS        : String(5)           not null;
-                    Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
-            };
-
-            @DataStore.entityCategory : #OPERATION_HISTORY
-            entity operationHistory {
-                key technicalKey        : operationHistoryKey;
-                    technicalAttributes : operationHistoryAttributes;
-            };
-
-            @DataStore.entityCategory : #AGGREGATION_HISTORY
-            entity aggregationHistory {
-                key technicalKey        : aggregationHistoryKey;
-                    technicalAttributes : aggregationHistoryAttributes;
-            };
-
-            @DataStore.entityCategory : #AFFECTED_REQUESTS
-            entity affectedRequests {
-                key technicalKey : affectedRequestsKey;
-            };
-
-            @DataStore.entityCategory : #LOG_MESSAGES
-            entity logMessages {
-                key technicalKey        : logMessagesKey;
-                    technicalAttributes : logMessagesAttributes;
-            };
-
-            @DataStore.entityCategory : #SUBSCRIBERS
-            entity subscribers {
-                key technicalKey        : subscribersKey;
-                    technicalAttributes : subscribersAttributes;
-            };
-
-            @DataStore.entityCategory : #RUNNING_OPERATIONS
-            entity runningOperations {
-                key technicalKey : runningOperationsKey;
-            };
-
-            @DataStore.entityCategory : #ID_GENERATOR
-            entity idGen {
-                key technicalKey        : idGeneratorKey;
-                    technicalAttributes : idGeneratorAttributes;
-            };
-        };
-
-        @DataStore.isDSO
-        @DataStore.entity.activeData         : 'active_data'
-        @DataStore.entity.changeLog          : 'change_log'
-        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
-        @DataStore.entity.operationHistory   : 'operationHistory'
-        @DataStore.entity.aggregationHistory : 'aggregationHistory'
-        @DataStore.entity.logMessages        : 'logMessages'
-        @DataStore.entity.affectedRequests   : 'affectedRequests'
-        @DataStore.entity.subscribers        : 'subscribers'
-        @DataStore.entity.runningOperations  : 'runningOperations'
-        @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
-        @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":1509,"y":-505.5}}*/
-        context LTCNRESV {
-            @DataStore.entityCategory : #ACTIVE_DATA
-            entity active_data {
-                    @DataStore.aggregation : #NOP
-                key MANDT           : String(3)      not null;
-
-                    @DataStore.aggregation : #NOP
-                key INTRENOCN       : String(13)     not null;
-
-                    @DataStore.aggregation : #NOP
-                key TAXYRSTARTDT    : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    INTRENOPL       : String(13)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    PLNO            : String(20)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    OBJNRPL         : String(22)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    NANO            : String(40)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    CONCESSCODE     : String(2)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CONCESSPCT      : Decimal(3, 0)  not null;
-
-                    @DataStore.aggregation : #NOP
-                    LANDUSECODE     : String(3)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TENURE          : String(2)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ENTITLEMENT     : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    LHFLAG          : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    NVFLAG          : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    VALTYPECN       : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    OWNERFRACTION   : Decimal(9, 3)  not null;
-
-                    @DataStore.aggregation : #NOP
-                    OWNERFACTOR     : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    OWNERPERCENT    : Decimal(10, 6) not null;
-
-                    @DataStore.aggregation : #NOP
-                    UNIMPRVAL       : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    RELVNTVAL       : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    BPRELVNTVAL     : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    BPCONCESSVAL    : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    BPTAXABLEVAL    : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZEROVALPL       : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    PROPTAXAMT      : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    ABSURCHARGE     : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHUSERP         : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHDATEP         : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHTIMEP         : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ACTIVE          : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    OWNERTYPE       : String(2)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    INDIVORG        : String(3)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXRATECODE     : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TOTBPRELVNTVAL  : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TOTBPCONCESSVAL : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TOTBPTAXABLEVAL : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    ADJUSTMENT      : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXAMOUNT       : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXESTIMATE     : Decimal(15, 2) not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZEROVALCN       : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CNRESSTAT       : String(200)    not null;
-
-                    @DataStore.aggregation : #NOP
-                    PROPERTYCNT     : hana.SMALLINT  not null;
-
-                    @DataStore.aggregation : #NOP
-                    PARCELCNT       : hana.SMALLINT  not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHUSER          : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHDATE          : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CHTIME          : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    BUKRS           : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNNR          : String(13)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNTYPE        : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    OBJNR           : String(22)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    RERF            : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    DERF            : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TERF            : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    REHER           : String(10)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    RBEAR           : String(12)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    DBEAR           : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    TBEAR           : String(6)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    RECNDACTIV      : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_NOIA_DATE    : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_INV_DATE     : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_STAT_COMMENT : String(80)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    ZZ_PARTNER      : String(10)     not null;
-
-                    @DataStore.aggregation : #NOP
-                    REAS            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    DNIS            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    XMIG            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    LT12            : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    CNRESCALC       : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    SIGNATURE       : String(200)    not null;
-
-                    @DataStore.aggregation : #NOP
-                    CNRESPSTAT      : String(200)    not null;
-
-                    @DataStore.aggregation : #NOP
-                    STATUSICON      : String(4)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    BALANCELOTFLAG  : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    SDDPLCNT        : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    CONCPLCNT       : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    TAXYRENDDT      : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_CHANGE_TYPE   : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_CHANGE_TIME   : UTCTimestamp   not null default '1900-01-01 23:59:59';
-
-                    @DataStore.aggregation : #NOP
-                    Z_SOURCE_SYS    : String(5)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_RUN_ROW_NO    : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_RUN_SEQ_ID    : Integer        not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
-            };
-
-            @DataStore.entityCategory : #ACTIVATION_QUEUE
-            entity inbound_queue {
-                key technicalKey        : inboundQueueKey;
-                    technicalAttributes : inboundQueueAttributes not null;
-
-                    @DataStore.aggregation : #MOV
-                key MANDT               : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                key INTRENOCN           : String(13)             not null;
-
-                    @DataStore.aggregation : #MOV
-                key TAXYRSTARTDT        : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    INTRENOPL           : String(13)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    PLNO                : String(20)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    OBJNRPL             : String(22)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    NANO                : String(40)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CONCESSCODE         : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CONCESSPCT          : Decimal(3, 0)          not null;
-
-                    @DataStore.aggregation : #MOV
-                    LANDUSECODE         : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TENURE              : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ENTITLEMENT         : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LHFLAG              : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    NVFLAG              : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    VALTYPECN           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    OWNERFRACTION       : Decimal(9, 3)          not null;
-
-                    @DataStore.aggregation : #MOV
-                    OWNERFACTOR         : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    OWNERPERCENT        : Decimal(10, 6)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    UNIMPRVAL           : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    RELVNTVAL           : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    BPRELVNTVAL         : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    BPCONCESSVAL        : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    BPTAXABLEVAL        : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZEROVALPL           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    PROPTAXAMT          : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    ABSURCHARGE         : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHUSERP             : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHDATEP             : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHTIMEP             : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ACTIVE              : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    OWNERTYPE           : String(2)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    INDIVORG            : String(3)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXRATECODE         : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TOTBPRELVNTVAL      : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TOTBPCONCESSVAL     : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TOTBPTAXABLEVAL     : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    ADJUSTMENT          : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXAMOUNT           : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXESTIMATE         : Decimal(15, 2)         not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZEROVALCN           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNRESSTAT           : String(200)            not null;
-
-                    @DataStore.aggregation : #MOV
-                    PROPERTYCNT         : hana.SMALLINT          not null;
-
-                    @DataStore.aggregation : #MOV
-                    PARCELCNT           : hana.SMALLINT          not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHUSER              : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHDATE              : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CHTIME              : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    BUKRS               : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNNR              : String(13)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNTYPE            : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    OBJNR               : String(22)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    RERF                : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    DERF                : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TERF                : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    REHER               : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    RBEAR               : String(12)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    DBEAR               : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    TBEAR               : String(6)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    RECNDACTIV          : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_NOIA_DATE        : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_INV_DATE         : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_STAT_COMMENT     : String(80)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    ZZ_PARTNER          : String(10)             not null;
-
-                    @DataStore.aggregation : #MOV
-                    REAS                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    DNIS                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    XMIG                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    LT12                : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNRESCALC           : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    SIGNATURE           : String(200)            not null;
-
-                    @DataStore.aggregation : #MOV
-                    CNRESPSTAT          : String(200)            not null;
-
-                    @DataStore.aggregation : #MOV
-                    STATUSICON          : String(4)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    BALANCELOTFLAG      : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    SDDPLCNT            : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    CONCPLCNT           : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    TAXYRENDDT          : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_CHANGE_TYPE       : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
-
-                    @DataStore.aggregation : #MOV
-                    Z_SOURCE_SYS        : String(5)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_RUN_ROW_NO        : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_RUN_SEQ_ID        : Integer                not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
-            };
-
-            @DataStore.entityCategory : #CHANGE_LOG
-            entity change_log {
-                key technicalKey        : changeLogKey;
-                    technicalAttributes : changeLogAttributes not null;
-                key MANDT               : String(3)           not null;
-                key INTRENOCN           : String(13)          not null;
-                key TAXYRSTARTDT        : String(8)           not null;
-                    INTRENOPL           : String(13)          not null;
-                    PLNO                : String(20)          not null;
-                    OBJNRPL             : String(22)          not null;
-                    NANO                : String(40)          not null;
-                    CONCESSCODE         : String(2)           not null;
-                    CONCESSPCT          : Decimal(3, 0)       not null;
-                    LANDUSECODE         : String(3)           not null;
-                    TENURE              : String(2)           not null;
-                    ENTITLEMENT         : String(1)           not null;
-                    LHFLAG              : String(1)           not null;
-                    NVFLAG              : String(1)           not null;
-                    VALTYPECN           : String(1)           not null;
-                    OWNERFRACTION       : Decimal(9, 3)       not null;
-                    OWNERFACTOR         : String(6)           not null;
-                    OWNERPERCENT        : Decimal(10, 6)      not null;
-                    UNIMPRVAL           : Decimal(15, 2)      not null;
-                    RELVNTVAL           : Decimal(15, 2)      not null;
-                    BPRELVNTVAL         : Decimal(15, 2)      not null;
-                    BPCONCESSVAL        : Decimal(15, 2)      not null;
-                    BPTAXABLEVAL        : Decimal(15, 2)      not null;
-                    ZEROVALPL           : String(1)           not null;
-                    PROPTAXAMT          : Decimal(15, 2)      not null;
-                    ABSURCHARGE         : Decimal(15, 2)      not null;
-                    CHUSERP             : String(12)          not null;
-                    CHDATEP             : String(8)           not null;
-                    CHTIMEP             : String(6)           not null;
-                    ACTIVE              : String(1)           not null;
-                    OWNERTYPE           : String(2)           not null;
-                    INDIVORG            : String(3)           not null;
-                    TAXRATECODE         : String(4)           not null;
-                    TOTBPRELVNTVAL      : Decimal(15, 2)      not null;
-                    TOTBPCONCESSVAL     : Decimal(15, 2)      not null;
-                    TOTBPTAXABLEVAL     : Decimal(15, 2)      not null;
-                    ADJUSTMENT          : Decimal(15, 2)      not null;
-                    TAXAMOUNT           : Decimal(15, 2)      not null;
-                    TAXESTIMATE         : Decimal(15, 2)      not null;
-                    ZEROVALCN           : String(1)           not null;
-                    CNRESSTAT           : String(200)         not null;
-                    PROPERTYCNT         : hana.SMALLINT       not null;
-                    PARCELCNT           : hana.SMALLINT       not null;
-                    CHUSER              : String(12)          not null;
-                    CHDATE              : String(8)           not null;
-                    CHTIME              : String(6)           not null;
-                    BUKRS               : String(4)           not null;
-                    RECNNR              : String(13)          not null;
-                    RECNTYPE            : String(4)           not null;
-                    OBJNR               : String(22)          not null;
-                    RERF                : String(12)          not null;
-                    DERF                : String(8)           not null;
-                    TERF                : String(6)           not null;
-                    REHER               : String(10)          not null;
-                    RBEAR               : String(12)          not null;
-                    DBEAR               : String(8)           not null;
-                    TBEAR               : String(6)           not null;
-                    RECNDACTIV          : String(8)           not null;
-                    ZZ_NOIA_DATE        : String(8)           not null;
-                    ZZ_INV_DATE         : String(8)           not null;
-                    ZZ_STAT_COMMENT     : String(80)          not null;
-                    ZZ_PARTNER          : String(10)          not null;
-                    REAS                : String(1)           not null;
-                    DNIS                : String(1)           not null;
-                    XMIG                : String(1)           not null;
-                    LT12                : String(1)           not null;
-                    CNRESCALC           : String(1)           not null;
-                    SIGNATURE           : String(200)         not null;
-                    CNRESPSTAT          : String(200)         not null;
-                    STATUSICON          : String(4)           not null;
-                    BALANCELOTFLAG      : String(1)           not null;
-                    SDDPLCNT            : Integer             not null;
-                    CONCPLCNT           : Integer             not null;
-                    TAXYRENDDT          : String(8)           not null;
-                    Z_CHANGE_TYPE       : String(1)           not null;
-                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
-                    Z_SOURCE_SYS        : String(5)           not null;
-                    Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
-            };
-
-            @DataStore.entityCategory : #OPERATION_HISTORY
-            entity operationHistory {
-                key technicalKey        : operationHistoryKey;
-                    technicalAttributes : operationHistoryAttributes;
-            };
-
-            @DataStore.entityCategory : #AGGREGATION_HISTORY
-            entity aggregationHistory {
-                key technicalKey        : aggregationHistoryKey;
-                    technicalAttributes : aggregationHistoryAttributes;
-            };
-
-            @DataStore.entityCategory : #AFFECTED_REQUESTS
-            entity affectedRequests {
-                key technicalKey : affectedRequestsKey;
-            };
-
-            @DataStore.entityCategory : #LOG_MESSAGES
-            entity logMessages {
-                key technicalKey        : logMessagesKey;
-                    technicalAttributes : logMessagesAttributes;
-            };
-
-            @DataStore.entityCategory : #SUBSCRIBERS
-            entity subscribers {
-                key technicalKey        : subscribersKey;
-                    technicalAttributes : subscribersAttributes;
-            };
-
-            @DataStore.entityCategory : #RUNNING_OPERATIONS
-            entity runningOperations {
-                key technicalKey : runningOperationsKey;
-            };
-
-            @DataStore.entityCategory : #ID_GENERATOR
-            entity idGen {
-                key technicalKey        : idGeneratorKey;
-                    technicalAttributes : idGeneratorAttributes;
-            };
-        };
-
-        @DataStore.isDSO
-        @DataStore.entity.activeData         : 'active_data'
-        @DataStore.entity.changeLog          : 'change_log'
-        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
-        @DataStore.entity.operationHistory   : 'operationHistory'
-        @DataStore.entity.aggregationHistory : 'aggregationHistory'
-        @DataStore.entity.logMessages        : 'logMessages'
-        @DataStore.entity.affectedRequests   : 'affectedRequests'
-        @DataStore.entity.subscribers        : 'subscribers'
-        @DataStore.entity.runningOperations  : 'runningOperations'
-        @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
-        @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":1773,"y":-507.5}}*/
         context VILMNA {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -4970,7 +4966,6 @@ context CDS_LAND {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":2063,"y":-520.5}}*/
         context VIBPADDRREL {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
