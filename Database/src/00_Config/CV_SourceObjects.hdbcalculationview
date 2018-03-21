@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.edw.source.config.rms::CV_SourceObjects" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Available Source Objects"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.app.hana.synonyms:SYS.TABLES">
+    <resourceUri>osr.app.hana.synonyms:SYS.TABLES</resourceUri>
+  </DataSource>
+  <DataSource id="osr.app.hana.synonyms:SYS.PROCEDURES">
+    <resourceUri>osr.app.hana.synonyms:SYS.PROCEDURES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_Tables" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="TABLE_NAME">
+        <descriptions defaultDescription="TABLE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="SCHEMA_NAME">
+        <descriptions defaultDescription="SCHEMA_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="osr.app.hana.synonyms:SYS.TABLES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TABLE_NAME" source="TABLE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
+    </input>
+    <filter>SCHEMA_NAME = 'EDW_RMS' AND 
+TABLE_NAME NOT LIKE '%.change_log%'
+AND TABLE_NAME NOT LIKE '%.inbound_queue%' 
+AND TABLE_NAME NOT LIKE '%.operationHistory%' 
+AND TABLE_NAME NOT LIKE '%.aggregationHistory%' 
+AND TABLE_NAME NOT LIKE '%.affectedRequests%' 
+AND TABLE_NAME NOT LIKE '%.logMessages%'
+AND TABLE_NAME NOT LIKE '%.runningOperations%'
+AND TABLE_NAME NOT LIKE '%.subscribers%' 
+AND TABLE_NAME NOT LIKE '%.idGen%'
+AND TABLE_NAME NOT LIKE '%::FG_%__TT'
+AND TABLE_NAME NOT LIKE '%source%::VT_%'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_Procedures" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="SCHEMA_NAME">
+        <descriptions defaultDescription="SCHEMA_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="PROCEDURE_NAME">
+        <descriptions defaultDescription="PROCEDURE_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="osr.app.hana.synonyms:SYS.PROCEDURES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCEDURE_NAME" source="PROCEDURE_NAME"/>
+    </input>
+    <filter>SCHEMA_NAME = 'EDW_RMS' AND PROCEDURE_NAME NOT LIKE ('%FG_%_SP')</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="U_Objects">
+    <viewAttributes>
+      <viewAttribute id="OBJECT_NAME">
+        <descriptions defaultDescription="TABLE_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="SCHEMA_NAME">
+        <descriptions defaultDescription="SCHEMA_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="P_Tables" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_NAME" source="TABLE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
+    </input>
+    <input node="P_Procedures" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_NAME" source="PROCEDURE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="U_Objects">
+  <attributes>
+    <attribute id="OBJECT_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TABLE_NAME"/>
+      <keyMapping columnObjectName="U_Objects" columnName="OBJECT_NAME"/>
+    </attribute>
+    <attribute id="SCHEMA_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SCHEMA_NAME"/>
+      <keyMapping columnObjectName="U_Objects" columnName="SCHEMA_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="208" y="112"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_Tables" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91" y="356"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_Procedures" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="282" y="356"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="U_Objects" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="208" y="217"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
