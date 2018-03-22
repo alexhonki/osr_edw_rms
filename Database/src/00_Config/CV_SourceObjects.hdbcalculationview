@@ -89,7 +89,20 @@ AND TABLE_NAME NOT LIKE '%source%::VT_%'</filter>
       <keyMapping columnObjectName="U_Objects" columnName="SCHEMA_NAME"/>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="SCHEMA_CONFIGURE" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SCHEMA_CONFIGURE"/>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="256">
+        <formula>'logical-OSR-EDW-SOURCE-RMS-grantor/schema'</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="SYNONYM" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SYNONYM"/>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="256">
+        <formula>REPLACE(&quot;OBJECT_NAME&quot;, '::', '.synonym::')</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
