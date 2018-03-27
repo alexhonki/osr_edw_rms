@@ -10,6 +10,9 @@
   <DataSource id="osr.app.hana.synonyms:SYS.PROCEDURES">
     <resourceUri>osr.app.hana.synonyms:SYS.PROCEDURES</resourceUri>
   </DataSource>
+  <DataSource id="osr.app.hana.synonyms:SYS.VIEWS">
+    <resourceUri>osr.app.hana.synonyms:SYS.VIEWS</resourceUri>
+  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="P_Tables" filterExpressionLanguage="SQL">
@@ -76,6 +79,28 @@ AND TABLE_NAME NOT LIKE '%source%::VT_%'</filter>
       <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_NAME" source="PROCEDURE_NAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
     </input>
+  
+    <input node="P_Views">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_NAME" source="VIEW_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_Views" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="SCHEMA_NAME">
+        <descriptions defaultDescription="SCHEMA_NAME"/>
+      </viewAttribute>
+      <viewAttribute id="VIEW_NAME">
+        <descriptions defaultDescription="VIEW_NAME"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="osr.app.hana.synonyms:SYS.VIEWS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCHEMA_NAME" source="SCHEMA_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VIEW_NAME" source="VIEW_NAME"/>
+    </input>
+    <filter>SCHEMA_NAME='EDW_RMS' AND VIEW_NAME NOT LIKE ('%.config.%')</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="U_Objects">
@@ -110,22 +135,27 @@ AND TABLE_NAME NOT LIKE '%source%::VT_%'</filter>
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="208" y="112"/>
+      <upperLeftCorner x="336.0631906165057" y="112"/>
     
       <rectangleSize width="140"/>
     </shape>
   
     <shape expanded="true" modelObjectName="P_Tables" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91" y="356"/>
+      <upperLeftCorner x="92.00000000000003" y="391.9999976158142"/>
       <rectangleSize height="30" width="140"/>
     </shape>
   
     <shape expanded="true" modelObjectName="P_Procedures" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="282" y="356"/>
+      <upperLeftCorner x="472" y="391.9999976158142"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape expanded="true" modelObjectName="U_Objects" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="208" y="217"/>
+      <upperLeftCorner x="282.00000000000006" y="236.9999988079071"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_Views" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="282" y="391.9999976158142"/>
       <rectangleSize height="30" width="140"/>
     </shape>
   </shapes>
