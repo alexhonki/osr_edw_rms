@@ -1,0 +1,34 @@
+{
+  "description": "Load real time Source LTPARISH",
+  "responsible": {
+    "email": "hanaalerts@gmail.com"
+  },
+  "taskTimeout": 4320000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load LTPARISH",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.md.rms::FG_RT_LOAD_LTPARISH_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
