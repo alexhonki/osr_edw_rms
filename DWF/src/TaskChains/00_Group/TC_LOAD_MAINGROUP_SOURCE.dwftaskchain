@@ -1,9 +1,10 @@
 {
-  "description": "Load batch Staging LTAXBPPL",
+  "description": "Load Main Group Source RMS",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
-  "taskTimeout": 4320000,
+  "maxParallelExecution": 3,
+  "taskTimeout": 43200000,
   "taskList": {
     "1": {
       "inline": {
@@ -13,13 +14,13 @@
     },
     "2": {
       "inline": {
-        "type": "executeProcedure",
-        "taskGroup": "hanaNative",
-        "description": "Load LTAXBPPL",
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD GROUP SOURCE MD",
         "parameterValues": [
           {
-            "id": "procName",
-            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_LTAXBPPL_SP"
+            "id": "taskChainId",
+            "value": "osr.edw.rms#TC_LOAD_GROUP_SOURCE_MD"
           }
         ]
       },
@@ -32,13 +33,13 @@
     },
     "3": {
       "inline": {
-        "type": "activate",
-        "taskGroup": "ndso",
-        "description": "Activate LTAXBPPL",
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD GROUP SOURCE TD",
         "parameterValues": [
           {
-            "id": "dataStoreName",
-            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.LTAXBPPL"
+            "id": "taskChainId",
+            "value": "osr.edw.rms#TC_LOAD_GROUP_SOURCE_TD"
           }
         ]
       },

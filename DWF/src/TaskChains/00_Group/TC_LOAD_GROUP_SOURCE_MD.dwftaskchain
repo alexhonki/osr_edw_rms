@@ -1,5 +1,5 @@
 {
-  "description": "Load batch Group Source MD RMS",
+  "description": "Load Group Source MD RMS",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
@@ -26,8 +26,8 @@
       },
       "preconditions": [
         {
-          "from": "1",
-          "status": "NEUTRAL"
+          "from": "3",
+          "status": "OK"
         }
       ]
     },
@@ -40,6 +40,25 @@
           {
             "id": "taskChainId",
             "value": "osr.edw.source.md.rms#TC_LOAD_SUBS_PSCD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD SUBS MD PHASE2",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_SUBS_PHASE2"
           }
         ]
       },
