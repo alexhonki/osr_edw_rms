@@ -1,5 +1,5 @@
 {
-  "description": "Load Group Staging MD RMS",
+  "description": "Load Group Staging RMS MD",
   "responsible": {
     "email": "hanaalerts@gmail.com"
   },
@@ -20,14 +20,14 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.md.rms#TC_LOAD_SUBS_PHASE2"
+            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PHASE2"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "1",
-          "status": "NEUTRAL"
+          "from": "5",
+          "status": "OK"
         }
       ]
     },
@@ -66,6 +66,25 @@
         {
           "from": "2",
           "status": "OK"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD SUBS MD PHASE1",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PHASE1"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
         }
       ]
     }
