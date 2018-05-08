@@ -1,5 +1,5 @@
 {
-  "description": "Load batch Staging LTAXRATE",
+  "description": "Load batch Staging DFKKINVDOC_P",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -14,11 +14,11 @@
       "inline": {
         "type": "executeProcedure",
         "taskGroup": "hanaNative",
-        "description": "Load LTAXRATE",
+        "description": "Load DFKKINVDOC_P",
         "parameterValues": [
           {
             "id": "procName",
-            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_LTAXRATE_SP"
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_DFKKINVDOC_P_SP"
           }
         ]
       },
@@ -33,11 +33,11 @@
       "inline": {
         "type": "activate",
         "taskGroup": "ndso",
-        "description": "Activate LTAXRATE",
+        "description": "Activate  DFKKINVDOC_P",
         "parameterValues": [
           {
             "id": "dataStoreName",
-            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.LTAXRATE"
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.DFKKINVDOC_P"
           }
         ]
       },
