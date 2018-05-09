@@ -1267,7 +1267,7 @@ context CDS_LAND {
                     CHTIME        : String(6)     not null;
 
                     @DataStore.aggregation : #NOP
-                    PLNO          : String(20)    not null;
+                key PLNO          : String(20)    not null;
 
                     @DataStore.aggregation : #NOP
                     OBJNRPL       : String(22)    not null;
@@ -2058,7 +2058,7 @@ context CDS_LAND {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
         context LTAXBPPL {
             @DataStore.entityCategory : #ACTIVE_DATA
