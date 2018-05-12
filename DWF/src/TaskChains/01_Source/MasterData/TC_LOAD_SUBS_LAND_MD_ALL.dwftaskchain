@@ -1,10 +1,10 @@
 {
-  "description": "Load Subs Source MD RMS LAND",
+  "description": "Load Subs Source MD RMS LAND ALL",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
   "maxParallelExecution": 3,
-  "taskTimeout": 4320000,
+  "taskTimeout": 43200000,
   "taskList": {
     "1": {
       "inline": {
@@ -159,7 +159,7 @@
       },
       "preconditions": [
         {
-          "from": "8",
+          "from": "13",
           "status": "OK"
         }
       ]
@@ -206,6 +206,63 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VILMRC",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_VILMRC"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "14",
+          "status": "OK"
+        }
+      ]
+    },
+    "13": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD TIVLMRCTYPE",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_TIVLMRCTYPE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "12",
+          "status": "OK"
+        }
+      ]
+    },
+    "14": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD VILMRCPLREL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_VILMRCPLREL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "15": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
         "description": "TC LOAD LTNDUSE",
         "parameterValues": [
           {
@@ -221,7 +278,7 @@
         }
       ]
     },
-    "13": {
+    "16": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -235,12 +292,12 @@
       },
       "preconditions": [
         {
-          "from": "12",
+          "from": "15",
           "status": "OK"
         }
       ]
     },
-    "14": {
+    "17": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -254,7 +311,7 @@
       },
       "preconditions": [
         {
-          "from": "13",
+          "from": "16",
           "status": "OK"
         }
       ]
