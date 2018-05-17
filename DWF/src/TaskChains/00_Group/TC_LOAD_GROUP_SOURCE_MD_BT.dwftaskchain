@@ -1,0 +1,73 @@
+{
+  "description": "Load Group Source RMS MD BT",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "taskTimeout": 43200000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD SUBS MD LAND BT",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_SUBS_LAND_MD_BT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD SUBS MD PSCD BT",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_SUBS_PSCD_MD_BT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD SUBS MD PHASE2 BT",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_SUBS_PHASE2_MD_BT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}

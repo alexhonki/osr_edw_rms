@@ -1,0 +1,54 @@
+{
+  "description": "Load Main Group Source RMS MDTD BT",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "taskTimeout": 43200000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD GROUP SOURCE MD BT",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#TC_LOAD_GROUP_SOURCE_MD_BT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD GROUP SOURCE TD BT",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#TC_LOAD_GROUP_SOURCE_TD_BT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
