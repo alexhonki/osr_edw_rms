@@ -5298,8 +5298,9 @@ context CDS_LAND {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : false
+        @DataStore.computeChecksum           : true
         @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":266,"y":18.5}}*/
         context LTCOOWN {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -5313,25 +5314,10 @@ context CDS_LAND {
                 key INTRENOCN     : String(13)     not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID  : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
                 key RMS_BP_NO     : String(10)     not null;
 
                     @DataStore.aggregation : #NOP
                 key VALIDFROM     : String(8)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_RUN_ROW_NO  : Integer        not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_SOURCE_SYS  : String(5)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_CHANGE_TIME : UTCTimestamp   not null default '1900-01-01 23:59:59';
-
-                    @DataStore.aggregation : #NOP
-                    Z_CHANGE_TYPE : String(1)      not null;
 
                     @DataStore.aggregation : #NOP
                     PARTY_TYPE    : String(1)      not null;
@@ -5346,13 +5332,13 @@ context CDS_LAND {
                     OWNERTYPE     : String(2)      not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERPERCENT  : Decimal(10, 6) not null;
+                    OWNERPERCENT  : String(10)     not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERFRACTION : Decimal(9, 3)  not null;
+                    OWNERFRACTION : Decimal(10, 2) not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERFACTOR   : String(6)      not null;
+                    OWNERFACTOR   : Decimal(10, 2) not null;
 
                     @DataStore.aggregation : #NOP
                     BUKRS         : String(4)      not null;
@@ -5373,10 +5359,25 @@ context CDS_LAND {
                     CHUSER        : String(12)     not null;
 
                     @DataStore.aggregation : #NOP
-                    CHDATE        : String(8)      not null;
+                    CHDATE        : LocalDate      not null default '1900-01-01';
 
                     @DataStore.aggregation : #NOP
-                    CHTIME        : String(6)      not null;
+                    CHTIME        : LocalTime      not null default '23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME : UTCTimestamp   not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS  : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO  : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID  : Integer        not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -5397,25 +5398,10 @@ context CDS_LAND {
                 key INTRENOCN           : String(13)             not null;
 
                     @DataStore.aggregation : #MOV
-                key Z_RUN_SEQ_ID        : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
                 key RMS_BP_NO           : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
                 key VALIDFROM           : String(8)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_RUN_ROW_NO        : Integer                not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_SOURCE_SYS        : String(5)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
-
-                    @DataStore.aggregation : #MOV
-                    Z_CHANGE_TYPE       : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
                     PARTY_TYPE          : String(1)              not null;
@@ -5430,13 +5416,13 @@ context CDS_LAND {
                     OWNERTYPE           : String(2)              not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERPERCENT        : Decimal(10, 6)         not null;
+                    OWNERPERCENT        : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERFRACTION       : Decimal(9, 3)          not null;
+                    OWNERFRACTION       : Decimal(10, 2)         not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERFACTOR         : String(6)              not null;
+                    OWNERFACTOR         : Decimal(10, 2)         not null;
 
                     @DataStore.aggregation : #MOV
                     BUKRS               : String(4)              not null;
@@ -5457,10 +5443,25 @@ context CDS_LAND {
                     CHUSER              : String(12)             not null;
 
                     @DataStore.aggregation : #MOV
-                    CHDATE              : String(8)              not null;
+                    CHDATE              : LocalDate              not null default '1900-01-01';
 
                     @DataStore.aggregation : #MOV
-                    CHTIME              : String(6)              not null;
+                    CHTIME              : LocalTime              not null default '23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -5473,28 +5474,28 @@ context CDS_LAND {
                 key MANDT               : String(3)           not null;
                 key INTRENOPL           : String(13)          not null;
                 key INTRENOCN           : String(13)          not null;
-                key Z_RUN_SEQ_ID        : Integer             not null;
                 key RMS_BP_NO           : String(10)          not null;
                 key VALIDFROM           : String(8)           not null;
-                    Z_RUN_ROW_NO        : Integer             not null;
-                    Z_SOURCE_SYS        : String(5)           not null;
-                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
-                    Z_CHANGE_TYPE       : String(1)           not null;
                     PARTY_TYPE          : String(1)           not null;
                     VALIDTO             : String(8)           not null;
                     COOWNERBP           : String(10)          not null;
                     OWNERTYPE           : String(2)           not null;
-                    OWNERPERCENT        : Decimal(10, 6)      not null;
-                    OWNERFRACTION       : Decimal(9, 3)       not null;
-                    OWNERFACTOR         : String(6)           not null;
+                    OWNERPERCENT        : String(10)          not null;
+                    OWNERFRACTION       : Decimal(10, 2)      not null;
+                    OWNERFACTOR         : Decimal(10, 2)      not null;
                     BUKRS               : String(4)           not null;
                     PLNO                : String(20)          not null;
                     OBJNRPL             : String(22)          not null;
                     RECNNR              : String(13)          not null;
                     OBJNRCN             : String(22)          not null;
                     CHUSER              : String(12)          not null;
-                    CHDATE              : String(8)           not null;
-                    CHTIME              : String(6)           not null;
+                    CHDATE              : LocalDate           not null default '1900-01-01';
+                    CHTIME              : LocalTime           not null default '23:59:59';
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
