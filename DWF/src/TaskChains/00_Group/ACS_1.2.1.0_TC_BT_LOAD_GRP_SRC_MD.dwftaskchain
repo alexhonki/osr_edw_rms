@@ -1,5 +1,5 @@
 {
-  "description": "Load Group Staging RMS MD",
+  "description": "ACS_1.2.1.0 Load BT Group Source RMS MD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -16,17 +16,17 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD PHASE2",
+        "description": "TC LOAD BT SUBS MD LAND",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PHASE2_MD"
+            "value": "osr.edw.rms#1.2.1.3_TC_BT_LOAD_SUBGRP_SRC_MD_LAND"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "5",
+          "from": "4",
           "status": "OK"
         }
       ]
@@ -35,11 +35,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD LAND",
+        "description": "TC LOAD BT SUBS MD PSCD",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_LAND_MD"
+            "value": "osr.edw.rms#1.2.1.4_TC_BT_LOAD_SUBGRP_SRC_MD_PSCD"
           }
         ]
       },
@@ -54,17 +54,17 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD PSCD",
+        "description": "TC LOAD BT SUBS MD PHASE2",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PSCD_MD"
+            "value": "osr.edw.rms#1.2.1.2_TC_BT_LOAD_SUBGRP_SRC_MD_PHASE2"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "3",
+          "from": "5",
           "status": "OK"
         }
       ]
@@ -73,11 +73,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD PHASE1",
+        "description": "TC LOAD BT SUBS MD PHASE1",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PHASE1_MD"
+            "value": "osr.edw.rms#1.2.1.1_TC_BT_LOAD_SUBGRP_SRC_MD_PHASE1"
           }
         ]
       },

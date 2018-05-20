@@ -1,5 +1,5 @@
 {
-  "description": "Load Subs Source RMS LAND TD ALL",
+  "description": "1.2.1.3 Load SUBS SOURCE LAND MD BT",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -16,18 +16,18 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTNAPLVL",
+        "description": "TC LOAD BT VILMPL",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTNAPLVL"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_VILMPL"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "10",
-          "status": "OK"
+          "from": "1",
+          "status": "NEUTRAL"
         }
       ]
     },
@@ -35,11 +35,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VILMNAVAL",
+        "description": "TC LOAD BT VIBPOBJREL",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_VILMNAVAL"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_VIBPOBJREL"
           }
         ]
       },
@@ -54,49 +54,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTPLRES",
+        "description": "TC LOAD BT LTLNDUSE",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTPLRES"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "5",
-          "status": "OK"
-        }
-      ]
-    },
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTPLRESB",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTPLRESB"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "8",
-          "status": "OK"
-        }
-      ]
-    },
-    "6": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCNRESP",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRESP"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTLNDUSE"
           }
         ]
       },
@@ -107,21 +69,59 @@
         }
       ]
     },
-    "7": {
+    "5": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCNRES",
+        "description": "TC LOAD BT LTLGA",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRES"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTLGA"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "12",
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT LTAXRATE",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTAXRATE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT LTCNEXMD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTCNEXMD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
           "status": "OK"
         }
       ]
@@ -130,11 +130,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD DFKKINVDOC_H",
+        "description": "TC LOAD BT LTAXBPPL",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_DFKKINVDOC_H"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTAXBPPL"
           }
         ]
       },
@@ -149,18 +149,18 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCNRESV",
+        "description": "TC LOAD BT ATSDTTX",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRESX"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_ATSDTTX"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "1",
-          "status": "NEUTRAL"
+          "from": "10",
+          "status": "OK"
         }
       ]
     },
@@ -168,11 +168,30 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCNRESX",
+        "description": "TC LOAD BT LTPLATS",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRESX"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTPLATS"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "11": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT CODEID",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_CODEID"
           }
         ]
       },
@@ -183,97 +202,21 @@
         }
       ]
     },
-    "11": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VIBPADDRREL",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_VIBPADDRREL"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "13",
-          "status": "OK"
-        }
-      ]
-    },
     "12": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VICNCN",
+        "description": "TC LOAD BT LTPARISH",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_VICNCN"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "6",
-          "status": "OK"
-        }
-      ]
-    },
-    "13": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VILMNA",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_VILMNA"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
-          "status": "OK"
-        }
-      ]
-    },
-    "14": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCOOWN",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCOOWN"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_LTPARISH"
           }
         ]
       },
       "preconditions": [
         {
           "from": "11",
-          "status": "OK"
-        }
-      ]
-    },
-    "15": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD DFKKINVDOC_P",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_DFKKINVDOC_P"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "14",
           "status": "OK"
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "description": "Load Group Staging RMS TD",
+  "description": "2.2.2.0 Load Group Staging RMS TD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -20,7 +20,7 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_SUBS_LAND_TD"
+            "value": "osr.edw.rms#2.2.2.1_TC_BT_LOAD_SUBGRP_STG_TD_LAND"
           }
         ]
       },
@@ -28,25 +28,6 @@
         {
           "from": "1",
           "status": "NEUTRAL"
-        }
-      ]
-    },
-    "3": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS TD PSCD",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_SUBS_PSCD_TD"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "2",
-          "status": "OK"
         }
       ]
     }

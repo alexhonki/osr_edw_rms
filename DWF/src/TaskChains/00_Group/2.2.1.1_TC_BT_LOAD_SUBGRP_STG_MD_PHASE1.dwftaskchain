@@ -1,5 +1,5 @@
 {
-  "description": "Load batch Subs Staging TD RMS LAND",
+  "description": "2.2.1.1 Load Subs Staging MD RMS PHASE1",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -16,11 +16,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTPLRES",
+        "description": "TC LOAD BUT000",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_LTPLRES"
+            "value": "osr.edw.staging.md.rms#TC_LOAD_BUT000"
           }
         ]
       },
@@ -35,11 +35,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTPLRESB",
+        "description": "TC LOAD BUT021FS",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_LTPLRESB"
+            "value": "osr.edw.staging.md.rms#TC_LOAD_BUT021FS"
           }
         ]
       },
@@ -54,36 +54,17 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VICNCN",
+        "description": "TC LOAD ADRC",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_VICNCN"
+            "value": "osr.edw.staging.md.rms#TC_LOAD_ADRC"
           }
         ]
       },
       "preconditions": [
         {
           "from": "3",
-          "status": "OK"
-        }
-      ]
-    },
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCOOWN",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_LTCOOWN"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
           "status": "OK"
         }
       ]

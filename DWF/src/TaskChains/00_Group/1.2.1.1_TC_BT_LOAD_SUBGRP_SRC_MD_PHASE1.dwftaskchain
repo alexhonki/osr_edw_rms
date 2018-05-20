@@ -1,10 +1,10 @@
 {
-  "description": "Load Group Staging RMS MD",
+  "description": "1.2.1.1 LOAD SUBS SOURCE PHASE1 MD BT",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
   "maxParallelExecution": 3,
-  "taskTimeout": 43200000,
+  "taskTimeout": 4320000,
   "taskList": {
     "1": {
       "inline": {
@@ -16,18 +16,18 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD PHASE2",
+        "description": "TC LOAD BT BUT000",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PHASE2_MD"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_BUT000"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "5",
-          "status": "OK"
+          "from": "1",
+          "status": "NEUTRAL"
         }
       ]
     },
@@ -35,11 +35,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD LAND",
+        "description": "TC LOAD BT BUT021FS",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_LAND_MD"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_BUT021FS"
           }
         ]
       },
@@ -54,11 +54,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD PSCD",
+        "description": "TC LOAD BT ADRC",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PSCD_MD"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_ADRC"
           }
         ]
       },
@@ -66,25 +66,6 @@
         {
           "from": "3",
           "status": "OK"
-        }
-      ]
-    },
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD SUBS MD PHASE1",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_SUBS_PHASE1_MD"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "1",
-          "status": "NEUTRAL"
         }
       ]
     }

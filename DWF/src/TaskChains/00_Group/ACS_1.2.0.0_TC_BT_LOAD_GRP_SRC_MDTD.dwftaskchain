@@ -1,10 +1,10 @@
 {
-  "description": "Load Subs Source MD RMS PSCD",
+  "description": "ACS_1.2.0.0 Load BT Main Group Source RMS MDTD BT",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
   "maxParallelExecution": 3,
-  "taskTimeout": 4320000,
+  "taskTimeout": 43200000,
   "taskList": {
     "1": {
       "inline": {
@@ -16,11 +16,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD T009",
+        "description": "ACS_1.2.1.0 TC LOAD GROUP SOURCE MD BT",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.md.rms#TC_LOAD_T009"
+            "value": "osr.edw.rms#ACS_1.2.1.0_TC_BT_LOAD_GRP_SRC_MD"
           }
         ]
       },
@@ -35,18 +35,18 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD T009B",
+        "description": "ACS_1.2.2.0 TC LOAD GROUP SOURCE TD BT",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.md.rms#TC_LOAD_T009B"
+            "value": "osr.edw.rms#ACS_1.2.2.0_TC_BT_LOAD_GRP_SRC_TD"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "2",
-          "status": "OK"
+          "from": "1",
+          "status": "NEUTRAL"
         }
       ]
     }
