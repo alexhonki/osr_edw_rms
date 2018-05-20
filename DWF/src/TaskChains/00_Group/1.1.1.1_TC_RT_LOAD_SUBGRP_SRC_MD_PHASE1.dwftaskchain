@@ -1,5 +1,5 @@
 {
-  "description": "Load Subs Source MD RMS PSCD ALL",
+  "description": "1.1.1.1 Load Subs Source MD RMS PHASE1",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -16,11 +16,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD T009",
+        "description": "TC LOAD BUT000",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.md.rms#TC_LOAD_T009"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BUT000"
           }
         ]
       },
@@ -35,17 +35,36 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD T009B",
+        "description": "TC LOAD BUT021FS",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.md.rms#TC_LOAD_T009B"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BUT021FS"
           }
         ]
       },
       "preconditions": [
         {
           "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD ADRC",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_ADRC"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
           "status": "OK"
         }
       ]

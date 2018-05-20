@@ -1,5 +1,5 @@
 {
-  "description": "Load Subs Staging MD RMS PHASE2",
+  "description": "1.2.1.2 Load Subs Source MD RMS PHASE2",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -16,11 +16,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD ZBUT0000UZQMZ7",
+        "description": "TC LOAD BT ZBUT0000UZQMZ7",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_ZBUT0000UZQMZ7"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_ZBUT0000UZQMZ7"
           }
         ]
       },
@@ -35,11 +35,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD BUT100",
+        "description": "TC LOAD BT BUT050",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_BUT100"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_BUT050"
           }
         ]
       },
@@ -54,36 +54,17 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD BUT050",
+        "description": "TC LOAD BT TBZ9",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_BUT050"
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_TBZ9"
           }
         ]
       },
       "preconditions": [
         {
           "from": "3",
-          "status": "OK"
-        }
-      ]
-    },
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD TBZ9",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.md.rms#TC_LOAD_TBZ9"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
           "status": "OK"
         }
       ]
