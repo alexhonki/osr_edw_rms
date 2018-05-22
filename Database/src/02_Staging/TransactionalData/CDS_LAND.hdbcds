@@ -5298,9 +5298,9 @@ context CDS_LAND {
         @DataStore.entity.subscribers        : 'subscribers'
         @DataStore.entity.runningOperations  : 'runningOperations'
         @DataStore.entity.idGenerator        : 'idGen'
-        @DataStore.computeChecksum           : true
+        @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":266,"y":18.5}}*/
+        /*@@layout{"layoutInfo":{"x":279,"y":15.5}}*/
         context LTCOOWN {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -5332,13 +5332,13 @@ context CDS_LAND {
                     OWNERTYPE     : String(2)      not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERPERCENT  : String(10)     not null;
+                    OWNERPERCENT  : Decimal(10, 6) not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERFRACTION : Decimal(10, 2) not null;
+                    OWNERFRACTION : Decimal(9, 3)  not null;
 
                     @DataStore.aggregation : #NOP
-                    OWNERFACTOR   : Decimal(10, 2) not null;
+                    OWNERFACTOR   : String(6)      not null;
 
                     @DataStore.aggregation : #NOP
                     BUKRS         : String(4)      not null;
@@ -5416,13 +5416,13 @@ context CDS_LAND {
                     OWNERTYPE           : String(2)              not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERPERCENT        : String(10)             not null;
+                    OWNERPERCENT        : Decimal(10, 6)         not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERFRACTION       : Decimal(10, 2)         not null;
+                    OWNERFRACTION       : Decimal(9, 3)          not null;
 
                     @DataStore.aggregation : #MOV
-                    OWNERFACTOR         : Decimal(10, 2)         not null;
+                    OWNERFACTOR         : String(6)              not null;
 
                     @DataStore.aggregation : #MOV
                     BUKRS               : String(4)              not null;
@@ -5480,9 +5480,9 @@ context CDS_LAND {
                     VALIDTO             : String(8)           not null;
                     COOWNERBP           : String(10)          not null;
                     OWNERTYPE           : String(2)           not null;
-                    OWNERPERCENT        : String(10)          not null;
-                    OWNERFRACTION       : Decimal(10, 2)      not null;
-                    OWNERFACTOR         : Decimal(10, 2)      not null;
+                    OWNERPERCENT        : Decimal(10, 6)      not null;
+                    OWNERFRACTION       : Decimal(9, 3)       not null;
+                    OWNERFACTOR         : String(6)           not null;
                     BUKRS               : String(4)           not null;
                     PLNO                : String(20)          not null;
                     OBJNRPL             : String(22)          not null;

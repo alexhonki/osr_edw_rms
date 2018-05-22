@@ -1,10 +1,8 @@
 {
-  "description": "ACS_2.2.2.0 Load BT Group Staging RMS TD",
+  "description": "Load real time Source ZBUT0000HJCXO9",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
-  "maxParallelExecution": 3,
-  "taskTimeout": 43200000,
   "taskList": {
     "1": {
       "inline": {
@@ -14,13 +12,17 @@
     },
     "2": {
       "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD BT SUBS TD LAND",
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load ZBUT0000HJCXO9",
         "parameterValues": [
           {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#2.2.2.1_TC_BT_LOAD_SUBGRP_STG_TD_LAND"
+            "id": "procName",
+            "value": "osr.edw.source.md.rms::FG_RT_LOAD_ZBUT0000HJCXO9_SP"
+          },
+          {
+            "id": "procForm.FG_RT_LOAD_ZBUT0000HJCXO9_DT_TAB_TAB",
+            "value": ""
           }
         ]
       },
