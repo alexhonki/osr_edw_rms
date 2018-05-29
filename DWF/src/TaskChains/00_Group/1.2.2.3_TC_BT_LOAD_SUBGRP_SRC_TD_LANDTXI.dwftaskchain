@@ -1,5 +1,5 @@
 {
-  "description": "1.2.2.3 Load Subs Source RMS LAND TD ALL",
+  "description": "1.2.2.3 Load Subs Source RMS TD LANDTXI",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -20,7 +20,7 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTAXASFB"
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_LTAXASFB"
           }
         ]
       },
@@ -39,7 +39,7 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRESX"
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_LTCNRESV"
           }
         ]
       },
@@ -58,7 +58,7 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCNRESX"
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_LTCNRESX"
           }
         ]
       },
@@ -77,7 +77,7 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_VIBPADDRREL"
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_VIBPADDRREL"
           }
         ]
       },
@@ -96,7 +96,7 @@
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_VILMNA"
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_VILMNA"
           }
         ]
       },
@@ -111,17 +111,36 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD DFKKINVDOC_P",
+        "description": "TC LOAD DFKKINVDOC_H",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_DFKKINVDOC_P"
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DFKKINVDOC_H"
           }
         ]
       },
       "preconditions": [
         {
           "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "8": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD LTNAPLVL",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_LTNAPLVL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
           "status": "OK"
         }
       ]
