@@ -1,0 +1,33 @@
+{
+  "description": "Load Batch Source LTCRES",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load LTCRES",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_LTCRES_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}

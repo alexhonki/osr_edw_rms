@@ -670,7 +670,7 @@ context CDS_LAND {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":413,"y":30.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity LTCOOWN {
             key MANDT         : String(3);
             key INTRENOPL     : String(13);
@@ -699,7 +699,7 @@ context CDS_LAND {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":707,"y":29.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity DFKKINVDOC_P {
             key MANDT         : String(3);
             key INVDOCNO      : String(12);
@@ -709,6 +709,58 @@ context CDS_LAND {
                 OPUPW         : String(3);
                 OPUPK         : String(4);
                 XNEWDOC       : String(1);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFKKRAPT {
+            key MANDT         : String(3);
+            key OPBEL         : String(12);
+            key OPUPW         : String(3);
+            key OPUPK         : String(4);
+            key AUGBL         : String(12);
+            key STBLG         : String(12);
+                AUGDT         : String(8);
+                AUGRD         : String(2);
+                AUGWA         : String(5);
+                AUGBT         : Decimal(13, 2);
+                BETRH         : Decimal(13, 2);
+                BETRW         : Decimal(13, 2);
+                BUKRS         : String(4);
+                WAERS         : String(5);
+                STDAT         : String(8);
+                PSWBT         : Decimal(13, 2);
+                PSWSL         : String(5);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity LTCRES {
+            key MANDT         : String(3);
+            key INTRENORR     : String(13);
+            key TYPE          : String(2);
+            key VERSION       : String(3);
+                CR_DATE       : String(8);
+                ISSUE_DATE    : String(8);
+                STATUS        : String(1);
+                ISSUED_AMOUNT : Decimal(13, 2);
+                PAID_AMOUNT   : Decimal(13, 2);
+                CURRENCY      : String(5);
+                INTRENOPL     : String(13);
+                PARTNER       : String(10);
+                USER_ID       : String(12);
+                PAYMENT_REF   : String(12);
+                UPDATE_TS     : Decimal(15, 0);
+                PLNO          : String(20);
+                OBJNRPL       : String(22);
                 Z_CHANGE_TYPE : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
