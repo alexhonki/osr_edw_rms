@@ -1,0 +1,33 @@
+{
+  "description": "Load Batch Source DFKKINVDOC_H",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load DFKKINVDOC_H",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_DFKKINVDOC_H_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
