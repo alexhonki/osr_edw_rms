@@ -1,5 +1,5 @@
 {
-  "description": "ACS_1.1.1.0 Load Group Source RMS MD",
+  "description": "ACS_1.1.1.0 Load Realtime  Group Source RMS MD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -16,11 +16,49 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD RT SUBS MD PHASE1",
+        "description": "TC LOAD RT SUBS MD LAND",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.rms#1.1.1.1_TC_RT_LOAD_SUBGRP_MD_PHASE1"
+            "value": "osr.edw.rms#1.1.1.3_TC_RT_LOAD_SUBGRP_SRC_MD_LAND"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD RT SUBS MD PSCD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#1.1.1.4_TC_RT_LOAD_SUBGRP_SRC_MD_PSCD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD RT SUBS MD PHASE2",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#1.1.1.2_TC_RT_LOAD_SUBGRP_SRC_MD_PHASE2"
           }
         ]
       },
