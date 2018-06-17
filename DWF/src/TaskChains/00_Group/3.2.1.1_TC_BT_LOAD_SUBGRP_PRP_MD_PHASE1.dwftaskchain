@@ -1,0 +1,54 @@
+{
+  "description": "2.2.1.1 Load  Subs PRP MD RMS PHASE1",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "taskTimeout": 4320000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD PROPAGATION BUT000 INDV",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.propagation.md.rms#TC_CLEAN_BUT000_INDV"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD PROPAGATION ADRC",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.propagation.md.rms#TC_CLEAN_ADRC"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
