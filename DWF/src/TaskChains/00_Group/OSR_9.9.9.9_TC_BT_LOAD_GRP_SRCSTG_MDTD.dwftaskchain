@@ -1,0 +1,130 @@
+{
+  "description": "OSR_9.9.9.9 Load BT MainGroup SRCSTG 10min MDTD",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 5,
+  "taskTimeout": 43200000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT 10min SRC BUT000",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_BUT000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT 10min STG BUT000 ",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.md.rms#TC_LOAD_BUT000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT 10min SRC LTCOOWN",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_LTCOOWN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT 10min STG LTCOOWN",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_LTCOOWN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT 10min SRC VICNCN",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_VICNCN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT 10min STG VICNCN",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_VICNCN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
