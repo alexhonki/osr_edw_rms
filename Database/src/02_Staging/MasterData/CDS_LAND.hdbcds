@@ -2047,9 +2047,9 @@ context CDS_LAND {
             };
         };
 
+        @DataStore.entity.changeLog          : 'change_log'
         @DataStore.isDSO
         @DataStore.entity.activeData         : 'active_data'
-        @DataStore.entity.changeLog          : 'change_log'
         @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
         @DataStore.entity.operationHistory   : 'operationHistory'
         @DataStore.entity.aggregationHistory : 'aggregationHistory'
@@ -2202,7 +2202,7 @@ context CDS_LAND {
                     PROP_TAX_AMOUNT     : Decimal(15, 2)         not null;
 
                     @DataStore.aggregation : #MOV
-                    PARTNER             : String(10)             not null;
+                key PARTNER             : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
                     OWNERFRACTION       : Decimal(9, 3)          not null;
@@ -2286,50 +2286,6 @@ context CDS_LAND {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
             };
 
-            @DataStore.entityCategory : #CHANGE_LOG
-            entity change_log {
-                key technicalKey        : changeLogKey;
-                    technicalAttributes : changeLogAttributes not null;
-                key CLIENT              : String(3)           not null;
-                key INTRENO_CN          : String(13)          not null;
-                key INTRENO_PL          : String(13)          not null;
-                key VALIDFROM           : String(8)           not null;
-                    VALIDTO             : String(8)           not null;
-                    BP_RELEV_VALUE      : Decimal(12, 2)      not null;
-                    SUB_DIV_DISCOUNT    : Decimal(3, 0)       not null;
-                    PROP_TAX_AMOUNT     : Decimal(15, 2)      not null;
-                    PARTNER             : String(10)          not null;
-                    OWNERFRACTION       : Decimal(9, 3)       not null;
-                    OWNERFACTOR         : String(6)           not null;
-                    QVASPROPERTY        : String(40)          not null;
-                    OBJNR_CN            : String(22)          not null;
-                    OBJNR_PL            : String(22)          not null;
-                    PLNO                : String(20)          not null;
-                    RECNNR              : String(13)          not null;
-                    UPDATE_TS           : Decimal(15, 0)      not null;
-                    STATE               : String(4)           not null;
-                    LHFLAG              : String(1)           not null;
-                    NVFLAG              : String(1)           not null;
-                    UNIMPROVED_VALUE    : Decimal(15, 2)      not null;
-                    RELEVANT_VALUE      : Decimal(15, 2)      not null;
-                    BP_RELEV_EXM_VAL    : Decimal(15, 2)      not null;
-                    ESTIMATED_PLTAX     : Decimal(15, 2)      not null;
-                    EXM_DED_CODE        : String(2)           not null;
-                    EXM_DED_PCT         : Decimal(3, 0)       not null;
-                    CNRESCALC           : String(1)           not null;
-                    Z_CURR_FLAG         : String(1)           not null;
-                    Z_VALID_FROM        : LocalDate           not null default '1900-01-01';
-                    Z_VALID_TO          : LocalDate           not null default '1900-01-01';
-                    Z_CHANGE_TYPE       : String(1)           not null;
-                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
-                    Z_SOURCE_SYS        : String(5)           not null;
-                    Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
-            }
-            technical configuration {
-                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
-            };
-
             @DataStore.entityCategory : #OPERATION_HISTORY
             entity operationHistory {
                 key technicalKey        : operationHistoryKey;
@@ -2368,6 +2324,50 @@ context CDS_LAND {
             entity idGen {
                 key technicalKey        : idGeneratorKey;
                     technicalAttributes : idGeneratorAttributes;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                    CLIENT              : String(3)           not null;
+                    INTRENO_CN          : String(13)          not null;
+                    INTRENO_PL          : String(13)          not null;
+                    VALIDFROM           : String(8)           not null;
+                    VALIDTO             : String(8)           not null;
+                    BP_RELEV_VALUE      : Decimal(12, 2)      not null;
+                    SUB_DIV_DISCOUNT    : Decimal(3, 0)       not null;
+                    PROP_TAX_AMOUNT     : Decimal(15, 2)      not null;
+                    PARTNER             : String(10)          not null;
+                    OWNERFRACTION       : Decimal(9, 3)       not null;
+                    OWNERFACTOR         : String(6)           not null;
+                    QVASPROPERTY        : String(40)          not null;
+                    OBJNR_CN            : String(22)          not null;
+                    OBJNR_PL            : String(22)          not null;
+                    PLNO                : String(20)          not null;
+                    RECNNR              : String(13)          not null;
+                    UPDATE_TS           : Decimal(15, 0)      not null;
+                    STATE               : String(4)           not null;
+                    LHFLAG              : String(1)           not null;
+                    NVFLAG              : String(1)           not null;
+                    UNIMPROVED_VALUE    : Decimal(15, 2)      not null;
+                    RELEVANT_VALUE      : Decimal(15, 2)      not null;
+                    BP_RELEV_EXM_VAL    : Decimal(15, 2)      not null;
+                    ESTIMATED_PLTAX     : Decimal(15, 2)      not null;
+                    EXM_DED_CODE        : String(2)           not null;
+                    EXM_DED_PCT         : Decimal(3, 0)       not null;
+                    CNRESCALC           : String(1)           not null;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : LocalDate           not null default '1900-01-01';
+                    Z_VALID_TO          : LocalDate           not null default '1900-01-01';
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
+            }
+            technical configuration {
+                group name LTAXBPPL group type "sap.dwf.dso" group subtype CHANGE_LOG;
             };
         };
 
