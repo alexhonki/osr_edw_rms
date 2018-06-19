@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="b7dbcd6fc6034420020db069a136c702" name="FG_RT_LOAD_DFKKPPI" runtimeBehavior="BATCH_TASK">
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="b7dbcd6fc6034420020db069a136c702" name="FG_BT_LOAD_DFKKPPI" runtimeBehavior="BATCH_TASK">
   <annotations key="sap.afm.layout" xmi:id="ac8c6727473add4277e7cb06c1db8e9f">
     <annotations xmi:id="4bd1a6be2d73c7570e921d0f56a66e9b" key="x" value="10">
     </annotations>
@@ -21,7 +21,7 @@
   </annotations>
   <annotations xmi:id="b8eed0d76ea1b0f6b8195272aebaac13" key="sap.im.explicitTypeConversion">
   </annotations>
-  <nodes xmi:id="a2e2885b6a3d190d73ab1618d8fe2553" xsi:type="flowgraph:FilterNode" name="P_DS">
+  <nodes xmi:id="a2e2885b6a3d190d73ab1618d8fe2553" xsi:type="flowgraph:FilterNode" name="P_DS" expression="&quot;MANDT&quot;=&#x27;400&#x27;">
     <annotations key="sap.afm.layout" xmi:id="41922a63809fafd21c908a633b4ad881">
       <annotations xmi:id="df9b7ce9225a6bef030b1c7461eb51ea" key="x" value="193">
       </annotations>
@@ -34,22 +34,28 @@
     </annotations>
     <inputs xmi:id="0d77162d29527681ad11aa8641cc3883" name="P_DS_IN">
       <attributes xmi:id="0e56a989651f6a73a384a829f6b8ba9e" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="04da88cc619a96f5b90136bdea09accd" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="04da88cc619a96f5b90136bdea09accd" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="0817bd3dba4e3451f361d055d9e945b8" name="PPKEY" type="NVARCHAR" nullable="false" length="12">
-        <annotations xmi:id="292fe4d65e9df909dbfde5d0ea366687" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="292fe4d65e9df909dbfde5d0ea366687" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="15d92281b7084224d402225bf7d0fe04" name="OPBEL" type="NVARCHAR" nullable="false" length="12">
-        <annotations xmi:id="62126e49f8e5fd7cf51511f47859484b" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="62126e49f8e5fd7cf51511f47859484b" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="b340028f972d9a73ac882b46923cd850" name="OPUPW" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="426e8346ce4ebc6bcb988d395ef5f835" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="426e8346ce4ebc6bcb988d395ef5f835" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="3d35ac30e3372a67db1a4f49551af16c" name="OPUPK" type="NVARCHAR" nullable="false" length="4">
-        <annotations xmi:id="ad7ca2023b28ab41e20fcbef18220195" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="ad7ca2023b28ab41e20fcbef18220195" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="38de47d79b328e53247788fddaaf15c2" name="OPUPZ" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="3d6a41aa2814ee27c83668a249cf03fb" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="3d6a41aa2814ee27c83668a249cf03fb" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="fc228aaac834fb896899329c81caa4d3" name="BETRZ" type="DECIMAL" nullable="false" length="13" scale="2">
       </attributes>
@@ -70,22 +76,28 @@
     </inputs>
     <outputs xmi:id="98e637b358b3480a13e463eda4ddcf4b" name="P_DS_OUT">
       <attributes xmi:id="a38d4a1bc06a41efa370252a015ccbb7" name="MANDT" type="NVARCHAR" nullable="true" expression="&quot;MANDT&quot;" length="3">
-        <annotations xmi:id="895bd922e4acb137d5eecfea5a2f7a42" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="895bd922e4acb137d5eecfea5a2f7a42" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="ff9b6d33fc1b459a3c2fcca6cefe2a28" name="PPKEY" type="NVARCHAR" nullable="true" expression="&quot;PPKEY&quot;" length="12">
-        <annotations xmi:id="41cf5da797193640eca02f860fb5fcd0" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="41cf5da797193640eca02f860fb5fcd0" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="027d2d32a0821bf949d3988603efaa6d" name="OPBEL" type="NVARCHAR" nullable="true" expression="&quot;OPBEL&quot;" length="12">
-        <annotations xmi:id="bc1c9265cd61fbe0fd57df797a700df9" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="bc1c9265cd61fbe0fd57df797a700df9" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="be6176d3029469da09c8d7917f5306ce" name="OPUPW" type="NVARCHAR" nullable="true" expression="&quot;OPUPW&quot;" length="3">
-        <annotations xmi:id="ccbf47ad58f9727f602c0b5e1dbc9f66" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="ccbf47ad58f9727f602c0b5e1dbc9f66" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="5469d9726f8f171317f9ed00cf67d4fd" name="OPUPK" type="NVARCHAR" nullable="true" expression="&quot;OPUPK&quot;" length="4">
-        <annotations xmi:id="75b09d59158aed50ecc0bb6145264590" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="75b09d59158aed50ecc0bb6145264590" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="bdf92cf3c8d6635865e57f5196d53e32" name="OPUPZ" type="NVARCHAR" nullable="true" expression="&quot;OPUPZ&quot;" length="3">
-        <annotations xmi:id="800f230234e977843a44b7dafcf1c0ba" key="sap.im.primaryKey" value="true"/>
+        <annotations xmi:id="800f230234e977843a44b7dafcf1c0ba" key="sap.im.primaryKey" value="true">
+        </annotations>
       </attributes>
       <attributes xmi:id="b44d6a4dfb5dd03f54bb064eb1762096" name="BETRZ" type="DECIMAL" nullable="true" expression="&quot;BETRZ&quot;" length="13" scale="2">
       </attributes>
@@ -142,28 +154,22 @@
     </annotations>
     <outputs xmi:id="ef9b3b90fd75c962cc4de0d4c9b800cb" name="DS_VT">
       <attributes xmi:id="bc49e81e4de84fe47d959d4887bd1d2d" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="183bd5ddddb63d08b1a56a88782e6aa0" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="183bd5ddddb63d08b1a56a88782e6aa0" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="c762796e3688bcf876e865f28fc73377" name="PPKEY" type="NVARCHAR" nullable="false" length="12">
-        <annotations xmi:id="bc196e997e1c1ab8b7fa4674d6b53ce6" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="bc196e997e1c1ab8b7fa4674d6b53ce6" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="e66a96483c7d1d219883ca2547ef6644" name="OPBEL" type="NVARCHAR" nullable="false" length="12">
-        <annotations xmi:id="ca6bd6ba816d11b636651bdb994b2bdd" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="ca6bd6ba816d11b636651bdb994b2bdd" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="823d74285fd9cc45d81d2eeef8461127" name="OPUPW" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="c3b310c656d727d244382d91b895460f" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="c3b310c656d727d244382d91b895460f" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="0b1d508ac5faea6e41602a2173968181" name="OPUPK" type="NVARCHAR" nullable="false" length="4">
-        <annotations xmi:id="7c5541d7768c85665791080a701134f4" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="7c5541d7768c85665791080a701134f4" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="d8d4e8ca88ae5f8b65273fd1eda7d05a" name="OPUPZ" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="c5cacc5997624977210f130cfdf48108" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="c5cacc5997624977210f130cfdf48108" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="c4eab4e592278b8f973e2fc172b530ff" name="BETRZ" type="DECIMAL" nullable="false" length="13" scale="2">
       </attributes>
