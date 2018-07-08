@@ -2280,7 +2280,7 @@ context CDS_LAND {
                     Z_RUN_ROW_NO        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
-                    Z_RUN_SEQ_ID        : Integer                not null;
+                key Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -2330,15 +2330,15 @@ context CDS_LAND {
             entity change_log {
                 key technicalKey        : changeLogKey;
                     technicalAttributes : changeLogAttributes not null;
-                    CLIENT              : String(3)           not null;
-                    INTRENO_CN          : String(13)          not null;
-                    INTRENO_PL          : String(13)          not null;
-                    VALIDFROM           : String(8)           not null;
+                key CLIENT              : String(3)           not null;
+                key INTRENO_CN          : String(13)          not null;
+                key INTRENO_PL          : String(13)          not null;
+                key VALIDFROM           : String(8)           not null;
                     VALIDTO             : String(8)           not null;
                     BP_RELEV_VALUE      : Decimal(12, 2)      not null;
                     SUB_DIV_DISCOUNT    : Decimal(3, 0)       not null;
                     PROP_TAX_AMOUNT     : Decimal(15, 2)      not null;
-                    PARTNER             : String(10)          not null;
+                key PARTNER             : String(10)          not null;
                     OWNERFRACTION       : Decimal(9, 3)       not null;
                     OWNERFACTOR         : String(6)           not null;
                     QVASPROPERTY        : String(40)          not null;
@@ -2364,7 +2364,7 @@ context CDS_LAND {
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;
                     Z_RUN_ROW_NO        : Integer             not null;
-                    Z_RUN_SEQ_ID        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name LTAXBPPL group type "sap.dwf.dso" group subtype CHANGE_LOG;
