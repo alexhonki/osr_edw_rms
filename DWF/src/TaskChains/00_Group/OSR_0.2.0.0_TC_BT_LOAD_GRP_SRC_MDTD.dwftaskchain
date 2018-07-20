@@ -1,10 +1,9 @@
 {
-  "description": "TXI_2.2.0.0 Load Group STG RMS MD",
+  "description": "OSR_0.2.0.0 Load Batch Main Group SRCSTG PH1_ACS_TXI MDTD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
-  "maxParallelExecution": 3,
-  "taskTimeout": 43200000,
+  "taskTimeout": 4320000,
   "taskList": {
     "1": {
       "inline": {
@@ -16,11 +15,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD BT GROUP STG MD RMS",
+        "description": "OSR TC LOAD BT GROUP SRC MDTD",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.rms#TXI_2.2.1.0_TC_BT_LOAD_GRP_STG_MD"
+            "value": "osr.edw.rms#OSR_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
           }
         ]
       },
@@ -35,11 +34,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD BT GROUP STG TD RMS ",
+        "description": "OSR TC LOAD BT GROUP STG MDTD",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.rms#TXI_2.2.2.0_TC_BT_LOAD_GRP_STG_TD"
+            "value": "osr.edw.rms#OSR_2.2.0.0_TC_BT_LOAD_GRP_STG_MDTD"
           }
         ]
       },
