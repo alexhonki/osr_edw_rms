@@ -1,0 +1,51 @@
+namespace osr.edw.source.md.rms;
+
+context CDS_PTAX {
+
+    /*@@layout{"layoutInfo":{"x":288,"y":123.5}}*/
+    context TAB {
+
+        /*@@layout{"layoutInfo":{"x":186,"y":105.5}}*/
+        entity DFACTS {
+            key CLIENT        : String(3);
+            key OBART         : String(2);
+            key OBJID         : String(20);
+            key FACT_TYPE_SEQ : String(4);
+            key FACT_TYPE_REP : String(4);
+            key FACT_CAT_SEQ  : String(2);
+            key FACT_CAT_REP  : String(4);
+            key VALID_TO      : Decimal(15, 0);
+                VALID_FROM    : Decimal(15, 0);
+                FACT_SET      : String(6);
+                FACT_TYPE     : String(4);
+                FACT_CATEGORY : String(4);
+                VALUE_GENERIC : String(40);
+                QUAL_GENERIC  : String(40);
+                OBJNR         : String(22);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":413,"y":101.5}}*/
+        entity TFACT_TYPEPART {
+            key CLIENT         : String(3);
+            key FACT_TYPE      : String(4);
+            key FACT_CAT_SEQ   : String(2);
+                FACT_CATEGORY  : String(4);
+                MANDATORY      : String(1);
+                MULTIPLE       : String(1);
+                DEFAULT_QUAL   : String(40);
+                DISPLAY_FUNC   : String(30);
+                AUTH_GROUP     : String(4);
+                SELF_REFERENCE : String(1);
+                Z_CHANGE_TYPE  : String(1);
+                Z_CHANGE_TIME  : UTCTimestamp;
+                Z_SOURCE_SYS   : String(5);
+                Z_RUN_ROW_NO   : Integer;
+            key Z_RUN_SEQ_ID   : Integer;
+        };
+    };
+};
