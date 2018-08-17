@@ -1,0 +1,43 @@
+FUNCTION "osr.edw.staging.rms::TF_GET_9LIA_001_01" ( )
+       RETURNS TABLE (
+          CLIENT                 Nvarchar(3)       ,
+--          RECORD_ID              Nvarchar(100)     ,
+          PARENT_ID              Nvarchar(100)     ,
+--          OBJECT_ID              Nvarchar(32)      ,
+--          INITIAL_FLAGS          Nvarchar(800)     ,
+		  FIELDINDEX			 integer,
+          C_UTI_D_FROM           Nvarchar(8)       ,
+          C_UTI_D_TO             Nvarchar(8)       ,
+          C_UTI_D_BASE_TAX       Decimal(23, 4)  ,
+          C_UTI_D_DAYS_OVERDUE   Integer         ,
+          C_UTI_D_DAILY_UTI      Decimal(23, 4)  ,
+          C_UTI_D_YEARLY_RATE    Decimal(15, 2)  ,
+          C_UTI_D_UTI_AMOUNT     Decimal(23, 4)  ,
+          C_UTI_D_PAYMENT        Decimal(23, 4)  ,
+          C_UTI_D_ALLOC_FEE      Decimal(23, 4)  ,
+          C_UTI_D_ALLOC_BASE     Decimal(23, 4)  
+--          Z_RUN_SEQ_ID           Integer         ,
+--          Z_CHANGE_TYPE          Nvarchar(1)       ,
+--          Z_CHANGE_TIME          Timestamp    ,
+--          Z_SOURCE_SYS           Nvarchar(5)       ,
+--          Z_RUN_ROW_NO           Integer         
+       )
+     SQL SECURITY INVOKER AS 
+BEGIN 
+return
+SELECT
+CLIENT,
+PARENT_ID,
+(ROW_NUMBER ( ) OVER ( PARTITION BY PARENT_ID) - 1) as FIELDINDEX,
+C_UTI_D_FROM,
+C_UTI_D_TO,
+C_UTI_D_BASE_TAX,
+C_UTI_D_DAYS_OVERDUE,
+C_UTI_D_DAILY_UTI,
+C_UTI_D_YEARLY_RATE,
+C_UTI_D_UTI_AMOUNT,
+C_UTI_D_PAYMENT,
+C_UTI_D_ALLOC_FEE,
+C_UTI_D_ALLOC_BASE
+FROM "osr.edw.staging.td.rms::CDS_PTAX.DSO.Z1009LIA00000001.active_data";
+END;

@@ -1,0 +1,1185 @@
+namespace osr.edw.source.td.rms;
+
+using DataWarehouse.DataStore :: Structures.inboundQueueKey;
+using DataWarehouse.DataStore :: Structures.inboundQueueAttributes;
+using DataWarehouse.DataStore :: Structures.changeLogKey;
+using DataWarehouse.DataStore :: Structures.changeLogAttributes;
+using DataWarehouse.DataStore :: Structures.operationHistoryKey;
+using DataWarehouse.DataStore :: Structures.operationHistoryAttributes;
+using DataWarehouse.DataStore :: Structures.aggregationHistoryKey;
+using DataWarehouse.DataStore :: Structures.aggregationHistoryAttributes;
+using DataWarehouse.DataStore :: Structures.affectedRequestsKey;
+using DataWarehouse.DataStore :: Structures.logMessagesKey;
+using DataWarehouse.DataStore :: Structures.logMessagesAttributes;
+using DataWarehouse.DataStore :: Structures.subscribersKey;
+using DataWarehouse.DataStore :: Structures.subscribersAttributes;
+using DataWarehouse.DataStore :: Structures.runningOperationsKey;
+using DataWarehouse.DataStore :: Structures.idGeneratorKey;
+using DataWarehouse.DataStore :: Structures.idGeneratorAttributes;
+using DataWarehouse.DataStore :: Annotations as DataStore;
+
+context CDS_PTAX {
+
+    /*@@layout{"layoutInfo":{"x":164,"y":68.5}}*/
+    context TAB {
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1009LIA00000000 {
+            key CLIENT                  : String(3);
+            key RECORD_ID               : String(100);
+                PARENT_ID               : String(32);
+                OBJECT_ID               : String(32);
+                BUNDLE_ID               : String(32);
+                VERSION                 : String(5);
+                FORM_NUMBER             : String(4);
+                TIMESTAMP               : Decimal(15, 0);
+                INITIAL_FLAGS           : String(800);
+                C_PAYABLE_TXN           : Decimal(23, 4);
+                C_PAY_RECEIVED          : Decimal(23, 4);
+                C_UTI                   : Decimal(23, 4);
+                C_UTI_TOTAL             : Decimal(23, 4);
+                C_PENALTY_TAX           : Decimal(23, 4);
+                C_PENALTY_TOTAL         : Decimal(23, 4);
+                C_TOTAL_LIABILITY       : Decimal(23, 4);
+                C_DUE_DATE              : String(8);
+                C_NON_COMP_PER          : Integer;
+                C_UTI_START_DATE        : String(8);
+                C_NO_OF_UTI_DAYS        : Integer;
+                C_DAILY_UTI_AMT         : Decimal(23, 4);
+                C_LEG_ID                : String(40);
+                C_LEG_DESC              : String(40);
+                C_BSB                   : String(15);
+                C_BANK_ACCOUNT_NO       : String(18);
+                C_BANK_ACCOUNT_NAME     : String(60);
+                C_BANK_NAME             : String(60);
+                C_BANK_BRANCH           : String(40);
+                A_UTI_REMITT            : Decimal(23, 4);
+                A_UTI_REASON            : String(3);
+                A_PT_INCREASE           : Decimal(23, 4);
+                A_PT_REMITT             : Decimal(23, 4);
+                A_PT_REASON             : String(3);
+                A_REFUND_OPTION         : String(1);
+                A_BK_DET_CORRECT        : String(1);
+                A_BSB_NEW               : String(15);
+                A_BANK_ACCOUNT_NO_NEW   : String(18);
+                A_BANK_ACCOUNT_NAME_NEW : String(60);
+                A_BANK_NAME_NEW         : String(60);
+                A_BANK_BRANCH_NEW       : String(40);
+                A_SOURCE                : String(3);
+                A_ORIG_TOT_DUTY         : Decimal(23, 4);
+                A_ORIG_UTI              : Decimal(23, 4);
+                A_ORIG_PENALTY          : Decimal(23, 4);
+                A_ORIG_FEES             : Decimal(23, 4);
+                A_LOW_AMT_PAY           : Decimal(23, 4);
+                A_CONT_NAME             : String(50);
+                A_CONT_NO               : String(30);
+                A_CONFIRM               : String(1);
+                C_TOTAL_ORIG            : Decimal(23, 4);
+                C_CONFIRM_DATE          : String(8);
+                A_EMAIL_ADDRESS         : String(241);
+                A_MOBILE_NO             : String(30);
+                A_FIRST_INSTRUMENT      : Integer;
+                A_SEC_INSTRUMENT        : Integer;
+                A_POSTAGE_INC           : Decimal(23, 4);
+                A_POSTAGE_RED           : Decimal(23, 4);
+                C_POSTAGE_FEES          : Decimal(23, 4);
+                C_POSTAGE_TOTAL         : Decimal(23, 4);
+                A_TITLE                 : String(30);
+                A_ORIG_GROSS            : Decimal(23, 4);
+                A_ORIG_PAID_PAY         : Decimal(23, 4);
+                C_LEG_ID_1              : String(40);
+                C_LEG_DESC_1            : String(40);
+                A_CURRENCY              : String(5);
+                C_CURRENCY              : String(5);
+                A_A_UTI                 : Decimal(23, 4);
+                A_DATE_PAID             : String(8);
+                A_ORIG_DUE_DATE         : String(8);
+                A_ORIG_AFAD             : Decimal(23, 4);
+            key Z_RUN_SEQ_ID            : Integer;
+                Z_CHANGE_TYPE           : String(1);
+                Z_CHANGE_TIME           : UTCTimestamp;
+                Z_SOURCE_SYS            : String(5);
+                Z_RUN_ROW_NO            : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFMCA_RETURN {
+            key MANDT            : String(3);
+            key CASE_GUID        : String(32);
+                FBNUM            : String(12);
+                REVENUE_TYPE     : String(4);
+                TAXPAYER         : String(10);
+                JOINT_FILER      : String(10);
+                BU_ID_TYPE       : String(6);
+                TAXPAYER_ID      : String(60);
+                JOINT_ID_TYPE    : String(6);
+                JOINT_FILER_ID   : String(60);
+                ACCOUNT          : String(12);
+                REG_ID           : String(20);
+                REG_TYPE         : String(1);
+                JOINT_ACCOUNT    : String(12);
+                JOINT_REG_ID     : String(20);
+                JOINT_REG_TYPE   : String(1);
+                APPLY_FROM       : String(8);
+                APPLY_TO         : String(8);
+                PERIOD_KEY       : String(4);
+                BEGRU            : String(4);
+                CONSOLIDATED_BY  : String(32);
+                DUPLICATE_TO     : String(32);
+                FORMPROC         : String(20);
+                X_CONS           : String(1);
+                X_ESTIMATED      : String(1);
+                FBTYP            : String(4);
+                BETRW            : Decimal(13, 2);
+                WAERS            : String(5);
+                ERNAM            : String(12);
+                ERTSP            : Decimal(15, 0);
+                AENAM            : String(12);
+                AETSP            : Decimal(15, 0);
+                KEYDT            : String(8);
+                FBSTA            : String(5);
+                FBSTB            : String(5);
+                FBUST            : String(5);
+                FBSTZ            : String(1);
+                VALIDATION       : Decimal(15, 0);
+                POSTMARK         : Decimal(15, 0);
+                RECEIPT          : Decimal(15, 0);
+                DUE_DATE         : String(8);
+                DEFERRAL_DATE    : String(8);
+                REFUND_COMPLETE  : String(8);
+                POSTMARK_EXT     : String(8);
+                RECONCILIATION   : String(8);
+                LAST_FILING      : String(8);
+                AS_FILED_EXT     : String(8);
+                DATE_SOL         : String(8);
+                BATCH_ID         : String(12);
+                LOCATOR_NUMBER   : String(16);
+                TRANSACTION_TYPE : String(8);
+                IN_CHANNEL       : String(3);
+                TAX_PREPARER     : String(10);
+                INDPR            : String(1);
+                KEYPP            : String(3);
+                ZZREASSESSED     : String(1);
+                ZZTRANSFERRED    : String(1);
+                ZZCLIENTREF      : String(32);
+                ZZSENDER         : String(10);
+                ZZELNOID         : String(36);
+                ZZELNOTXN        : String(36);
+                STATE_ID         : String(32);
+                CURRENT_VERSION  : String(5);
+                ZZRFR_REQUESTER  : String(10);
+            key Z_RUN_SEQ_ID     : Integer;
+                Z_CHANGE_TYPE    : String(1);
+                Z_CHANGE_TIME    : UTCTimestamp;
+                Z_SOURCE_SYS     : String(5);
+                Z_RUN_ROW_NO     : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFMCA_FORMS {
+            key MANDT          : String(3);
+            key RETURN_ID      : String(32);
+            key FORM           : String(30);
+            key FORM_NUMBER    : String(4);
+                CASE_GUID      : String(32);
+                TIMESTAMP      : Decimal(15, 0);
+                X_AMENDMENT    : String(1);
+                FORM_CLASS     : String(2);
+                FORM_STATUS    : String(1);
+                FORM_STATUS_TS : Decimal(15, 0);
+                SUPERSEDED_BY  : String(32);
+                SUPERSEDE_TO   : String(32);
+                RECEIPT_TS     : Decimal(15, 0);
+                TEMPLATE_VER   : String(1);
+                DOGUID         : String(32);
+                BATCH_ID       : String(12);
+                LOCATOR_NUMBER : String(16);
+            key Z_RUN_SEQ_ID   : Integer;
+                Z_CHANGE_TYPE  : String(1);
+                Z_CHANGE_TIME  : UTCTimestamp;
+                Z_SOURCE_SYS   : String(5);
+                Z_RUN_ROW_NO   : Integer;
+        };
+
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1009LIA00000001 {
+            key CLIENT               : String(3);
+            key RECORD_ID            : String(100);
+                PARENT_ID            : String(100);
+                OBJECT_ID            : String(32);
+                INITIAL_FLAGS        : String(800);
+                C_UTI_D_FROM         : String(8);
+                C_UTI_D_TO           : String(8);
+                C_UTI_D_BASE_TAX     : Decimal(23, 4);
+                C_UTI_D_DAYS_OVERDUE : Integer;
+                C_UTI_D_DAILY_UTI    : Decimal(23, 4);
+                C_UTI_D_YEARLY_RATE  : Decimal(15, 2);
+                C_UTI_D_UTI_AMOUNT   : Decimal(23, 4);
+                C_UTI_D_PAYMENT      : Decimal(23, 4);
+                C_UTI_D_ALLOC_FEE    : Decimal(23, 4);
+                C_UTI_D_ALLOC_BASE   : Decimal(23, 4);
+            key Z_RUN_SEQ_ID         : Integer;
+                Z_CHANGE_TYPE        : String(1);
+                Z_CHANGE_TIME        : UTCTimestamp;
+                Z_SOURCE_SYS         : String(5);
+                Z_RUN_ROW_NO         : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+
+
+/*@@layout{"layoutInfo":{"x":-1830,"y":-53.5}}*/
+        entity DFMCA_FORM_VERS {
+            key MANDT         : String(3);
+            key FORM_GUID     : String(32);
+            key DATA_VERSION  : String(5);
+                OBJECTNAME    : String(100);
+                TIMESTAMP     : Decimal(15, 0);
+            key Z_RUN_SEQ_ID  : Integer;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+
+/*@@layout{"layoutInfo":{"x":-2880,"y":85.5}}*/
+        entity Z1000IDP00000000 {
+            key CLIENT          : String(3);
+            key RECORD_ID       : String(100);
+                PARENT_ID       : String(32);
+                OBJECT_ID       : String(32);
+                BUNDLE_ID       : String(32);
+                VERSION         : String(5);
+                FORM_NUMBER     : String(4);
+                TIMESTAMP       : Decimal(15, 0);
+                INITIAL_FLAGS   : String(800);
+                C_BP            : String(10);
+                C_BPNAME        : String(50);
+                C_FBN           : String(12);
+                C_GRP_STATUS    : String(18);
+                C_ABN           : String(20);
+                C_START_DATE    : String(8);
+                C_END_DATE      : String(8);
+                C_LODGE_DATE    : String(8);
+                C_DUE_DATE      : String(8);
+                C_ASSESS_DATE   : String(8);
+                A_YOUR_REF      : String(30);
+                A_ILODGE_DATE   : String(8);
+                A_REASS_REASON  : String(3);
+                A_REASS_COMMENT : String(255);
+                C_SENDER_ID     : String(10);
+            key Z_RUN_SEQ_ID    : Integer;
+                Z_CHANGE_TYPE   : String(1);
+                Z_CHANGE_TIME   : UTCTimestamp;
+                Z_SOURCE_SYS    : String(5);
+                Z_RUN_ROW_NO    : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1003PYP00000000 {
+            key CLIENT                  : String(3);
+            key RECORD_ID               : String(100);
+                PARENT_ID               : String(32);
+                OBJECT_ID               : String(32);
+                BUNDLE_ID               : String(32);
+                VERSION                 : String(5);
+                FORM_NUMBER             : String(4);
+                TIMESTAMP               : Decimal(15, 0);
+                INITIAL_FLAGS           : String(800);
+                A_PT_CALC               : String(1);
+                A_INT_WAGES             : String(1);
+                A_QLD_TXBLE_WAGES       : Decimal(23, 4);
+                A_FIXED_DEDUCTION       : Decimal(23, 4);
+                A_REBATE_WAGES          : Decimal(23, 4);
+                A_ENTERED_PERIODIC_LIAB : Decimal(23, 4);
+                C_DEDUCTION_ALLOWED     : Decimal(23, 4);
+                C_TAX_AMNT              : Decimal(23, 4);
+                C_BASE_TAX_AMNT         : Decimal(23, 4);
+                C_REBATE_CALC           : Decimal(23, 4);
+                C_PAYROLL_TAX           : Decimal(23, 4);
+                A_CURRENCY              : String(5);
+                C_CURRENCY              : String(5);
+            key Z_RUN_SEQ_ID            : Integer;
+                Z_CHANGE_TYPE           : String(1);
+                Z_CHANGE_TIME           : UTCTimestamp;
+                Z_SOURCE_SYS            : String(5);
+                Z_RUN_ROW_NO            : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":968,"y":-495.5}}*/
+        entity DS_3PSCD_TRM_FORM_DATA_9LIA {
+                RETURN_ID               : String(32);
+                FORM                    : String(30);
+                FORM_NUMBER             : String(4);
+            key CASE_GUID               : String(32);
+            key FIELDINDEX              : Integer;
+                TIMESTAMP               : Decimal(15, 0);
+                FORM_CLASS              : String(2);
+                FORM_STATUS             : String(1);
+                FORM_STATUS_TS          : Decimal(15, 0);
+                SUPERSEDED_BY           : String(32);
+                SUPERSEDE_TO            : String(32);
+                RECEIPT_TS              : Decimal(15, 0);
+                TEMPLATE_VER            : String(1);
+                BATCH_ID                : String(12);
+                LOCATOR_NUMBER          : String(16);
+                FBTYP                   : String(4);
+                FBNUM                   : String(12);
+                RECORDMODE              : String(1);
+                A_BANK_ACCOUNT_NAME_NEW : String(60);
+                A_BANK_ACCOUNT_NO_NEW   : String(18);
+                A_BANK_BRANCH_NEW       : String(40);
+                A_BANK_NAME_NEW         : String(60);
+                A_BK_DET_CORRECT        : String(1);
+                A_BSB_NEW               : String(15);
+                A_CONFIRM               : String(1);
+                A_CONT_NAME             : String(50);
+                A_CONT_NO               : String(30);
+                A_CURRENCY              : String(5);
+                A_EMAIL_ADDRESS         : String(241);
+                A_FIRST_INSTRUMENT      : Integer;
+                A_LOW_AMT_PAY           : Decimal(13, 2);
+                A_MOBILE_NO             : String(30);
+                A_ORIG_FEES             : Decimal(13, 2);
+                A_ORIG_GROSS            : Decimal(13, 2);
+                A_ORIG_PAID_PAY         : Decimal(13, 2);
+                A_ORIG_PENALTY          : Decimal(13, 2);
+                A_ORIG_TOT_DUTY         : Decimal(13, 2);
+                A_ORIG_UTI              : Decimal(13, 2);
+                A_POSTAGE_INC           : Decimal(13, 2);
+                A_POSTAGE_RED           : Decimal(13, 2);
+                A_PT_INCREASE           : Decimal(13, 2);
+                A_PT_REASON             : hana.VARCHAR(3);
+                A_PT_REMITT             : Decimal(13, 2);
+                A_REFUND_OPTION         : String(1);
+                A_SEC_INSTRUMENT        : Integer;
+                A_SOURCE                : hana.VARCHAR(3);
+                A_TITLE                 : String(30);
+                A_UTI_REASON            : hana.VARCHAR(3);
+                A_UTI_REMITT            : Decimal(13, 2);
+                C_BANK_ACCOUNT_NAME     : String(60);
+                C_BANK_ACCOUNT_NO       : String(18);
+                C_BANK_BRANCH           : String(40);
+                C_BANK_NAME             : String(60);
+                C_BSB                   : String(15);
+                C_CONFIRM_DATE          : hana.VARCHAR(8);
+                C_CURRENCY              : String(5);
+                C_DAILY_UTI_AMT         : Decimal(13, 2);
+                C_DUE_DATE              : hana.VARCHAR(8);
+                C_LEG_DESC              : String(40);
+                C_LEG_DESC_1            : String(40);
+                C_LEG_ID                : String(40);
+                C_LEG_ID_1              : String(40);
+                C_NON_COMP_PER          : Integer;
+                C_NO_OF_UTI_DAYS        : Integer;
+                C_PAYABLE_TXN           : Decimal(13, 2);
+                C_PAY_RECEIVED          : Decimal(13, 2);
+                C_PENALTY_TAX           : Decimal(13, 2);
+                C_PENALTY_TOTAL         : Decimal(13, 2);
+                C_POSTAGE_FEES          : Decimal(13, 2);
+                C_POSTAGE_TOTAL         : Decimal(13, 2);
+                C_TOTAL_LIABILITY       : Decimal(13, 2);
+                C_TOTAL_ORIG            : Decimal(13, 2);
+                C_UTI                   : Decimal(13, 2);
+                C_UTI_D_ALLOC_BASE      : Decimal(13, 2);
+                C_UTI_D_ALLOC_FEE       : Decimal(13, 2);
+                C_UTI_D_BASE_TAX        : Decimal(13, 2);
+                C_UTI_D_DAILY_UTI       : Decimal(13, 2);
+                C_UTI_D_DAYS_OVERDUE    : Integer;
+                C_UTI_D_FROM            : hana.VARCHAR(8);
+                C_UTI_D_PAYMENT         : Decimal(13, 2);
+                C_UTI_D_TO              : hana.VARCHAR(8);
+                C_UTI_D_UTI_AMOUNT      : Decimal(13, 2);
+                C_UTI_D_YEARLY_RATE     : Decimal(10, 7);
+                C_UTI_START_DATE        : hana.VARCHAR(8);
+                C_UTI_TOTAL             : Decimal(13, 2);
+                A_A_UTI                 : Decimal(13, 2);
+                A_DATE_PAID             : hana.VARCHAR(8);
+                A_ORIG_DUE_DATE         : hana.VARCHAR(8);
+                A_ORIG_AFAD             : Decimal(13, 2);
+        };
+
+        /*@@layout{"layoutInfo":{"x":1341,"y":-496.5}}*/
+        entity DS_3PSCD_TRM_FORM_DATA_IPA1 {
+                RETURN_ID        : String(32);
+                FORM             : String(30);
+                FORM_NUMBER      : String(4);
+            key CASE_GUID        : String(32);
+                TIMESTAMP        : Decimal(15, 0);
+                FORM_CLASS       : String(2);
+                FORM_STATUS      : String(1);
+                FORM_STATUS_TS   : Decimal(15, 0);
+                SUPERSEDED_BY    : String(32);
+                SUPERSEDE_TO     : String(32);
+                RECEIPT_TS       : Decimal(15, 0);
+                TEMPLATE_VER     : String(1);
+                BATCH_ID         : String(12);
+                LOCATOR_NUMBER   : String(16);
+                FBTYP            : String(4);
+                FBNUM            : String(12);
+                RECORDMODE       : String(1);
+                A_ALLOWANCE      : Decimal(13, 2);
+                A_APPRENT_PMT    : Decimal(13, 2);
+                A_BONUS          : Decimal(13, 2);
+                A_COMMISSION     : Decimal(13, 2);
+                A_CONTRACTORS    : Decimal(13, 2);
+                A_CURRENCY_A     : String(5);
+                A_DIRECTOR_FEE   : Decimal(13, 2);
+                A_ELIG_TERM_PMT  : Decimal(13, 2);
+                A_EMPL_SUP_CONT  : Decimal(13, 2);
+                A_FIVE_MIL_1     : String(30);
+                A_FRINGE_BENEFI  : Decimal(13, 2);
+                A_GROSS_SAL_WAG  : Decimal(13, 2);
+                A_OTH_NON_TAX_W  : Decimal(13, 2);
+                A_SHARE_SCHEMES  : Decimal(13, 2);
+                A_TOT_INT_GM     : Decimal(13, 2);
+                A_TOT_INT_WAGE   : Decimal(13, 2);
+                A_TOT_QLD_GM     : Decimal(13, 2);
+                A_TRAINEES_PMT   : Decimal(13, 2);
+                C_BP_A           : String(10);
+                C_DEC_DATE_A     : hana.VARCHAR(8);
+                C_DEDUCTION_ALL  : Decimal(13, 2);
+                C_END_DATE_A     : hana.VARCHAR(8);
+                C_END_FUT_A      : hana.VARCHAR(8);
+                C_PAY_TAX_AMOUN  : Decimal(13, 2);
+                C_PAY_TAX_LIAB_  : Decimal(13, 2);
+                C_START_DATE_A   : hana.VARCHAR(8);
+                C_START_FUT_A    : hana.VARCHAR(8);
+                C_TAX_AMOUNT     : Decimal(13, 2);
+                C_TOT_LIAB_CRED  : Decimal(13, 2);
+                C_TOT_PAID_PAYA  : Decimal(13, 2);
+                C_TOT_QLD_NON_T  : Decimal(13, 2);
+                C_TOT_QLD_TXBLE  : Decimal(13, 2);
+                A_ORIG_TXN_NO_A  : hana.VARCHAR(10);
+                A_ORIG_TOT_DUT_A : Decimal(13, 2);
+                A_ORIG_UTI_A     : Decimal(13, 2);
+                A_ORIG_PENLTY_A  : Decimal(13, 2);
+                A_ORIG_DUE_DT_A  : hana.VARCHAR(8);
+                A_ORIG_LDGE_DT_A : hana.VARCHAR(8);
+                A_ORIG_TRNS_TY_A : String(10);
+                A_REASS_REASN_A  : String(20);
+                A_UTI_REASON_A   : String(18);
+                A_PT_REASON_A    : String(18);
+                A_UTI_REMITT_A   : Decimal(13, 2);
+                A_PT_REMITT_A    : Decimal(13, 2);
+                C_UTI_D_UTI_AM_A : Decimal(13, 2);
+                C_PENALTY_TAX_A  : Decimal(13, 2);
+                D_PEN_INCREAS_A  : Decimal(13, 2);
+                C_GRP_STATUS_A   : String(26);
+                C_LODGE_DATE_A   : hana.VARCHAR(8);
+                A_REASS_Q_A      : hana.VARCHAR(1);
+                A_COMMIS_Q_A     : hana.VARCHAR(1);
+                A_DEF_Q_A        : hana.VARCHAR(1);
+                A_SELF_Q_A       : hana.VARCHAR(1);
+                C_TOT_GRP_AUST_W : Decimal(13, 2);
+                C_UTI_ACCR_2_DT  : Decimal(13, 2);
+                A_ILODGE_DATE_A  : hana.VARCHAR(8);
+        };
+
+/*@@layout{"layoutInfo":{"x":-2704,"y":949.5}}*/
+
+
+    };
+
+    /*@@layout{"layoutInfo":{"x":-233,"y":37.5}}*/
+    context DSO {
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : true
+        @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":-256,"y":30.5}}*/
+        context DS_3PSCD_TRM_FORM_DATA_9LIA {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                    RETURN_ID               : String(32)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    FORM                    : String(30)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    FORM_NUMBER             : String(4)       not null;
+
+                    @DataStore.aggregation : #NOP
+                key CASE_GUID               : String(32)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key FIELDINDEX              : Integer         not null;
+
+                    @DataStore.aggregation : #NOP
+                    TIMESTAMP               : Decimal(15, 0)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    FORM_CLASS              : String(2)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    FORM_STATUS             : String(1)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    FORM_STATUS_TS          : Decimal(15, 0)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    SUPERSEDED_BY           : String(32)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    SUPERSEDE_TO            : String(32)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECEIPT_TS              : Decimal(15, 0)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    TEMPLATE_VER            : String(1)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    BATCH_ID                : String(12)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LOCATOR_NUMBER          : String(16)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    FBTYP                   : String(4)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    FBNUM                   : String(12)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BANK_ACCOUNT_NAME_NEW : String(60)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BANK_ACCOUNT_NO_NEW   : String(18)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BANK_BRANCH_NEW       : String(40)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BANK_NAME_NEW         : String(60)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BK_DET_CORRECT        : String(1)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BSB_NEW               : String(15)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CONFIRM               : String(1)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CONT_NAME             : String(50)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CONT_NO               : String(30)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CURRENCY              : String(5)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EMAIL_ADDRESS         : String(241)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_FIRST_INSTRUMENT      : Integer         not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_LOW_AMT_PAY           : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_MOBILE_NO             : String(30)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_FEES             : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_GROSS            : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_PAID_PAY         : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_PENALTY          : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_TOT_DUTY         : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_UTI              : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_POSTAGE_INC           : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_POSTAGE_RED           : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PT_INCREASE           : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PT_REASON             : hana.VARCHAR(3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PT_REMITT             : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_REFUND_OPTION         : String(1)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_SEC_INSTRUMENT        : Integer         not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_SOURCE                : hana.VARCHAR(3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_TITLE                 : String(30)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_UTI_REASON            : hana.VARCHAR(3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_UTI_REMITT            : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_BANK_ACCOUNT_NAME     : String(60)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_BANK_ACCOUNT_NO       : String(18)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_BANK_BRANCH           : String(40)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_BANK_NAME             : String(60)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_BSB                   : String(15)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_CONFIRM_DATE          : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_CURRENCY              : String(5)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_DAILY_UTI_AMT         : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_DUE_DATE              : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LEG_DESC              : String(40)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LEG_DESC_1            : String(40)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LEG_ID                : String(40)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LEG_ID_1              : String(40)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_NON_COMP_PER          : Integer         not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_NO_OF_UTI_DAYS        : Integer         not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_PAYABLE_TXN           : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_PAY_RECEIVED          : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_PENALTY_TAX           : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_PENALTY_TOTAL         : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_POSTAGE_FEES          : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_POSTAGE_TOTAL         : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_TOTAL_LIABILITY       : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_TOTAL_ORIG            : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI                   : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_BASE      : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_FEE       : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_BASE_TAX        : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAILY_UTI       : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAYS_OVERDUE    : Integer         not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_FROM            : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_PAYMENT         : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_TO              : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_UTI_AMOUNT      : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_YEARLY_RATE     : Decimal(10, 7)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_START_DATE        : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_TOTAL             : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_A_UTI                 : Decimal(13, 2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_DATE_PAID             : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_DUE_DATE         : hana.VARCHAR(8) not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ORIG_AFAD             : Decimal(13, 2)  not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey            : inboundQueueKey;
+                    technicalAttributes     : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                    RETURN_ID               : String(32)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FORM                    : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FORM_NUMBER             : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key CASE_GUID               : String(32)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key FIELDINDEX              : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    TIMESTAMP               : Decimal(15, 0)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    FORM_CLASS              : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FORM_STATUS             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FORM_STATUS_TS          : Decimal(15, 0)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    SUPERSEDED_BY           : String(32)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SUPERSEDE_TO            : String(32)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECEIPT_TS              : Decimal(15, 0)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TEMPLATE_VER            : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BATCH_ID                : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    LOCATOR_NUMBER          : String(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    FBTYP                   : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FBNUM                   : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BANK_ACCOUNT_NAME_NEW : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BANK_ACCOUNT_NO_NEW   : String(18)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BANK_BRANCH_NEW       : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BANK_NAME_NEW         : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BK_DET_CORRECT        : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BSB_NEW               : String(15)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CONFIRM               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CONT_NAME             : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CONT_NO               : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CURRENCY              : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EMAIL_ADDRESS         : String(241)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_FIRST_INSTRUMENT      : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_LOW_AMT_PAY           : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_MOBILE_NO             : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_FEES             : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_GROSS            : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_PAID_PAY         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_PENALTY          : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_TOT_DUTY         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_UTI              : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_POSTAGE_INC           : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_POSTAGE_RED           : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PT_INCREASE           : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PT_REASON             : hana.VARCHAR(3)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PT_REMITT             : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_REFUND_OPTION         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_SEC_INSTRUMENT        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_SOURCE                : hana.VARCHAR(3)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_TITLE                 : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_UTI_REASON            : hana.VARCHAR(3)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_UTI_REMITT            : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_BANK_ACCOUNT_NAME     : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_BANK_ACCOUNT_NO       : String(18)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_BANK_BRANCH           : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_BANK_NAME             : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_BSB                   : String(15)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_CONFIRM_DATE          : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_CURRENCY              : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_DAILY_UTI_AMT         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_DUE_DATE              : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LEG_DESC              : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LEG_DESC_1            : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LEG_ID                : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LEG_ID_1              : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_NON_COMP_PER          : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_NO_OF_UTI_DAYS        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_PAYABLE_TXN           : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_PAY_RECEIVED          : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_PENALTY_TAX           : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_PENALTY_TOTAL         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_POSTAGE_FEES          : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_POSTAGE_TOTAL         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_TOTAL_LIABILITY       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_TOTAL_ORIG            : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI                   : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_BASE      : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_FEE       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_BASE_TAX        : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAILY_UTI       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAYS_OVERDUE    : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_FROM            : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_PAYMENT         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_TO              : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_UTI_AMOUNT      : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_YEARLY_RATE     : Decimal(10, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_START_DATE        : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_TOTAL             : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_A_UTI                 : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_DATE_PAID             : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_DUE_DATE         : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ORIG_AFAD             : Decimal(13, 2)         not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey            : changeLogKey;
+                    technicalAttributes     : changeLogAttributes not null;
+                    RETURN_ID               : String(32)          not null;
+                    FORM                    : String(30)          not null;
+                    FORM_NUMBER             : String(4)           not null;
+                key CASE_GUID               : String(32)          not null;
+                key FIELDINDEX              : Integer             not null;
+                    TIMESTAMP               : Decimal(15, 0)      not null;
+                    FORM_CLASS              : String(2)           not null;
+                    FORM_STATUS             : String(1)           not null;
+                    FORM_STATUS_TS          : Decimal(15, 0)      not null;
+                    SUPERSEDED_BY           : String(32)          not null;
+                    SUPERSEDE_TO            : String(32)          not null;
+                    RECEIPT_TS              : Decimal(15, 0)      not null;
+                    TEMPLATE_VER            : String(1)           not null;
+                    BATCH_ID                : String(12)          not null;
+                    LOCATOR_NUMBER          : String(16)          not null;
+                    FBTYP                   : String(4)           not null;
+                    FBNUM                   : String(12)          not null;
+                    A_BANK_ACCOUNT_NAME_NEW : String(60)          not null;
+                    A_BANK_ACCOUNT_NO_NEW   : String(18)          not null;
+                    A_BANK_BRANCH_NEW       : String(40)          not null;
+                    A_BANK_NAME_NEW         : String(60)          not null;
+                    A_BK_DET_CORRECT        : String(1)           not null;
+                    A_BSB_NEW               : String(15)          not null;
+                    A_CONFIRM               : String(1)           not null;
+                    A_CONT_NAME             : String(50)          not null;
+                    A_CONT_NO               : String(30)          not null;
+                    A_CURRENCY              : String(5)           not null;
+                    A_EMAIL_ADDRESS         : String(241)         not null;
+                    A_FIRST_INSTRUMENT      : Integer             not null;
+                    A_LOW_AMT_PAY           : Decimal(13, 2)      not null;
+                    A_MOBILE_NO             : String(30)          not null;
+                    A_ORIG_FEES             : Decimal(13, 2)      not null;
+                    A_ORIG_GROSS            : Decimal(13, 2)      not null;
+                    A_ORIG_PAID_PAY         : Decimal(13, 2)      not null;
+                    A_ORIG_PENALTY          : Decimal(13, 2)      not null;
+                    A_ORIG_TOT_DUTY         : Decimal(13, 2)      not null;
+                    A_ORIG_UTI              : Decimal(13, 2)      not null;
+                    A_POSTAGE_INC           : Decimal(13, 2)      not null;
+                    A_POSTAGE_RED           : Decimal(13, 2)      not null;
+                    A_PT_INCREASE           : Decimal(13, 2)      not null;
+                    A_PT_REASON             : hana.VARCHAR(3)     not null;
+                    A_PT_REMITT             : Decimal(13, 2)      not null;
+                    A_REFUND_OPTION         : String(1)           not null;
+                    A_SEC_INSTRUMENT        : Integer             not null;
+                    A_SOURCE                : hana.VARCHAR(3)     not null;
+                    A_TITLE                 : String(30)          not null;
+                    A_UTI_REASON            : hana.VARCHAR(3)     not null;
+                    A_UTI_REMITT            : Decimal(13, 2)      not null;
+                    C_BANK_ACCOUNT_NAME     : String(60)          not null;
+                    C_BANK_ACCOUNT_NO       : String(18)          not null;
+                    C_BANK_BRANCH           : String(40)          not null;
+                    C_BANK_NAME             : String(60)          not null;
+                    C_BSB                   : String(15)          not null;
+                    C_CONFIRM_DATE          : hana.VARCHAR(8)     not null;
+                    C_CURRENCY              : String(5)           not null;
+                    C_DAILY_UTI_AMT         : Decimal(13, 2)      not null;
+                    C_DUE_DATE              : hana.VARCHAR(8)     not null;
+                    C_LEG_DESC              : String(40)          not null;
+                    C_LEG_DESC_1            : String(40)          not null;
+                    C_LEG_ID                : String(40)          not null;
+                    C_LEG_ID_1              : String(40)          not null;
+                    C_NON_COMP_PER          : Integer             not null;
+                    C_NO_OF_UTI_DAYS        : Integer             not null;
+                    C_PAYABLE_TXN           : Decimal(13, 2)      not null;
+                    C_PAY_RECEIVED          : Decimal(13, 2)      not null;
+                    C_PENALTY_TAX           : Decimal(13, 2)      not null;
+                    C_PENALTY_TOTAL         : Decimal(13, 2)      not null;
+                    C_POSTAGE_FEES          : Decimal(13, 2)      not null;
+                    C_POSTAGE_TOTAL         : Decimal(13, 2)      not null;
+                    C_TOTAL_LIABILITY       : Decimal(13, 2)      not null;
+                    C_TOTAL_ORIG            : Decimal(13, 2)      not null;
+                    C_UTI                   : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_BASE      : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_FEE       : Decimal(13, 2)      not null;
+                    C_UTI_D_BASE_TAX        : Decimal(13, 2)      not null;
+                    C_UTI_D_DAILY_UTI       : Decimal(13, 2)      not null;
+                    C_UTI_D_DAYS_OVERDUE    : Integer             not null;
+                    C_UTI_D_FROM            : hana.VARCHAR(8)     not null;
+                    C_UTI_D_PAYMENT         : Decimal(13, 2)      not null;
+                    C_UTI_D_TO              : hana.VARCHAR(8)     not null;
+                    C_UTI_D_UTI_AMOUNT      : Decimal(13, 2)      not null;
+                    C_UTI_D_YEARLY_RATE     : Decimal(10, 7)      not null;
+                    C_UTI_START_DATE        : hana.VARCHAR(8)     not null;
+                    C_UTI_TOTAL             : Decimal(13, 2)      not null;
+                    A_A_UTI                 : Decimal(13, 2)      not null;
+                    A_DATE_PAID             : hana.VARCHAR(8)     not null;
+                    A_ORIG_DUE_DATE         : hana.VARCHAR(8)     not null;
+                    A_ORIG_AFAD             : Decimal(13, 2)      not null;
+            }
+            technical configuration {
+                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+    };
+};
