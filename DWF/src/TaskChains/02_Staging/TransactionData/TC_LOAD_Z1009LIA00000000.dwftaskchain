@@ -1,0 +1,52 @@
+{
+  "description": "Load batch Staging Z1009LIA00000000",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load nDSO Z1009LIA00000000",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1009LIA00000000_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Activate nDSO Z1009LIA00000000",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM.DSO.Z1009LIA00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
