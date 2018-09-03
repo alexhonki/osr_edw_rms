@@ -19,9 +19,10 @@ FUNCTION "osr.edw.staging.rms::TF_DFACTS_SGL_VAL" ( )
        LANGUAGE SQLSCRIPT 
        SQL SECURITY INVOKER AS 
 BEGIN 
-/*****************************  
-       Write your function logic 
- *****************************/ 
+/**************************************************************************  
+ fill the VALUE_GENERIC and QUAL_GENERIC 
+ into the corresponding fact category for each fact type instance in DFACTS
+ *************************************************************************/ 
  RETURN
  SELECT 
 COMPLETE_TYPE_CAT.CLIENT AS CLIENT,
