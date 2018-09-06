@@ -10,13 +10,15 @@ FUNCTION "osr.edw.staging.rms::TF_DFACTS_RG02" ( )
     	VALID_FROM         NVARCHAR(15),
     	FACT_SET           NVARCHAR(6),
     	FACT_TYPE          NVARCHAR(4),
-    	FACT_CAT_SEQ_10    NVARCHAR(40)
+    	FACT_CAT_SEQ_10    NVARCHAR(40),
+    	FACT_CAT_SEQ_Q_10  NVARCHAR(40)
        )
        LANGUAGE SQLSCRIPT 
        SQL SECURITY INVOKER AS 
 BEGIN 
 /*****************************  
-       Write your function logic 
+  Transpose RG02 fact type 
+ for each time-dependent OBJID 
  *****************************/ 
  lt_fact_aggr =
 SELECT
@@ -86,7 +88,8 @@ VALID_TO,
 VALID_FROM,
 FACT_SET,
 FACT_TYPE,
-VALUE_GENERIC as FACT_CAT_SEQ_10
+VALUE_GENERIC as FACT_CAT_SEQ_10,
+QUAL_GENERIC as FACT_CAT_SEQ_Q_10
 FROM :lt_fact_aggr
 ;
 END;
