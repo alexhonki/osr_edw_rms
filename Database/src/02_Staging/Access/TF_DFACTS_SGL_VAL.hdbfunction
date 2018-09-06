@@ -22,6 +22,7 @@ BEGIN
 /**************************************************************************  
  fill the VALUE_GENERIC and QUAL_GENERIC 
  into the corresponding fact category for each fact type instance in DFACTS
+ only fact category with single value are considered
  *************************************************************************/ 
  RETURN
  SELECT 
@@ -41,7 +42,7 @@ CASE WHEN DFACTS.VALUE_GENERIC IS NULL THEN '' ELSE DFACTS.VALUE_GENERIC END AS 
 CASE WHEN DFACTS.QUAL_GENERIC IS NULL THEN '' ELSE DFACTS.QUAL_GENERIC END AS QUAL_GENERIC,
 DFACTS.OBJNR as OBJNR
 FROM 
-(SELECT * FROM "osr.edw.staging.rms::TF_DFACTS_COMPLETE_TYPE_CAT"('X')) 
+(SELECT * FROM "osr.edw.staging.rms::TF_DFACTS_COMPLETE_TYPE_CAT"('')) 
 AS COMPLETE_TYPE_CAT
 LEFT OUTER JOIN
 "osr.edw.staging.md.rms::CDS_PSCD.DSO.DFACTS.active_data"
