@@ -1,28 +1,32 @@
 FUNCTION "osr.edw.staging.rms::TF_GET_9LIA_001_01" ( )
        RETURNS TABLE (
-          CLIENT                 Nvarchar(3)       ,
---          RECORD_ID              Nvarchar(100)     ,
-          PARENT_ID              Nvarchar(100)     ,
---          OBJECT_ID              Nvarchar(32)      ,
---          INITIAL_FLAGS          Nvarchar(800)     ,
-		  FIELDINDEX			 integer,
-          C_UTI_D_FROM           Nvarchar(8)       ,
-          C_UTI_D_TO             Nvarchar(8)       ,
-          C_UTI_D_BASE_TAX       Decimal(23, 4)  ,
-          C_UTI_D_DAYS_OVERDUE   Integer         ,
-          C_UTI_D_DAILY_UTI      Decimal(23, 4)  ,
-          C_UTI_D_YEARLY_RATE    Decimal(15, 2)  ,
-          C_UTI_D_UTI_AMOUNT     Decimal(23, 4)  ,
-          C_UTI_D_PAYMENT        Decimal(23, 4)  ,
-          C_UTI_D_ALLOC_FEE      Decimal(23, 4)  ,
-          C_UTI_D_ALLOC_BASE     Decimal(23, 4)  
---          Z_RUN_SEQ_ID           Integer         ,
---          Z_CHANGE_TYPE          Nvarchar(1)       ,
---          Z_CHANGE_TIME          Timestamp    ,
---          Z_SOURCE_SYS           Nvarchar(5)       ,
---          Z_RUN_ROW_NO           Integer         
+          CLIENT                 NVARCHAR(3)       ,
+--          RECORD_ID              NVARCHAR(100)     ,
+          PARENT_ID              NVARCHAR(100)     ,
+--          OBJECT_ID              NVARCHAR(32)      ,
+--          INITIAL_FLAGS          NVARCHAR(800)     ,
+		  FIELDINDEX			 INTEGER,
+          C_UTI_D_FROM           NVARCHAR(8)       ,
+          C_UTI_D_TO             NVARCHAR(8)       ,
+          C_UTI_D_BASE_TAX       DECIMAL(23, 4)  ,
+          C_UTI_D_DAYS_OVERDUE   INTEGER         ,
+          C_UTI_D_DAILY_UTI      DECIMAL(23, 4)  ,
+          C_UTI_D_YEARLY_RATE    DECIMAL(15, 2)  ,
+          C_UTI_D_UTI_AMOUNT     DECIMAL(23, 4)  ,
+          C_UTI_D_PAYMENT        DECIMAL(23, 4)  ,
+          C_UTI_D_ALLOC_FEE      DECIMAL(23, 4)  ,
+          C_UTI_D_ALLOC_BASE     DECIMAL(23, 4)  
+--          Z_RUN_SEQ_ID           INTEGER         ,
+--          Z_CHANGE_TYPE          NVARCHAR(1)       ,
+--          Z_CHANGE_TIME          TIMESTAMP    ,
+--          Z_SOURCE_SYS           NVARCHAR(5)       ,
+--          Z_RUN_ROW_NO           INTEGER         
        )
+     LANGUAGE SQLSCRIPT
      SQL SECURITY INVOKER AS 
+/**********************************************************************************************
+ ISR scenario 9LIA ver. 001 sub-table UTI_TABLE
+ **********************************************************************************************/ 
 BEGIN 
 return
 SELECT
