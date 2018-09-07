@@ -1,0 +1,32 @@
+FUNCTION "osr.edw.staging.rms::TF_GET_3PYA_001_01" ( )
+       RETURNS TABLE (
+          CLIENT                	NVARCHAR(3),
+--          RECORD_ID              Nvarchar(100)     ,
+          PARENT_ID             	NVARCHAR(32),
+--          OBJECT_ID              Nvarchar(32)      ,
+--          INITIAL_FLAGS          Nvarchar(800)     ,
+		  FIELDINDEX				INTEGER,
+          A_GM        				NVARCHAR(10),
+          A_GM_NAME          		NVARCHAR(50)
+--          Z_RUN_SEQ_ID           Integer         ,
+--          Z_CHANGE_TYPE          Nvarchar(1)       ,
+--          Z_CHANGE_TIME          Timestamp    ,
+--          Z_SOURCE_SYS           Nvarchar(5)       ,
+--          Z_RUN_ROW_NO           Integer         
+       )
+     LANGUAGE SQLSCRIPT
+     SQL SECURITY INVOKER AS 
+/**********************************************************************************************
+ ISR scenario 3PYA ver. 001 sub-table EXCESS_DEDUCT
+ **********************************************************************************************/ 
+BEGIN 
+RETURN
+SELECT
+CLIENT,
+PARENT_ID,
+(ROW_NUMBER ( ) OVER ( PARTITION BY PARENT_ID) - 1) as FIELDINDEX,
+A_GM,
+A_GM_NAME
+FROM "osr.edw.staging.td.rms::CDS_TRM.DSO.Z1003PYA00000001.active_data";
+
+END;
