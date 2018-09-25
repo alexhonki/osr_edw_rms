@@ -1,7 +1,7 @@
 _schema-version: '2.0'
 ID: OSR_EDW_SOURCE_RMS
 description: Source for OSR EDW
-version: 0.0.1
+version: 3.2.0
 
 modules:
  - name:  OSR_EDW_SOURCE_RMS-DWF
@@ -41,7 +41,19 @@ modules:
         HDI_DEPLOY_OPTIONS: { "auto_undeploy": true }
         TARGET_CONTAINER: '~{hdi-container-name}'
     - name: edw-ext-access-grantor
-
+ - name: OSR_EDW_SOURCE_RMS-Services
+   type: nodejs
+#   parameters:
+#      app-name: OSR_EDW_SOURCE_RMS-Database
+   path: Services
+   provides:
+      - name: Services_api
+        properties:
+          url: '${default-url}'
+   requires:
+    - name: OSR_EDW_SOURCE_RMS-container
+   build-parameters:
+      timeout: 30m
 resources:
  - name: OSR_EDW_SOURCE_RMS-uaa
    type: com.sap.xs.uaa
