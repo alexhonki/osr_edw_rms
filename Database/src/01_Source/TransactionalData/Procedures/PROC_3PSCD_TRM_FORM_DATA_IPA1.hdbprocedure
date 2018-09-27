@@ -1,0 +1,20 @@
+PROCEDURE "osr.edw.source.td.rms::PROC_3PSCD_TRM_FORM_DATA_IPA1" ( out o1 "osr.edw.source.td.rms::TT_3PSCD_TRM_FORM_DATA_IPA1" )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+  o1= select * from  "osr.edw.source.td.rms::VT_3PSCD_TRM_FORM_DATA_IPA1"  
+
+with dataprovisioning parameters 
+('<PropertyGroup name="__DP_TABLE_OPTIONS__">
+      <PropertyGroup name="osr.edw.source.td.rms::VT_3PSCD_TRM_FORM_DATA_IPA1">
+        <PropertyEntry name="extractionmode">D</PropertyEntry>
+        <PropertyEntry name="extractionname">extr_3PSCD_TRM_FORM_DATA_IPA1_Sep27</PropertyEntry>
+      </PropertyGroup>
+</PropertyGroup>')
+;
+END

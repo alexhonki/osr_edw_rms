@@ -1,0 +1,52 @@
+{
+  "description": "load data from datasource 3PSCD_TRM_FORM_DATA_3PYA",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "load nDSO",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DSO_3PSCD_TRM_FORM_DATA_3PYA"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "activate nDSO",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.source.td.rms::CDS_TRM.DSO.DS_3PSCD_TRM_FORM_DATA_3PYA"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
