@@ -1,22 +1,22 @@
 namespace osr.edw.source.md.rms;
 
-using DataWarehouse.DataStore :: Structures.inboundQueueKey;
-using DataWarehouse.DataStore :: Structures.inboundQueueAttributes;
-using DataWarehouse.DataStore :: Structures.changeLogKey;
-using DataWarehouse.DataStore :: Structures.changeLogAttributes;
-using DataWarehouse.DataStore :: Structures.operationHistoryKey;
-using DataWarehouse.DataStore :: Structures.operationHistoryAttributes;
-using DataWarehouse.DataStore :: Structures.aggregationHistoryKey;
-using DataWarehouse.DataStore :: Structures.aggregationHistoryAttributes;
-using DataWarehouse.DataStore :: Structures.affectedRequestsKey;
-using DataWarehouse.DataStore :: Structures.logMessagesKey;
-using DataWarehouse.DataStore :: Structures.logMessagesAttributes;
-using DataWarehouse.DataStore :: Structures.subscribersKey;
-using DataWarehouse.DataStore :: Structures.subscribersAttributes;
-using DataWarehouse.DataStore :: Structures.runningOperationsKey;
-using DataWarehouse.DataStore :: Structures.idGeneratorKey;
-using DataWarehouse.DataStore :: Structures.idGeneratorAttributes;
-using DataWarehouse.DataStore :: Annotations as DataStore;
+using DataWarehouse.DataStore::Structures.inboundQueueKey;
+using DataWarehouse.DataStore::Structures.inboundQueueAttributes;
+using DataWarehouse.DataStore::Structures.changeLogKey;
+using DataWarehouse.DataStore::Structures.changeLogAttributes;
+using DataWarehouse.DataStore::Structures.operationHistoryKey;
+using DataWarehouse.DataStore::Structures.operationHistoryAttributes;
+using DataWarehouse.DataStore::Structures.aggregationHistoryKey;
+using DataWarehouse.DataStore::Structures.aggregationHistoryAttributes;
+using DataWarehouse.DataStore::Structures.affectedRequestsKey;
+using DataWarehouse.DataStore::Structures.logMessagesKey;
+using DataWarehouse.DataStore::Structures.logMessagesAttributes;
+using DataWarehouse.DataStore::Structures.subscribersKey;
+using DataWarehouse.DataStore::Structures.subscribersAttributes;
+using DataWarehouse.DataStore::Structures.runningOperationsKey;
+using DataWarehouse.DataStore::Structures.idGeneratorKey;
+using DataWarehouse.DataStore::Structures.idGeneratorAttributes;
+using DataWarehouse.DataStore::Annotations as DataStore;
 
 context CDS_BP {
     context TAB {
@@ -395,6 +395,57 @@ context CDS_BP {
                 XDFREL2       : String(1);
                 PROTECT       : String(1);
                 OWNER_BO      : String(30);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity ADR2 {
+            key CLIENT        : String(3);
+            key ADDRNUMBER    : String(10);
+            key PERSNUMBER    : String(10);
+            key DATE_FROM     : String(8);
+            key CONSNUMBER    : String(3);
+                COUNTRY       : String(3);
+                FLGDEFAULT    : String(1);
+                FLG_NOUSE     : String(1);
+                HOME_FLAG     : String(1);
+                TEL_NUMBER    : String(30);
+                TEL_EXTENS    : String(10);
+                TELNR_LONG    : String(30);
+                TELNR_CALL    : String(30);
+                DFT_RECEIV    : String(1);
+                R3_USER       : String(1);
+                VALID_FROM    : String(14);
+                VALID_TO      : String(14);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity ADR6 {
+            key CLIENT        : String(3);
+            key ADDRNUMBER    : String(10);
+            key PERSNUMBER    : String(10);
+            key DATE_FROM     : String(8);
+            key CONSNUMBER    : String(3);
+                FLGDEFAULT    : String(1);
+                FLG_NOUSE     : String(1);
+                HOME_FLAG     : String(1);
+                SMTP_ADDR     : String(241);
+                SMTP_SRCH     : String(20);
+                DFT_RECEIV    : String(1);
+                R3_USER       : String(1);
+                ENCODE        : String(1);
+                TNEF          : String(1);
+                VALID_FROM    : String(14);
+                VALID_TO      : String(14);
                 Z_CHANGE_TYPE : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
