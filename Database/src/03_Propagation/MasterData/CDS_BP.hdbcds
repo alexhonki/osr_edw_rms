@@ -35,6 +35,7 @@ context CDS_BP {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":-470,"y":-503}}*/
         context BUT000 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -2427,7 +2428,7 @@ context CDS_BP {
                     IS_ORG_CENTRE    : String(1)      not null;
 
                     @DataStore.aggregation : #NOP
-                    DB_KEY           : Binary(16)     not null;
+                    DB_KEY           : String(200)    not null;
 
                     @DataStore.aggregation : #NOP
                     VALID_FROM       : Decimal(15, 0) not null;
@@ -2793,7 +2794,7 @@ context CDS_BP {
                     IS_ORG_CENTRE       : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
-                    DB_KEY              : Binary(16)             not null;
+                    DB_KEY              : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     VALID_FROM          : Decimal(15, 0)         not null;
@@ -2987,7 +2988,7 @@ context CDS_BP {
                     ADDRCOMM            : String(10)          not null;
                     TD_SWITCH           : String(1)           not null;
                     IS_ORG_CENTRE       : String(1)           not null;
-                    DB_KEY              : Binary(16)          not null;
+                    DB_KEY              : String(200)         not null;
                     VALID_FROM          : Decimal(15, 0)      not null;
                     VALID_TO            : Decimal(15, 0)      not null;
                     XPCPT               : String(1)           not null;
@@ -3067,4 +3068,4 @@ context CDS_BP {
             };
         };
     };
-}; 
+};
