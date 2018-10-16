@@ -45,7 +45,7 @@
       },
       "preconditions": [
         {
-          "from": "2",
+          "from": "5",
           "status": "OK"
         }
       ]
@@ -64,7 +64,7 @@
       },
       "preconditions": [
         {
-          "from": "3",
+          "from": "2",
           "status": "OK"
         }
       ]
@@ -84,6 +84,44 @@
       "preconditions": [
         {
           "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD ADR6",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.md.rms#TC_LOAD_ADR6"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BR ADR2",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_ADR2"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
           "status": "OK"
         }
       ]
