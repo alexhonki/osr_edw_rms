@@ -1,0 +1,168 @@
+{
+  "description": "1.2.2.5 Load Subs Source RMS TD XML",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "taskTimeout": 4320000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_0IDP",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_0IDP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_3PYA",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_3PYA"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_3PYP",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_3PYP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_6STA",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_6STA"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_9LIA",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_9LIA"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_IPA1",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_IPA1"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
+          "status": "OK"
+        }
+      ]
+    },
+    "8": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_IPF1",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_IPF1"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "9": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT DSO_3PSCD_TRM_FORM_DATA_IPM1_SPLIT",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DSO_3PSCD_TRM_FORM_DATA_IPM1_SPLIT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "7",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
