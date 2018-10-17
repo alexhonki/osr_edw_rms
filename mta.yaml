@@ -3,81 +3,98 @@ ID: OSR_EDW_SOURCE_RMS
 description: Source for OSR EDW
 version: 3.2.0
 modules:
-  - name: OSR_EDW_SOURCE_RMS-DWF
-    type: dwf
-    path: DWF
-    requires:
+ - name:  OSR_EDW_SOURCE_RMS-DWF
+   type: dwf
+#   parameters:
+#      app-name: OSR_EDW_SOURCE_RMS-DWF
+   path: DWF
+   requires:
 #      - name: OSR_EDW_SOURCE_RMS-uaa
       - name: OSR_EDW_SOURCE_RMS-dws
-  - name: OSR_EDW_SOURCE_RMS-Backend
-    type: nodejs
-    path: Backend
-    requires:
+   build-parameters:
+      timeout: 30m
+ - name: OSR_EDW_SOURCE_RMS-Backend
+   type: nodejs
+#   parameters:
+#      app-name: OSR_EDW_SOURCE_RMS-Backend
+   path: Backend
+   requires:
 #      - name: OSR_EDW_SOURCE_RMS-uaa
       - name: OSR_EDW_SOURCE_RMS-container
       - name: OSR_EDW_SOURCE_RMS-dws
-    properties:
-      API_END_POINT: '${xs-api-url}'
-#      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
-    provides:
-      - name: OSR_EDW_SOURCE_RMS-Backend
-        properties:
-          service_url: '${default-url}'
-  - name: OSR_EDW_SOURCE_RMS-Database
-    type: hdb
-    path: Database
-    requires:
-      - name: OSR_EDW_SOURCE_RMS-container
-        properties:
-          TARGET_CONTAINER: '~{hdi-container-name}'
-      - name: edw-ext-access-grantor
-  - name: OSR_EDW_SOURCE_RMS-Services
-    type: nodejs
-    path: Services
-    provides:
+   properties:
+     API_END_POINT: "${xs-api-url}"
+#     SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
+   provides:
+    - name:  OSR_EDW_SOURCE_RMS-Backend
+      properties:
+       service_url: ${default-url}
+   build-parameters:
+      timeout: 30m
+ - name: OSR_EDW_SOURCE_RMS-Database
+   type: hdb
+#   parameters:
+#      app-name: OSR_EDW_SOURCE_RMS-Database
+   path: Database
+   requires:
+    - name: OSR_EDW_SOURCE_RMS-container
+      properties:
+        HDI_DEPLOY_OPTIONS: { "auto_undeploy": true }
+        TARGET_CONTAINER: '~{hdi-container-name}'
+    - name: edw-ext-access-grantor
+ - name: OSR_EDW_SOURCE_RMS-Services
+   type: nodejs
+#   parameters:
+#      app-name: OSR_EDW_SOURCE_RMS-Database
+   path: Services
+   provides:
       - name: Services_api
         properties:
           url: '${default-url}'
-    requires:
-      - name: OSR_EDW_SOURCE_RMS-container
-    build-parameters:
-      timeout: 15m
+   requires:
+    - name: OSR_EDW_SOURCE_RMS-container
+   build-parameters:
+      timeout: 30m
 resources:
-  #- name: OSR_EDW_SOURCE_RMS-uaa
-  #  type: com.sap.xs.uaa
-  #  parameters:
-  #    service-name: OSR_EDW_SOURCE_RMS-uaa
-  #    service-plan: space
-  #    config:
-  #      xsappname: OSR_EDW_SOURCE_RMS
-  #      scopes:
-  #        - name: $XSAPPNAME.TOE
-  #          description: access for TOE
-  #          grant-as-authority-to-apps:
-  #            - dwf-toe
-  #            - dwf-runtime
-  #          granted-apps:
-  #            - dwf-toe
-  #            - dwf-runtime
-  #      authorities:
-  #        - $ACCEPT_GRANTED_AUTHORITIES
-  #      role-templates:
-  #        - name: User
-  #          description: Access API
-  #          scope-references:
-  #            - $XSAPPNAME.TOE
-  #            - cloud_controller.read
-  - name: OSR_EDW_SOURCE_RMS-dws
-    properties:
-      dwf-edw-client-name: '${service-name}'
-    type: com.sap.xs.dwf-edw-client
-  - name: OSR_EDW_SOURCE_RMS-container
-    properties:
-      hdi-container-name: '${service-name}'
-    type: com.sap.xs.hdi-container
-    parameters:
-     service-keys:
-     - name: dwf-monitor
-  - name: edw-ext-access-grantor
-    type: org.cloudfoundry.existing-service
-    description: edw-ext-access-grantor
+ #- name: OSR_EDW_SOURCE_RMS-uaa
+ #  type: com.sap.xs.uaa
+ #  parameters:
+ #    service-name: OSR_EDW_SOURCE_RMS-uaa
+ #    service-plan: space
+ #    config:
+ #        xsappname: OSR_EDW_SOURCE_RMS
+ #        scopes:
+ #         - name: $XSAPPNAME.TOE
+ #           description: access for TOE
+ #           grant-as-authority-to-apps:
+ #            - dwf-toe
+ #            - dwf-runtime
+ #           granted-apps:
+ #            - dwf-toe
+ #            - dwf-runtime
+ #        authorities:
+ #         - $ACCEPT_GRANTED_AUTHORITIES
+ #        role-templates:
+ #          - name: User
+ #            description: Access API
+ #            scope-references:
+ #             - $XSAPPNAME.TOE
+ #             - cloud_controller.read
+
+ - name: OSR_EDW_SOURCE_RMS-dws
+   properties:
+      dwf-edw-client-name: ${service-name}
+#      dwf-edw-client-name: OSR_EDW_SOURCE_RMS-dws
+#   parameters:
+#      service-name: OSR_EDW_SOURCE_RMS-dws
+   type: com.sap.xs.dwf-edw-client
+ - name: OSR_EDW_SOURCE_RMS-container
+   properties:
+      hdi-container-name: ${service-name}
+#      hdi-container-name: OSR_EDW_SOURCE_RMS-container
+#   parameters:
+#      service-name: OSR_EDW_SOURCE_RMS-container
+   type: com.sap.xs.hdi-container
+ - name: edw-ext-access-grantor
+   type: org.cloudfoundry.existing-service
+   description: edw-ext-access-grantor
