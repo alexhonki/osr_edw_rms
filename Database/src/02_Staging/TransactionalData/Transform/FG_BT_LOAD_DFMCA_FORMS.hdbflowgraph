@@ -1392,7 +1392,7 @@
       </attributes>
       <attributes xmi:id="5517405f593ce896e64527164276fe04" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="false" expression="IFNULL(&quot;Z_SOURCE_SYS&quot;, &#x27;&#x27;)" length="5">
       </attributes>
-      <attributes xmi:id="6b9f53e18e06b49b6ad9b4053eef08d7" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="&#x27;N&#x27;" length="1">
+      <attributes xmi:id="6b9f53e18e06b49b6ad9b4053eef08d7" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;&#x27; END" length="1">
       </attributes>
     </outputs>
   </nodes>
@@ -1803,24 +1803,19 @@
     </annotations>
     <inputs xmi:id="5e4b2477b00198155f9a6b14d4ea9e0f" name="P_JOIN_IN">
       <attributes xmi:id="4e508e3482ffda776f907e8f469f6dd5" name="Z_RUN_SEQ_ID_1" type="INTEGER" nullable="false" length="10">
-        <annotations xmi:id="625af745f5bcd87b0ff987915da73e8e" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="625af745f5bcd87b0ff987915da73e8e" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="a467c9821d8578065cc2b74806236718" name="MANDT" type="NVARCHAR" nullable="false" length="3">
-        <annotations xmi:id="9354f373f48d3e3c4d5c01d4240e64e7" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="9354f373f48d3e3c4d5c01d4240e64e7" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="36d22484be481c4254127c3827dc631f" name="RETURN_ID" type="NVARCHAR" nullable="false" length="32">
-        <annotations xmi:id="bc056e3e50576bbe314e8158567a9dd1" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="bc056e3e50576bbe314e8158567a9dd1" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="aa14f5cde5f41c94833c535377cadef5" name="FORM" type="NVARCHAR" nullable="false" length="30">
-        <annotations xmi:id="ac21c74f6eba0b9929021e6cfec7908c" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="ac21c74f6eba0b9929021e6cfec7908c" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="1bd6dc772ae3208cf35fcd59b944074a" name="FORM_NUMBER" type="NVARCHAR" nullable="false" length="4">
-        <annotations xmi:id="60de95652a7318024483bd420d65927f" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="60de95652a7318024483bd420d65927f" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="9778d932020ae6e800193567e92f14cc" name="CASE_GUID" type="NVARCHAR" nullable="true" length="32">
       </attributes>
@@ -1849,8 +1844,7 @@
       <attributes xmi:id="f4602522b3c6b04b8942d52f0f833636" name="LOCATOR_NUMBER" type="NVARCHAR" nullable="true" length="16">
       </attributes>
       <attributes xmi:id="407ae2fc7e47e395b1df0d91e0c8a475" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="false" length="10">
-        <annotations xmi:id="bec0020330d18d8be11307ce5a0eb29f" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="bec0020330d18d8be11307ce5a0eb29f" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="f66e11fbb7f6c8f847e28ea062d74120" name="Z_CHANGE_TYPE" type="NVARCHAR" nullable="true" length="1">
       </attributes>
@@ -1863,20 +1857,16 @@
     </inputs>
     <outputs xmi:id="80582c50a5cba457abcd65e354b6c275" name="P_JOIN_OUT">
       <attributes xmi:id="c0daf503329f25eacae7e973dbde8bf6" name="MANDT" type="NVARCHAR" nullable="false" expression="&quot;MANDT&quot;" length="3">
-        <annotations xmi:id="f65fda5a7a162ebc2dd5a1524b345b83" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="f65fda5a7a162ebc2dd5a1524b345b83" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="3eb1e3a86d0d7d162e426dcf62272e43" name="RETURN_ID" type="NVARCHAR" nullable="false" expression="&quot;RETURN_ID&quot;" length="32">
-        <annotations xmi:id="64fd01d721159a593dacbb5ab23b823a" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="64fd01d721159a593dacbb5ab23b823a" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="9440df3fd68aad8f311db7ae673f86dd" name="FORM" type="NVARCHAR" nullable="false" expression="&quot;FORM&quot;" length="30">
-        <annotations xmi:id="232262e7ebe88c5cb7797ea4e16bc488" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="232262e7ebe88c5cb7797ea4e16bc488" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="23f29df7c3ea6ed724b95e33119f84a9" name="FORM_NUMBER" type="NVARCHAR" nullable="false" expression="&quot;FORM_NUMBER&quot;" length="4">
-        <annotations xmi:id="31830fc020d723b1452b82990054ee13" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="31830fc020d723b1452b82990054ee13" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="ff885b86e74d1ce044125263e62c096f" name="CASE_GUID" type="NVARCHAR" nullable="true" expression="&quot;CASE_GUID&quot;" length="32">
       </attributes>
@@ -1905,8 +1895,7 @@
       <attributes xmi:id="050f4fccc0b88da22f82d6167cb70602" name="LOCATOR_NUMBER" type="NVARCHAR" nullable="true" expression="&quot;LOCATOR_NUMBER&quot;" length="16">
       </attributes>
       <attributes xmi:id="7022f6f469a84ec2e60e997587be602b" name="Z_RUN_SEQ_ID" type="INTEGER" nullable="false" expression="&quot;Z_RUN_SEQ_ID&quot;" length="10">
-        <annotations xmi:id="5e216b345ca856aa5a1a66de67794f02" key="sap.im.primaryKey" value="true">
-        </annotations>
+        <annotations xmi:id="5e216b345ca856aa5a1a66de67794f02" key="sap.im.primaryKey" value="true"/>
       </attributes>
       <attributes xmi:id="b9a2be84b953dc3773811a0d988ce1be" name="Z_CHANGE_TYPE" type="NVARCHAR" nullable="true" expression="&quot;Z_CHANGE_TYPE&quot;" length="1">
       </attributes>
