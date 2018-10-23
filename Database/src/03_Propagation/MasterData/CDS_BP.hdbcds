@@ -35,7 +35,6 @@ context CDS_BP {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":-470,"y":-503}}*/
         context BUT000 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -283,7 +282,7 @@ context CDS_BP {
                     CHTIM                    : String(6)      not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTNER_GUID             : LargeBinary    not null;
+                    PARTNER_GUID             : String(200)    not null;
 
                     @DataStore.aggregation : #NOP
                     ADDRCOMM                 : String(10)     not null;
@@ -673,7 +672,7 @@ context CDS_BP {
                     CHTIM                    : String(6)              not null;
 
                     @DataStore.aggregation : #MOV
-                    PARTNER_GUID             : LargeBinary            not null;
+                    PARTNER_GUID             : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     ADDRCOMM                 : String(10)             not null;
@@ -899,7 +898,7 @@ context CDS_BP {
                     CHUSR                    : String(12)          not null;
                     CHDAT                    : String(8)           not null;
                     CHTIM                    : String(6)           not null;
-                    PARTNER_GUID             : LargeBinary         not null;
+                    PARTNER_GUID             : String(200)         not null;
                     ADDRCOMM                 : String(10)          not null;
                     TD_SWITCH                : String(1)           not null;
                     IS_ORG_CENTRE            : String(1)           not null;
@@ -2416,7 +2415,7 @@ context CDS_BP {
                     CHTIM            : String(6)      not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTNER_GUID     : Binary(16)     not null;
+                    PARTNER_GUID     : String(200)     not null;
 
                     @DataStore.aggregation : #NOP
                     ADDRCOMM         : String(10)     not null;
@@ -2782,7 +2781,7 @@ context CDS_BP {
                     CHTIM               : String(6)              not null;
 
                     @DataStore.aggregation : #MOV
-                    PARTNER_GUID        : Binary(16)             not null;
+                    PARTNER_GUID        : String(200)            not null;
 
                     @DataStore.aggregation : #MOV
                     ADDRCOMM            : String(10)             not null;
@@ -2984,7 +2983,7 @@ context CDS_BP {
                     CHUSR               : String(12)          not null;
                     CHDAT               : String(8)           not null;
                     CHTIM               : String(6)           not null;
-                    PARTNER_GUID        : Binary(16)          not null;
+                    PARTNER_GUID        : String(200)         not null;
                     ADDRCOMM            : String(10)          not null;
                     TD_SWITCH           : String(1)           not null;
                     IS_ORG_CENTRE       : String(1)           not null;
