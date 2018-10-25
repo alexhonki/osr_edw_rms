@@ -1,0 +1,72 @@
+{
+  "description": "OSR_9.2.0.0 Load Batch Main Group SRCSTGPRP PH1_ACS_TXI MDTD",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskTimeout": 4320000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "OSR TC LOAD BT GROUP SRC MDTD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#OSR_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "OSR TC LOAD BT GROUP STG MDTD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#OSR_2.2.0.0_TC_BT_LOAD_GRP_STG_MDTD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "OSR TC LOAD GROUP PRP MDTD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#OSR_3.2.0.0_TC_BT_LOAD_GRP_PRP_MDTD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
