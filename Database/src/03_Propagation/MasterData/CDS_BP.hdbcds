@@ -20,7 +20,7 @@ using DataWarehouse.DataStore::Annotations as DataStore;
 
 context CDS_BP {
 
-    /*@@layout{"layoutInfo":{"x":-1788,"y":-386.5}}*/
+    /*@@layout{"layoutInfo":{"x":-1858,"y":-434.5}}*/
     context DSO {
         @DataStore.isDSO
         @DataStore.entity.activeData         : 'active_data'
@@ -35,6 +35,7 @@ context CDS_BP {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":-382,"y":-506}}*/
         context BUT000 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -282,7 +283,7 @@ context CDS_BP {
                     CHTIM                    : String(6)      not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTNER_GUID             : String(200)    not null;
+                    PARTNER_GUID             : LargeBinary    not null;
 
                     @DataStore.aggregation : #NOP
                     ADDRCOMM                 : String(10)     not null;
@@ -672,7 +673,7 @@ context CDS_BP {
                     CHTIM                    : String(6)              not null;
 
                     @DataStore.aggregation : #MOV
-                    PARTNER_GUID             : String(200)            not null;
+                    PARTNER_GUID             : LargeBinary            not null;
 
                     @DataStore.aggregation : #MOV
                     ADDRCOMM                 : String(10)             not null;
@@ -898,7 +899,7 @@ context CDS_BP {
                     CHUSR                    : String(12)          not null;
                     CHDAT                    : String(8)           not null;
                     CHTIM                    : String(6)           not null;
-                    PARTNER_GUID             : String(200)         not null;
+                    PARTNER_GUID             : LargeBinary         not null;
                     ADDRCOMM                 : String(10)          not null;
                     TD_SWITCH                : String(1)           not null;
                     IS_ORG_CENTRE            : String(1)           not null;
@@ -2415,7 +2416,7 @@ context CDS_BP {
                     CHTIM            : String(6)      not null;
 
                     @DataStore.aggregation : #NOP
-                    PARTNER_GUID     : String(200)     not null;
+                    PARTNER_GUID     : String(200)    not null;
 
                     @DataStore.aggregation : #NOP
                     ADDRCOMM         : String(10)     not null;
