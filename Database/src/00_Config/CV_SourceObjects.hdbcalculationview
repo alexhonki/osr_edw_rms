@@ -103,7 +103,8 @@ AND TABLE_NAME NOT LIKE '%CV_FORM%'</filter>
     </input>
     <filter>SCHEMA_NAME='EDW_RMS' AND 
 VIEW_NAME NOT LIKE '%.config.%'
-AND VIEW_NAME NOT LIKE '%.CV_FORM%'</filter>
+AND VIEW_NAME NOT LIKE '%/hier/%' 
+</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="U_Objects">
@@ -123,13 +124,13 @@ AND VIEW_NAME NOT LIKE '%.CV_FORM%'</filter>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="256">
         <formula>'logical-OSR-EDW-SOURCE-RMS-grantor/schema'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="SYNONYM" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SYNONYM"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="256">
         <formula>REPLACE(&quot;OBJECT_NAME&quot;, '::', '.synonym::')</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
   </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
