@@ -1,9 +1,11 @@
 {
-  "description": "OSR_1.2.0.0 Load Batch Main Group SRC PH1_ACS_TXI MDTD",
+  "description": "2.2.2.6 Load Subs Staging RMS TD PSCD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
+  "maxParallelExecution": 3,
   "taskTimeout": 4320000,
+  "resumeBehavior": "NO_RESUME",
   "taskList": {
     "1": {
       "inline": {
@@ -15,49 +17,11 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "PH1 TC LOAD BT GROUP SOURCE MDTD",
+        "description": "TC LOAD DFMCAINV",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.rms#PH1_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "1",
-          "status": "NEUTRAL"
-        }
-      ]
-    },
-    "3": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "ACS TC LOAD BT GROUP SOURCE MDTD",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#ACS_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "2",
-          "status": "OK"
-        }
-      ]
-    },
-    "4": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TXI TC LOAD BT GROUP SOURCE MDTD",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#TXI_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
+            "value": "osr.edw.staging.td.rms#TC_LOAD_DFMCAINV"
           }
         ]
       },
@@ -68,21 +32,59 @@
         }
       ]
     },
-    "5": {
+    "3": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "PH2 TC LOAD BT GROUP SOURCE MDTD",
+        "description": "TC LOAD DFMCA_RETURN",
         "parameterValues": [
           {
             "id": "taskChainId",
-            "value": "osr.edw.rms#PH2_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
+            "value": "osr.edw.staging.td.rms#TC_LOAD_DFMCA_RETURN"
           }
         ]
       },
       "preconditions": [
         {
-          "from": "4",
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD DFMCA_FORMS",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_DFMCA_FORMS"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD DFMCA_FORM_VERS",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_DFMCA_FORM_VERS"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
           "status": "OK"
         }
       ]
