@@ -1,0 +1,39 @@
+namespace osr.edw.source.md.rms;
+
+context CDS_TRM {
+
+    /*@@layout{"layoutInfo":{"x":-119,"y":-91.5}}*/
+    context TAB {
+
+        /*@@layout{"layoutInfo":{"x":-261,"y":-156.5}}*/
+        entity T_PRTRNG {
+            key MANDT        : String(3);
+            key INCOTYP      : String(10);
+            key FROMDATE     : String(8);
+            key TODATE       : String(8);
+                THRESHOLD    : Decimal(16, 2);
+                DEDUCTION_TO : Decimal(16, 2);
+                WAERS        : String(5);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":-36,"y":-137.5}}*/
+        entity T_PRTRTE {
+            key MANDT          : String(3);
+            key PERIOD_KEY     : String(4);
+                PRT_YRLY_RATE  : Decimal(8, 4);
+                DAYS_IN_YR     : Decimal(6, 2);
+                PRT_DAILY_RATE : Decimal(10, 5);
+                REF_PERIOD_KEY : String(4);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+    };
+};
