@@ -535,5 +535,57 @@ context CDS_PSCD {
                 Z_RUN_ROW_NO  : Integer;
                 Z_SOURCE_SYS  : String(5);
         };
+
+        /*@@layout{"layoutInfo":{"x":-226,"y":18.5}}*/
+        entity DFKKLOCKS {
+            key CLIENT     : String(3);
+            key LOOBJ1     : String(32);
+            key LOTYP      : String(2);
+            key PROID      : String(2);
+            key LOCKR      : String(1);
+            key FDATE      : String(8);
+            key TDATE      : String(8);
+            key GPART      : String(10);
+            key VKONT      : String(12);
+                COND_LOOBJ : String(32);
+                ACTKEY     : String(2);
+                UNAME      : String(12);
+                ADATUM     : String(8);
+                AZEIT      : String(6);
+                PROTECTED  : String(1);
+                LAUFD      : String(8);
+                LAUFI      : String(6);
+                key Z_RUN_SEQ_ID  : Integer;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_RUN_ROW_NO  : Integer;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":66,"y":17.5}}*/
+        entity DFKKLOCKSH {
+            key CLIENT     : String(3);
+            key LOOBJ1     : String(32);
+            key LOTYP      : String(2);
+            key PROID      : String(2);
+            key LFDNR      : String(3);
+                LOCKR      : String(1);
+                FDATE      : String(8);
+                TDATE      : String(8);
+                GPART      : String(10);
+                COND_LOOBJ : String(32);
+                ACTKEY     : String(2);
+                UNAME      : String(12);
+                ADATUM     : String(8);
+                AZEIT      : String(6);
+                LUNAME     : String(12);
+                LDATUM     : String(8);
+                LZEIT      : String(6);
+                key Z_RUN_SEQ_ID  : Integer;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_RUN_ROW_NO  : Integer;
+                Z_SOURCE_SYS  : String(5);
+        };
     };
 };
