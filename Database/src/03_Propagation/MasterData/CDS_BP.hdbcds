@@ -3066,5 +3066,281 @@ context CDS_BP {
                     technicalAttributes : idGeneratorAttributes;
             };
         };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":324,"y":-504.5}}*/
+        context ADR6 {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key CLIENT             : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key ADDRNUMBER         : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                key PERSNUMBER         : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                key DATE_FROM          : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key CONSNUMBER         : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    FLGDEFAULT         : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    FLG_NOUSE          : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    HOME_FLAG          : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    SMTP_ADDR          : String(241)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    SMTP_SRCH          : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    DFT_RECEIV         : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    R3_USER            : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    ENCODE             : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    TNEF               : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    VALID_FROM         : String(14)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    VALID_TO           : String(14)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE      : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME      : UTCTimestamp not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS       : String(5)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO       : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID       : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    STD_EMAIL          : String(100)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    EMAIL_EXTRA        : String(256)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    EMAIL_INFO_CODE    : String(1024) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MATCH_EMAIL_USER   : String(50)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    MATCH_EMAIL_DOMAIN : String(50)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    Cleanse_TABLE_ID   : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Cleanse_ROW_ID     : Integer      not null;
+            }
+            technical configuration {
+                group name ADR6 group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key CLIENT              : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key ADDRNUMBER          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key PERSNUMBER          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key DATE_FROM           : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key CONSNUMBER          : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLGDEFAULT          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    FLG_NOUSE           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    HOME_FLAG           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    SMTP_ADDR           : String(241)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    SMTP_SRCH           : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DFT_RECEIV          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    R3_USER             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ENCODE              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TNEF                : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    VALID_FROM          : String(14)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    VALID_TO            : String(14)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_SEQ_ID        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    STD_EMAIL           : String(100)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    EMAIL_EXTRA         : String(256)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    EMAIL_INFO_CODE     : String(1024)           not null;
+
+                    @DataStore.aggregation : #MOV
+                    MATCH_EMAIL_USER    : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    MATCH_EMAIL_DOMAIN  : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    Cleanse_TABLE_ID    : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Cleanse_ROW_ID      : Integer                not null;
+            }
+            technical configuration {
+                group name ADR6 group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key CLIENT              : String(3)           not null;
+                key ADDRNUMBER          : String(10)          not null;
+                key PERSNUMBER          : String(10)          not null;
+                key DATE_FROM           : String(8)           not null;
+                key CONSNUMBER          : String(3)           not null;
+                    FLGDEFAULT          : String(1)           not null;
+                    FLG_NOUSE           : String(1)           not null;
+                    HOME_FLAG           : String(1)           not null;
+                    SMTP_ADDR           : String(241)         not null;
+                    SMTP_SRCH           : String(20)          not null;
+                    DFT_RECEIV          : String(1)           not null;
+                    R3_USER             : String(1)           not null;
+                    ENCODE              : String(1)           not null;
+                    TNEF                : String(1)           not null;
+                    VALID_FROM          : String(14)          not null;
+                    VALID_TO            : String(14)          not null;
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
+                    STD_EMAIL           : String(100)         not null;
+                    EMAIL_EXTRA         : String(256)         not null;
+                    EMAIL_INFO_CODE     : String(1024)        not null;
+                    MATCH_EMAIL_USER    : String(50)          not null;
+                    MATCH_EMAIL_DOMAIN  : String(50)          not null;
+                    Cleanse_TABLE_ID    : Integer             not null;
+                    Cleanse_ROW_ID      : Integer             not null;
+            }
+            technical configuration {
+                group name ADR6 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
     };
 };
