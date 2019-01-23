@@ -1,0 +1,33 @@
+{
+  "description": "Load Batch Source DFKKCOHI",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load DFKKCOHI",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DFKKCOHI_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
