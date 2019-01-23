@@ -4791,7 +4791,6 @@ context CDS_PSCD {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":290,"y":15.5}}*/
         context DFKKCOHI {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -4949,7 +4948,7 @@ context CDS_PSCD {
                     Z_SOURCE_SYS    : String(5)      not null;
             }
             technical configuration {
-                group name DFKKCOHINCORR group type "sap.dwf.dso" group subtype ACTIVE;
+                group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
             };
 
             @DataStore.entityCategory : #ACTIVATION_QUEUE
@@ -5096,7 +5095,7 @@ context CDS_PSCD {
                     ACNUM_INT           : String(10)             not null;
 
                     @DataStore.aggregation : #MOV
-                key Z_RUN_SEQ_ID        : Integer                not null;
+                    Z_RUN_SEQ_ID        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
                     Z_CHANGE_TYPE       : String(1)              not null;
@@ -5111,7 +5110,7 @@ context CDS_PSCD {
                     Z_SOURCE_SYS        : String(5)              not null;
             }
             technical configuration {
-                group name DFKKCOHINCORR group type "sap.dwf.dso" group subtype QUEUE;
+                group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
             };
 
             @DataStore.entityCategory : #CHANGE_LOG
@@ -5164,14 +5163,14 @@ context CDS_PSCD {
                     SENDCONTROLCMS      : String(4)           not null;
                     BKKRS               : String(4)           not null;
                     ACNUM_INT           : String(10)          not null;
-                key Z_RUN_SEQ_ID        : Integer             not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
                     Z_CHANGE_TYPE       : String(1)           not null;
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_RUN_ROW_NO        : Integer             not null;
                     Z_SOURCE_SYS        : String(5)           not null;
             }
             technical configuration {
-                group name DFKKCOHINCORR group type "sap.dwf.dso" group subtype CHANGE_LOG;
+                group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
             };
 
             @DataStore.entityCategory : #OPERATION_HISTORY
@@ -5228,7 +5227,7 @@ context CDS_PSCD {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":525,"y":14.5}}*/
+        /*@@layout{"layoutInfo":{"x":486,"y":18.5}}*/
         context DFKKCOHINCORR {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -5281,13 +5280,13 @@ context CDS_PSCD {
                     REFNO         : String(70)   not null;
 
                     @DataStore.aggregation : #NOP
-                key Z_RUN_SEQ_ID  : Integer      not null;
+                    Z_RUN_SEQ_ID  : Integer      not null;
 
                     @DataStore.aggregation : #NOP
                     Z_CHANGE_TYPE : String(1)    not null;
 
                     @DataStore.aggregation : #NOP
-                    Z_CHANGE_TIME : UTCTimestamp not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
 
                     @DataStore.aggregation : #NOP
                     Z_RUN_ROW_NO  : Integer      not null;
@@ -5353,13 +5352,13 @@ context CDS_PSCD {
                     REFNO               : String(70)             not null;
 
                     @DataStore.aggregation : #MOV
-                key Z_RUN_SEQ_ID        : Integer                not null;
+                    Z_RUN_SEQ_ID        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
                     Z_CHANGE_TYPE       : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
-                    Z_CHANGE_TIME       : UTCTimestamp           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
 
                     @DataStore.aggregation : #MOV
                     Z_RUN_ROW_NO        : Integer                not null;
@@ -5391,9 +5390,9 @@ context CDS_PSCD {
                     XREMINDER           : String(1)           not null;
                     REFTY               : String(1)           not null;
                     REFNO               : String(70)          not null;
-                key Z_RUN_SEQ_ID        : Integer             not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
                     Z_CHANGE_TYPE       : String(1)           not null;
-                    Z_CHANGE_TIME       : UTCTimestamp        not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_RUN_ROW_NO        : Integer             not null;
                     Z_SOURCE_SYS        : String(5)           not null;
             }
