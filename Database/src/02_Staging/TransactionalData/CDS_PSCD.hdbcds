@@ -5440,5 +5440,312 @@ context CDS_PSCD {
                     technicalAttributes : idGeneratorAttributes;
             };
         };
+
+@DataStore.isDSO
+@DataStore.entity.activeData: 'active_data'
+@DataStore.entity.changeLog: 'change_log'
+@DataStore.entity.activationQueue: ['inbound_queue']
+@DataStore.entity.operationHistory: 'operationHistory'
+@DataStore.entity.aggregationHistory: 'aggregationHistory'
+@DataStore.entity.logMessages: 'logMessages'
+@DataStore.entity.affectedRequests: 'affectedRequests'
+@DataStore.entity.subscribers: 'subscribers'
+@DataStore.entity.runningOperations: 'runningOperations'
+@DataStore.entity.idGenerator: 'idGen'
+@DataStore.computeChecksum: false
+@DataStore.snapshotSupport: false
+/*@@layout{"layoutInfo":{"x":1743,"y":175.5}}*/
+context FKKMAZE{
+ 
+@DataStore.entityCategory: #ACTIVE_DATA
+entity active_data{
+ @DataStore.aggregation: #NOP
+key MANDT : String(3) not null;
+@DataStore.aggregation: #NOP
+key LAUFD : String(8) not null;
+@DataStore.aggregation: #NOP
+key LAUFI : String(6) not null;
+@DataStore.aggregation: #NOP
+key GPART : String(10) not null;
+@DataStore.aggregation: #NOP
+key VKONT : String(12) not null;
+@DataStore.aggregation: #NOP
+key MAZAE : String(6) not null;
+@DataStore.aggregation: #NOP
+key OPBEL : String(12) not null;
+@DataStore.aggregation: #NOP
+key OPUPW : String(3) not null;
+@DataStore.aggregation: #NOP
+key OPUPK : String(4) not null;
+@DataStore.aggregation: #NOP
+key OPUPZ : String(3) not null;
+@DataStore.aggregation: #NOP
+BUKRS : String(4) not null;
+@DataStore.aggregation: #NOP
+WAERS : String(5) not null;
+@DataStore.aggregation: #NOP
+MBETM : Decimal(13,2) not null;
+@DataStore.aggregation: #NOP
+MBETH : Decimal(13,2) not null;
+@DataStore.aggregation: #NOP
+FAEDN : String(8) not null;
+@DataStore.aggregation: #NOP
+MINTM : Decimal(13,2) not null;
+@DataStore.aggregation: #NOP
+MAHNS : String(2) not null;
+@DataStore.aggregation: #NOP
+MSTYP : String(2) not null;
+@DataStore.aggregation: #NOP
+MAHNN : String(2) not null;
+@DataStore.aggregation: #NOP
+MANSP : String(1) not null;
+@DataStore.aggregation: #NOP
+XMFAK : String(1) not null;
+@DataStore.aggregation: #NOP
+XMSUS : String(1) not null;
+@DataStore.aggregation: #NOP
+XMSTO : String(1) not null;
+@DataStore.aggregation: #NOP
+XINFO : String(1) not null;
+@DataStore.aggregation: #NOP
+MDRKD : String(8) not null;
+@DataStore.aggregation: #NOP
+STAKZ : String(1) not null;
+@DataStore.aggregation: #NOP
+XMVKT : String(1) not null;
+@DataStore.aggregation: #NOP
+VTREF : String(20) not null;
+@DataStore.aggregation: #NOP
+SUBAP : String(1) not null;
+@DataStore.aggregation: #NOP
+SEGMENT : String(10) not null;
+@DataStore.aggregation: #NOP
+PRCTR : String(10) not null;
+@DataStore.aggregation: #NOP
+MAHNV : String(2) not null;
+@DataStore.aggregation: #NOP
+AUSDT : String(8) not null;
+@DataStore.aggregation: #NOP
+SPART : String(2) not null;
+@DataStore.aggregation: #NOP
+XTAUS : String(1) not null;
+@DataStore.aggregation: #NOP
+MOPUPZ : String(3) not null;
+@DataStore.aggregation: #NOP
+HIGHERDL : String(1) not null;
+@DataStore.aggregation: #NOP
+DALIN : String(1) not null;
+@DataStore.aggregation: #NOP
+FBNUM : String(12) not null;
+@DataStore.aggregation: #NOP
+MIBEL : String(12) not null;
+@DataStore.aggregation: #NOP
+Z_RUN_SEQ_ID : Integer not null;
+@DataStore.aggregation: #NOP
+Z_CHANGE_TYPE : String(1) not null;
+@DataStore.aggregation: #NOP
+Z_CHANGE_TIME : UTCTimestamp not null default '1900-01-01 23:59:59';
+@DataStore.aggregation: #NOP
+Z_RUN_ROW_NO : Integer not null;
+@DataStore.aggregation: #NOP
+Z_SOURCE_SYS : String(5) not null;
+
+}technical configuration {
+	group name DSO_1 group type "sap.dwf.dso" group subtype ACTIVE;
+};
+
+@DataStore.entityCategory: #ACTIVATION_QUEUE
+entity inbound_queue{
+ key technicalKey : inboundQueueKey;
+technicalAttributes : inboundQueueAttributes not null;
+@DataStore.aggregation: #MOV
+key MANDT : String(3) not null;
+@DataStore.aggregation: #MOV
+key LAUFD : String(8) not null;
+@DataStore.aggregation: #MOV
+key LAUFI : String(6) not null;
+@DataStore.aggregation: #MOV
+key GPART : String(10) not null;
+@DataStore.aggregation: #MOV
+key VKONT : String(12) not null;
+@DataStore.aggregation: #MOV
+key MAZAE : String(6) not null;
+@DataStore.aggregation: #MOV
+key OPBEL : String(12) not null;
+@DataStore.aggregation: #MOV
+key OPUPW : String(3) not null;
+@DataStore.aggregation: #MOV
+key OPUPK : String(4) not null;
+@DataStore.aggregation: #MOV
+key OPUPZ : String(3) not null;
+@DataStore.aggregation: #MOV
+BUKRS : String(4) not null;
+@DataStore.aggregation: #MOV
+WAERS : String(5) not null;
+@DataStore.aggregation: #MOV
+MBETM : Decimal(13,2) not null;
+@DataStore.aggregation: #MOV
+MBETH : Decimal(13,2) not null;
+@DataStore.aggregation: #MOV
+FAEDN : String(8) not null;
+@DataStore.aggregation: #MOV
+MINTM : Decimal(13,2) not null;
+@DataStore.aggregation: #MOV
+MAHNS : String(2) not null;
+@DataStore.aggregation: #MOV
+MSTYP : String(2) not null;
+@DataStore.aggregation: #MOV
+MAHNN : String(2) not null;
+@DataStore.aggregation: #MOV
+MANSP : String(1) not null;
+@DataStore.aggregation: #MOV
+XMFAK : String(1) not null;
+@DataStore.aggregation: #MOV
+XMSUS : String(1) not null;
+@DataStore.aggregation: #MOV
+XMSTO : String(1) not null;
+@DataStore.aggregation: #MOV
+XINFO : String(1) not null;
+@DataStore.aggregation: #MOV
+MDRKD : String(8) not null;
+@DataStore.aggregation: #MOV
+STAKZ : String(1) not null;
+@DataStore.aggregation: #MOV
+XMVKT : String(1) not null;
+@DataStore.aggregation: #MOV
+VTREF : String(20) not null;
+@DataStore.aggregation: #MOV
+SUBAP : String(1) not null;
+@DataStore.aggregation: #MOV
+SEGMENT : String(10) not null;
+@DataStore.aggregation: #MOV
+PRCTR : String(10) not null;
+@DataStore.aggregation: #MOV
+MAHNV : String(2) not null;
+@DataStore.aggregation: #MOV
+AUSDT : String(8) not null;
+@DataStore.aggregation: #MOV
+SPART : String(2) not null;
+@DataStore.aggregation: #MOV
+XTAUS : String(1) not null;
+@DataStore.aggregation: #MOV
+MOPUPZ : String(3) not null;
+@DataStore.aggregation: #MOV
+HIGHERDL : String(1) not null;
+@DataStore.aggregation: #MOV
+DALIN : String(1) not null;
+@DataStore.aggregation: #MOV
+FBNUM : String(12) not null;
+@DataStore.aggregation: #MOV
+MIBEL : String(12) not null;
+@DataStore.aggregation: #MOV
+Z_RUN_SEQ_ID : Integer not null;
+@DataStore.aggregation: #MOV
+Z_CHANGE_TYPE : String(1) not null;
+@DataStore.aggregation: #MOV
+Z_CHANGE_TIME : UTCTimestamp not null default '1900-01-01 23:59:59';
+@DataStore.aggregation: #MOV
+Z_RUN_ROW_NO : Integer not null;
+@DataStore.aggregation: #MOV
+Z_SOURCE_SYS : String(5) not null;
+
+}technical configuration {
+	group name DSO_1 group type "sap.dwf.dso" group subtype QUEUE;
+};
+
+@DataStore.entityCategory: #CHANGE_LOG
+entity change_log{
+ key technicalKey : changeLogKey;
+technicalAttributes : changeLogAttributes not null;
+key MANDT : String(3) not null;
+key LAUFD : String(8) not null;
+key LAUFI : String(6) not null;
+key GPART : String(10) not null;
+key VKONT : String(12) not null;
+key MAZAE : String(6) not null;
+key OPBEL : String(12) not null;
+key OPUPW : String(3) not null;
+key OPUPK : String(4) not null;
+key OPUPZ : String(3) not null;
+BUKRS : String(4) not null;
+WAERS : String(5) not null;
+MBETM : Decimal(13,2) not null;
+MBETH : Decimal(13,2) not null;
+FAEDN : String(8) not null;
+MINTM : Decimal(13,2) not null;
+MAHNS : String(2) not null;
+MSTYP : String(2) not null;
+MAHNN : String(2) not null;
+MANSP : String(1) not null;
+XMFAK : String(1) not null;
+XMSUS : String(1) not null;
+XMSTO : String(1) not null;
+XINFO : String(1) not null;
+MDRKD : String(8) not null;
+STAKZ : String(1) not null;
+XMVKT : String(1) not null;
+VTREF : String(20) not null;
+SUBAP : String(1) not null;
+SEGMENT : String(10) not null;
+PRCTR : String(10) not null;
+MAHNV : String(2) not null;
+AUSDT : String(8) not null;
+SPART : String(2) not null;
+XTAUS : String(1) not null;
+MOPUPZ : String(3) not null;
+HIGHERDL : String(1) not null;
+DALIN : String(1) not null;
+FBNUM : String(12) not null;
+MIBEL : String(12) not null;
+Z_RUN_SEQ_ID : Integer not null;
+Z_CHANGE_TYPE : String(1) not null;
+Z_CHANGE_TIME : UTCTimestamp not null default '1900-01-01 23:59:59';
+Z_RUN_ROW_NO : Integer not null;
+Z_SOURCE_SYS : String(5) not null;
+
+}technical configuration {
+	group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+};
+
+@DataStore.entityCategory: #OPERATION_HISTORY
+entity operationHistory{
+ key technicalKey : operationHistoryKey;
+technicalAttributes : operationHistoryAttributes;
+};
+
+@DataStore.entityCategory: #AGGREGATION_HISTORY
+entity aggregationHistory{
+ key technicalKey : aggregationHistoryKey;
+technicalAttributes : aggregationHistoryAttributes;
+};
+
+@DataStore.entityCategory: #AFFECTED_REQUESTS
+entity affectedRequests{
+ key technicalKey : affectedRequestsKey;
+};
+
+@DataStore.entityCategory: #LOG_MESSAGES
+entity logMessages{
+ key technicalKey : logMessagesKey;
+technicalAttributes : logMessagesAttributes;
+};
+
+@DataStore.entityCategory: #SUBSCRIBERS
+entity subscribers{
+ key technicalKey : subscribersKey;
+technicalAttributes : subscribersAttributes;
+};
+
+@DataStore.entityCategory: #RUNNING_OPERATIONS
+entity runningOperations{
+ key technicalKey : runningOperationsKey;
+};
+
+@DataStore.entityCategory: #ID_GENERATOR
+entity idGen{
+ key technicalKey : idGeneratorKey;
+technicalAttributes : idGeneratorAttributes;
+};
+};
     };
 };
