@@ -10,7 +10,7 @@ modules:
 #      app-name: OSR_EDW_SOURCE_RMS-DWF
    path: DWF
    requires:
-      - name: OSR_EDW_SOURCE_RMS-uaa
+#      - name: OSR_EDW_SOURCE_RMS-uaa
       - name: OSR_EDW_SOURCE_RMS-dws
    build-parameters:
       timeout: 30m
@@ -20,12 +20,12 @@ modules:
 #      app-name: OSR_EDW_SOURCE_RMS-Backend
    path: Backend
    requires:
-      - name: OSR_EDW_SOURCE_RMS-uaa
+#      - name: OSR_EDW_SOURCE_RMS-uaa
       - name: OSR_EDW_SOURCE_RMS-container
       - name: OSR_EDW_SOURCE_RMS-dws
    properties:
      API_END_POINT: "${xs-api-url}"
-     SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
+#     SAP_JWT_TRUST_ACL: "[{\"clientid\":\"*\",\"identityzone\":\"*\"}]"
    provides:
     - name:  OSR_EDW_SOURCE_RMS-Backend
       properties:
@@ -57,30 +57,30 @@ modules:
    build-parameters:
       timeout: 30m
 resources:
- - name: OSR_EDW_SOURCE_RMS-uaa
-   type: com.sap.xs.uaa
-   parameters:
-     service-name: OSR_EDW_SOURCE_RMS-uaa
-     service-plan: space
-     config:
-         xsappname: OSR_EDW_SOURCE_RMS
-         scopes:
-          - name: $XSAPPNAME.TOE
-            description: access for TOE
-            grant-as-authority-to-apps:
-             - dwf-toe
-             - dwf-runtime
-            granted-apps:
-             - dwf-toe
-             - dwf-runtime
-         authorities:
-          - $ACCEPT_GRANTED_AUTHORITIES
-         role-templates:
-           - name: User
-             description: Access API
-             scope-references:
-              - $XSAPPNAME.TOE
-              - cloud_controller.read
+ #- name: OSR_EDW_SOURCE_RMS-uaa
+ #  type: com.sap.xs.uaa
+ #  parameters:
+ #    service-name: OSR_EDW_SOURCE_RMS-uaa
+ #    service-plan: space
+ #    config:
+ #        xsappname: OSR_EDW_SOURCE_RMS
+ #        scopes:
+ #         - name: $XSAPPNAME.TOE
+ #           description: access for TOE
+ #           grant-as-authority-to-apps:
+ #            - dwf-toe
+ #            - dwf-runtime
+ #           granted-apps:
+ #            - dwf-toe
+ #            - dwf-runtime
+ #        authorities:
+ #         - $ACCEPT_GRANTED_AUTHORITIES
+ #        role-templates:
+ #          - name: User
+ #            description: Access API
+ #            scope-references:
+ #             - $XSAPPNAME.TOE
+ #             - cloud_controller.read
 
  - name: OSR_EDW_SOURCE_RMS-dws
    properties:

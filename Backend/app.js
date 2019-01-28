@@ -28,6 +28,7 @@ const TaskChain = dwsClient.taskChain.createTaskChainClient(
 const app = express();
 module.exports = app; // for testing
 
+/*
 const passport = require('passport');
 
 if (process.env.PORT) {
@@ -43,6 +44,7 @@ if (process.env.PORT) {
 		session: false
 	}));
 }
+*/
 
 app.use(bodyParser.json());
 app.use((err1, req, resp, next) => {
