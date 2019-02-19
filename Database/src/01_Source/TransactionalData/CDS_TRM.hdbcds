@@ -2503,7 +2503,7 @@ context CDS_TRM {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":-1673,"y":47.5}}*/
+        /*@@layout{"layoutInfo":{"x":122,"y":29.5}}*/
         context DS_3PSCD_TRM_FORM_DATA_IPA1 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -2554,6 +2554,9 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                     FBNUM                   : String(12)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECORDMODE              : String(1)        not null;
 
                     @DataStore.aggregation : #NOP
                     A_ALLOWANCE             : Decimal(13, 2)   not null;
@@ -3010,6 +3013,84 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                 key FIELDINDEX              : Integer          not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_1_A      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_2_A      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_3_A      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_4_A      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_5_A      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_1_A       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_2_A       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_3_A       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_4_A       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_5_A       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_REASSESS_TRM_Q_A      : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_INTERNAL_Q_A          : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_RATE_A                : String(18)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_FROM_A          : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_TO_A            : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_BASE_TAX_A      : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAYS_OVERDUE_A  : hana.VARCHAR(5)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAILY_UTI_A     : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_YEARLY_RATE_A   : Decimal(10, 7)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_PAYMENT_A       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_FEE_A     : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_BASE_A    : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_FORM_CHECK_COUNT      : Integer          not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_OPEN_ITEMS_A          : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_FIRST_REASS           : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_DONE_BANK_SEARCH      : String(1)        not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPA1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -3067,6 +3148,9 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     FBNUM                   : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECORDMODE              : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
                     A_ALLOWANCE             : Decimal(13, 2)         not null;
@@ -3523,6 +3607,84 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     FIELDINDEX              : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_1_A      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_2_A      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_3_A      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_4_A      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_5_A      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_1_A       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_2_A       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_3_A       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_4_A       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_5_A       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_REASSESS_TRM_Q_A      : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_INTERNAL_Q_A          : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_RATE_A                : String(18)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_FROM_A          : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_TO_A            : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_BASE_TAX_A      : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAYS_OVERDUE_A  : hana.VARCHAR(5)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAILY_UTI_A     : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_YEARLY_RATE_A   : Decimal(10, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_PAYMENT_A       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_FEE_A     : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_BASE_A    : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_FORM_CHECK_COUNT      : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_OPEN_ITEMS_A          : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_FIRST_REASS           : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_DONE_BANK_SEARCH      : String(1)              not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPA1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -3548,6 +3710,7 @@ context CDS_TRM {
                     LOCATOR_NUMBER          : String(16)          not null;
                     FBTYP                   : String(4)           not null;
                     FBNUM                   : String(12)          not null;
+                    RECORDMODE              : String(1)           not null;
                     A_ALLOWANCE             : Decimal(13, 2)      not null;
                     A_APPRENT_PMT           : Decimal(13, 2)      not null;
                     A_BONUS                 : Decimal(13, 2)      not null;
@@ -3700,6 +3863,32 @@ context CDS_TRM {
                     C_BANK_BRANCH           : String(40)          not null;
                     C_CONTRACT_ACCOUNT      : String(12)          not null;
                     FIELDINDEX              : Integer             not null;
+                    A_PAYMENT_DATE_1_A      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_2_A      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_3_A      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_4_A      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_5_A      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_AMT_1_A       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_2_A       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_3_A       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_4_A       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_5_A       : Decimal(13, 2)      not null;
+                    A_REASSESS_TRM_Q_A      : hana.VARCHAR(1)     not null;
+                    A_INTERNAL_Q_A          : hana.VARCHAR(1)     not null;
+                    C_RATE_A                : String(18)          not null;
+                    C_UTI_D_FROM_A          : hana.VARCHAR(8)     not null;
+                    C_UTI_D_TO_A            : hana.VARCHAR(8)     not null;
+                    C_UTI_D_BASE_TAX_A      : Decimal(13, 2)      not null;
+                    C_UTI_D_DAYS_OVERDUE_A  : hana.VARCHAR(5)     not null;
+                    C_UTI_D_DAILY_UTI_A     : Decimal(13, 2)      not null;
+                    C_UTI_D_YEARLY_RATE_A   : Decimal(10, 7)      not null;
+                    C_UTI_D_PAYMENT_A       : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_FEE_A     : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_BASE_A    : Decimal(13, 2)      not null;
+                    C_FORM_CHECK_COUNT      : Integer             not null;
+                    C_OPEN_ITEMS_A          : Decimal(13, 2)      not null;
+                    C_FIRST_REASS           : hana.VARCHAR(1)     not null;
+                    C_DONE_BANK_SEARCH      : String(1)           not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPA1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
@@ -3759,7 +3948,7 @@ context CDS_TRM {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":-2256,"y":48.5}}*/
+        /*@@layout{"layoutInfo":{"x":395,"y":24.5}}*/
         context DS_3PSCD_TRM_FORM_DATA_IPF1 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -3810,6 +3999,9 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                     FBNUM                     : String(12)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECORDMODE                : String(1)        not null;
 
                     @DataStore.aggregation : #NOP
                     A_CURRENCY_F              : String(5)        not null;
@@ -4260,6 +4452,126 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                 key FIELDINDEX                : Integer          not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_DATE_1_F      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_DATE_2_F      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_DATE_3_F      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_DATE_4_F      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_DATE_5_F      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_AMT_1_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_AMT_2_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_AMT_3_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_AMT_4_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_PAYMENT_AMT_5_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_REASSESSMENT_Q        : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_F_INTERNAL_Q            : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_ABN                   : String(20)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_RATE                  : Decimal(7, 3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_DGE1            : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_DGE2            : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_DGE3            : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_DGE4            : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_DGE5            : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_1               : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_2               : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_3               : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_4               : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_LINENUM_5               : hana.VARCHAR(2)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_FROM_F            : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_TO_F              : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_BASE_TAX_F        : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAYS_OVERDUE_F    : hana.VARCHAR(5)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAILY_UTI_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_YEARLY_RATE_F     : Decimal(10, 7)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_UTI_AMOUNT_F      : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_PAYMENT_F         : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_FEE_F       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_BASE_F      : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_FORM_CHECK_CNT        : Integer          not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_OPEN_ITEMS            : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_ORIG_NET              : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_PAY_RECEIEVD          : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_FIRST_REASS             : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_F_DONE_BANK_SEARCH      : String(1)        not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPF1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -4317,6 +4629,9 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     FBNUM                     : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECORDMODE                : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
                     A_CURRENCY_F              : String(5)              not null;
@@ -4767,6 +5082,126 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     FIELDINDEX                : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_DATE_1_F      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_DATE_2_F      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_DATE_3_F      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_DATE_4_F      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_DATE_5_F      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_AMT_1_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_AMT_2_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_AMT_3_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_AMT_4_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_PAYMENT_AMT_5_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_REASSESSMENT_Q        : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_F_INTERNAL_Q            : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_ABN                   : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_RATE                  : Decimal(7, 3)          not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_DGE1            : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_DGE2            : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_DGE3            : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_DGE4            : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_DGE5            : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_1               : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_2               : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_3               : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_4               : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_LINENUM_5               : hana.VARCHAR(2)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_FROM_F            : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_TO_F              : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_BASE_TAX_F        : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAYS_OVERDUE_F    : hana.VARCHAR(5)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAILY_UTI_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_YEARLY_RATE_F     : Decimal(10, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_UTI_AMOUNT_F      : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_PAYMENT_F         : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_FEE_F       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_BASE_F      : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_FORM_CHECK_CNT        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_OPEN_ITEMS            : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_ORIG_NET              : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_PAY_RECEIEVD          : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_FIRST_REASS             : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_F_DONE_BANK_SEARCH      : String(1)              not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPF1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -4792,6 +5227,7 @@ context CDS_TRM {
                     LOCATOR_NUMBER            : String(16)          not null;
                     FBTYP                     : String(4)           not null;
                     FBNUM                     : String(12)          not null;
+                    RECORDMODE                : String(1)           not null;
                     A_CURRENCY_F              : String(5)           not null;
                     A_F_ALLOWANCE             : Decimal(13, 2)      not null;
                     A_F_APPRENT_PMT           : Decimal(13, 2)      not null;
@@ -4942,6 +5378,46 @@ context CDS_TRM {
                     C_F_BANK_BRANCH           : String(40)          not null;
                     C_F_CONTRACT_ACCOUNT      : String(12)          not null;
                     FIELDINDEX                : Integer             not null;
+                    A_F_PAYMENT_DATE_1_F      : hana.VARCHAR(8)     not null;
+                    A_F_PAYMENT_DATE_2_F      : hana.VARCHAR(8)     not null;
+                    A_F_PAYMENT_DATE_3_F      : hana.VARCHAR(8)     not null;
+                    A_F_PAYMENT_DATE_4_F      : hana.VARCHAR(8)     not null;
+                    A_F_PAYMENT_DATE_5_F      : hana.VARCHAR(8)     not null;
+                    A_F_PAYMENT_AMT_1_F       : Decimal(13, 2)      not null;
+                    A_F_PAYMENT_AMT_2_F       : Decimal(13, 2)      not null;
+                    A_F_PAYMENT_AMT_3_F       : Decimal(13, 2)      not null;
+                    A_F_PAYMENT_AMT_4_F       : Decimal(13, 2)      not null;
+                    A_F_PAYMENT_AMT_5_F       : Decimal(13, 2)      not null;
+                    A_F_REASSESSMENT_Q        : hana.VARCHAR(1)     not null;
+                    A_F_INTERNAL_Q            : hana.VARCHAR(1)     not null;
+                    C_F_ABN                   : String(20)          not null;
+                    C_F_RATE                  : Decimal(7, 3)       not null;
+                    C_LINENUM_DGE1            : hana.VARCHAR(2)     not null;
+                    C_LINENUM_DGE2            : hana.VARCHAR(2)     not null;
+                    C_LINENUM_DGE3            : hana.VARCHAR(2)     not null;
+                    C_LINENUM_DGE4            : hana.VARCHAR(2)     not null;
+                    C_LINENUM_DGE5            : hana.VARCHAR(2)     not null;
+                    C_LINENUM_1               : hana.VARCHAR(2)     not null;
+                    C_LINENUM_2               : hana.VARCHAR(2)     not null;
+                    C_LINENUM_3               : hana.VARCHAR(2)     not null;
+                    C_LINENUM_4               : hana.VARCHAR(2)     not null;
+                    C_LINENUM_5               : hana.VARCHAR(2)     not null;
+                    C_UTI_D_FROM_F            : hana.VARCHAR(8)     not null;
+                    C_UTI_D_TO_F              : hana.VARCHAR(8)     not null;
+                    C_UTI_D_BASE_TAX_F        : Decimal(13, 2)      not null;
+                    C_UTI_D_DAYS_OVERDUE_F    : hana.VARCHAR(5)     not null;
+                    C_UTI_D_DAILY_UTI_F       : Decimal(13, 2)      not null;
+                    C_UTI_D_YEARLY_RATE_F     : Decimal(10, 7)      not null;
+                    C_UTI_D_UTI_AMOUNT_F      : Decimal(13, 2)      not null;
+                    C_UTI_D_PAYMENT_F         : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_FEE_F       : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_BASE_F      : Decimal(13, 2)      not null;
+                    C_F_FORM_CHECK_CNT        : Integer             not null;
+                    C_F_OPEN_ITEMS            : Decimal(13, 2)      not null;
+                    C_F_ORIG_NET              : Decimal(13, 2)      not null;
+                    C_F_PAY_RECEIEVD          : Decimal(13, 2)      not null;
+                    C_FIRST_REASS             : hana.VARCHAR(1)     not null;
+                    C_F_DONE_BANK_SEARCH      : String(1)           not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPF1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
@@ -5001,7 +5477,7 @@ context CDS_TRM {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":-2002,"y":48.5}}*/
+        /*@@layout{"layoutInfo":{"x":634,"y":23.5}}*/
         context DS_3PSCD_TRM_FORM_DATA_IPM1 {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -5052,6 +5528,9 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                     FBNUM                   : String(12)       not null;
+
+                    @DataStore.aggregation : #NOP
+                    RECORDMODE              : String(1)        not null;
 
                     @DataStore.aggregation : #NOP
                     A_COMMIS_Q              : hana.VARCHAR(1)  not null;
@@ -5244,6 +5723,84 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                 key FIELDINDEX              : Integer          not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_1_P      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_2_P      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_3_P      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_4_P      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_DATE_5_P      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_1_P       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_2_P       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_3_P       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_4_P       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_PAYMENT_AMT_5_P       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_REASSESSMENT_Q        : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_INTERNAL_Q            : hana.VARCHAR(1)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_PAYMENT_DUE_DATE      : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_RATE              : Decimal(7, 3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_FROM_P          : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_TO_P            : hana.VARCHAR(8)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_BASE_TAX_P      : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAYS_OVERDUE_P  : hana.VARCHAR(5)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_DAILY_UTI_P     : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_YEARLY_RATE_P   : Decimal(10, 7)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_UTI_AMOUNT_P    : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_PAYMENT_P       : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_FEE_P     : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_UTI_D_ALLOC_BASE_P    : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_OPEN_ITEMS            : Decimal(13, 2)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_FIRST_REASS           : hana.VARCHAR(1)  not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPM1 group type "sap.dwf.dso" group subtype ACTIVE;
@@ -5301,6 +5858,9 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     FBNUM                   : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RECORDMODE              : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
                     A_COMMIS_Q              : hana.VARCHAR(1)        not null;
@@ -5493,6 +6053,84 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     FIELDINDEX              : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_1_P      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_2_P      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_3_P      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_4_P      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_DATE_5_P      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_1_P       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_2_P       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_3_P       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_4_P       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_PAYMENT_AMT_5_P       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_REASSESSMENT_Q        : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_INTERNAL_Q            : hana.VARCHAR(1)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_PAYMENT_DUE_DATE      : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_RATE              : Decimal(7, 3)          not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_FROM_P          : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_TO_P            : hana.VARCHAR(8)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_BASE_TAX_P      : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAYS_OVERDUE_P  : hana.VARCHAR(5)        not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_DAILY_UTI_P     : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_YEARLY_RATE_P   : Decimal(10, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_UTI_AMOUNT_P    : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_PAYMENT_P       : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_FEE_P     : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_UTI_D_ALLOC_BASE_P    : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_OPEN_ITEMS            : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_FIRST_REASS           : hana.VARCHAR(1)        not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPM1 group type "sap.dwf.dso" group subtype QUEUE;
@@ -5518,6 +6156,7 @@ context CDS_TRM {
                     LOCATOR_NUMBER          : String(16)          not null;
                     FBTYP                   : String(4)           not null;
                     FBNUM                   : String(12)          not null;
+                    RECORDMODE              : String(1)           not null;
                     A_COMMIS_Q              : hana.VARCHAR(1)     not null;
                     A_CURRENCY_P            : String(5)           not null;
                     A_DEF_Q                 : hana.VARCHAR(1)     not null;
@@ -5582,6 +6221,32 @@ context CDS_TRM {
                     C_ORIG_PENALTY_C        : Decimal(13, 2)      not null;
                     C_ABN                   : String(20)          not null;
                     FIELDINDEX              : Integer             not null;
+                    A_PAYMENT_DATE_1_P      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_2_P      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_3_P      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_4_P      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_DATE_5_P      : hana.VARCHAR(8)     not null;
+                    A_PAYMENT_AMT_1_P       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_2_P       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_3_P       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_4_P       : Decimal(13, 2)      not null;
+                    A_PAYMENT_AMT_5_P       : Decimal(13, 2)      not null;
+                    A_REASSESSMENT_Q        : hana.VARCHAR(1)     not null;
+                    A_INTERNAL_Q            : hana.VARCHAR(1)     not null;
+                    C_PAYMENT_DUE_DATE      : hana.VARCHAR(8)     not null;
+                    C_UTI_RATE              : Decimal(7, 3)       not null;
+                    C_UTI_D_FROM_P          : hana.VARCHAR(8)     not null;
+                    C_UTI_D_TO_P            : hana.VARCHAR(8)     not null;
+                    C_UTI_D_BASE_TAX_P      : Decimal(13, 2)      not null;
+                    C_UTI_D_DAYS_OVERDUE_P  : hana.VARCHAR(5)     not null;
+                    C_UTI_D_DAILY_UTI_P     : Decimal(13, 2)      not null;
+                    C_UTI_D_YEARLY_RATE_P   : Decimal(10, 7)      not null;
+                    C_UTI_D_UTI_AMOUNT_P    : Decimal(13, 2)      not null;
+                    C_UTI_D_PAYMENT_P       : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_FEE_P     : Decimal(13, 2)      not null;
+                    C_UTI_D_ALLOC_BASE_P    : Decimal(13, 2)      not null;
+                    C_OPEN_ITEMS            : Decimal(13, 2)      not null;
+                    C_FIRST_REASS           : hana.VARCHAR(1)     not null;
             }
             technical configuration {
                 group name DS_3PSCD_TRM_FORM_DATA_IPM1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
