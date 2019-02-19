@@ -151,65 +151,85 @@ context CDS_PSCD {
 
         /*@@layout{"layoutInfo":{}}*/
         entity TFK001P {
-            key MANDT : String(3);
-            key PERSL : String(4);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-            
+            key MANDT         : String(3);
+            key PERSL         : String(4);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{}}*/
         entity TFK001PT {
-            key MANDT : String(3);
-            key SPRAS : String(1);
-            key PERSL : String(4);
-                TXT50 : String(50);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key PERSL         : String(4);
+                TXT50         : String(50);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{}}*/
         entity TFMCA_INCORR_PER {
-            key CLIENT       : String(3);
-            key INCOTYP      : String(10);
-            key PERSL        : String(4);
-                INCORR_FAEDN : String(8);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                
+            key CLIENT        : String(3);
+            key INCOTYP       : String(10);
+            key PERSL         : String(4);
+                INCORR_FAEDN  : String(8);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{}}*/
         entity TFK_INCORR {
-            key CLIENT  : String(3);
-            key INCOTYP : String(10);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-            
+            key CLIENT        : String(3);
+            key INCOTYP       : String(10);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{}}*/
         entity TFK_INCORRT {
-            key CLIENT   : String(3);
-            key SPRAS    : String(1);
-            key INCOTYP  : String(10);
-                INCOTEXT : String(40);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                
+            key CLIENT        : String(3);
+            key SPRAS         : String(1);
+            key INCOTYP       : String(10);
+                INCOTEXT      : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{}}*/
         entity TFKPERIOD {
-            key MANDT : String(3);
-            key PERSL : String(4);
-                ABRZU : String(8);
-                ABRZO : String(8);
-                PREDC : String(4);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                
+            key MANDT         : String(3);
+            key PERSL         : String(4);
+                ABRZU         : String(8);
+                ABRZO         : String(8);
+                PREDC         : String(4);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFACTSH {
+            key CLIENT        : String(3);
+            key OBART         : String(2);
+            key OBJID         : String(20);
+            key FACT_TYPE_SEQ : String(4);
+            key FACT_TYPE_REP : String(4);
+            key FACT_CAT_SEQ  : String(2);
+            key FACT_CAT_REP  : String(4);
+            key VALID_TO      : Decimal(15, 0);
+            key CHDATE        : Decimal(15, 0);
+                VALID_FROM    : Decimal(15, 0);
+                FACT_SET      : String(6);
+                FACT_TYPE     : String(4);
+                FACT_CATEGORY : String(4);
+                VALUE_GENERIC : String(40);
+                QUAL_GENERIC  : String(40);
+                OBJNR         : String(22);
+                CHUSER        : String(12);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;                
         };
     };
 };
