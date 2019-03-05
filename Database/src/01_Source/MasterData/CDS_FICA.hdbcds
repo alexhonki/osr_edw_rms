@@ -8,14 +8,64 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-788,"y":-262.5}}*/
         entity TFK047S {
-            key MANDT        : String(3);
-            key MANSP        : String(1);
-                XMAHN        : String(1);
-                BEGRU        : String(4);
-                TDATE_PERIOD : String(1);
-                TDATE_VALUE  : String(3);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);                
+            key MANDT         : String(3);
+            key MANSP         : String(1);
+                XMAHN         : String(1);
+                BEGRU         : String(4);
+                TDATE_PERIOD  : String(1);
+                TDATE_VALUE   : String(3);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-556,"y":-263.5}}*/
+        entity TFK003 {
+            key MANDT  : String(3);
+            key APPLK  : String(1);
+            key BLART  : String(2);
+                NUMKR  : String(2);
+                BLLFZ  : String(4);
+                ARCLFZ : String(4);
+                XGSUB  : String(1);
+                XINTF  : String(1);
+                NEGBL  : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);                
+        };
+
+        /*@@layout{"layoutInfo":{"x":-328,"y":-264.5}}*/
+        entity TFK001A {
+            key AUGRD : String(2);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);            
+        };
+
+        /*@@layout{"layoutInfo":{"x":-94,"y":-265.5}}*/
+        entity TFKHVO {
+            key MANDT : String(3);
+            key APPLK : String(1);
+            key HVORG : String(4);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);            
+        };
+
+        /*@@layout{"layoutInfo":{"x":124,"y":-266.5}}*/
+        entity TFKTVO {
+            key MANDT     : String(3);
+            key APPLK     : String(1);
+            key HVORG     : String(4);
+            key TVORG     : String(4);
+                HVORG_REV : String(4);
+                TVORG_REV : String(4);
+                HVORG_SPL : String(4);
+                TVORG_SPL : String(4);
+                FAETP     : String(1);
+                QSVTP     : String(1);
+                RLADDR    : String(2);
+                XPAYT     : String(1);
+                XNEGA     : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);                
         };
     };
 };

@@ -1,22 +1,22 @@
 namespace osr.edw.staging.td.rms;
 
-using DataWarehouse.DataStore :: Structures.inboundQueueKey;
-using DataWarehouse.DataStore :: Structures.inboundQueueAttributes;
-using DataWarehouse.DataStore :: Structures.changeLogKey;
-using DataWarehouse.DataStore :: Structures.changeLogAttributes;
-using DataWarehouse.DataStore :: Structures.operationHistoryKey;
-using DataWarehouse.DataStore :: Structures.operationHistoryAttributes;
-using DataWarehouse.DataStore :: Structures.aggregationHistoryKey;
-using DataWarehouse.DataStore :: Structures.aggregationHistoryAttributes;
-using DataWarehouse.DataStore :: Structures.affectedRequestsKey;
-using DataWarehouse.DataStore :: Structures.logMessagesKey;
-using DataWarehouse.DataStore :: Structures.logMessagesAttributes;
-using DataWarehouse.DataStore :: Structures.subscribersKey;
-using DataWarehouse.DataStore :: Structures.subscribersAttributes;
-using DataWarehouse.DataStore :: Structures.runningOperationsKey;
-using DataWarehouse.DataStore :: Structures.idGeneratorKey;
-using DataWarehouse.DataStore :: Structures.idGeneratorAttributes;
-using DataWarehouse.DataStore :: Annotations as DataStore;
+using DataWarehouse.DataStore::Structures.inboundQueueKey;
+using DataWarehouse.DataStore::Structures.inboundQueueAttributes;
+using DataWarehouse.DataStore::Structures.changeLogKey;
+using DataWarehouse.DataStore::Structures.changeLogAttributes;
+using DataWarehouse.DataStore::Structures.operationHistoryKey;
+using DataWarehouse.DataStore::Structures.operationHistoryAttributes;
+using DataWarehouse.DataStore::Structures.aggregationHistoryKey;
+using DataWarehouse.DataStore::Structures.aggregationHistoryAttributes;
+using DataWarehouse.DataStore::Structures.affectedRequestsKey;
+using DataWarehouse.DataStore::Structures.logMessagesKey;
+using DataWarehouse.DataStore::Structures.logMessagesAttributes;
+using DataWarehouse.DataStore::Structures.subscribersKey;
+using DataWarehouse.DataStore::Structures.subscribersAttributes;
+using DataWarehouse.DataStore::Structures.runningOperationsKey;
+using DataWarehouse.DataStore::Structures.idGeneratorKey;
+using DataWarehouse.DataStore::Structures.idGeneratorAttributes;
+using DataWarehouse.DataStore::Annotations as DataStore;
 
 context CDS_LAND {
 
@@ -2141,15 +2141,6 @@ context CDS_LAND {
                     ABSURCHARGE    : Decimal(15, 2) not null;
 
                     @DataStore.aggregation : #NOP
-                    Z_CURR_FLAG    : String(1)      not null;
-
-                    @DataStore.aggregation : #NOP
-                    Z_VALID_FROM   : LocalDate      not null default '1900-01-01';
-
-                    @DataStore.aggregation : #NOP
-                    Z_VALID_TO     : LocalDate      not null default '1900-01-01';
-
-                    @DataStore.aggregation : #NOP
                     Z_CHANGE_TYPE  : String(1)      not null;
 
                     @DataStore.aggregation : #NOP
@@ -2273,15 +2264,6 @@ context CDS_LAND {
                     ABSURCHARGE         : Decimal(15, 2)         not null;
 
                     @DataStore.aggregation : #MOV
-                    Z_CURR_FLAG         : String(1)              not null;
-
-                    @DataStore.aggregation : #MOV
-                    Z_VALID_FROM        : LocalDate              not null default '1900-01-01';
-
-                    @DataStore.aggregation : #MOV
-                    Z_VALID_TO          : LocalDate              not null default '1900-01-01';
-
-                    @DataStore.aggregation : #MOV
                     Z_CHANGE_TYPE       : String(1)              not null;
 
                     @DataStore.aggregation : #MOV
@@ -2337,9 +2319,6 @@ context CDS_LAND {
                     PLNO                : String(20)          not null;
                     OBJNRPL             : String(22)          not null;
                     ABSURCHARGE         : Decimal(15, 2)      not null;
-                    Z_CURR_FLAG         : String(1)           not null;
-                    Z_VALID_FROM        : LocalDate           not null default '1900-01-01';
-                    Z_VALID_TO          : LocalDate           not null default '1900-01-01';
                     Z_CHANGE_TYPE       : String(1)           not null;
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;

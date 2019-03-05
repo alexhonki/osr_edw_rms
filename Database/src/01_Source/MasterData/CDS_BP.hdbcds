@@ -465,7 +465,39 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;                
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":71,"y":237.5}}*/
+        entity TB009 {
+            key CLIENT   : String(3);
+            key ADR_KIND : String(10);
+                XMULT    : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);                
+        };
+
+        /*@@layout{"layoutInfo":{"x":314,"y":233.5}}*/
+        entity TB003 {
+            key CLIENT       : String(3);
+            key ROLE         : String(6);
+                ROLECATEGORY : String(6);
+                STND_ROLECAT : String(1);
+                BPVIEW       : String(6);
+                XSUPPRESS    : String(1);
+                POSNR        : String(3);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);                
+        };
+
+        /*@@layout{"layoutInfo":{"x":548,"y":223.5}}*/
+        entity TB038A {
+            key CLIENT     : String(3);
+            key ISTYPE     : String(4);
+            key IND_SECTOR : String(10);
+                FATHER_SEC : String(10);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);                
         };
     };
 };
