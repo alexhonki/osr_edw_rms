@@ -470,32 +470,45 @@ context CDS_BP {
 
         /*@@layout{"layoutInfo":{"x":71,"y":237.5}}*/
         entity TB009 {
-            key CLIENT   : String(3);
-            key ADR_KIND : String(10);
-                XMULT    : String(1);
+            key CLIENT        : String(3);
+            key ADR_KIND      : String(10);
+                XMULT         : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
-                Z_SOURCE_SYS  : String(5);                
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{"x":314,"y":233.5}}*/
         entity TB003 {
-            key CLIENT       : String(3);
-            key ROLE         : String(6);
-                ROLECATEGORY : String(6);
-                STND_ROLECAT : String(1);
-                BPVIEW       : String(6);
-                XSUPPRESS    : String(1);
-                POSNR        : String(3);
+            key CLIENT        : String(3);
+            key ROLE          : String(6);
+                ROLECATEGORY  : String(6);
+                STND_ROLECAT  : String(1);
+                BPVIEW        : String(6);
+                XSUPPRESS     : String(1);
+                POSNR         : String(3);
                 Z_CHANGE_TIME : UTCTimestamp;
-                Z_SOURCE_SYS  : String(5);                
+                Z_SOURCE_SYS  : String(5);
         };
 
         /*@@layout{"layoutInfo":{"x":548,"y":223.5}}*/
         entity TB038A {
+            key CLIENT        : String(3);
+            key ISTYPE        : String(4);
+            key IND_SECTOR    : String(10);
+                FATHER_SEC    : String(10);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":818,"y":217.5}}*/
+        entity TSAD3 {
             key CLIENT     : String(3);
-            key ISTYPE     : String(4);
-            key IND_SECTOR : String(10);
-                FATHER_SEC : String(10);
+            key TITLE      : String(4);
+                GENERATE   : String(1);
+                PERSON     : String(1);
+                ORGANIZATN : String(1);
+                XGROUP     : String(1);
+                SEX        : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
