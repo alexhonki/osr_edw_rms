@@ -502,13 +502,23 @@ context CDS_BP {
 
         /*@@layout{"layoutInfo":{"x":818,"y":217.5}}*/
         entity TSAD3 {
+            key CLIENT        : String(3);
+            key TITLE         : String(4);
+                GENERATE      : String(1);
+                PERSON        : String(1);
+                ORGANIZATN    : String(1);
+                XGROUP        : String(1);
+                SEX           : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":1055,"y":216.5}}*/
+        entity TSAD3T {
             key CLIENT     : String(3);
+            key LANGU      : String(1);
             key TITLE      : String(4);
-                GENERATE   : String(1);
-                PERSON     : String(1);
-                ORGANIZATN : String(1);
-                XGROUP     : String(1);
-                SEX        : String(1);
+                TITLE_MEDI : String(30);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
