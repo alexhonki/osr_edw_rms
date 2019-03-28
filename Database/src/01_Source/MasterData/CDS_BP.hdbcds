@@ -515,10 +515,22 @@ context CDS_BP {
 
         /*@@layout{"layoutInfo":{"x":1055,"y":216.5}}*/
         entity TSAD3T {
+            key CLIENT        : String(3);
+            key LANGU         : String(1);
+            key TITLE         : String(4);
+                TITLE_MEDI    : String(30);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":1282,"y":215.5}}*/
+        entity TB038B {
             key CLIENT     : String(3);
-            key LANGU      : String(1);
-            key TITLE      : String(4);
-                TITLE_MEDI : String(30);
+            key SPRAS      : String(1);
+            key ISTYPE     : String(4);
+            key IND_SECTOR : String(10);
+                TEXT       : String(100);
+                TEXT_SHORT : String(20);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
