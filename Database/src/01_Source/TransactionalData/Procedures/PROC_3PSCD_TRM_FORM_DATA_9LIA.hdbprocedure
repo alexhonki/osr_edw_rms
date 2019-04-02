@@ -8,12 +8,15 @@ BEGIN
        Write your procedure logic 
    *************************************/
   o1= select * from  "osr.edw.source.td.rms::VT_3PSCD_TRM_FORM_DATA_9LIA"  
-  
+  --where FBNUM between '100014838757' and  '100015031295' and
+  --FBTYP='ZPA2'
+  --where FBTYP='ZLH2' --and FBNUM='000590131801'
+
 with dataprovisioning parameters 
 ('<PropertyGroup name="__DP_TABLE_OPTIONS__">
       <PropertyGroup name="osr.edw.source.td.rms::VT_3PSCD_TRM_FORM_DATA_9LIA">
         <PropertyEntry name="extractionmode">D</PropertyEntry>
-        <PropertyEntry name="extractionname">extr_3PSCD_TRM_FORM_DATA_9LIA_DEV2019Mar27</PropertyEntry>
+        <PropertyEntry name="extractionname">extr_3PSCD_TRM_FORM_DATA_9LIA_QAS2018Nov15</PropertyEntry>
       </PropertyGroup>
 </PropertyGroup>')
 ;
