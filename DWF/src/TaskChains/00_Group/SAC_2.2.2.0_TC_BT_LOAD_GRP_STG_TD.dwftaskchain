@@ -1,0 +1,54 @@
+{
+  "description": "SAC_2.2.2.0 Load Group STG RMS TD",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "taskTimeout": 43200000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT STG SUBS TD SAC landtax reporting",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#2.2.2.7_TC_BT_LOAD_SUBGRP_STG_TD_SACLAND"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT SUBS STG TD LANDTXI",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#2.2.2.3_TC_BT_LOAD_SUBGRP_STG_TD_LANDTXI"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}

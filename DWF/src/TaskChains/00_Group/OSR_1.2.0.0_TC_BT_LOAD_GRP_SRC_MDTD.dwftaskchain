@@ -1,5 +1,5 @@
 {
-  "description": "OSR_1.2.0.0 Load Batch Main Group SRC PH1_ACS_TXI MDTD",
+  "description": "OSR_1.2.0.0 Load Batch Main Group SRC PH1_ACS_TXI_SAC MDTD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -86,6 +86,25 @@
           "status": "OK"
         }
       ]
-    }
+    },
+    "6": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "SAC TC LOAD BT GROUP SOURCE MDTD",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#SAC_1.2.0.0_TC_BT_LOAD_GRP_SRC_MDTD"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    }    
   }
 }

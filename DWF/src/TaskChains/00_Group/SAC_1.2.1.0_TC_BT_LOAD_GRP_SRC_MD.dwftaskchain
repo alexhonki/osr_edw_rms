@@ -1,0 +1,35 @@
+{
+  "description": "SAC_1.2.1.0 Load Group Source RMS MD",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "taskTimeout": 43200000,
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT SUBS MD SAC landtax reporting",  
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#1.2.1.7_TC_BT_LOAD_SUBGRP_SRC_MD_SACLAND"
+          }
+        ]        
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
