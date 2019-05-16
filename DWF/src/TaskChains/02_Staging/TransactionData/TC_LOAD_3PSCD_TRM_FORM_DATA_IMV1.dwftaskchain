@@ -1,0 +1,53 @@
+{
+  "description": "Load staging 3PSCD_TRM_FORM_DATA_IMV1",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "resumeBehavior": "NO_RESUME",
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load staging 3PSCD_TRM_FORM_DATA_IMV1",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_3PSCD_TRM_FORM_DATA_IMV1_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Activate nDSO 3PSCD_TRM_FORM_DATA_IMV1",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_PSCD.DSO.DS_3PSCD_TRM_FORM_DATA_IMV1"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "description": "Load data source 3PSCD_TRM_FORM_DATA_IMV1",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load data source 3PSCD_TRM_FORM_DATA_IMV1",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_3PSCD_TRM_FORM_DATA_IMV1_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
