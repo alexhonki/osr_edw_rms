@@ -1,0 +1,8 @@
+View "osr.edw.staging.td.rms::VIEW_VIBPADDRREL"
+as 
+select a.* from 
+"osr.edw.source.td.rms::CDS_LAND.TAB.VIBPADDRREL" a 
+inner join 
+(select ifnull(max("Z_RUN_SEQ_ID"),0) as "Z_RUN_SEQ_ID" from "osr.edw.staging.td.rms::CDS_LAND.DSO.VIBPADDRREL.active_data") b
+on a."Z_RUN_SEQ_ID" > b."Z_RUN_SEQ_ID"
+order by a."Z_CHANGE_TIME" asc
