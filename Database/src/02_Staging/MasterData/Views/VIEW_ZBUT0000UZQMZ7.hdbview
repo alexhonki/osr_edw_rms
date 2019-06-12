@@ -1,0 +1,8 @@
+View "osr.edw.staging.md.rms::VIEW_ZBUT0000UZQMZ7"
+as 
+select a.* from 
+"osr.edw.source.md.rms::CDS_BP.TAB.ZBUT0000UZQMZ7" a 
+inner join 
+(select ifnull(max("Z_RUN_SEQ_ID"),0) as "Z_RUN_SEQ_ID" from "osr.edw.staging.md.rms::CDS_BP.DSO.ZBUT0000UZQMZ7.active_data") b
+on a."Z_RUN_SEQ_ID" > b."Z_RUN_SEQ_ID"
+order by a."Z_CHANGE_TIME" asc
