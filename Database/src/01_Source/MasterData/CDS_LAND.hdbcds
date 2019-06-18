@@ -367,10 +367,25 @@ context CDS_LAND {
 
         /*@@layout{"layoutInfo":{"x":757,"y":73.5}}*/
         entity LTEDCODE {
-            key CLIENT       : String(3);
-            key EXM_DED_CODE : String(2);
-                TEXT         : String(40);
-                DEFAULT_PCT  : Decimal(3, 0);
+            key CLIENT        : String(3);
+            key EXM_DED_CODE  : String(2);
+                TEXT          : String(40);
+                DEFAULT_PCT   : Decimal(3, 0);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-894,"y":901.5}}*/
+        entity LTCFORMS {
+            key MANDT            : String(3);
+            key RESULT_TYPE      : String(2);
+                FORMNAME         : String(30);
+                COVERFORM        : String(2);
+                COPYFORM         : String(2);
+                USEVENDORDETAILS : String(1);
+                ONLYINVALIDLAND  : String(1);
+                ONLYRESULTLAND   : String(1);
+                DUMMYRESULT      : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
