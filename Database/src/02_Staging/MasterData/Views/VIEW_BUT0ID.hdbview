@@ -1,8 +1,0 @@
-View "osr.edw.staging.md.rms::VIEW_BUT0ID"
-as 
-select a.* from 
-"osr.edw.source.md.rms::CDS_BP.TAB.BUT0ID" a 
-inner join 
-(select ifnull(max("Z_RUN_SEQ_ID"),0) as "Z_RUN_SEQ_ID" from "osr.edw.staging.md.rms::CDS_BP.DSO.BUT0ID.active_data") b
-on a."Z_RUN_SEQ_ID" > b."Z_RUN_SEQ_ID"
-order by a."Z_CHANGE_TIME" asc
