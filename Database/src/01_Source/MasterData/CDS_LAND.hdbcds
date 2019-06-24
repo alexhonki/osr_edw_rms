@@ -276,8 +276,8 @@ context CDS_LAND {
             key RCSTATUS      : String(1);
                 RCTYPE        : String(4);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate;
-                Z_VALID_TO    : LocalDate;
+                Z_VALID_FROM  : UTCTimestamp;
+                Z_VALID_TO    : UTCTimestamp;
                 Z_CHANGE_TYPE : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
@@ -386,8 +386,18 @@ context CDS_LAND {
                 ONLYINVALIDLAND  : String(1);
                 ONLYRESULTLAND   : String(1);
                 DUMMYRESULT      : String(1);
-                Z_CHANGE_TIME : UTCTimestamp;
-                Z_SOURCE_SYS  : String(5);                
+                Z_CHANGE_TIME    : UTCTimestamp;
+                Z_SOURCE_SYS     : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-651,"y":897.5}}*/
+        entity TJ02T {
+            key ISTAT : String(5);
+            key SPRAS : String(1);
+                TXT04 : String(4);
+                TXT30 : String(30);
+                Z_CHANGE_TIME    : UTCTimestamp;
+                Z_SOURCE_SYS     : String(5);                
         };
     };
 };
