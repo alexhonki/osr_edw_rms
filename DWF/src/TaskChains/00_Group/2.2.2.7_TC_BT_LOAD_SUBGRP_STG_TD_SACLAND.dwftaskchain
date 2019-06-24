@@ -125,6 +125,63 @@
           "status": "OK"
         }
       ]
+    },
+    "8": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD Z1000DCL00000000",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_Z1000DCL00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "7",
+          "status": "OK"
+        }
+      ]
+    }, 
+    "9": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD Z1004LDL00000000",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_Z1004LDL00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    }, 
+    "10": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD Z1004LDL00000001",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.staging.td.rms#TC_LOAD_Z1004LDL00000001"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "9",
+          "status": "OK"
+        }
+      ]
     }    
   }
 }
