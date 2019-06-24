@@ -478,7 +478,7 @@ context CDS_TRM2 {
                 Z_RUN_ROW_NO     : Integer;
                 Z_CURR_FLAG      : String(1);
                 Z_VALID_FROM     : LocalDate;
-                Z_VALID_TO       : LocalDate;                
+                Z_VALID_TO       : LocalDate;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -576,14 +576,14 @@ context CDS_TRM2 {
                 C_TOT_SHARE        : Integer;
                 C_TRANSFEREE_NO    : Integer;
                 A_FOREIGN_PERSON_Q : String(1);
-            key Z_RUN_SEQ_ID     : Integer;
-                Z_CHANGE_TYPE    : String(1);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                Z_RUN_ROW_NO     : Integer;
-                Z_CURR_FLAG      : String(1);
-                Z_VALID_FROM     : LocalDate;
-                Z_VALID_TO       : LocalDate;                
+            key Z_RUN_SEQ_ID       : Integer;
+                Z_CHANGE_TYPE      : String(1);
+                Z_CHANGE_TIME      : UTCTimestamp;
+                Z_SOURCE_SYS       : String(5);
+                Z_RUN_ROW_NO       : Integer;
+                Z_CURR_FLAG        : String(1);
+                Z_VALID_FROM       : LocalDate;
+                Z_VALID_TO         : LocalDate;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -647,14 +647,14 @@ context CDS_TRM2 {
                 A_AFAD_INT_ACQUIRED    : Integer;
                 A_AFAD_INT_SHARE       : Integer;
                 C_AFAD_TOTAL           : Decimal(13, 2);
-            key Z_RUN_SEQ_ID     : Integer;
-                Z_CHANGE_TYPE    : String(1);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                Z_RUN_ROW_NO     : Integer;
-                Z_CURR_FLAG      : String(1);
-                Z_VALID_FROM     : LocalDate;
-                Z_VALID_TO       : LocalDate;                
+            key Z_RUN_SEQ_ID           : Integer;
+                Z_CHANGE_TYPE          : String(1);
+                Z_CHANGE_TIME          : UTCTimestamp;
+                Z_SOURCE_SYS           : String(5);
+                Z_RUN_ROW_NO           : Integer;
+                Z_CURR_FLAG            : String(1);
+                Z_VALID_FROM           : LocalDate;
+                Z_VALID_TO             : LocalDate;
         };
 
         /*@@layout{"layoutInfo":{}}*/
@@ -700,14 +700,94 @@ context CDS_TRM2 {
                 A_AFAD_INT_ACQUIRED  : Integer;
                 A_AFAD_INT_SHARE     : Integer;
                 C_AFAD_TOTAL         : Decimal(13, 2);
-            key Z_RUN_SEQ_ID     : Integer;
-                Z_CHANGE_TYPE    : String(1);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);
-                Z_RUN_ROW_NO     : Integer;
-                Z_CURR_FLAG      : String(1);
-                Z_VALID_FROM     : LocalDate;
-                Z_VALID_TO       : LocalDate;                
+            key Z_RUN_SEQ_ID         : Integer;
+                Z_CHANGE_TYPE        : String(1);
+                Z_CHANGE_TIME        : UTCTimestamp;
+                Z_SOURCE_SYS         : String(5);
+                Z_RUN_ROW_NO         : Integer;
+                Z_CURR_FLAG          : String(1);
+                Z_VALID_FROM         : LocalDate;
+                Z_VALID_TO           : LocalDate;
+        };
+
+        /*@@layout{"layoutInfo":{"x":-946,"y":559.5}}*/
+        entity Z1000DCL00000000 {
+            key CLIENT          : String(3);
+            key RECORD_ID       : String(100);
+                PARENT_ID       : String(32);
+                OBJECT_ID       : String(32);
+                BUNDLE_ID       : String(32);
+                VERSION         : String(5);
+                FORM_NUMBER     : String(4);
+                TIMESTAMP       : Decimal(15, 0);
+                INITIAL_FLAGS   : String(800);
+                A_BP_NUMBER     : String(10);
+                A_CO_FBN_NUMBER : String(12);
+                A_CP_NAME       : String(40);
+                A_TELEPHONE     : String(30);
+                A_DECL_CONFIRM  : String(1);
+                C_DECL_DATE     : String(8);
+                C_AUTO_APPROVED : String(1);
+                C_LAND_USAGE    : String(1);
+                C_FORM_ANSWERS  : String(1);
+                C_TMR_ADDRESS   : String(1);
+                C_OPEN_TASKS    : String(1);
+            key Z_RUN_SEQ_ID         : Integer;
+                Z_CHANGE_TYPE        : String(1);
+                Z_CHANGE_TIME        : UTCTimestamp;
+                Z_SOURCE_SYS         : String(5);
+                Z_RUN_ROW_NO         : Integer;
+                Z_CURR_FLAG          : String(1);
+                Z_VALID_FROM         : UTCTimestamp;
+                Z_VALID_TO           : UTCTimestamp;                
+        };
+
+        /*@@layout{"layoutInfo":{"x":-717,"y":558.5}}*/
+        entity Z1004LDL00000000 {
+            key CLIENT           : String(3);
+            key RECORD_ID        : String(100);
+                PARENT_ID        : String(32);
+                OBJECT_ID        : String(32);
+                BUNDLE_ID        : String(32);
+                VERSION          : String(5);
+                FORM_NUMBER      : String(4);
+                TIMESTAMP        : Decimal(15, 0);
+                INITIAL_FLAGS    : String(800);
+                A_LIABILITY_YEAR : String(4);
+            key Z_RUN_SEQ_ID         : Integer;
+                Z_CHANGE_TYPE        : String(1);
+                Z_CHANGE_TIME        : UTCTimestamp;
+                Z_SOURCE_SYS         : String(5);
+                Z_RUN_ROW_NO         : Integer;
+                Z_CURR_FLAG          : String(1);
+                Z_VALID_FROM         : UTCTimestamp;
+                Z_VALID_TO           : UTCTimestamp;                
+        };
+
+        /*@@layout{"layoutInfo":{"x":-475,"y":557.5}}*/
+        entity Z1004LDL00000001 {
+            key CLIENT             : String(3);
+            key RECORD_ID          : String(100);
+                PARENT_ID          : String(100);
+                OBJECT_ID          : String(32);
+                INITIAL_FLAGS      : String(800);
+                A_EXEMPT_CHECK     : String(1);
+                C_PROP_ID          : String(10);
+                C_LAND_DESC        : String(25);
+                C_LAND_ADDRESS     : String(50);
+                C_ENTITLEMENT_LAND : String(1);
+                C_LAND_USE_CODE    : String(3);
+                C_LAND_USE_DESC    : String(40);
+                C_LAND_YEAR        : String(4);
+                C_SCV_ADDRESS      : String(50);
+            key Z_RUN_SEQ_ID         : Integer;
+                Z_CHANGE_TYPE        : String(1);
+                Z_CHANGE_TIME        : UTCTimestamp;
+                Z_SOURCE_SYS         : String(5);
+                Z_RUN_ROW_NO         : Integer;
+                Z_CURR_FLAG          : String(1);
+                Z_VALID_FROM         : UTCTimestamp;
+                Z_VALID_TO           : UTCTimestamp;                
         };
     };
 };
