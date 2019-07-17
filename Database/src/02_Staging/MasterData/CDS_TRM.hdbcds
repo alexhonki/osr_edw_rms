@@ -220,6 +220,15 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                     REF_PERIOD_KEY : String(4)      not null;
+                    
+                    @DataStore.aggregation : #NOP
+                    PRT_HYRLY_RATE   : Decimal(8, 4)  not null default 0;
+
+                    @DataStore.aggregation : #NOP
+                    PRT_HDAILY_RATE  : Decimal(10, 5) not null default 0;
+
+                    @DataStore.aggregation : #NOP
+                    PRT_REG_DISCOUNT : Decimal(10, 5) not null default 0;  
 
                     @DataStore.aggregation : #NOP
                     Z_CHANGE_TYPE  : String(1)      not null;
@@ -262,7 +271,16 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #MOV
                     REF_PERIOD_KEY      : String(4)              not null;
+                    
+                    @DataStore.aggregation : #MOV
+                    PRT_HYRLY_RATE      : Decimal(8, 4)          not null default 0;
 
+                    @DataStore.aggregation : #MOV
+                    PRT_HDAILY_RATE     : Decimal(10, 5)         not null default 0;
+
+                    @DataStore.aggregation : #MOV
+                    PRT_REG_DISCOUNT    : Decimal(10, 5)         not null default 0; 
+                    
                     @DataStore.aggregation : #MOV
                     Z_CHANGE_TYPE       : String(1)              not null;
 
@@ -276,7 +294,7 @@ context CDS_TRM {
                     Z_RUN_ROW_NO        : Integer                not null;
 
                     @DataStore.aggregation : #MOV
-                key Z_RUN_SEQ_ID        : Integer                not null;
+                    Z_RUN_SEQ_ID        : Integer                not null;
             }
             technical configuration {
                 group name T_PRTRTE group type "sap.dwf.dso" group subtype QUEUE;
@@ -292,11 +310,14 @@ context CDS_TRM {
                     DAYS_IN_YR          : Decimal(6, 2)       not null;
                     PRT_DAILY_RATE      : Decimal(10, 5)      not null;
                     REF_PERIOD_KEY      : String(4)           not null;
+                    PRT_HYRLY_RATE      : Decimal(8, 4)       not null default 0;
+                    PRT_HDAILY_RATE     : Decimal(10, 5)      not null default 0;
+                    PRT_REG_DISCOUNT    : Decimal(10, 5)      not null default 0;
                     Z_CHANGE_TYPE       : String(1)           not null;
                     Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS        : String(5)           not null;
                     Z_RUN_ROW_NO        : Integer             not null;
-                key Z_RUN_SEQ_ID        : Integer             not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
             }
             technical configuration {
                 group name T_PRTRTE group type "sap.dwf.dso" group subtype CHANGE_LOG;
