@@ -1209,6 +1209,15 @@ context CDS_TRM {
 
                     @DataStore.aggregation : #NOP
                     C_CURRENCY              : String(5)      not null;
+                    
+                    @DataStore.aggregation : #NOP
+                    A_REGIONAL_EMPLOYER     : String(1)      not null default '';
+
+                    @DataStore.aggregation : #NOP
+                    A_GROUP_AUS_WAGES       : String(1)      not null default '';
+
+                    @DataStore.aggregation : #NOP
+                    C_CALC_RATE             : Decimal(5, 2)  not null default 0;
 
                     @DataStore.aggregation : #NOP
                     Z_RUN_SEQ_ID            : Integer        not null;
@@ -1301,7 +1310,16 @@ context CDS_TRM {
                     C_CURRENCY              : String(5)              not null;
 
                     @DataStore.aggregation : #MOV
-                key Z_RUN_SEQ_ID            : Integer                not null;
+                    A_REGIONAL_EMPLOYER     : String(1)              not null default '';
+
+                    @DataStore.aggregation : #MOV
+                    A_GROUP_AUS_WAGES       : String(1)              not null default '';
+
+                    @DataStore.aggregation : #MOV
+                    C_CALC_RATE             : Decimal(5, 2)          not null default 0;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_SEQ_ID            : Integer                not null;
 
                     @DataStore.aggregation : #MOV
                     Z_CHANGE_TYPE           : String(1)              not null;
@@ -1345,7 +1363,10 @@ context CDS_TRM {
                     C_PAYROLL_TAX           : Decimal(23, 4)      not null;
                     A_CURRENCY              : String(5)           not null;
                     C_CURRENCY              : String(5)           not null;
-                key Z_RUN_SEQ_ID            : Integer             not null;
+                    A_REGIONAL_EMPLOYER     : String(1)           not null default '';
+                    A_GROUP_AUS_WAGES       : String(1)           not null default '';
+                    C_CALC_RATE             : Decimal(5, 2)       not null default 0;
+                    Z_RUN_SEQ_ID            : Integer             not null;
                     Z_CHANGE_TYPE           : String(1)           not null;
                     Z_CHANGE_TIME           : UTCTimestamp        not null default '1900-01-01 23:59:59';
                     Z_SOURCE_SYS            : String(5)           not null;
