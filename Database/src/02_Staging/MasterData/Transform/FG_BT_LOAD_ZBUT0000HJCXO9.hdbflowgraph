@@ -948,7 +948,7 @@
       </attributes>
       <attributes xmi:id="08fcd147cca2a9971220c0986b1b704f" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="false" expression="IFNULL(&quot;Z_SOURCE_SYS&quot;, &#x27;&#x27;)" length="5">
       </attributes>
-      <attributes xmi:id="ca5becc317bed3c6e8f604e982859aa6" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;N&#x27; END" length="1">
+      <attributes xmi:id="ca5becc317bed3c6e8f604e982859aa6" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;&#x27; END" length="1">
       </attributes>
     </outputs>
   </nodes>
@@ -992,7 +992,7 @@
       </attributes>
     </inputs>
     <outputs xmi:id="913479a3d7d1ae1df0e73e852375ebc0" name="DataTarget_addRecordNo_OUT">
-      <attributes xmi:id="fe475f5a493abcb6d95e5964568c8a78" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over ()">
+      <attributes xmi:id="fe475f5a493abcb6d95e5964568c8a78" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over (order by &quot;Z_CHANGE_TIME&quot; asc)">
       </attributes>
       <attributes xmi:id="ec39c0dca1678ad916aa7834f3d0ce11" name="CLIENT" type="NVARCHAR" nullable="false" expression="&quot;CLIENT&quot;" length="3">
       </attributes>
