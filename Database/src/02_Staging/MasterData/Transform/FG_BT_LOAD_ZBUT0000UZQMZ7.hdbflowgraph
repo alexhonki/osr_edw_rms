@@ -684,7 +684,7 @@
     <joinDefinitions left="06b9e5f98fac3ecbfa211f5579676d4e" right="850c3a31dceef2c4fea0eb89c08ecb3b" type="INNER" condition="&quot;Join_IN&quot;.&quot;Z_RUN_SEQ_ID&quot;&gt;&quot;Join_IN_1&quot;.&quot;Z_RUN_SEQ_ID&quot;">
     </joinDefinitions>
   </nodes>
-  <nodes xmi:id="365567342ca5f6742c74cea0ba0bb534" xsi:type="flowgraph:FilterNode" name="P_JOIN" expression="&quot;Z_RUN_SEQ_ID&quot; is not null order by &quot;Z_CHANGE_TIME&quot; asc">
+  <nodes xmi:id="365567342ca5f6742c74cea0ba0bb534" xsi:type="flowgraph:FilterNode" name="P_JOIN" expression="">
     <annotations key="sap.afm.layout" xmi:id="0d07a4dcc7b72d66d70019e24a50d0b1">
       <annotations xmi:id="ea7af4df98d74abb19090032970f38a1" key="x" value="669.664792060852">
       </annotations>
@@ -1306,7 +1306,7 @@
       </attributes>
       <attributes xmi:id="e976541dfa28f095fd49ef3951453634" name="Z_VALID_TO" type="DATE" nullable="false" expression="IFNULL(&quot;Z_VALID_TO&quot;, &#x27;1900-01-01&#x27;)" length="10">
       </attributes>
-      <attributes xmi:id="b67afb2c4a812bbe6727de93d18a275d" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;N&#x27; END" length="1">
+      <attributes xmi:id="b67afb2c4a812bbe6727de93d18a275d" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;&#x27; END" length="1">
       </attributes>
     </outputs>
   </nodes>
@@ -1356,7 +1356,7 @@
       </attributes>
     </inputs>
     <outputs xmi:id="2eae526edaa44ec1a54caee386a1f8f4" name="DataTarget_addRecordNo_OUT">
-      <attributes xmi:id="fd1e23c65c29cb5e9ba7a972eecaea86" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over ()">
+      <attributes xmi:id="fd1e23c65c29cb5e9ba7a972eecaea86" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over (order by &quot;Z_CHANGE_TIME&quot; asc)">
       </attributes>
       <attributes xmi:id="d178e2e5f5bf59d0042dedbfbdcf287c" name="CLIENT" type="NVARCHAR" nullable="false" expression="&quot;CLIENT&quot;" length="3">
       </attributes>
