@@ -1,0 +1,616 @@
+namespace osr.edw.staging.td.rms;
+
+using DataWarehouse.DataStore::Structures.inboundQueueKey;
+using DataWarehouse.DataStore::Structures.inboundQueueAttributes;
+using DataWarehouse.DataStore::Structures.changeLogKey;
+using DataWarehouse.DataStore::Structures.changeLogAttributes;
+using DataWarehouse.DataStore::Structures.operationHistoryKey;
+using DataWarehouse.DataStore::Structures.operationHistoryAttributes;
+using DataWarehouse.DataStore::Structures.aggregationHistoryKey;
+using DataWarehouse.DataStore::Structures.aggregationHistoryAttributes;
+using DataWarehouse.DataStore::Structures.affectedRequestsKey;
+using DataWarehouse.DataStore::Structures.logMessagesKey;
+using DataWarehouse.DataStore::Structures.logMessagesAttributes;
+using DataWarehouse.DataStore::Structures.subscribersKey;
+using DataWarehouse.DataStore::Structures.subscribersAttributes;
+using DataWarehouse.DataStore::Structures.runningOperationsKey;
+using DataWarehouse.DataStore::Structures.idGeneratorKey;
+using DataWarehouse.DataStore::Structures.idGeneratorAttributes;
+using DataWarehouse.DataStore::Annotations as DataStore;
+
+context CDS_SWF {
+
+    /*@@layout{"layoutInfo":{"x":-367,"y":-104.5}}*/
+    context DSO {
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":-380,"y":-123.5}}*/
+        context SWWWIHEAD {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key CLIENT            : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key WI_ID             : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID      : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_TYPE           : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CREATOR        : String(90)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_LANG           : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_TEXT           : String(120)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_RHTEXT         : String(40)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_STAT           : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CD             : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CT             : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_AED            : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_AAGENT         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_AADDR          : String(28)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CRUSER         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CRADDR         : String(28)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CHCKWI         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CBFB           : String(30)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_RH_TASK        : String(14)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_PRIO           : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_CONFIRM        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_COMP_EV        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_FORW_BY        : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_DISABLE        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_REJECT         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TCLASS            : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    NOTE_EXIST        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    NOTIFY            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RETRY_CNT         : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    MAX_RETRY         : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RC_MODELED        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CB_DONE           : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    HANDLE            : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SYNCCHAIN         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    NO_DEADL          : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_DH_STAT        : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_RELEASE        : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WLC_DISPL         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_RESTLOG        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    REMOTE_ID         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    REMOTE_SYS        : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    STATUS_EVT        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TIMEOUT           : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    WF_TYPE           : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WLC_FLAGS         : String(50)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    XMLPROT           : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WAIT4CB           : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOP_WI_ID         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    DEF_GUID          : String(40)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    EXEC_TIME         : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    NOTE_COUNT        : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    PRS_PROFIL        : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CREA_TMP          : Decimal(21, 7) not null;
+
+                    @DataStore.aggregation : #NOP
+                    CHECK_STAT        : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    BLOCKTYPE         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PARENT_WI         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RNDNUMBER         : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WFD_ID            : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WFD_VERSION       : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WFD_EXETYP        : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PROCCAT           : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    TOP_TASK          : String(14)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    AGING_STATE       : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    AGING_TEMPERATURE : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WLC_FLAGS_EXT     : String(100)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    WI_AED_TIMESTAMP  : Decimal(21, 7) not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE     : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME     : UTCTimestamp   not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS      : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO      : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG       : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM      : UTCTimestamp   not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO        : UTCTimestamp   not null default '1900-01-01 23:59:59';
+            }
+            technical configuration {
+                group name SWWWIHEAD group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key CLIENT              : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key WI_ID               : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_SEQ_ID        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_TYPE             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CREATOR          : String(90)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_LANG             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_TEXT             : String(120)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_RHTEXT           : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_STAT             : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CD               : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CT               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_AED              : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_AAGENT           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_AADDR            : String(28)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CRUSER           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CRADDR           : String(28)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CHCKWI           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CBFB             : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_RH_TASK          : String(14)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_PRIO             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_CONFIRM          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_COMP_EV          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_FORW_BY          : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_DISABLE          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_REJECT           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TCLASS              : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    NOTE_EXIST          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    NOTIFY              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RETRY_CNT           : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    MAX_RETRY           : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RC_MODELED          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CB_DONE             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    HANDLE              : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SYNCCHAIN           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    NO_DEADL            : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_DH_STAT          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_RELEASE          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WLC_DISPL           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_RESTLOG          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    REMOTE_ID           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    REMOTE_SYS          : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STATUS_EVT          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TIMEOUT             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    WF_TYPE             : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WLC_FLAGS           : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    XMLPROT             : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WAIT4CB             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOP_WI_ID           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DEF_GUID            : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    EXEC_TIME           : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    NOTE_COUNT          : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    PRS_PROFIL          : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CREA_TMP            : Decimal(21, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    CHECK_STAT          : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BLOCKTYPE           : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PARENT_WI           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RNDNUMBER           : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WFD_ID              : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WFD_VERSION         : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WFD_EXETYP          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PROCCAT             : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    TOP_TASK            : String(14)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    AGING_STATE         : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    AGING_TEMPERATURE   : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WLC_FLAGS_EXT       : String(100)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    WI_AED_TIMESTAMP    : Decimal(21, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM        : UTCTimestamp           not null default '1900-01-01 23:59:59';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO          : UTCTimestamp           not null default '1900-01-01 23:59:59';
+            }
+            technical configuration {
+                group name SWWWIHEAD group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key CLIENT              : String(3)           not null;
+                key WI_ID               : String(12)          not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
+                    WI_TYPE             : String(1)           not null;
+                    WI_CREATOR          : String(90)          not null;
+                    WI_LANG             : String(1)           not null;
+                    WI_TEXT             : String(120)         not null;
+                    WI_RHTEXT           : String(40)          not null;
+                    WI_STAT             : String(12)          not null;
+                    WI_CD               : String(8)           not null;
+                    WI_CT               : String(6)           not null;
+                    WI_AED              : String(8)           not null;
+                    WI_AAGENT           : String(12)          not null;
+                    WI_AADDR            : String(28)          not null;
+                    WI_CRUSER           : String(12)          not null;
+                    WI_CRADDR           : String(28)          not null;
+                    WI_CHCKWI           : String(12)          not null;
+                    WI_CBFB             : String(30)          not null;
+                    WI_RH_TASK          : String(14)          not null;
+                    WI_PRIO             : String(1)           not null;
+                    WI_CONFIRM          : String(1)           not null;
+                    WI_COMP_EV          : String(1)           not null;
+                    WI_FORW_BY          : String(12)          not null;
+                    WI_DISABLE          : String(1)           not null;
+                    WI_REJECT           : String(1)           not null;
+                    TCLASS              : String(12)          not null;
+                    NOTE_EXIST          : String(1)           not null;
+                    NOTIFY              : String(1)           not null;
+                    RETRY_CNT           : String(2)           not null;
+                    MAX_RETRY           : String(2)           not null;
+                    RC_MODELED          : String(1)           not null;
+                    CB_DONE             : String(1)           not null;
+                    HANDLE              : String(12)          not null;
+                    SYNCCHAIN           : String(1)           not null;
+                    NO_DEADL            : String(1)           not null;
+                    WI_DH_STAT          : String(4)           not null;
+                    WI_RELEASE          : String(4)           not null;
+                    WLC_DISPL           : String(1)           not null;
+                    WI_RESTLOG          : String(1)           not null;
+                    REMOTE_ID           : String(12)          not null;
+                    REMOTE_SYS          : String(10)          not null;
+                    STATUS_EVT          : String(1)           not null;
+                    TIMEOUT             : Integer             not null;
+                    WF_TYPE             : String(4)           not null;
+                    WLC_FLAGS           : String(50)          not null;
+                    XMLPROT             : String(2)           not null;
+                    WAIT4CB             : String(1)           not null;
+                    TOP_WI_ID           : String(12)          not null;
+                    DEF_GUID            : String(40)          not null;
+                    EXEC_TIME           : Integer             not null;
+                    NOTE_COUNT          : Integer             not null;
+                    PRS_PROFIL          : String(4)           not null;
+                    CREA_TMP            : Decimal(21, 7)      not null;
+                    CHECK_STAT          : String(2)           not null;
+                    BLOCKTYPE           : String(4)           not null;
+                    PARENT_WI           : String(12)          not null;
+                    RNDNUMBER           : String(2)           not null;
+                    WFD_ID              : String(10)          not null;
+                    WFD_VERSION         : String(4)           not null;
+                    WFD_EXETYP          : String(1)           not null;
+                    PROCCAT             : String(10)          not null;
+                    TOP_TASK            : String(14)          not null;
+                    AGING_STATE         : String(4)           not null;
+                    AGING_TEMPERATURE   : String(8)           not null;
+                    WLC_FLAGS_EXT       : String(100)         not null;
+                    WI_AED_TIMESTAMP    : Decimal(21, 7)      not null;
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : UTCTimestamp        not null default '1900-01-01 23:59:59';
+                    Z_VALID_TO          : UTCTimestamp        not null default '1900-01-01 23:59:59';
+            }
+            technical configuration {
+                group name SWWWIHEAD group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+    };
+};
