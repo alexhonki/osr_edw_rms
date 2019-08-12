@@ -1,5 +1,5 @@
 {
-  "description": "SAC_2.2.2.0 Load Group STG RMS TD",
+  "description": "SAC_2.2.2.0 Load Group Staging RMS TD",
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
@@ -30,6 +30,25 @@
           "status": "NEUTRAL"
         }
       ]
-    }
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT STG SUBS TD SAC payroll tax",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#2.2.2.8_TC_BT_LOAD_SUBGRP_STG_TD_SACPTAX"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    }    
   }
 }
