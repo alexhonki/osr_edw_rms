@@ -141,10 +141,20 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":593,"y":-15.5}}*/
         entity TFK008T {
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key ZAHLS         : String(1);
+                TEXTL         : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-788,"y":209.5}}*/
+        entity TFK080R1T {
             key MANDT : String(3);
             key SPRAS : String(1);
-            key ZAHLS : String(1);
-                TEXTL : String(40);
+            key LOCKR : String(1);
+                LTEXT : String(40);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
