@@ -122,9 +122,19 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-128,"y":-12.5}}*/
         entity TFK080FT {
+            key SPRAS         : String(1);
+            key PROID         : String(2);
+                PTEXT         : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":351,"y":-15.5}}*/
+        entity TFK056ST {
+            key MANDT : String(3);
             key SPRAS : String(1);
-            key PROID : String(2);
-                PTEXT : String(40);
+            key SPERZ : String(1);
+                TXT30 : String(30);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
