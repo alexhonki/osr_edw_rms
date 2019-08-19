@@ -161,10 +161,19 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-567,"y":205.5}}*/
         entity TFK080R3T {
-            key MANDT : String(3);
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key LOCKR         : String(1);
+                LTEXT         : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-342,"y":201.5}}*/
+        entity TFK001T {
             key SPRAS : String(1);
-            key LOCKR : String(1);
-                LTEXT : String(40);
+            key HERKF : String(2);
+                HTEXT : String(40);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
