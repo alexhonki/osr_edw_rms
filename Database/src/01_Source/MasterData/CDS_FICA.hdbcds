@@ -180,9 +180,23 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-121,"y":200.5}}*/
         entity TTYPT {
+            key SPRAS         : String(1);
+            key AWTYP         : String(5);
+                OTEXT         : String(20);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":106,"y":199.5}}*/
+        entity CEPCT {
+            key MANDT : String(3);
             key SPRAS : String(1);
-            key AWTYP : String(5);
-                OTEXT : String(20);
+            key PRCTR : String(10);
+            key DATBI : String(8);
+            key KOKRS : String(4);
+                KTEXT : String(20);
+                LTEXT : String(40);
+                MCTXT : String(20);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
