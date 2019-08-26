@@ -284,10 +284,21 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-114,"y":440.5}}*/
         entity TFK048AT {
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key ABGRD         : String(2);
+                ABTXT         : String(50);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":106,"y":440.5}}*/
+        entity TFK045AT {
             key MANDT : String(3);
+            key RLGRD : String(3);
+            key HBKID : String(5);
             key SPRAS : String(1);
-            key ABGRD : String(2);
-                ABTXT : String(50);
+                RTEXT : String(50);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
