@@ -247,13 +247,23 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-788,"y":443.5}}*/
         entity SKAT {
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key KTOPL         : String(4);
+            key SAKNR         : String(10);
+                TXT20         : String(20);
+                TXT50         : String(50);
+                MCOD1         : String(25);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-567,"y":440.5}}*/
+        entity TFK047ST {
             key MANDT : String(3);
             key SPRAS : String(1);
-            key KTOPL : String(4);
-            key SAKNR : String(10);
-                TXT20 : String(20);
-                TXT50 : String(50);
-                MCOD1 : String(25);
+            key MANSP : String(1);
+                STEXT : String(50);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
