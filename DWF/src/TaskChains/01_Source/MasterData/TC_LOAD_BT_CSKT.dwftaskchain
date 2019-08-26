@@ -1,0 +1,33 @@
+{
+  "description": "Load batch source CSKT",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load source CSKT",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_CSKT_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }   
+  }
+}

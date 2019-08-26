@@ -260,10 +260,24 @@ context CDS_FICA {
 
         /*@@layout{"layoutInfo":{"x":-567,"y":440.5}}*/
         entity TFK047ST {
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key MANSP         : String(1);
+                STEXT         : String(50);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-342,"y":440.5}}*/
+        entity CSKT {
             key MANDT : String(3);
             key SPRAS : String(1);
-            key MANSP : String(1);
-                STEXT : String(50);
+            key KOKRS : String(4);
+            key KOSTL : String(10);
+            key DATBI : String(8);
+                KTEXT : String(20);
+                LTEXT : String(40);
+                MCTXT : String(20);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
