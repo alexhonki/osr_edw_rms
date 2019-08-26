@@ -1,0 +1,33 @@
+{
+  "description": "Load batch source T007A",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeProcedure",
+        "taskGroup": "hanaNative",
+        "description": "Load source T007A",
+        "parameterValues": [
+          {
+            "id": "procName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_T007A_SP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }   
+  }
+}
