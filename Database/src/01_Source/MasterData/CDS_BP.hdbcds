@@ -381,7 +381,7 @@ context CDS_BP {
                 APPLI_TAB     : String(4);
                 VARNR         : String(6);
                 RLTCATGRP1    : String(6);
-                RLTCATGRP2    : String(6);                
+                RLTCATGRP2    : String(6);
                 XDIRECTION    : String(1);
                 TIMDP         : String(1);
                 CARDI         : String(3);
@@ -527,14 +527,48 @@ context CDS_BP {
 
         /*@@layout{"layoutInfo":{"x":1282,"y":215.5}}*/
         entity TB038B {
-            key CLIENT     : String(3);
-            key SPRAS      : String(1);
-            key ISTYPE     : String(4);
-            key IND_SECTOR : String(10);
-                TEXT       : String(100);
-                TEXT_SHORT : String(20);
+            key CLIENT        : String(3);
+            key SPRAS         : String(1);
+            key ISTYPE        : String(4);
+            key IND_SECTOR    : String(10);
+                TEXT          : String(100);
+                TEXT_SHORT    : String(20);
                 Z_CHANGE_TIME : UTCTimestamp;
-                Z_SOURCE_SYS  : String(5);                
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-924,"y":759.5}}*/
+        entity BUT0BK {
+            key MANDT         : String(3);
+            key PARTNER       : String(10);
+            key BKVID         : String(4);
+            key Z_RUN_SEQ_ID  : Integer;
+                BANKS         : String(3);
+                BANKL         : String(15);
+                BANKN         : String(18);
+                BKONT         : String(2);
+                BKREF         : String(20);
+                KOINH         : String(60);
+                BKEXT         : String(20);
+                XEZER         : String(1);
+                ACCNAME       : String(40);
+                MOVE_BKVID    : String(4);
+                BK_VALID_FROM : Decimal(15, 0);
+                BK_VALID_TO   : Decimal(15, 0);
+                BK_MOVE_DATE  : Decimal(15, 0);
+                IBAN          : String(34);
+                BANK_GUID     : Binary(16);
+                ACCOUNT_ID    : String(35);
+                CHECK_DIGIT   : String(2);
+                ACCOUNT_TYPE  : String(3);
+                BP_EEW_BUT0BK : String(1);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : UTCTimestamp;
+                Z_VALID_TO    : UTCTimestamp;                
         };
     };
 };
