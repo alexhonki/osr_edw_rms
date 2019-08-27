@@ -1395,5 +1395,309 @@ context CDS_FICA {
                     technicalAttributes : idGeneratorAttributes;
             };
         };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":266,"y":-126.5}}*/
+        context DFKKCFZST {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key MANDT         : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key KEYZ1         : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                key POSZA         : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID  : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    SELT1         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    SELW1         : String(35)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SELT2         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    SELW2         : String(35)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SELT3         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    SELW3         : String(35)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    WAERS         : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    BETRZ         : Decimal(13, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    BVRKO         : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    BUKRS         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    GSBER         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    BUDAT         : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    TXTVW         : String(80)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    KLAEH         : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    KOINH         : String(60)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    STATE         : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LOCK_USER     : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    LOCK_LIMIT    : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WORKSTATE     : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RESUBMIT_DATE : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    WF_COUNT      : hana.SMALLINT  not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME : UTCTimestamp   not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS  : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO  : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG   : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM  : UTCTimestamp   not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO    : UTCTimestamp   not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name DFKKCFZST group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key MANDT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key KEYZ1               : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key POSZA               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_SEQ_ID        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    SELT1               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    SELW1               : String(35)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SELT2               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    SELW2               : String(35)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SELT3               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    SELW3               : String(35)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    WAERS               : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BETRZ               : Decimal(13, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    BVRKO               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    BUKRS               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    GSBER               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    BUDAT               : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    TXTVW               : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    KLAEH               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    KOINH               : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    STATE               : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LOCK_USER           : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    LOCK_LIMIT          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WORKSTATE           : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RESUBMIT_DATE       : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    WF_COUNT            : hana.SMALLINT          not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM        : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO          : UTCTimestamp           not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name DFKKCFZST group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key MANDT               : String(3)           not null;
+                key KEYZ1               : String(12)          not null;
+                key POSZA               : String(6)           not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
+                    SELT1               : String(1)           not null;
+                    SELW1               : String(35)          not null;
+                    SELT2               : String(1)           not null;
+                    SELW2               : String(35)          not null;
+                    SELT3               : String(1)           not null;
+                    SELW3               : String(35)          not null;
+                    WAERS               : String(5)           not null;
+                    BETRZ               : Decimal(13, 2)      not null;
+                    BVRKO               : String(10)          not null;
+                    BUKRS               : String(4)           not null;
+                    GSBER               : String(4)           not null;
+                    BUDAT               : String(8)           not null;
+                    TXTVW               : String(80)          not null;
+                    KLAEH               : String(10)          not null;
+                    KOINH               : String(60)          not null;
+                    STATE               : String(2)           not null;
+                    LOCK_USER           : String(12)          not null;
+                    LOCK_LIMIT          : String(8)           not null;
+                    WORKSTATE           : String(2)           not null;
+                    RESUBMIT_DATE       : String(8)           not null;
+                    WF_COUNT            : hana.SMALLINT       not null;
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_VALID_TO          : UTCTimestamp        not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name DFKKCFZST group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
     };
 };
