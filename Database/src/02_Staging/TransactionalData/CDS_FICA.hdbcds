@@ -4881,5 +4881,1002 @@ context CDS_FICA {
                     technicalAttributes : idGeneratorAttributes;
             };
         };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        /*@@layout{"layoutInfo":{"x":-21,"y":979.5}}*/
+        context FAGLFLEXT {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key RCLNT         : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key RYEAR         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR00       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR01       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR02       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR03       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR04       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR05       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR06       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR07       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key OBJNR08       : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                key DRCRK         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key RPMAX         : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID  : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    ACTIV         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RMVCT         : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RTCUR         : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RUNIT         : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    AWTYP         : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RLDNR         : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RRCTY         : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RVERS         : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LOGSYS        : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RACCT         : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    COST_ELEM     : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RBUKRS        : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RCNTR         : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    PRCTR         : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RFAREA        : String(16)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    RBUSA         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    KOKRS         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    SEGMENT       : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SCNTR         : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    PPRCTR        : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SFAREA        : String(16)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    SBUSA         : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RASSC         : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PSEGMENT      : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSLVT         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL01         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL02         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL03         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL04         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL05         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL06         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL07         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL08         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL09         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL10         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL11         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL12         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL13         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL14         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL15         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TSL16         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSLVT         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL01         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL02         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL03         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL04         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL05         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL06         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL07         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL08         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL09         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL10         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL11         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL12         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL13         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL14         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL15         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    HSL16         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSLVT         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL01         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL02         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL03         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL04         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL05         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL06         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL07         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL08         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL09         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL10         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL11         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL12         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL13         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL14         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL15         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    KSL16         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSLVT         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL01         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL02         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL03         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL04         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL05         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL06         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL07         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL08         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL09         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL10         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL11         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL12         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL13         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL14         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL15         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    OSL16         : Decimal(23, 2) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSLVT         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL01         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL02         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL03         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL04         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL05         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL06         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL07         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL08         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL09         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL10         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL11         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL12         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL13         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL14         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL15         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    MSL16         : Decimal(23, 3) not null;
+
+                    @DataStore.aggregation : #NOP
+                    TIMESTAMP     : Decimal(15, 0) not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME : UTCTimestamp   not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS  : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO  : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG   : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM  : UTCTimestamp   not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO    : UTCTimestamp   not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name FAGLFLEXT group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key RCLNT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key RYEAR               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR00             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR01             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR02             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR03             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR04             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR05             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR06             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR07             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key OBJNR08             : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key DRCRK               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key RPMAX               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_SEQ_ID        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    ACTIV               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RMVCT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RTCUR               : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RUNIT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    AWTYP               : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RLDNR               : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RRCTY               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RVERS               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LOGSYS              : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RACCT               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    COST_ELEM           : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RBUKRS              : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RCNTR               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PRCTR               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RFAREA              : String(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    RBUSA               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    KOKRS               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    SEGMENT             : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SCNTR               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    PPRCTR              : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SFAREA              : String(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    SBUSA               : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RASSC               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PSEGMENT            : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSLVT               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL01               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL02               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL03               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL04               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL05               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL06               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL07               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL08               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL09               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL10               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL11               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL12               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL13               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL14               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL15               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TSL16               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSLVT               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL01               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL02               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL03               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL04               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL05               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL06               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL07               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL08               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL09               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL10               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL11               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL12               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL13               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL14               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL15               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    HSL16               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSLVT               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL01               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL02               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL03               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL04               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL05               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL06               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL07               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL08               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL09               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL10               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL11               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL12               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL13               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL14               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL15               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    KSL16               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSLVT               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL01               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL02               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL03               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL04               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL05               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL06               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL07               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL08               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL09               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL10               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL11               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL12               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL13               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL14               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL15               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    OSL16               : Decimal(23, 2)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSLVT               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL01               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL02               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL03               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL04               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL05               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL06               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL07               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL08               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL09               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL10               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL11               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL12               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL13               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL14               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL15               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    MSL16               : Decimal(23, 3)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    TIMESTAMP           : Decimal(15, 0)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM        : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO          : UTCTimestamp           not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name FAGLFLEXT group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key RCLNT               : String(3)           not null;
+                key RYEAR               : String(4)           not null;
+                key OBJNR00             : Integer             not null;
+                key OBJNR01             : Integer             not null;
+                key OBJNR02             : Integer             not null;
+                key OBJNR03             : Integer             not null;
+                key OBJNR04             : Integer             not null;
+                key OBJNR05             : Integer             not null;
+                key OBJNR06             : Integer             not null;
+                key OBJNR07             : Integer             not null;
+                key OBJNR08             : Integer             not null;
+                key DRCRK               : String(1)           not null;
+                key RPMAX               : String(3)           not null;
+                    Z_RUN_SEQ_ID        : Integer             not null;
+                    ACTIV               : String(4)           not null;
+                    RMVCT               : String(3)           not null;
+                    RTCUR               : String(5)           not null;
+                    RUNIT               : String(3)           not null;
+                    AWTYP               : String(5)           not null;
+                    RLDNR               : String(2)           not null;
+                    RRCTY               : String(1)           not null;
+                    RVERS               : String(3)           not null;
+                    LOGSYS              : String(10)          not null;
+                    RACCT               : String(10)          not null;
+                    COST_ELEM           : String(10)          not null;
+                    RBUKRS              : String(4)           not null;
+                    RCNTR               : String(10)          not null;
+                    PRCTR               : String(10)          not null;
+                    RFAREA              : String(16)          not null;
+                    RBUSA               : String(4)           not null;
+                    KOKRS               : String(4)           not null;
+                    SEGMENT             : String(10)          not null;
+                    SCNTR               : String(10)          not null;
+                    PPRCTR              : String(10)          not null;
+                    SFAREA              : String(16)          not null;
+                    SBUSA               : String(4)           not null;
+                    RASSC               : String(6)           not null;
+                    PSEGMENT            : String(10)          not null;
+                    TSLVT               : Decimal(23, 2)      not null;
+                    TSL01               : Decimal(23, 2)      not null;
+                    TSL02               : Decimal(23, 2)      not null;
+                    TSL03               : Decimal(23, 2)      not null;
+                    TSL04               : Decimal(23, 2)      not null;
+                    TSL05               : Decimal(23, 2)      not null;
+                    TSL06               : Decimal(23, 2)      not null;
+                    TSL07               : Decimal(23, 2)      not null;
+                    TSL08               : Decimal(23, 2)      not null;
+                    TSL09               : Decimal(23, 2)      not null;
+                    TSL10               : Decimal(23, 2)      not null;
+                    TSL11               : Decimal(23, 2)      not null;
+                    TSL12               : Decimal(23, 2)      not null;
+                    TSL13               : Decimal(23, 2)      not null;
+                    TSL14               : Decimal(23, 2)      not null;
+                    TSL15               : Decimal(23, 2)      not null;
+                    TSL16               : Decimal(23, 2)      not null;
+                    HSLVT               : Decimal(23, 2)      not null;
+                    HSL01               : Decimal(23, 2)      not null;
+                    HSL02               : Decimal(23, 2)      not null;
+                    HSL03               : Decimal(23, 2)      not null;
+                    HSL04               : Decimal(23, 2)      not null;
+                    HSL05               : Decimal(23, 2)      not null;
+                    HSL06               : Decimal(23, 2)      not null;
+                    HSL07               : Decimal(23, 2)      not null;
+                    HSL08               : Decimal(23, 2)      not null;
+                    HSL09               : Decimal(23, 2)      not null;
+                    HSL10               : Decimal(23, 2)      not null;
+                    HSL11               : Decimal(23, 2)      not null;
+                    HSL12               : Decimal(23, 2)      not null;
+                    HSL13               : Decimal(23, 2)      not null;
+                    HSL14               : Decimal(23, 2)      not null;
+                    HSL15               : Decimal(23, 2)      not null;
+                    HSL16               : Decimal(23, 2)      not null;
+                    KSLVT               : Decimal(23, 2)      not null;
+                    KSL01               : Decimal(23, 2)      not null;
+                    KSL02               : Decimal(23, 2)      not null;
+                    KSL03               : Decimal(23, 2)      not null;
+                    KSL04               : Decimal(23, 2)      not null;
+                    KSL05               : Decimal(23, 2)      not null;
+                    KSL06               : Decimal(23, 2)      not null;
+                    KSL07               : Decimal(23, 2)      not null;
+                    KSL08               : Decimal(23, 2)      not null;
+                    KSL09               : Decimal(23, 2)      not null;
+                    KSL10               : Decimal(23, 2)      not null;
+                    KSL11               : Decimal(23, 2)      not null;
+                    KSL12               : Decimal(23, 2)      not null;
+                    KSL13               : Decimal(23, 2)      not null;
+                    KSL14               : Decimal(23, 2)      not null;
+                    KSL15               : Decimal(23, 2)      not null;
+                    KSL16               : Decimal(23, 2)      not null;
+                    OSLVT               : Decimal(23, 2)      not null;
+                    OSL01               : Decimal(23, 2)      not null;
+                    OSL02               : Decimal(23, 2)      not null;
+                    OSL03               : Decimal(23, 2)      not null;
+                    OSL04               : Decimal(23, 2)      not null;
+                    OSL05               : Decimal(23, 2)      not null;
+                    OSL06               : Decimal(23, 2)      not null;
+                    OSL07               : Decimal(23, 2)      not null;
+                    OSL08               : Decimal(23, 2)      not null;
+                    OSL09               : Decimal(23, 2)      not null;
+                    OSL10               : Decimal(23, 2)      not null;
+                    OSL11               : Decimal(23, 2)      not null;
+                    OSL12               : Decimal(23, 2)      not null;
+                    OSL13               : Decimal(23, 2)      not null;
+                    OSL14               : Decimal(23, 2)      not null;
+                    OSL15               : Decimal(23, 2)      not null;
+                    OSL16               : Decimal(23, 2)      not null;
+                    MSLVT               : Decimal(23, 3)      not null;
+                    MSL01               : Decimal(23, 3)      not null;
+                    MSL02               : Decimal(23, 3)      not null;
+                    MSL03               : Decimal(23, 3)      not null;
+                    MSL04               : Decimal(23, 3)      not null;
+                    MSL05               : Decimal(23, 3)      not null;
+                    MSL06               : Decimal(23, 3)      not null;
+                    MSL07               : Decimal(23, 3)      not null;
+                    MSL08               : Decimal(23, 3)      not null;
+                    MSL09               : Decimal(23, 3)      not null;
+                    MSL10               : Decimal(23, 3)      not null;
+                    MSL11               : Decimal(23, 3)      not null;
+                    MSL12               : Decimal(23, 3)      not null;
+                    MSL13               : Decimal(23, 3)      not null;
+                    MSL14               : Decimal(23, 3)      not null;
+                    MSL15               : Decimal(23, 3)      not null;
+                    MSL16               : Decimal(23, 3)      not null;
+                    TIMESTAMP           : Decimal(15, 0)      not null;
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_VALID_TO          : UTCTimestamp        not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name FAGLFLEXT group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
     };
 };
