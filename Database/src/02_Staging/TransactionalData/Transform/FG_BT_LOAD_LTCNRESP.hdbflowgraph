@@ -2136,7 +2136,7 @@
       </attributes>
     </inputs>
     <outputs xmi:id="02fa3fe8ff2aad99f8bd327ca22a8bea" name="InboundQ_proj_1551769243242_OUT">
-      <attributes xmi:id="ecfdf6ac9210b81acd5d8b71d54b3125" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over ()">
+      <attributes xmi:id="ecfdf6ac9210b81acd5d8b71d54b3125" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over (order by &quot;Z_CHANGE_TIME&quot; asc)">
       </attributes>
       <attributes xmi:id="585d64384b277f81023a6d108ba7224a" name="ABSURCHARGE" type="DECIMAL" nullable="false" expression="IFNULL(&quot;ABSURCHARGE&quot;, &#x27;0&#x27;)" length="15" scale="2">
       </attributes>
@@ -2214,7 +2214,7 @@
       </attributes>
       <attributes xmi:id="3adb4456d0704e8ffd46b679a88a9517" name="Z_SOURCE_SYS" type="NVARCHAR" nullable="false" expression="IFNULL(&quot;Z_SOURCE_SYS&quot;, &#x27;&#x27;)" length="5">
       </attributes>
-      <attributes xmi:id="6c48ccd3551fcc3b614eb350cf62a7bf" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;N&#x27; END" length="1">
+      <attributes xmi:id="6c48ccd3551fcc3b614eb350cf62a7bf" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;&#x27; END" length="1">
       </attributes>
     </outputs>
   </nodes>
