@@ -2037,7 +2037,7 @@
       </attributes>
       <attributes xmi:id="8c7f705e6ab27e39217d51b351ec2599" name="Z_VALID_TO" type="DATE" nullable="false" expression="IFNULL(&quot;Z_VALID_TO&quot;, &#x27;1900-01-01&#x27;)" length="10">
       </attributes>
-      <attributes xmi:id="eec236b549d63b54cfab0e26bb96ec63" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;N&#x27; END" length="1">
+      <attributes xmi:id="eec236b549d63b54cfab0e26bb96ec63" name="technicalAttributes.recordMode" type="NVARCHAR" nullable="false" expression="CASE WHEN &quot;Z_CHANGE_TYPE&quot;=&#x27;D&#x27; THEN &#x27;D&#x27; ELSE &#x27;&#x27; END" length="1">
       </attributes>
     </outputs>
   </nodes>
@@ -2127,7 +2127,7 @@
       </attributes>
     </inputs>
     <outputs xmi:id="db68b699d9e8288195a70cff9f6ddc24" name="DataTarget_addRecordNo_OUT">
-      <attributes xmi:id="d83826433ffa95fc1aa20a8e9d0bfa61" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over ()">
+      <attributes xmi:id="d83826433ffa95fc1aa20a8e9d0bfa61" name="technicalKey.recordNo" type="INTEGER" nullable="false" expression="ROW_NUMBER() over (order by &quot;Z_CHANGE_TIME&quot; asc)">
       </attributes>
       <attributes xmi:id="2686f85ce0b37e28597310b46f03a556" name="BP_RELEV_EXM_VAL" type="DECIMAL" nullable="false" expression="&quot;BP_RELEV_EXM_VAL&quot;" length="15" scale="2">
       </attributes>
