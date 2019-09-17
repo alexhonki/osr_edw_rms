@@ -30,7 +30,7 @@
           "status": "NEUTRAL"
         }
       ]
-    }, 
+    },
     "3": {
       "inline": {
         "type": "SUB",
@@ -68,7 +68,7 @@
           "status": "OK"
         }
       ]
-    }, 
+    },
     "5": {
       "inline": {
         "type": "SUB",
@@ -87,7 +87,7 @@
           "status": "OK"
         }
       ]
-    }, 
+    },
     "6": {
       "inline": {
         "type": "SUB",
@@ -106,7 +106,7 @@
           "status": "OK"
         }
       ]
-    }, 
+    },
     "7": {
       "inline": {
         "type": "SUB",
@@ -125,7 +125,7 @@
           "status": "OK"
         }
       ]
-    }, 
+    },
     "8": {
       "inline": {
         "type": "SUB",
@@ -140,11 +140,11 @@
       },
       "preconditions": [
         {
-          "from": "7",
-          "status": "OK"
+          "from": "1",
+          "status": "NEUTRAL"
         }
       ]
-    },  
+    },
     "9": {
       "inline": {
         "type": "SUB",
@@ -159,7 +159,7 @@
       },
       "preconditions": [
         {
-          "from": "8",
+          "from": "7",
           "status": "OK"
         }
       ]
@@ -179,6 +179,63 @@
       "preconditions": [
         {
           "from": "9",
+          "status": "OK"
+        }
+      ]
+    },
+    "11": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD DFKKRK",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DFKKRK"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "10",
+          "status": "OK"
+        }
+      ]
+    },
+    "12": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD DFKKRP",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DFKKRP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "11",
+          "status": "OK"
+        }
+      ]
+    },
+    "13": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD DFKKRH",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.td.rms#TC_LOAD_BT_DFKKRH"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "12",
           "status": "OK"
         }
       ]

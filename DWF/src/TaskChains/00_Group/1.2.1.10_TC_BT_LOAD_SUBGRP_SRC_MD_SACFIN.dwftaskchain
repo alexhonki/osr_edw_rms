@@ -221,7 +221,7 @@
         }
       ]
     },
-    "14": {
+    "13": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -240,7 +240,7 @@
         }
       ]
     },
-    "15": {
+    "14": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -254,12 +254,12 @@
       },
       "preconditions": [
         {
-          "from": "14",
+          "from": "13",
           "status": "OK"
         }
       ]
-    },   
-    "16": {
+    },
+    "15": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -273,12 +273,12 @@
       },
       "preconditions": [
         {
-          "from": "15",
+          "from": "14",
           "status": "OK"
         }
       ]
-    },   
-    "17": {
+    },
+    "16": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -292,12 +292,12 @@
       },
       "preconditions": [
         {
-          "from": "16",
+          "from": "15",
           "status": "OK"
         }
       ]
     },
-    "18": {
+    "17": {
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
@@ -315,6 +315,44 @@
           "status": "NEUTRAL"
         }
       ]
-    }     
+    },
+    "18": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD T007S",
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_T007S"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "12",
+          "status": "OK"
+        }
+      ]
+    },
+    "19": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD TFK042ZT",        
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.source.md.rms#TC_LOAD_BT_TFK042ZT"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "16",
+          "status": "OK"
+        }
+      ]
+    }
   }
 }
