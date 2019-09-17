@@ -16,13 +16,13 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD BT SRC SUBS TD SAC landtax reporting",  
+        "description": "TC LOAD BT SRC SUBS TD SAC landtax reporting",
         "parameterValues": [
           {
             "id": "taskChainId",
             "value": "osr.edw.rms#1.2.2.7_TC_BT_LOAD_SUBGRP_SRC_TD_SACLAND"
           }
-        ]        
+        ]
       },
       "preconditions": [
         {
@@ -30,6 +30,44 @@
           "status": "NEUTRAL"
         }
       ]
-    }    
+    },
+    "3": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT SRC SUBS TD SAC payroll tax",        
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#1.2.2.8_TC_BT_LOAD_SUBGRP_SRC_TD_SACPTAX"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "SUB",
+        "taskGroup": "com.sap.dwf.toe.executionControl",
+        "description": "TC LOAD BT SRC SUBS TD SAC finance",             
+        "parameterValues": [
+          {
+            "id": "taskChainId",
+            "value": "osr.edw.rms#1.2.2.10_TC_BT_LOAD_SUBGRP_SRC_TD_SACFIN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
   }
 }
