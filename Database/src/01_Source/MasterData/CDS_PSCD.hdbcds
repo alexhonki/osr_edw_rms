@@ -265,10 +265,20 @@ context CDS_PSCD {
 
         /*@@layout{"layoutInfo":{"x":718,"y":295.5}}*/
         entity TFACT_TYPET {
-            key CLIENT      : String(3);
-            key LANGU       : String(1);
-            key FACT_TYPE   : String(4);
-                DESCRIPTION : String(40);
+            key CLIENT        : String(3);
+            key LANGU         : String(1);
+            key FACT_TYPE     : String(4);
+                DESCRIPTION   : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-924,"y":839.5}}*/
+        entity TFMCA007T {
+            key MANDT : String(3);
+            key SPRAS : String(1);
+            key KOFIZ : String(2);
+                TEXT  : String(50);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
