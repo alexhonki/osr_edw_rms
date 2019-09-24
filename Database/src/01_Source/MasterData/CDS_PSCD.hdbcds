@@ -244,10 +244,21 @@ context CDS_PSCD {
 
         /*@@layout{"layoutInfo":{"x":262,"y":300.5}}*/
         entity TFACT_SETT {
-            key CLIENT      : String(3);
-            key LANGU       : String(1);
-            key FACT_SET    : String(6);
-                DESCRIPTION : String(40);
+            key CLIENT        : String(3);
+            key LANGU         : String(1);
+            key FACT_SET      : String(6);
+                DESCRIPTION   : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":488,"y":299.5}}*/
+        entity TFACT_TYPE_PARTT {
+            key CLIENT       : String(3);
+            key LANGU        : String(1);
+            key FACT_TYPE    : String(4);
+            key FACT_CAT_SEQ : String(2);
+                DESCRIPTION  : String(40);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
