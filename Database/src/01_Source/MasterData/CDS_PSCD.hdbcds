@@ -275,10 +275,20 @@ context CDS_PSCD {
 
         /*@@layout{"layoutInfo":{"x":-924,"y":839.5}}*/
         entity TFMCA007T {
-            key MANDT : String(3);
-            key SPRAS : String(1);
-            key KOFIZ : String(2);
-                TEXT  : String(50);
+            key MANDT         : String(3);
+            key SPRAS         : String(1);
+            key KOFIZ         : String(2);
+                TEXT          : String(50);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{"x":-688,"y":838.5}}*/
+        entity TFMCA_FPF_FBTT {
+            key MANDT    : String(3);
+            key FBTYP    : String(4);
+            key SPRAS    : String(1);
+                FBT_TEXT : String(50);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);                
         };
