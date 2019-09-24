@@ -229,7 +229,17 @@ context CDS_PSCD {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;                
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{"x":27,"y":304.5}}*/
+        entity TFACT_CATT {
+            key CLIENT        : String(3);
+            key LANGU         : String(1);
+            key FACT_CATEGORY : String(4);
+                DESCRIPTION   : String(40);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);                
         };
     };
 };
