@@ -66,5 +66,46 @@ context CDS_TRM3 {
                 Z_VALID_FROM           : UTCTimestamp;
                 Z_VALID_TO             : UTCTimestamp;
         };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1003DOC00000000 {
+            key CLIENT              : String(3);
+            key RECORD_ID           : String(100);
+            key Z_RUN_SEQ_ID        : Integer;
+                PARENT_ID           : String(32);
+                OBJECT_ID           : String(32);
+                BUNDLE_ID           : String(32);
+                VERSION             : String(5);
+                FORM_NUMBER         : String(4);
+                TIMESTAMP           : Decimal(15, 0);
+                INITIAL_FLAGS       : String(800);
+                A_DESC_PROP         : String(255);
+                A_VEHC_INCLUDED     : String(1);
+                C_TOTAL_FHOME_ACQ   : Integer;
+                C_TOTAL_HOME_ACQ    : Integer;
+                C_TOTAL_LAND_ACQ    : Integer;
+                C_TOTAL_OTHER_ACQ   : Integer;
+                C_TOTAL_NOCONC_ACQ  : Integer;
+                C_TOTAL_AQUIRED     : Integer;
+                C_TOTAL_SHARE       : Integer;
+                A_CURRENCY          : String(5);
+                A_GOODWILL          : Decimal(23, 4);
+                A_INTELL_PROP       : Decimal(23, 4);
+                A_PROP_OFF_PLAN     : String(1);
+                A_PROP_IS_NEW       : String(1);
+                A_REAL_PROPERTY_IND : String(1);
+                A_OR_ENFORCE_RPTR   : String(1);
+                A_EE_ENFORCE_RPTR   : String(1);
+                A_TEE_ACN_OR        : String(20);
+                A_TEE_ARBN_OR       : String(20);
+                A_EE_TEE_CARE_OF_OR : String(40);
+                Z_CHANGE_TYPE       : String(1);
+                Z_CHANGE_TIME       : UTCTimestamp;
+                Z_SOURCE_SYS        : String(5);
+                Z_RUN_ROW_NO        : Integer;
+                Z_CURR_FLAG         : String(1);
+                Z_VALID_FROM        : UTCTimestamp;
+                Z_VALID_TO          : UTCTimestamp;
+        };
     };
 };
