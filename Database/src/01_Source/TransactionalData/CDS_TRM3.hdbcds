@@ -107,5 +107,27 @@ context CDS_TRM3 {
                 Z_VALID_FROM        : UTCTimestamp;
                 Z_VALID_TO          : UTCTimestamp;
         };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1003DOC00000001 {
+            key CLIENT            : String(3);
+            key RECORD_ID         : String(100);
+            key Z_RUN_SEQ_ID      : Integer;
+                PARENT_ID         : String(100);
+                OBJECT_ID         : String(32);
+                INITIAL_FLAGS     : String(800);
+                A_BEN_FIRST_NAME  : String(40);
+                A_BEN_MIDDLE_NAME : String(40);
+                A_BEN_LAST_NAME   : String(40);
+                A_BEN_DOB         : String(8);
+                C_TEE_NO_BEN      : Integer;
+                Z_CHANGE_TYPE     : String(1);
+                Z_CHANGE_TIME     : UTCTimestamp;
+                Z_SOURCE_SYS      : String(5);
+                Z_RUN_ROW_NO      : Integer;
+                Z_CURR_FLAG       : String(1);
+                Z_VALID_FROM      : UTCTimestamp;
+                Z_VALID_TO        : UTCTimestamp;
+        };
     };
 };
