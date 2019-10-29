@@ -171,5 +171,25 @@ context CDS_TRM3 {
                 Z_VALID_FROM  : UTCTimestamp;
                 Z_VALID_TO    : UTCTimestamp;
         };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1003DOC00000004 {
+            key CLIENT         : String(3);
+            key RECORD_ID      : String(100);
+            key Z_RUN_SEQ_ID   : Integer;
+                PARENT_ID      : String(100);
+                OBJECT_ID      : String(32);
+                INITIAL_FLAGS  : String(800);
+                A_TENURE_TYPE  : String(50);
+                A_TENURE_ID    : String(10);
+                A_TENURE_VALUE : Decimal(23, 4);
+                Z_CHANGE_TYPE  : String(1);
+                Z_CHANGE_TIME  : UTCTimestamp;
+                Z_SOURCE_SYS   : String(5);
+                Z_RUN_ROW_NO   : Integer;
+                Z_CURR_FLAG    : String(1);
+                Z_VALID_FROM   : UTCTimestamp;
+                Z_VALID_TO     : UTCTimestamp;
+        };
     };
 };
