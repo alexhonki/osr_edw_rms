@@ -1636,5 +1636,581 @@ context CDS_TRM3 {
                     technicalAttributes : idGeneratorAttributes;
             };
         };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        context Z1003DOC00000005 {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key CLIENT                    : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key RECORD_ID                 : String(100)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID              : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PARENT_ID                 : String(100)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    OBJECT_ID                 : String(32)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    INITIAL_FLAGS             : String(800)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_TRANSFEREE_TYPE         : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_FIRST_NAME_EE           : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_MIDDLE_NAME_EE          : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_LAST_NAME_EE            : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_DOB_EE                  : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_COMPANY_NAME_EE         : String(80)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_TRUST_TYPE_EE           : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_TRUST_NAME_EE           : String(80)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ABN_EE                  : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ACN_EE                  : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_INT_ACQUIRED            : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CONC_TYPE               : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_TRANSFER_DATE           : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_OCCUPATION_DATE         : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CARE_OF                 : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_UNIT_OF                 : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_STREET_NO               : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_POBOX                   : String(15)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_STREET                  : String(60)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_SUBURB                  : String(40)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_COUNTRY                 : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_STATE                   : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_POST_CODE               : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_TELEPHONE_NO            : String(30)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_MOBILE_NO               : String(30)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EMAIL_ADD               : String(241)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BEN_CLAIM_Q             : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BEN_CONC_TYPE           : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BEN_TRANSFER_DATE       : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_BEN_OCCUPATION_DATE     : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_TRANSFEREE_NO           : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_INT_SHARE               : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_FOREIGN_PERSON_Q        : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_ARBN_EE                 : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_CONTACT_EE              : String(80)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_CTRY_INCORP          : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_FIRB                 : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_OSEAS_ENTITY_REG_NO  : String(50)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_CTRY_TAX_RES         : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_OTH_ENTITY_ID        : String(50)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_AUS_CITIZEN          : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_AUS_DRIVER_LIC       : String(15)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_AUS_DRIVER_LIC_STATE : String(2)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_AUS_BIRTH_CERT       : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_AUS_BIRTH_CERT_STATE : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_AUS_CITIZEN_CERT_NO  : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_PASSPORT_NO          : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_PASSPORT_CTRY        : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_VISA_NO              : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_VISA_EXPIRY          : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_VISA_SUBCLASS        : String(100)  not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_OSEAS_ENTITY_ID      : String(50)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_3DOC_XFEE_ID            : String(20)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    C_EE_RPTR_PROGRESS_IND    : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_FOREIGN_AGENT           : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_FOREIGN_PRINCIPAL       : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_Q_NON_AUS_ENT        : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    A_EE_NATIONALITY          : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE             : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME             : UTCTimestamp not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS              : String(5)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO              : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG               : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM              : UTCTimestamp not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO                : UTCTimestamp not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name Z1003DOC00000005 group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey              : inboundQueueKey;
+                    technicalAttributes       : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key CLIENT                    : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key RECORD_ID                 : String(100)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_SEQ_ID              : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    PARENT_ID                 : String(100)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    OBJECT_ID                 : String(32)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    INITIAL_FLAGS             : String(800)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_TRANSFEREE_TYPE         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_FIRST_NAME_EE           : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_MIDDLE_NAME_EE          : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_LAST_NAME_EE            : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_DOB_EE                  : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_COMPANY_NAME_EE         : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_TRUST_TYPE_EE           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_TRUST_NAME_EE           : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ABN_EE                  : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ACN_EE                  : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_INT_ACQUIRED            : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CONC_TYPE               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_TRANSFER_DATE           : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_OCCUPATION_DATE         : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CARE_OF                 : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_UNIT_OF                 : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_STREET_NO               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_POBOX                   : String(15)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_STREET                  : String(60)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_SUBURB                  : String(40)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_COUNTRY                 : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_STATE                   : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_POST_CODE               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_TELEPHONE_NO            : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_MOBILE_NO               : String(30)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EMAIL_ADD               : String(241)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BEN_CLAIM_Q             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BEN_CONC_TYPE           : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BEN_TRANSFER_DATE       : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_BEN_OCCUPATION_DATE     : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_TRANSFEREE_NO           : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_INT_SHARE               : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_FOREIGN_PERSON_Q        : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_ARBN_EE                 : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_CONTACT_EE              : String(80)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_CTRY_INCORP          : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_FIRB                 : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_OSEAS_ENTITY_REG_NO  : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_CTRY_TAX_RES         : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_OTH_ENTITY_ID        : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_AUS_CITIZEN          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_AUS_DRIVER_LIC       : String(15)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_AUS_DRIVER_LIC_STATE : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_AUS_BIRTH_CERT       : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_AUS_BIRTH_CERT_STATE : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_AUS_CITIZEN_CERT_NO  : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_PASSPORT_NO          : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_PASSPORT_CTRY        : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_VISA_NO              : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_VISA_EXPIRY          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_VISA_SUBCLASS        : String(100)            not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_OSEAS_ENTITY_ID      : String(50)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_3DOC_XFEE_ID            : String(20)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    C_EE_RPTR_PROGRESS_IND    : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_FOREIGN_AGENT           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_FOREIGN_PRINCIPAL       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_Q_NON_AUS_ENT        : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    A_EE_NATIONALITY          : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE             : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME             : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS              : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO              : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM              : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO                : UTCTimestamp           not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name Z1003DOC00000005 group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey              : changeLogKey;
+                    technicalAttributes       : changeLogAttributes not null;
+                key CLIENT                    : String(3)           not null;
+                key RECORD_ID                 : String(100)         not null;
+                    Z_RUN_SEQ_ID              : Integer             not null;
+                    PARENT_ID                 : String(100)         not null;
+                    OBJECT_ID                 : String(32)          not null;
+                    INITIAL_FLAGS             : String(800)         not null;
+                    A_TRANSFEREE_TYPE         : String(1)           not null;
+                    A_FIRST_NAME_EE           : String(40)          not null;
+                    A_MIDDLE_NAME_EE          : String(40)          not null;
+                    A_LAST_NAME_EE            : String(40)          not null;
+                    A_DOB_EE                  : String(8)           not null;
+                    A_COMPANY_NAME_EE         : String(80)          not null;
+                    A_TRUST_TYPE_EE           : String(1)           not null;
+                    A_TRUST_NAME_EE           : String(80)          not null;
+                    A_ABN_EE                  : String(20)          not null;
+                    A_ACN_EE                  : String(20)          not null;
+                    A_INT_ACQUIRED            : Integer             not null;
+                    A_CONC_TYPE               : String(3)           not null;
+                    A_TRANSFER_DATE           : String(8)           not null;
+                    A_OCCUPATION_DATE         : String(8)           not null;
+                    A_CARE_OF                 : String(40)          not null;
+                    A_UNIT_OF                 : String(40)          not null;
+                    A_STREET_NO               : String(10)          not null;
+                    A_POBOX                   : String(15)          not null;
+                    A_STREET                  : String(60)          not null;
+                    A_SUBURB                  : String(40)          not null;
+                    A_COUNTRY                 : String(3)           not null;
+                    A_STATE                   : String(3)           not null;
+                    A_POST_CODE               : String(10)          not null;
+                    A_TELEPHONE_NO            : String(30)          not null;
+                    A_MOBILE_NO               : String(30)          not null;
+                    A_EMAIL_ADD               : String(241)         not null;
+                    A_BEN_CLAIM_Q             : String(1)           not null;
+                    A_BEN_CONC_TYPE           : String(3)           not null;
+                    A_BEN_TRANSFER_DATE       : String(8)           not null;
+                    A_BEN_OCCUPATION_DATE     : String(8)           not null;
+                    C_TRANSFEREE_NO           : Integer             not null;
+                    A_INT_SHARE               : Integer             not null;
+                    A_FOREIGN_PERSON_Q        : String(1)           not null;
+                    A_ARBN_EE                 : String(20)          not null;
+                    A_CONTACT_EE              : String(80)          not null;
+                    A_EE_CTRY_INCORP          : String(3)           not null;
+                    A_EE_FIRB                 : String(20)          not null;
+                    A_EE_OSEAS_ENTITY_REG_NO  : String(50)          not null;
+                    A_EE_CTRY_TAX_RES         : String(3)           not null;
+                    A_EE_OTH_ENTITY_ID        : String(50)          not null;
+                    A_EE_AUS_CITIZEN          : String(1)           not null;
+                    A_EE_AUS_DRIVER_LIC       : String(15)          not null;
+                    A_EE_AUS_DRIVER_LIC_STATE : String(2)           not null;
+                    A_EE_AUS_BIRTH_CERT       : String(20)          not null;
+                    A_EE_AUS_BIRTH_CERT_STATE : String(3)           not null;
+                    A_EE_AUS_CITIZEN_CERT_NO  : String(20)          not null;
+                    A_EE_PASSPORT_NO          : String(20)          not null;
+                    A_EE_PASSPORT_CTRY        : String(3)           not null;
+                    A_EE_VISA_NO              : String(20)          not null;
+                    A_EE_VISA_EXPIRY          : String(8)           not null;
+                    A_EE_VISA_SUBCLASS        : String(100)         not null;
+                    A_EE_OSEAS_ENTITY_ID      : String(50)          not null;
+                    C_3DOC_XFEE_ID            : String(20)          not null;
+                    C_EE_RPTR_PROGRESS_IND    : String(1)           not null;
+                    A_FOREIGN_AGENT           : String(1)           not null;
+                    A_FOREIGN_PRINCIPAL       : String(1)           not null;
+                    A_EE_Q_NON_AUS_ENT        : String(1)           not null;
+                    A_EE_NATIONALITY          : String(3)           not null;
+                    Z_CHANGE_TYPE             : String(1)           not null;
+                    Z_CHANGE_TIME             : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_SOURCE_SYS              : String(5)           not null;
+                    Z_RUN_ROW_NO              : Integer             not null;
+                    Z_CURR_FLAG               : String(1)           not null;
+                    Z_VALID_FROM              : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_VALID_TO                : UTCTimestamp        not null default '1900-01-01 00:00:00';
+            }
+            technical configuration {
+                group name Z1003DOC00000005 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
     };
 };
