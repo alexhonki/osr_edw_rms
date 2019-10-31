@@ -23,7 +23,7 @@ context CDS_TRM2 {
     /*@@layout{"layoutInfo":{"x":-516,"y":-133.5}}*/
     context TAB {
 
-        /*@@layout{"layoutInfo":{"x":-946,"y":559.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity Z1000DCL00000000 {
             key CLIENT          : String(3);
             key RECORD_ID       : String(100);
@@ -55,7 +55,7 @@ context CDS_TRM2 {
                 Z_VALID_TO      : UTCTimestamp;
         };
 
-        /*@@layout{"layoutInfo":{"x":-717,"y":558.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity Z1004LDL00000000 {
             key CLIENT           : String(3);
             key RECORD_ID        : String(100);
@@ -77,7 +77,7 @@ context CDS_TRM2 {
                 Z_VALID_TO       : UTCTimestamp;
         };
 
-        /*@@layout{"layoutInfo":{"x":-475,"y":557.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity Z1004LDL00000001 {
             key CLIENT             : String(3);
             key RECORD_ID          : String(100);
@@ -101,6 +101,191 @@ context CDS_TRM2 {
                 Z_CURR_FLAG        : String(1);
                 Z_VALID_FROM       : UTCTimestamp;
                 Z_VALID_TO         : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1002CDL00000000 {
+            key CLIENT              : String(3);
+            key RECORD_ID           : String(100);
+            key Z_RUN_SEQ_ID        : Integer;
+                PARENT_ID           : String(32);
+                OBJECT_ID           : String(32);
+                BUNDLE_ID           : String(32);
+                VERSION             : String(5);
+                FORM_NUMBER         : String(4);
+                TIMESTAMP           : Decimal(15, 0);
+                INITIAL_FLAGS       : String(800);
+                C_LAST_NAME         : String(40);
+                C_FIRST_NAME        : String(40);
+                C_MIDDLE_NAME       : String(40);
+                A_DATEOFBIRTH       : String(8);
+                C_ORG_NAME1         : String(40);
+                C_ORG_NAME2         : String(40);
+                C_ACN               : String(20);
+                C_ABN               : String(20);
+                A_TRUST_OTHER       : String(40);
+                A_APPOINT_MADE      : String(1);
+                C_CARE_OF           : String(40);
+                C_UNITBLDG          : String(40);
+                C_HOUSENO           : String(10);
+                C_STREET            : String(60);
+                C_CITY              : String(40);
+                C_COUNTRY           : String(3);
+                C_REGION            : String(3);
+                C_POSTCODE          : String(10);
+                A_AD_CHANGED        : String(1);
+                A_STREET_POST_IND   : String(1);
+                A_UPD_CARE_OF       : String(40);
+                A_UPD_UNITBLDG      : String(40);
+                A_UPD_HOUSENO       : String(10);
+                A_UPD_STREET        : String(60);
+                A_UPD_POSTAL_NUMBER : String(10);
+                A_UPD_STREET_TYPE   : String(50);
+                A_UPD_POSTAL_TYPE   : String(25);
+                A_UPD_CITY          : String(40);
+                A_UPD_COUNTRY       : String(3);
+                A_UPD_REGION        : String(3);
+                A_UPD_POSTCODE      : String(10);
+                C_EMAIL_ADDRESS     : String(241);
+                C_COMM_PHONE        : String(30);
+                C_COMM_MOBILE       : String(30);
+                C_ADR_GUID          : String(16);
+                C_ADR_KIND          : String(10);
+                C_ADR_NUM           : String(10);
+                C_IS_BP_DETAIL_UPD  : String(1);
+                A_COMM_CHANGED      : String(1);
+                A_UPD_EMAIL_ADDRESS : String(241);
+                A_UPD_COMM_PHONE    : String(30);
+                A_UPD_COMM_MOBILE   : String(30);
+                A_TRUST_DOCS        : String(1);
+                A_TRUST_TYPE        : String(3);
+                C_BPTYPE            : String(1);
+                C_ORGTYPE           : String(4);
+                Z_CHANGE_TYPE       : String(1);
+                Z_CHANGE_TIME       : UTCTimestamp;
+                Z_SOURCE_SYS        : String(5);
+                Z_RUN_ROW_NO        : Integer;
+                Z_CURR_FLAG         : String(1);
+                Z_VALID_FROM        : UTCTimestamp;
+                Z_VALID_TO          : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1002CDL00000001 {
+            key CLIENT             : String(3);
+            key RECORD_ID          : String(100);
+            key Z_RUN_SEQ_ID       : Integer;
+                PARENT_ID          : String(100);
+                OBJECT_ID          : String(32);
+                INITIAL_FLAGS      : String(800);
+                A_BENE_LAST_NAME   : String(40);
+                A_BENE_FIRST_NAME  : String(40);
+                A_BENE_MIDDLE_NAME : String(40);
+                A_BENE_DATEOFBIRTH : String(8);
+                A_BENE_ORG_NAME    : String(80);
+                A_BENE_ACN         : String(20);
+                A_BENE_ABN         : String(20);
+                A_BENE_CARE_OF     : String(40);
+                A_BENE_UNITBLDG    : String(40);
+                A_BENE_HOUSENO     : String(10);
+                A_BENE_STREET      : String(60);
+                A_BENE_CITY        : String(40);
+                A_BENE_COUNTRY     : String(3);
+                A_BENE_REGION      : String(3);
+                A_BENE_POSTCODE    : String(10);
+                A_BENE_PHONE       : String(30);
+                A_BENE_EMAIL_ADD   : String(241);
+                A_BENE_TYPE        : String(3);
+                Z_CHANGE_TYPE      : String(1);
+                Z_CHANGE_TIME      : UTCTimestamp;
+                Z_SOURCE_SYS       : String(5);
+                Z_RUN_ROW_NO       : Integer;
+                Z_CURR_FLAG        : String(1);
+                Z_VALID_FROM       : UTCTimestamp;
+                Z_VALID_TO         : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1002CDL00000002 {
+            key CLIENT                : String(3);
+            key RECORD_ID             : String(100);
+            key Z_RUN_SEQ_ID          : Integer;
+                PARENT_ID             : String(100);
+                OBJECT_ID             : String(32);
+                INITIAL_FLAGS         : String(800);
+                A_TRUSTEE_TYPE        : String(3);
+                A_TRUSTEE_LAST_NAME   : String(40);
+                A_TRUSTEE_FIRST_NAME  : String(40);
+                A_TRUSTEE_MIDDLE_NAME : String(40);
+                A_TRUSTEE_DATEOFBIRTH : String(8);
+                A_TRUSTEE_ORG_NAME    : String(80);
+                A_TRUSTEE_ACN         : String(20);
+                A_TRUSTEE_ABN         : String(20);
+                Z_CHANGE_TYPE         : String(1);
+                Z_CHANGE_TIME         : UTCTimestamp;
+                Z_SOURCE_SYS          : String(5);
+                Z_RUN_ROW_NO          : Integer;
+                Z_CURR_FLAG           : String(1);
+                Z_VALID_FROM          : UTCTimestamp;
+                Z_VALID_TO            : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1004LDL00000002 {
+            key CLIENT              : String(3);
+            key RECORD_ID           : String(100);
+            key Z_RUN_SEQ_ID        : Integer;
+                PARENT_ID           : String(100);
+                OBJECT_ID           : String(32);
+                INITIAL_FLAGS       : String(800);
+                C_MAT_ADDRESS       : String(255);
+                C_LICENSE_NO        : String(15);
+                C_TMR_LAST_MOD_DATE : String(8);
+                Z_CHANGE_TYPE       : String(1);
+                Z_CHANGE_TIME       : UTCTimestamp;
+                Z_SOURCE_SYS        : String(5);
+                Z_RUN_ROW_NO        : Integer;
+                Z_CURR_FLAG         : String(1);
+                Z_VALID_FROM        : UTCTimestamp;
+                Z_VALID_TO          : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity Z1006LUL00000000 {
+            key CLIENT               : String(3);
+            key RECORD_ID            : String(100);
+            key Z_RUN_SEQ_ID         : Integer;
+                PARENT_ID            : String(32);
+                OBJECT_ID            : String(32);
+                BUNDLE_ID            : String(32);
+                VERSION              : String(5);
+                FORM_NUMBER          : String(4);
+                TIMESTAMP            : Decimal(15, 0);
+                INITIAL_FLAGS        : String(800);
+                A_QUEST_1A           : String(1);
+                A_COMM_OCC_DATE      : String(8);
+                A_QUEST_1B_TEXTBOX   : String(255);
+                A_QUEST_1C           : String(1);
+                A_QUEST_1C_ONE       : String(1);
+                A_QUEST_1C_TWO       : String(1);
+                A_QUEST_1C_THREE     : String(1);
+                A_CEASE_RES_DATE     : String(8);
+                A_REOCCUP_DATE       : String(8);
+                A_QUEST_1C_TEXTBOX   : String(255);
+                A_QUEST_2A           : String(1);
+                A_QUEST_2A_TEXTBOX   : String(255);
+                A_QUEST_2B           : String(1);
+                A_QUEST_2B_TEXTBOX   : String(255);
+                A_QUEST_3A           : String(1);
+                A_QUEST_3A_TEXTBOX   : String(255);
+                A_3B_PROP_PERCENTAGE : Decimal(16, 12);
+                Z_CHANGE_TYPE        : String(1);
+                Z_CHANGE_TIME        : UTCTimestamp;
+                Z_SOURCE_SYS         : String(5);
+                Z_RUN_ROW_NO         : Integer;
+                Z_CURR_FLAG          : String(1);
+                Z_VALID_FROM         : UTCTimestamp;
+                Z_VALID_TO           : UTCTimestamp;
         };
     };
 };
