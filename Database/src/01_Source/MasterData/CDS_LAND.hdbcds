@@ -335,7 +335,7 @@ context CDS_LAND {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":270,"y":78.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity CODEID {
             key MANDT         : String(3);
             key CODE_ID       : String(2);
@@ -353,7 +353,7 @@ context CDS_LAND {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":535,"y":77.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity LTPARISH {
             key CLIENT        : String(3);
             key PARISH_ID     : String(5);
@@ -365,7 +365,7 @@ context CDS_LAND {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":757,"y":73.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity LTEDCODE {
             key CLIENT        : String(3);
             key EXM_DED_CODE  : String(2);
@@ -375,7 +375,7 @@ context CDS_LAND {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-894,"y":901.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity LTCFORMS {
             key MANDT            : String(3);
             key RESULT_TYPE      : String(2);
@@ -390,14 +390,130 @@ context CDS_LAND {
                 Z_SOURCE_SYS     : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-651,"y":897.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TJ02T {
-            key ISTAT : String(5);
-            key SPRAS : String(1);
-                TXT04 : String(4);
-                TXT30 : String(30);
-                Z_CHANGE_TIME    : UTCTimestamp;
-                Z_SOURCE_SYS     : String(5);                
+            key ISTAT         : String(5);
+            key SPRAS         : String(1);
+                TXT04         : String(4);
+                TXT30         : String(30);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity ATSBPS {
+            key MANDT         : String(3);
+            key CYCLENO       : String(8);
+            key DEALINGNO     : String(10);
+            key DATASOURCE    : String(1);
+            key PARTYID       : String(30);
+                LINKEDID      : String(30);
+                BPMATCH       : Integer;
+                TENANCYTYPE   : String(3);
+                NUMERATOR     : Integer;
+                DENOMINATOR   : Integer;
+                PARTNER       : String(10);
+                TITLE         : String(4);
+                NAME1         : String(50);
+                NAME2         : String(50);
+                BIRTHDT       : hana.VARCHAR(8);
+                ACN           : String(60);
+                ABN           : String(20);
+                HOUSENUM2     : String(10);
+                HOUSENUM1     : String(10);
+                NAMECO        : String(40);
+                STREET        : String(60);
+                STRSUPPL1     : String(40);
+                CITY1         : String(40);
+                REGION        : String(3);
+                POSTCODE1     : String(10);
+                POBOX         : String(10);
+                POBOXLOC      : String(40);
+                POSTCODE2     : String(10);
+                COUNTRY       : String(3);
+                OWNERTYPE     : String(2);
+                TAXRATECODE   : String(4);
+                REASONCODE    : String(3);
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : UTCTimestamp;
+                Z_VALID_TO    : UTCTimestamp;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity ATSHEAD {
+            key MANDT               : String(3);
+            key CYCLE_NO            : String(8);
+            key DEALING_NO          : String(10);
+                DEALING_TYPE        : String(3);
+                ATS_STATUS          : String(1);
+                DNP                 : String(1);
+                REJECT              : String(1);
+                DATE_PROCESS        : hana.VARCHAR(8);
+                COMPLETE            : String(1);
+                CREATOR             : String(12);
+                CHANGE              : String(12);
+                CHANGE_DAT          : hana.VARCHAR(8);
+                POSESSION           : hana.VARCHAR(8);
+                AGREEMENT           : hana.VARCHAR(8);
+                ATS_DEALING_REF     : String(10);
+                SOURCE_TYPE         : String(1);
+                CALL_TYPE           : String(1);
+                TAXIMPACTTRANSFEREE : Decimal(15, 2);
+                TAXIMPACTTRANSFEROR : Decimal(15, 2);
+                NETTAXIMPACT        : Decimal(15, 2);
+                VERSION             : hana.VARCHAR(5);
+                ORIG_CYCLE_NO       : String(8);
+                ORIG_DEALING_NO     : String(10);
+                ORIG_DATE_PROCESS   : hana.VARCHAR(8);
+                CONSIDERATION       : Decimal(12, 0);
+                RECOMPLETEDATE      : hana.VARCHAR(8);
+                REPROCESSDAYS       : Integer;
+                REPROCESSBY         : String(12);
+                COMPLETEDATE        : hana.VARCHAR(8);
+                COMPLETEBY          : String(12);
+                CHARTDATE           : hana.VARCHAR(8);
+                MARKCOMPLETED       : String(1);
+                LATESTVERSION       : String(1);
+                Z_CURR_FLAG         : String(1);
+                Z_VALID_FROM        : UTCTimestamp;
+                Z_VALID_TO          : UTCTimestamp;
+                Z_CHANGE_TYPE       : String(1);
+                Z_CHANGE_TIME       : UTCTimestamp;
+                Z_SOURCE_SYS        : String(5);
+                Z_RUN_ROW_NO        : Integer;
+            key Z_RUN_SEQ_ID        : Integer;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity ATSPCLC {
+            key MANDT         : String(3);
+            key CYCLENO       : String(8);
+            key DEALINGNO     : String(10);
+            key PLNO          : String(20);
+            key TITLEREF      : String(10);
+                ADDRESS       : String(231);
+                AUTHORITY     : hana.VARCHAR(6);
+                PARISH        : hana.VARCHAR(5);
+                AREA          : String(22);
+                TITLEHISTORY  : String(10);
+                PLANNO        : String(12);
+                ACTION        : String(1);
+                HISTORYURL    : String(38);
+                TITLEURL      : String(35);
+                PLANURL       : String(36);
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : UTCTimestamp;
+                Z_VALID_TO    : UTCTimestamp;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
     };
 };
