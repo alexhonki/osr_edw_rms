@@ -1,8 +1,6 @@
 {
-  "description": "Load batch staging DFKKCFZST",
-  "responsible": {
-    "email": "dwfalerts@gmail.com"
-  },
+  "description": "TC_LOAD_BT_3PSCD_TRM_FORM_DATA_6TRN",
+  "resumeBehavior": "NO_RESUME",
   "taskList": {
     "1": {
       "inline": {
@@ -12,13 +10,13 @@
     },
     "2": {
       "inline": {
-        "type": "executeProcedure",
+        "type": "executeFlowGraph",
         "taskGroup": "hanaNative",
-        "description": "Load nDSO DFKKCFZST",
+        "description": "FG_BT_LOAD_3PSCD_TRM_FORM_DATA_6TRN",
         "parameterValues": [
           {
-            "id": "procName",
-            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_DFKKCFZST_SP"
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_3PSCD_TRM_FORM_DATA_6TRN"
           }
         ]
       },
@@ -33,11 +31,10 @@
       "inline": {
         "type": "activate",
         "taskGroup": "ndso",
-        "description": "Activate nDSO DFKKCFZST",
         "parameterValues": [
           {
             "id": "dataStoreName",
-            "value": "osr.edw.staging.td.rms::CDS_FICA.DSO.DFKKCFZST"
+            "value": "osr.edw.staging.td.rms::CDS_TRM4.CDS_TRM4.DSO.DS_3PSCD_TRM_FORM_DATA_6TRN"
           }
         ]
       },
