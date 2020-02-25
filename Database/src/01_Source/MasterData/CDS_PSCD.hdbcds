@@ -232,7 +232,7 @@ context CDS_PSCD {
             key Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":27,"y":304.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFACT_CATT {
             key CLIENT        : String(3);
             key LANGU         : String(1);
@@ -242,7 +242,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":262,"y":300.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFACT_SETT {
             key CLIENT        : String(3);
             key LANGU         : String(1);
@@ -252,7 +252,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":488,"y":299.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFACT_TYPE_PARTT {
             key CLIENT        : String(3);
             key LANGU         : String(1);
@@ -263,7 +263,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":718,"y":295.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFACT_TYPET {
             key CLIENT        : String(3);
             key LANGU         : String(1);
@@ -273,7 +273,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-924,"y":839.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFMCA007T {
             key MANDT         : String(3);
             key SPRAS         : String(1);
@@ -283,7 +283,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-688,"y":838.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFMCA_FPF_FBTT {
             key MANDT         : String(3);
             key FBTYP         : String(4);
@@ -293,7 +293,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-452,"y":837.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity TFMCA_REVTYPE {
             key MANDT           : String(3);
             key ABTYP           : String(4);
@@ -316,5 +316,70 @@ context CDS_PSCD {
                 Z_CHANGE_TIME   : UTCTimestamp;
                 Z_SOURCE_SYS    : String(5);
         };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFMCA_DM_DEBTH {
+            key MANDT                  : String(3);
+            key DEBT_SET               : String(12);
+                DEBTOR                 : String(10);
+                CMGRP                  : String(2);
+                PROTECTED              : String(1);
+                ORIGINAL_DEBT_SET      : String(12);
+                ORIGINAL_DEBT_SET_PROT : String(1);
+                DEBT_SET_DATE          : String(8);
+                HWAER                  : String(5);
+                OLDEST_DATE            : String(8);
+                NEWEST_DATE            : String(8);
+                CREA_DATE_TIME         : Decimal(21, 7);
+                CREA_UNAME             : String(12);
+                LCHG_DATE_TIME         : Decimal(21, 7);
+                LCHG_UNAME             : String(12);
+                LAUFD                  : String(8);
+                LAUFI                  : String(6);
+                STRAT                  : String(2);
+                STRAT_MANUAL           : String(1);
+                STEP                   : String(4);
+                STEP_MANUAL            : String(1);
+                PROPOSAL               : String(1);
+                KATALOGART             : String(2);
+                CODEGRUPPE             : String(8);
+                CODE                   : String(4);
+                RC_USER                : String(12);
+                Z_CHANGE_TYPE          : String(1);
+                Z_CHANGE_TIME          : UTCTimestamp;
+                Z_SOURCE_SYS           : String(5);
+                Z_RUN_ROW_NO           : Integer;
+            key Z_RUN_SEQ_ID           : Integer;
+                Z_CURR_FLAG            : String(1);
+                Z_VALID_FROM           : LocalDate;
+                Z_VALID_TO             : LocalDate;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFMCA_DM_DUNEAIR {
+            key MANDT            : String(3);
+            key LAUFD            : String(8);
+            key LAUFI            : String(6);
+            key GPART            : String(10);
+            key MAZAE            : String(6);
+            key DEBT_SET         : String(12);
+            key ACTIVITY_SEQ_NO  : String(4);
+            key SEQ_NO           : String(4);
+                AIR_GUID         : Binary(16);
+                AIR_PROCESS_TYPE : String(4);
+                AIR_OBJECT_ID    : String(10);
+                ETT_GUID         : Binary(16);
+                EAX_GUID         : Binary(16);
+                EAX_PROCESS_TYPE : String(4);
+                EAX_OBJECT_ID    : String(10);
+                Z_CHANGE_TYPE    : String(1);
+                Z_CHANGE_TIME    : UTCTimestamp;
+                Z_SOURCE_SYS     : String(5);
+                Z_RUN_ROW_NO     : Integer;
+            key Z_RUN_SEQ_ID     : Integer;
+                Z_CURR_FLAG      : String(1);
+                Z_VALID_FROM     : LocalDate;
+                Z_VALID_TO       : LocalDate;
+        };
     };
-};
+}; 
