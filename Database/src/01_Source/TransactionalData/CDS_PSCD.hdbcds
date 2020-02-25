@@ -536,7 +536,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-226,"y":18.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity DFKKLOCKS {
             key CLIENT        : String(3);
             key LOOBJ1        : String(32);
@@ -562,7 +562,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":66,"y":17.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity DFKKLOCKSH {
             key CLIENT        : String(3);
             key LOOBJ1        : String(32);
@@ -589,7 +589,7 @@ context CDS_PSCD {
         };
 
 
-        /*@@layout{"layoutInfo":{"x":671,"y":22.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity DFKKCOHINCORR {
             key MANDT         : String(3);
             key COKEY         : String(36);
@@ -614,7 +614,7 @@ context CDS_PSCD {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":990,"y":2.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity DFKKCOHI {
             key MANDT           : String(3);
             key COTYP           : String(4);
@@ -669,53 +669,87 @@ context CDS_PSCD {
                 Z_SOURCE_SYS    : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":1249,"y":6.5}}*/
+        /*@@layout{"layoutInfo":{}}*/
         entity FKKMAZE {
-            key MANDT    : String(3);
-            key LAUFD    : String(8);
-            key LAUFI    : String(6);
-            key GPART    : String(10);
-            key VKONT    : String(12);
-            key MAZAE    : String(6);
-            key OPBEL    : String(12);
-            key OPUPW    : String(3);
-            key OPUPK    : String(4);
-            key OPUPZ    : String(3);
-                BUKRS    : String(4);
-                WAERS    : String(5);
-                MBETM    : Decimal(13, 2);
-                MBETH    : Decimal(13, 2);
-                FAEDN    : String(8);
-                MINTM    : Decimal(13, 2);
-                MAHNS    : String(2);
-                MSTYP    : String(2);
-                MAHNN    : String(2);
-                MANSP    : String(1);
-                XMFAK    : String(1);
-                XMSUS    : String(1);
-                XMSTO    : String(1);
-                XINFO    : String(1);
-                MDRKD    : String(8);
-                STAKZ    : String(1);
-                XMVKT    : String(1);
-                VTREF    : String(20);
-                SUBAP    : String(1);
-                SEGMENT  : String(10);
-                PRCTR    : String(10);
-                MAHNV    : String(2);
-                AUSDT    : String(8);
-                SPART    : String(2);
-                XTAUS    : String(1);
-                MOPUPZ   : String(3);
-                HIGHERDL : String(1);
-                DALIN    : String(1);
-                FBNUM    : String(12);
-                MIBEL    : String(12);
-            key Z_RUN_SEQ_ID    : Integer;
+            key MANDT         : String(3);
+            key LAUFD         : String(8);
+            key LAUFI         : String(6);
+            key GPART         : String(10);
+            key VKONT         : String(12);
+            key MAZAE         : String(6);
+            key OPBEL         : String(12);
+            key OPUPW         : String(3);
+            key OPUPK         : String(4);
+            key OPUPZ         : String(3);
+                BUKRS         : String(4);
+                WAERS         : String(5);
+                MBETM         : Decimal(13, 2);
+                MBETH         : Decimal(13, 2);
+                FAEDN         : String(8);
+                MINTM         : Decimal(13, 2);
+                MAHNS         : String(2);
+                MSTYP         : String(2);
+                MAHNN         : String(2);
+                MANSP         : String(1);
+                XMFAK         : String(1);
+                XMSUS         : String(1);
+                XMSTO         : String(1);
+                XINFO         : String(1);
+                MDRKD         : String(8);
+                STAKZ         : String(1);
+                XMVKT         : String(1);
+                VTREF         : String(20);
+                SUBAP         : String(1);
+                SEGMENT       : String(10);
+                PRCTR         : String(10);
+                MAHNV         : String(2);
+                AUSDT         : String(8);
+                SPART         : String(2);
+                XTAUS         : String(1);
+                MOPUPZ        : String(3);
+                HIGHERDL      : String(1);
+                DALIN         : String(1);
+                FBNUM         : String(12);
+                MIBEL         : String(12);
+            key Z_RUN_SEQ_ID  : Integer;
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_RUN_ROW_NO  : Integer;
+                Z_SOURCE_SYS  : String(5);
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity DFMCA_DM_DUNEA {
+            key MANDT           : String(3);
+            key LAUFD           : String(8);
+            key LAUFI           : String(6);
+            key GPART           : String(10);
+            key MAZAE           : String(6);
+            key DEBT_SET        : String(12);
+            key ACTIVITY_SEQ_NO : String(4);
+                ENF_ACT_TYPE    : String(4);
+                PERSON_RESP     : String(10);
+                INT_STATUS      : String(5);
+                EXT_STATUS      : String(5);
+                PROCESS         : String(4);
+                AUSDT           : String(8);
+                OPBUK           : String(4);
+                STDBK           : String(4);
+                MAHNS           : String(2);
+                WAERS           : String(5);
+                MSALM           : Decimal(13, 2);
+                EA_OBJECT_ID    : String(10);
+                EA_GUID         : Binary(16);
+                UPDATE_STATUS   : String(1);
+                REUSE           : String(1);
                 Z_CHANGE_TYPE   : String(1);
                 Z_CHANGE_TIME   : UTCTimestamp;
+                Z_SOURCE_SYS    : String(5);
                 Z_RUN_ROW_NO    : Integer;
-                Z_SOURCE_SYS    : String(5);                
+            key Z_RUN_SEQ_ID    : Integer;
+                Z_CURR_FLAG     : String(1);
+                Z_VALID_FROM    : LocalDate;
+                Z_VALID_TO      : LocalDate;
         };
     };
 };
