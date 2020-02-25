@@ -786,7 +786,6 @@ context CDS_PSCD {
         @DataStore.entity.idGenerator        : 'idGen'
         @DataStore.computeChecksum           : false
         @DataStore.snapshotSupport           : false
-        /*@@layout{"layoutInfo":{"x":-441,"y":302.5}}*/
         context DPSOBBPACC {
             @DataStore.entityCategory : #ACTIVE_DATA
             entity active_data {
@@ -1471,6 +1470,563 @@ context CDS_PSCD {
             }
             technical configuration {
                 group name DSO_1 group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        context DFMCA_DM_DEBTH {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key MANDT                  : String(3)      not null;
+
+                    @DataStore.aggregation : #NOP
+                key DEBT_SET               : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    DEBTOR                 : String(10)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    CMGRP                  : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PROTECTED              : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    ORIGINAL_DEBT_SET      : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    ORIGINAL_DEBT_SET_PROT : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    DEBT_SET_DATE          : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    HWAER                  : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    OLDEST_DATE            : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    NEWEST_DATE            : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CREA_DATE_TIME         : Decimal(21, 7) not null;
+
+                    @DataStore.aggregation : #NOP
+                    CREA_UNAME             : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    LCHG_DATE_TIME         : Decimal(21, 7) not null;
+
+                    @DataStore.aggregation : #NOP
+                    LCHG_UNAME             : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    LAUFD                  : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    LAUFI                  : String(6)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    STRAT                  : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    STRAT_MANUAL           : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    STEP                   : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    STEP_MANUAL            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    PROPOSAL               : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    KATALOGART             : String(2)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CODEGRUPPE             : String(8)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    CODE                   : String(4)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    RC_USER                : String(12)     not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE          : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME          : UTCTimestamp   not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS           : String(5)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO           : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID           : Integer        not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG            : String(1)      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM           : LocalDate      not null default '1900-01-01';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO             : LocalDate      not null default '1900-01-01';
+            }
+            technical configuration {
+                group name DFMCA_DM_DEBTH group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey           : inboundQueueKey;
+                    technicalAttributes    : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key MANDT                  : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key DEBT_SET               : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    DEBTOR                 : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    CMGRP                  : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PROTECTED              : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    ORIGINAL_DEBT_SET      : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ORIGINAL_DEBT_SET_PROT : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    DEBT_SET_DATE          : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    HWAER                  : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    OLDEST_DATE            : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    NEWEST_DATE            : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CREA_DATE_TIME         : Decimal(21, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    CREA_UNAME             : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    LCHG_DATE_TIME         : Decimal(21, 7)         not null;
+
+                    @DataStore.aggregation : #MOV
+                    LCHG_UNAME             : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    LAUFD                  : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    LAUFI                  : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    STRAT                  : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    STRAT_MANUAL           : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    STEP                   : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    STEP_MANUAL            : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    PROPOSAL               : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    KATALOGART             : String(2)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CODEGRUPPE             : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    CODE                   : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    RC_USER                : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE          : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME          : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS           : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO           : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_SEQ_ID           : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG            : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM           : LocalDate              not null default '1900-01-01';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO             : LocalDate              not null default '1900-01-01';
+            }
+            technical configuration {
+                group name DFMCA_DM_DEBTH group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey           : changeLogKey;
+                    technicalAttributes    : changeLogAttributes not null;
+                key MANDT                  : String(3)           not null;
+                key DEBT_SET               : String(12)          not null;
+                    DEBTOR                 : String(10)          not null;
+                    CMGRP                  : String(2)           not null;
+                    PROTECTED              : String(1)           not null;
+                    ORIGINAL_DEBT_SET      : String(12)          not null;
+                    ORIGINAL_DEBT_SET_PROT : String(1)           not null;
+                    DEBT_SET_DATE          : String(8)           not null;
+                    HWAER                  : String(5)           not null;
+                    OLDEST_DATE            : String(8)           not null;
+                    NEWEST_DATE            : String(8)           not null;
+                    CREA_DATE_TIME         : Decimal(21, 7)      not null;
+                    CREA_UNAME             : String(12)          not null;
+                    LCHG_DATE_TIME         : Decimal(21, 7)      not null;
+                    LCHG_UNAME             : String(12)          not null;
+                    LAUFD                  : String(8)           not null;
+                    LAUFI                  : String(6)           not null;
+                    STRAT                  : String(2)           not null;
+                    STRAT_MANUAL           : String(1)           not null;
+                    STEP                   : String(4)           not null;
+                    STEP_MANUAL            : String(1)           not null;
+                    PROPOSAL               : String(1)           not null;
+                    KATALOGART             : String(2)           not null;
+                    CODEGRUPPE             : String(8)           not null;
+                    CODE                   : String(4)           not null;
+                    RC_USER                : String(12)          not null;
+                    Z_CHANGE_TYPE          : String(1)           not null;
+                    Z_CHANGE_TIME          : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_SOURCE_SYS           : String(5)           not null;
+                    Z_RUN_ROW_NO           : Integer             not null;
+                key Z_RUN_SEQ_ID           : Integer             not null;
+                    Z_CURR_FLAG            : String(1)           not null;
+                    Z_VALID_FROM           : LocalDate           not null default '1900-01-01';
+                    Z_VALID_TO             : LocalDate           not null default '1900-01-01';
+            }
+            technical configuration {
+                group name DFMCA_DM_DEBTH group type "sap.dwf.dso" group subtype CHANGE_LOG;
+            };
+
+            @DataStore.entityCategory : #OPERATION_HISTORY
+            entity operationHistory {
+                key technicalKey        : operationHistoryKey;
+                    technicalAttributes : operationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AGGREGATION_HISTORY
+            entity aggregationHistory {
+                key technicalKey        : aggregationHistoryKey;
+                    technicalAttributes : aggregationHistoryAttributes;
+            };
+
+            @DataStore.entityCategory : #AFFECTED_REQUESTS
+            entity affectedRequests {
+                key technicalKey : affectedRequestsKey;
+            };
+
+            @DataStore.entityCategory : #LOG_MESSAGES
+            entity logMessages {
+                key technicalKey        : logMessagesKey;
+                    technicalAttributes : logMessagesAttributes;
+            };
+
+            @DataStore.entityCategory : #SUBSCRIBERS
+            entity subscribers {
+                key technicalKey        : subscribersKey;
+                    technicalAttributes : subscribersAttributes;
+            };
+
+            @DataStore.entityCategory : #RUNNING_OPERATIONS
+            entity runningOperations {
+                key technicalKey : runningOperationsKey;
+            };
+
+            @DataStore.entityCategory : #ID_GENERATOR
+            entity idGen {
+                key technicalKey        : idGeneratorKey;
+                    technicalAttributes : idGeneratorAttributes;
+            };
+        };
+
+        @DataStore.isDSO
+        @DataStore.entity.activeData         : 'active_data'
+        @DataStore.entity.changeLog          : 'change_log'
+        @DataStore.entity.activationQueue    : [ 'inbound_queue' ]
+        @DataStore.entity.operationHistory   : 'operationHistory'
+        @DataStore.entity.aggregationHistory : 'aggregationHistory'
+        @DataStore.entity.logMessages        : 'logMessages'
+        @DataStore.entity.affectedRequests   : 'affectedRequests'
+        @DataStore.entity.subscribers        : 'subscribers'
+        @DataStore.entity.runningOperations  : 'runningOperations'
+        @DataStore.entity.idGenerator        : 'idGen'
+        @DataStore.computeChecksum           : false
+        @DataStore.snapshotSupport           : false
+        context DFMCA_DM_DUNEAIR {
+            @DataStore.entityCategory : #ACTIVE_DATA
+            entity active_data {
+                    @DataStore.aggregation : #NOP
+                key MANDT            : String(3)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key LAUFD            : String(8)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key LAUFI            : String(6)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key GPART            : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                key MAZAE            : String(6)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key DEBT_SET         : String(12)   not null;
+
+                    @DataStore.aggregation : #NOP
+                key ACTIVITY_SEQ_NO  : String(4)    not null;
+
+                    @DataStore.aggregation : #NOP
+                key SEQ_NO           : String(4)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    AIR_GUID         : Binary(16)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    AIR_PROCESS_TYPE : String(4)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    AIR_OBJECT_ID    : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    ETT_GUID         : Binary(16)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    EAX_GUID         : Binary(16)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    EAX_PROCESS_TYPE : String(4)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    EAX_OBJECT_ID    : String(10)   not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TYPE    : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CHANGE_TIME    : UTCTimestamp not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #NOP
+                    Z_SOURCE_SYS     : String(5)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_ROW_NO     : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_RUN_SEQ_ID     : Integer      not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_CURR_FLAG      : String(1)    not null;
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_FROM     : LocalDate    not null default '1900-01-01';
+
+                    @DataStore.aggregation : #NOP
+                    Z_VALID_TO       : LocalDate    not null default '1900-01-01';
+            }
+            technical configuration {
+                group name DFMCA_DM_DUNEAIR group type "sap.dwf.dso" group subtype ACTIVE;
+            };
+
+            @DataStore.entityCategory : #ACTIVATION_QUEUE
+            entity inbound_queue {
+                key technicalKey        : inboundQueueKey;
+                    technicalAttributes : inboundQueueAttributes not null;
+
+                    @DataStore.aggregation : #MOV
+                key MANDT               : String(3)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key LAUFD               : String(8)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key LAUFI               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key GPART               : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key MAZAE               : String(6)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key DEBT_SET            : String(12)             not null;
+
+                    @DataStore.aggregation : #MOV
+                key ACTIVITY_SEQ_NO     : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                key SEQ_NO              : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    AIR_GUID            : Binary(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    AIR_PROCESS_TYPE    : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    AIR_OBJECT_ID       : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    ETT_GUID            : Binary(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    EAX_GUID            : Binary(16)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    EAX_PROCESS_TYPE    : String(4)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    EAX_OBJECT_ID       : String(10)             not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TYPE       : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CHANGE_TIME       : UTCTimestamp           not null default '1900-01-01 00:00:00';
+
+                    @DataStore.aggregation : #MOV
+                    Z_SOURCE_SYS        : String(5)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_RUN_ROW_NO        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                key Z_RUN_SEQ_ID        : Integer                not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_CURR_FLAG         : String(1)              not null;
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_FROM        : LocalDate              not null default '1900-01-01';
+
+                    @DataStore.aggregation : #MOV
+                    Z_VALID_TO          : LocalDate              not null default '1900-01-01';
+            }
+            technical configuration {
+                group name DFMCA_DM_DUNEAIR group type "sap.dwf.dso" group subtype QUEUE;
+            };
+
+            @DataStore.entityCategory : #CHANGE_LOG
+            entity change_log {
+                key technicalKey        : changeLogKey;
+                    technicalAttributes : changeLogAttributes not null;
+                key MANDT               : String(3)           not null;
+                key LAUFD               : String(8)           not null;
+                key LAUFI               : String(6)           not null;
+                key GPART               : String(10)          not null;
+                key MAZAE               : String(6)           not null;
+                key DEBT_SET            : String(12)          not null;
+                key ACTIVITY_SEQ_NO     : String(4)           not null;
+                key SEQ_NO              : String(4)           not null;
+                    AIR_GUID            : Binary(16)          not null;
+                    AIR_PROCESS_TYPE    : String(4)           not null;
+                    AIR_OBJECT_ID       : String(10)          not null;
+                    ETT_GUID            : Binary(16)          not null;
+                    EAX_GUID            : Binary(16)          not null;
+                    EAX_PROCESS_TYPE    : String(4)           not null;
+                    EAX_OBJECT_ID       : String(10)          not null;
+                    Z_CHANGE_TYPE       : String(1)           not null;
+                    Z_CHANGE_TIME       : UTCTimestamp        not null default '1900-01-01 00:00:00';
+                    Z_SOURCE_SYS        : String(5)           not null;
+                    Z_RUN_ROW_NO        : Integer             not null;
+                key Z_RUN_SEQ_ID        : Integer             not null;
+                    Z_CURR_FLAG         : String(1)           not null;
+                    Z_VALID_FROM        : LocalDate           not null default '1900-01-01';
+                    Z_VALID_TO          : LocalDate           not null default '1900-01-01';
+            }
+            technical configuration {
+                group name DFMCA_DM_DUNEAIR group type "sap.dwf.dso" group subtype CHANGE_LOG;
             };
 
             @DataStore.entityCategory : #OPERATION_HISTORY
