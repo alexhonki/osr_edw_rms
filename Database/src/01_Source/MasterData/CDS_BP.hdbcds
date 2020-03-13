@@ -1,33 +1,36 @@
-namespace osr.edw.source.md.rms;
+NAMESPACE osr.edw.source.md.rms;
 
-using DataWarehouse.DataStore::Structures.inboundQueueKey;
-using DataWarehouse.DataStore::Structures.inboundQueueAttributes;
-using DataWarehouse.DataStore::Structures.changeLogKey;
-using DataWarehouse.DataStore::Structures.changeLogAttributes;
-using DataWarehouse.DataStore::Structures.operationHistoryKey;
-using DataWarehouse.DataStore::Structures.operationHistoryAttributes;
-using DataWarehouse.DataStore::Structures.aggregationHistoryKey;
-using DataWarehouse.DataStore::Structures.aggregationHistoryAttributes;
-using DataWarehouse.DataStore::Structures.affectedRequestsKey;
-using DataWarehouse.DataStore::Structures.logMessagesKey;
-using DataWarehouse.DataStore::Structures.logMessagesAttributes;
-using DataWarehouse.DataStore::Structures.subscribersKey;
-using DataWarehouse.DataStore::Structures.subscribersAttributes;
-using DataWarehouse.DataStore::Structures.runningOperationsKey;
-using DataWarehouse.DataStore::Structures.idGeneratorKey;
-using DataWarehouse.DataStore::Structures.idGeneratorAttributes;
-using DataWarehouse.DataStore::Annotations as DataStore;
+USING DataWarehouse.DataStore :: Structures.inboundQueueKey;
+USING DataWarehouse.DataStore :: Structures.inboundQueueAttributes;
+USING DataWarehouse.DataStore :: Structures.changeLogKey;
+USING DataWarehouse.DataStore :: Structures.changeLogAttributes;
+USING DataWarehouse.DataStore :: Structures.operationHistoryKey;
+USING DataWarehouse.DataStore :: Structures.operationHistoryAttributes;
+USING DataWarehouse.DataStore :: Structures.aggregationHistoryKey;
+USING DataWarehouse.DataStore :: Structures.aggregationHistoryAttributes;
+USING DataWarehouse.DataStore :: Structures.affectedRequestsKey;
+USING DataWarehouse.DataStore :: Structures.logMessagesKey;
+USING DataWarehouse.DataStore :: Structures.logMessagesAttributes;
+USING DataWarehouse.DataStore :: Structures.subscribersKey;
+USING DataWarehouse.DataStore :: Structures.subscribersAttributes;
+USING DataWarehouse.DataStore :: Structures.runningOperationsKey;
+USING DataWarehouse.DataStore :: Structures.idGeneratorKey;
+USING DataWarehouse.DataStore :: Structures.idGeneratorAttributes;
+USING DataWarehouse.DataStore :: Annotations AS DataStore;
 
-context CDS_BP {
-    context TAB {
+CONTEXT CDS_BP
+{
+    CONTEXT TAB
+    {
 
         /*@@layout{"layoutInfo":{}}*/
-        entity BUT000 {
-            key CLIENT            : String(3);
-            key PARTNER           : String(10);
-                Z_RUN_ROW_NO      : Integer default 0;
+        ENTITY BUT000
+        {
+            KEY CLIENT            : String(3);
+            KEY PARTNER           : String(10);
+                Z_RUN_ROW_NO      : Integer DEFAULT 0;
                 TYPE              : String(1);
-            key Z_RUN_SEQ_ID      : Integer default 0;
+            KEY Z_RUN_SEQ_ID      : Integer DEFAULT 0;
                 BPKIND            : String(4);
                 BU_GROUP          : String(4);
                 BPEXT             : String(20);
@@ -127,143 +130,144 @@ context CDS_BP {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity ADRC {
-            key CLIENT            : String(3);
-            key ADDRNUMBER        : String(10);
-            key DATE_FROM         : String(8);
-            key NATION            : String(1);
-                Z_RUN_ROW_NO      : Integer default 0;
-            key Z_RUN_SEQ_ID      : Integer default 0;
-                Z_CURR_FLAG       : String(1);
-                Z_VALID_FROM      : LocalDate;
-                Z_VALID_TO        : LocalDate;
-                Z_CHANGE_TYPE     : String(1);
-                Z_CHANGE_TIME     : UTCTimestamp;
-                Z_SOURCE_SYS      : String(5);
-                DATE_TO           : String(8);
-                TITLE             : String(4);
-                NAME1             : String(40);
-                NAME2             : String(40);
-                NAME3             : String(40);
-                NAME4             : String(40);
-                NAME_TEXT         : String(50);
-                NAME_CO           : String(40);
-                CITY1             : String(40);
-                CITY2             : String(40);
-                CITY_CODE         : String(12);
-                CITYP_CODE        : String(8);
-                HOME_CITY         : String(40);
-                CITYH_CODE        : String(12);
-                CHCKSTATUS        : String(1);
-                REGIOGROUP        : String(8);
-                POST_CODE1        : String(10);
-                POST_CODE2        : String(10);
-                POST_CODE3        : String(10);
-                PCODE1_EXT        : String(10);
-                PCODE2_EXT        : String(10);
-                PCODE3_EXT        : String(10);
-                PO_BOX            : String(10);
-                DONT_USE_P        : String(4);
-                PO_BOX_NUM        : String(1);
-                PO_BOX_LOC        : String(40);
-                CITY_CODE2        : String(12);
-                PO_BOX_REG        : String(3);
-                PO_BOX_CTY        : String(3);
-                POSTALAREA        : String(15);
-                TRANSPZONE        : String(10);
-                STREET            : String(60);
-                DONT_USE_S        : String(4);
-                STREETCODE        : String(12);
-                STREETABBR        : String(2);
-                HOUSE_NUM1        : String(10);
-                HOUSE_NUM2        : String(10);
-                HOUSE_NUM3        : String(10);
-                STR_SUPPL1        : String(40);
-                STR_SUPPL2        : String(40);
-                STR_SUPPL3        : String(40);
-                LOCATION          : String(40);
-                BUILDING          : String(20);
-                FLOOR             : String(10);
-                ROOMNUMBER        : String(10);
-                COUNTRY           : String(3);
-                LANGU             : String(1);
-                REGION            : String(3);
-                ADDR_GROUP        : String(4);
-                FLAGGROUPS        : String(1);
-                PERS_ADDR         : String(1);
-                SORT1             : String(20);
-                SORT2             : String(20);
-                SORT_PHN          : String(20);
-                DEFLT_COMM        : String(3);
-                TEL_NUMBER        : String(30);
-                TEL_EXTENS        : String(10);
-                FAX_NUMBER        : String(30);
-                FAX_EXTENS        : String(10);
-                FLAGCOMM2         : String(1);
-                FLAGCOMM3         : String(1);
-                FLAGCOMM4         : String(1);
-                FLAGCOMM5         : String(1);
-                FLAGCOMM6         : String(1);
-                FLAGCOMM7         : String(1);
-                FLAGCOMM8         : String(1);
-                FLAGCOMM9         : String(1);
-                FLAGCOMM10        : String(1);
-                FLAGCOMM11        : String(1);
-                FLAGCOMM12        : String(1);
-                FLAGCOMM13        : String(1);
-                ADDRORIGIN        : String(4);
-                MC_NAME1          : String(25);
-                MC_CITY1          : String(25);
-                MC_STREET         : String(25);
-                EXTENSION1        : String(40);
-                EXTENSION2        : String(40);
-                TIME_ZONE         : String(6);
-                TAXJURCODE        : String(15);
-                ADDRESS_ID        : String(10);
-                LANGU_CREA        : String(1);
-                ADRC_UUID         : String(200);
-                UUID_BELATED      : String(1);
-                ID_CATEGORY       : String(1);
-                ADRC_ERR_STATUS   : String(1);
-                PO_BOX_LOBBY      : String(40);
-                DELI_SERV_TYPE    : String(4);
-                DELI_SERV_NUMBER  : String(10);
-                COUNTY_CODE       : String(8);
-                COUNTY            : String(40);
-                TOWNSHIP_CODE     : String(8);
-                TOWNSHIP          : String(40);
-                MC_COUNTY         : String(25);
-                MC_TOWNSHIP       : String(25);
-                XPCPT             : String(1);
-                _COMMIT_TIMESTAMP : UTCTimestamp;
+        ENTITY ADRC
+        {
+            KEY CLIENT           : String(3);
+            KEY ADDRNUMBER       : String(10);
+            KEY DATE_FROM        : String(8);
+            KEY NATION           : String(1);
+                Z_RUN_ROW_NO     : Integer DEFAULT 0;
+            KEY Z_RUN_SEQ_ID     : Integer DEFAULT 0;
+                Z_CURR_FLAG      : String(1);
+                Z_VALID_FROM     : LocalDate;
+                Z_VALID_TO       : LocalDate;
+                Z_CHANGE_TYPE    : String(1);
+                Z_CHANGE_TIME    : UTCTimestamp;
+                Z_SOURCE_SYS     : String(5);
+                DATE_TO          : String(8);
+                TITLE            : String(4);
+                NAME1            : String(40);
+                NAME2            : String(40);
+                NAME3            : String(40);
+                NAME4            : String(40);
+                NAME_TEXT        : String(50);
+                NAME_CO          : String(40);
+                CITY1            : String(40);
+                CITY2            : String(40);
+                CITY_CODE        : String(12);
+                CITYP_CODE       : String(8);
+                HOME_CITY        : String(40);
+                CITYH_CODE       : String(12);
+                CHCKSTATUS       : String(1);
+                REGIOGROUP       : String(8);
+                POST_CODE1       : String(10);
+                POST_CODE2       : String(10);
+                POST_CODE3       : String(10);
+                PCODE1_EXT       : String(10);
+                PCODE2_EXT       : String(10);
+                PCODE3_EXT       : String(10);
+                PO_BOX           : String(10);
+                DONT_USE_P       : String(4);
+                PO_BOX_NUM       : String(1);
+                PO_BOX_LOC       : String(40);
+                CITY_CODE2       : String(12);
+                PO_BOX_REG       : String(3);
+                PO_BOX_CTY       : String(3);
+                POSTALAREA       : String(15);
+                TRANSPZONE       : String(10);
+                STREET           : String(60);
+                DONT_USE_S       : String(4);
+                STREETCODE       : String(12);
+                STREETABBR       : String(2);
+                HOUSE_NUM1       : String(10);
+                HOUSE_NUM2       : String(10);
+                HOUSE_NUM3       : String(10);
+                STR_SUPPL1       : String(40);
+                STR_SUPPL2       : String(40);
+                STR_SUPPL3       : String(40);
+                LOCATION         : String(40);
+                BUILDING         : String(20);
+                FLOOR            : String(10);
+                ROOMNUMBER       : String(10);
+                COUNTRY          : String(3);
+                LANGU            : String(1);
+                REGION           : String(3);
+                ADDR_GROUP       : String(4);
+                FLAGGROUPS       : String(1);
+                PERS_ADDR        : String(1);
+                SORT1            : String(20);
+                SORT2            : String(20);
+                SORT_PHN         : String(20);
+                DEFLT_COMM       : String(3);
+                TEL_NUMBER       : String(30);
+                TEL_EXTENS       : String(10);
+                FAX_NUMBER       : String(30);
+                FAX_EXTENS       : String(10);
+                FLAGCOMM2        : String(1);
+                FLAGCOMM3        : String(1);
+                FLAGCOMM4        : String(1);
+                FLAGCOMM5        : String(1);
+                FLAGCOMM6        : String(1);
+                FLAGCOMM7        : String(1);
+                FLAGCOMM8        : String(1);
+                FLAGCOMM9        : String(1);
+                FLAGCOMM10       : String(1);
+                FLAGCOMM11       : String(1);
+                FLAGCOMM12       : String(1);
+                FLAGCOMM13       : String(1);
+                ADDRORIGIN       : String(4);
+                MC_NAME1         : String(25);
+                MC_CITY1         : String(25);
+                MC_STREET        : String(25);
+                EXTENSION1       : String(40);
+                EXTENSION2       : String(40);
+                TIME_ZONE        : String(6);
+                TAXJURCODE       : String(15);
+                ADDRESS_ID       : String(10);
+                LANGU_CREA       : String(1);
+                ADRC_UUID        : String(200);
+                UUID_BELATED     : String(1);
+                ID_CATEGORY      : String(1);
+                ADRC_ERR_STATUS  : String(1);
+                PO_BOX_LOBBY     : String(40);
+                DELI_SERV_TYPE   : String(4);
+                DELI_SERV_NUMBER : String(10);
+                COUNTY_CODE      : String(8);
+                COUNTY           : String(40);
+                TOWNSHIP_CODE    : String(8);
+                TOWNSHIP         : String(40);
+                MC_COUNTY        : String(25);
+                MC_TOWNSHIP      : String(25);
+                XPCPT            : String(1);
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity BUT021FS {
-            key CLIENT            : String(3);
-            key PARTNER           : String(10);
-            key VALID_TO          : Decimal(15, 0);
-            key ADR_KIND          : String(10);
-            key ADDRNUMBER        : String(10);
-                Z_RUN_ROW_NO      : Integer default 0;
-            key Z_RUN_SEQ_ID      : Integer default 0;
-                VALID_FROM        : Decimal(15, 0);
-                XDFADU            : String(1);
-                _COMMIT_TIMESTAMP : UTCTimestamp;
-                Z_CURR_FLAG       : String(1);
-                Z_VALID_FROM      : LocalDate;
-                Z_VALID_TO        : LocalDate;
-                Z_CHANGE_TYPE     : String(1);
-                Z_CHANGE_TIME     : UTCTimestamp;
-                Z_SOURCE_SYS      : String(5);
+        ENTITY BUT021FS
+        {
+            KEY CLIENT        : String(3);
+            KEY PARTNER       : String(10);
+            KEY VALID_TO      : Decimal(15, 0);
+            KEY ADR_KIND      : String(10);
+            KEY ADDRNUMBER    : String(10);
+                VALID_FROM    : Decimal(15, 0);
+                XDFADU        : String(1);
+                Z_CHANGE_TYPE : String(1);
+                Z_CHANGE_TIME : UTCTimestamp;
+                Z_SOURCE_SYS  : String(5);
+                Z_RUN_ROW_NO  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : LocalDate;
+                Z_VALID_TO    : LocalDate;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity BUT0ID {
-            key CLIENT          : String(3);
-            key PARTNER         : String(10);
-            key TYPE            : String(6);
-            key IDNUMBER        : String(60);
+        ENTITY BUT0ID
+        {
+            KEY CLIENT          : String(3);
+            KEY PARTNER         : String(10);
+            KEY TYPE            : String(6);
+            KEY IDNUMBER        : String(60);
                 INSTITUTE       : String(40);
                 ENTRY_DATE      : String(8);
                 VALID_DATE_FROM : String(8);
@@ -273,21 +277,22 @@ context CDS_BP {
                 IDNUMBER_GUID   : String(200);
                 BP_EEW_BUT0ID   : String(1);
                 Z_CURR_FLAG     : String(1);
-                Z_VALID_FROM    : LocalDate    default '1900-01-01';
-                Z_VALID_TO      : LocalDate    default '1900-01-01';
+                Z_VALID_FROM    : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_TO      : LocalDate    DEFAULT '1900-01-01';
                 Z_CHANGE_TYPE   : String(1);
-                Z_CHANGE_TIME   : UTCTimestamp default '1900-01-01 23:59:59';
+                Z_CHANGE_TIME   : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
                 Z_SOURCE_SYS    : String(5);
-                Z_RUN_ROW_NO    : Integer      default '0';
-            key Z_RUN_SEQ_ID    : Integer      default '0';
+                Z_RUN_ROW_NO    : Integer      DEFAULT '0';
+            KEY Z_RUN_SEQ_ID    : Integer      DEFAULT '0';
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity ZBUT0000UZQMZ7 {
-            key CLIENT        : String(3);
-            key PARTNER       : String(10);
-            key PERIODBEGIN   : String(8);
-            key DATE_TO       : Decimal(15, 0);
+        ENTITY ZBUT0000UZQMZ7
+        {
+            KEY CLIENT        : String(3);
+            KEY PARTNER       : String(10);
+            KEY PERIODBEGIN   : String(8);
+            KEY DATE_TO       : Decimal(15, 0);
                 DATE_FROM     : Decimal(15, 0);
                 PERIODEND     : String(8);
                 CODEID        : String(2);
@@ -298,16 +303,17 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity BUT050 {
-            key CLIENT        : String(3);
-            key RELNR         : String(12);
-            key PARTNER1      : String(10);
-            key PARTNER2      : String(10);
-            key DATE_TO       : String(8);
+        ENTITY BUT050
+        {
+            KEY CLIENT        : String(3);
+            KEY RELNR         : String(12);
+            KEY PARTNER1      : String(10);
+            KEY PARTNER2      : String(10);
+            KEY DATE_TO       : String(8);
                 DATE_FROM     : String(8);
                 RELTYP        : String(6);
                 XRF           : String(1);
@@ -325,21 +331,22 @@ context CDS_BP {
                 DB_KEY        : String(200);
                 DB_KEY_TD     : String(200);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate    default '1900-01-01';
-                Z_VALID_TO    : LocalDate    default '1900-01-01';
+                Z_VALID_FROM  : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_TO    : LocalDate    DEFAULT '1900-01-01';
                 Z_CHANGE_TYPE : String(1);
-                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
+                Z_CHANGE_TIME : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity BUT100 {
-            key MANDT         : String(3);
-            key PARTNER       : String(10);
-            key RLTYP         : String(6);
-            key DFVAL         : String(20);
+        ENTITY BUT100
+        {
+            KEY MANDT         : String(3);
+            KEY PARTNER       : String(10);
+            KEY RLTYP         : String(6);
+            KEY DFVAL         : String(20);
                 VALID_FROM    : Decimal(15, 0);
                 VALID_TO      : Decimal(15, 0);
                 ROLE          : String(4);
@@ -351,15 +358,16 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity ZBUT0000HJCXO9 {
-            key CLIENT        : String(3);
-            key PARTNER       : String(10);
-            key ZZTFLD2WCKOA  : String(8);
-            key DATE_TO       : Decimal(15, 0);
+        ENTITY ZBUT0000HJCXO9
+        {
+            KEY CLIENT        : String(3);
+            KEY PARTNER       : String(10);
+            KEY ZZTFLD2WCKOA  : String(8);
+            KEY DATE_TO       : Decimal(15, 0);
                 DATE_FROM     : Decimal(15, 0);
                 ZZTFLD2ACBOA  : String(8);
                 ZZTFLDPVC3OA  : String(20);
@@ -367,14 +375,15 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity TBZ9 {
-            key CLIENT        : String(3);
-            key RELTYP        : String(6);
-            key XRF           : String(1);
+        ENTITY TBZ9
+        {
+            KEY CLIENT        : String(3);
+            KEY RELTYP        : String(6);
+            KEY XRF           : String(1);
                 RLTP1         : String(6);
                 RLTP2         : String(6);
                 DFTYP         : String(2);
@@ -401,21 +410,22 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity ADR2 {
-            key CLIENT        : String(3);
-            key ADDRNUMBER    : String(10);
-            key PERSNUMBER    : String(10);
-            key DATE_FROM     : String(8);
-            key CONSNUMBER    : String(3);
+        ENTITY ADR2
+        {
+            KEY CLIENT        : String(3);
+            KEY ADDRNUMBER    : String(10);
+            KEY PERSNUMBER    : String(10);
+            KEY DATE_FROM     : String(8);
+            KEY CONSNUMBER    : String(3);
                 COUNTRY       : String(3);
                 FLGDEFAULT    : String(1);
                 FLG_NOUSE     : String(1);
                 HOME_FLAG     : String(1);
-            key TEL_NUMBER    : String(30);
+            KEY TEL_NUMBER    : String(30);
                 TEL_EXTENS    : String(10);
                 TELNR_LONG    : String(30);
                 TELNR_CALL    : String(30);
@@ -427,16 +437,20 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : LocalDate;
+                Z_VALID_TO    : LocalDate;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity ADR6 {
-            key CLIENT        : String(3);
-            key ADDRNUMBER    : String(10);
-            key PERSNUMBER    : String(10);
-            key DATE_FROM     : String(8);
-            key CONSNUMBER    : String(3);
+        ENTITY ADR6
+        {
+            KEY CLIENT        : String(3);
+            KEY ADDRNUMBER    : String(10);
+            KEY PERSNUMBER    : String(10);
+            KEY DATE_FROM     : String(8);
+            KEY CONSNUMBER    : String(3);
                 FLGDEFAULT    : String(1);
                 FLG_NOUSE     : String(1);
                 HOME_FLAG     : String(1);
@@ -452,37 +466,43 @@ context CDS_BP {
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
+                Z_CURR_FLAG   : String(1);
+                Z_VALID_FROM  : LocalDate;
+                Z_VALID_TO    : LocalDate;
         };
 
-        /*@@layout{"layoutInfo":{"x":-175,"y":238.5}}*/
-        entity BUT0IS {
-            key CLIENT        : String(3);
-            key PARTNER       : String(10);
-            key ISTYPE        : String(4);
-            key IND_SECTOR    : String(10);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY BUT0IS
+        {
+            KEY CLIENT        : String(3);
+            KEY PARTNER       : String(10);
+            KEY ISTYPE        : String(4);
+            KEY IND_SECTOR    : String(10);
                 ISDEF         : String(1);
                 BP_EEW_BUT0IS : String(1);
                 Z_CHANGE_TYPE : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            key Z_RUN_SEQ_ID  : Integer;
+            KEY Z_RUN_SEQ_ID  : Integer;
         };
 
-        /*@@layout{"layoutInfo":{"x":71,"y":237.5}}*/
-        entity TB009 {
-            key CLIENT        : String(3);
-            key ADR_KIND      : String(10);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TB009
+        {
+            KEY CLIENT        : String(3);
+            KEY ADR_KIND      : String(10);
                 XMULT         : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":314,"y":233.5}}*/
-        entity TB003 {
-            key CLIENT        : String(3);
-            key ROLE          : String(6);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TB003
+        {
+            KEY CLIENT        : String(3);
+            KEY ROLE          : String(6);
                 ROLECATEGORY  : String(6);
                 STND_ROLECAT  : String(1);
                 BPVIEW        : String(6);
@@ -492,20 +512,22 @@ context CDS_BP {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":548,"y":223.5}}*/
-        entity TB038A {
-            key CLIENT        : String(3);
-            key ISTYPE        : String(4);
-            key IND_SECTOR    : String(10);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TB038A
+        {
+            KEY CLIENT        : String(3);
+            KEY ISTYPE        : String(4);
+            KEY IND_SECTOR    : String(10);
                 FATHER_SEC    : String(10);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":818,"y":217.5}}*/
-        entity TSAD3 {
-            key CLIENT        : String(3);
-            key TITLE         : String(4);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TSAD3
+        {
+            KEY CLIENT        : String(3);
+            KEY TITLE         : String(4);
                 GENERATE      : String(1);
                 PERSON        : String(1);
                 ORGANIZATN    : String(1);
@@ -515,34 +537,37 @@ context CDS_BP {
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":1055,"y":216.5}}*/
-        entity TSAD3T {
-            key CLIENT        : String(3);
-            key LANGU         : String(1);
-            key TITLE         : String(4);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TSAD3T
+        {
+            KEY CLIENT        : String(3);
+            KEY LANGU         : String(1);
+            KEY TITLE         : String(4);
                 TITLE_MEDI    : String(30);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":1282,"y":215.5}}*/
-        entity TB038B {
-            key CLIENT        : String(3);
-            key SPRAS         : String(1);
-            key ISTYPE        : String(4);
-            key IND_SECTOR    : String(10);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TB038B
+        {
+            KEY CLIENT        : String(3);
+            KEY SPRAS         : String(1);
+            KEY ISTYPE        : String(4);
+            KEY IND_SECTOR    : String(10);
                 TEXT          : String(100);
                 TEXT_SHORT    : String(20);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
         };
 
-        /*@@layout{"layoutInfo":{"x":-924,"y":759.5}}*/
-        entity BUT0BK {
-            key MANDT         : String(3);
-            key PARTNER       : String(10);
-            key BKVID         : String(4);
-            key Z_RUN_SEQ_ID  : Integer;
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY BUT0BK
+        {
+            KEY MANDT         : String(3);
+            KEY PARTNER       : String(10);
+            KEY BKVID         : String(4);
+            KEY Z_RUN_SEQ_ID  : Integer;
                 BANKS         : String(3);
                 BANKL         : String(15);
                 BANKN         : String(18);
@@ -571,17 +596,18 @@ context CDS_BP {
                 Z_VALID_TO    : UTCTimestamp;
         };
 
-        /*@@layout{"layoutInfo":{"x":-681,"y":758.5}}*/
-        entity TBZ9A {
-            key CLIENT  : String(3);
-            key SPRAS   : String(1);
-            key RELTYP  : String(6);
-            key XRF     : String(1);
-                BEZ50   : String(50);
-                BEZ50_2 : String(50);
-                RTITL   : String(25);
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY TBZ9A
+        {
+            KEY CLIENT        : String(3);
+            KEY SPRAS         : String(1);
+            KEY RELTYP        : String(6);
+            KEY XRF           : String(1);
+                BEZ50         : String(50);
+                BEZ50_2       : String(50);
+                RTITL         : String(25);
                 Z_CHANGE_TIME : UTCTimestamp;
-                Z_SOURCE_SYS  : String(5);                
+                Z_SOURCE_SYS  : String(5);
         };
     };
 };
