@@ -1,0 +1,487 @@
+{
+  "description": "OSR_9.1.0.0_COVID19_SOURCE",
+  "maxParallelExecution": 10,
+  "taskTimeout": 21600,
+  "resumeBehavior": "NO_RESUME",
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_PA0105",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_PA0105"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_PA0001",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_PA0001"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_HRP1000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_HRP1000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1006STA00000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_Z1006STA00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1009LIA00000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_Z1009LIA00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_ADR6",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_ADR6"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "8": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_ADR2",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_ADR2"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "7",
+          "status": "OK"
+        }
+      ]
+    },
+    "9": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1000IDP00000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_Z1000IDP00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
+          "status": "OK"
+        }
+      ]
+    },
+    "10": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1003PYA00000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_Z1003PYA00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "9",
+          "status": "OK"
+        }
+      ]
+    },
+    "11": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DPSOBBPACC",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_DPSOBBPACC"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "12": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_BUT050",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_BUT050"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "11",
+          "status": "OK"
+        }
+      ]
+    },
+    "13": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_TFMCA_INCORR_PER",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_TFMCA_INCORR_PER"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "12",
+          "status": "OK"
+        }
+      ]
+    },
+    "14": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_TBZ9A",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_TBZ9A"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "13",
+          "status": "OK"
+        }
+      ]
+    },
+    "15": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DFKKCOHINCORR",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DFKKCOHINCORR"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "16": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_BUT0ID",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_BUT0ID"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "14",
+          "status": "OK"
+        }
+      ]
+    },
+    "17": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DFKKCOHI",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DFKKCOHI"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "24",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "18": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DFACTS_COVID19",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_DFACTS_COVID19"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "23",
+          "status": "OK"
+        }
+      ]
+    },
+    "19": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DFKKKO",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DFKKKO"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "22",
+          "status": "OK"
+        }
+      ]
+    },
+    "20": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DFKKOP",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DFKKOP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "26",
+          "status": "OK"
+        }
+      ]
+    },
+    "21": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DFMCA_RETURN",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DFMCA_RETURN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "24",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "22": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_BUT021FS",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_BUT021FS"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "17",
+          "status": "OK"
+        }
+      ]
+    },
+    "23": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_ADRC",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_ADRC"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "25",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "24": {
+      "inline": {
+        "type": "SYNC",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      },
+      "preconditions": [
+        {
+          "from": "10",
+          "status": "OK"
+        },
+        {
+          "from": "15",
+          "status": "OK"
+        },
+        {
+          "from": "16",
+          "status": "OK"
+        }
+      ]
+    },
+    "25": {
+      "inline": {
+        "type": "SYNC",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      },
+      "preconditions": [
+        {
+          "from": "19",
+          "status": "OK"
+        },
+        {
+          "from": "20",
+          "status": "OK"
+        }
+      ]
+    },
+    "26": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_DSO_3PSCD_TRM_FORM_DATA_IPF1",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.td.rms::FG_BT_LOAD_DSO_3PSCD_TRM_FORM_DATA_IPF1"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "21",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}
