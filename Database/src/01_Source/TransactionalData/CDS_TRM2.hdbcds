@@ -1,32 +1,35 @@
-namespace osr.edw.source.td.rms;
+NAMESPACE osr.edw.source.td.rms;
 
-using DataWarehouse.DataStore::Structures.inboundQueueKey;
-using DataWarehouse.DataStore::Structures.inboundQueueAttributes;
-using DataWarehouse.DataStore::Structures.changeLogKey;
-using DataWarehouse.DataStore::Structures.changeLogAttributes;
-using DataWarehouse.DataStore::Structures.operationHistoryKey;
-using DataWarehouse.DataStore::Structures.operationHistoryAttributes;
-using DataWarehouse.DataStore::Structures.aggregationHistoryKey;
-using DataWarehouse.DataStore::Structures.aggregationHistoryAttributes;
-using DataWarehouse.DataStore::Structures.affectedRequestsKey;
-using DataWarehouse.DataStore::Structures.logMessagesKey;
-using DataWarehouse.DataStore::Structures.logMessagesAttributes;
-using DataWarehouse.DataStore::Structures.subscribersKey;
-using DataWarehouse.DataStore::Structures.subscribersAttributes;
-using DataWarehouse.DataStore::Structures.runningOperationsKey;
-using DataWarehouse.DataStore::Structures.idGeneratorKey;
-using DataWarehouse.DataStore::Structures.idGeneratorAttributes;
-using DataWarehouse.DataStore::Annotations as DataStore;
+USING DataWarehouse.DataStore :: Structures.inboundQueueKey;
+USING DataWarehouse.DataStore :: Structures.inboundQueueAttributes;
+USING DataWarehouse.DataStore :: Structures.changeLogKey;
+USING DataWarehouse.DataStore :: Structures.changeLogAttributes;
+USING DataWarehouse.DataStore :: Structures.operationHistoryKey;
+USING DataWarehouse.DataStore :: Structures.operationHistoryAttributes;
+USING DataWarehouse.DataStore :: Structures.aggregationHistoryKey;
+USING DataWarehouse.DataStore :: Structures.aggregationHistoryAttributes;
+USING DataWarehouse.DataStore :: Structures.affectedRequestsKey;
+USING DataWarehouse.DataStore :: Structures.logMessagesKey;
+USING DataWarehouse.DataStore :: Structures.logMessagesAttributes;
+USING DataWarehouse.DataStore :: Structures.subscribersKey;
+USING DataWarehouse.DataStore :: Structures.subscribersAttributes;
+USING DataWarehouse.DataStore :: Structures.runningOperationsKey;
+USING DataWarehouse.DataStore :: Structures.idGeneratorKey;
+USING DataWarehouse.DataStore :: Structures.idGeneratorAttributes;
+USING DataWarehouse.DataStore :: Annotations AS DataStore;
 
-context CDS_TRM2 {
+CONTEXT CDS_TRM2
+{
 
     /*@@layout{"layoutInfo":{"x":-516,"y":-133.5}}*/
-    context TAB {
+    CONTEXT TAB
+    {
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1000DCL00000000 {
-            key CLIENT          : String(3);
-            key RECORD_ID       : String(100);
+        ENTITY Z1000DCL00000000
+        {
+            KEY CLIENT          : String(3);
+            KEY RECORD_ID       : String(100);
                 PARENT_ID       : String(32);
                 OBJECT_ID       : String(32);
                 BUNDLE_ID       : String(32);
@@ -45,7 +48,7 @@ context CDS_TRM2 {
                 C_FORM_ANSWERS  : String(1);
                 C_TMR_ADDRESS   : String(1);
                 C_OPEN_TASKS    : String(1);
-            key Z_RUN_SEQ_ID    : Integer;
+            KEY Z_RUN_SEQ_ID    : Integer;
                 Z_CHANGE_TYPE   : String(1);
                 Z_CHANGE_TIME   : UTCTimestamp;
                 Z_SOURCE_SYS    : String(5);
@@ -56,9 +59,10 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1004LDL00000000 {
-            key CLIENT           : String(3);
-            key RECORD_ID        : String(100);
+        ENTITY Z1004LDL00000000
+        {
+            KEY CLIENT           : String(3);
+            KEY RECORD_ID        : String(100);
                 PARENT_ID        : String(32);
                 OBJECT_ID        : String(32);
                 BUNDLE_ID        : String(32);
@@ -67,7 +71,7 @@ context CDS_TRM2 {
                 TIMESTAMP        : Decimal(15, 0);
                 INITIAL_FLAGS    : String(800);
                 A_LIABILITY_YEAR : String(4);
-            key Z_RUN_SEQ_ID     : Integer;
+            KEY Z_RUN_SEQ_ID     : Integer;
                 Z_CHANGE_TYPE    : String(1);
                 Z_CHANGE_TIME    : UTCTimestamp;
                 Z_SOURCE_SYS     : String(5);
@@ -78,9 +82,10 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1004LDL00000001 {
-            key CLIENT             : String(3);
-            key RECORD_ID          : String(100);
+        ENTITY Z1004LDL00000001
+        {
+            KEY CLIENT             : String(3);
+            KEY RECORD_ID          : String(100);
                 PARENT_ID          : String(100);
                 OBJECT_ID          : String(32);
                 INITIAL_FLAGS      : String(800);
@@ -93,7 +98,7 @@ context CDS_TRM2 {
                 C_LAND_USE_DESC    : String(40);
                 C_LAND_YEAR        : String(4);
                 C_SCV_ADDRESS      : String(50);
-            key Z_RUN_SEQ_ID       : Integer;
+            KEY Z_RUN_SEQ_ID       : Integer;
                 Z_CHANGE_TYPE      : String(1);
                 Z_CHANGE_TIME      : UTCTimestamp;
                 Z_SOURCE_SYS       : String(5);
@@ -104,10 +109,11 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1002CDL00000000 {
-            key CLIENT              : String(3);
-            key RECORD_ID           : String(100);
-            key Z_RUN_SEQ_ID        : Integer;
+        ENTITY Z1002CDL00000000
+        {
+            KEY CLIENT              : String(3);
+            KEY RECORD_ID           : String(100);
+            KEY Z_RUN_SEQ_ID        : Integer;
                 PARENT_ID           : String(32);
                 OBJECT_ID           : String(32);
                 BUNDLE_ID           : String(32);
@@ -171,10 +177,11 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1002CDL00000001 {
-            key CLIENT             : String(3);
-            key RECORD_ID          : String(100);
-            key Z_RUN_SEQ_ID       : Integer;
+        ENTITY Z1002CDL00000001
+        {
+            KEY CLIENT             : String(3);
+            KEY RECORD_ID          : String(100);
+            KEY Z_RUN_SEQ_ID       : Integer;
                 PARENT_ID          : String(100);
                 OBJECT_ID          : String(32);
                 INITIAL_FLAGS      : String(800);
@@ -206,10 +213,11 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1002CDL00000002 {
-            key CLIENT                : String(3);
-            key RECORD_ID             : String(100);
-            key Z_RUN_SEQ_ID          : Integer;
+        ENTITY Z1002CDL00000002
+        {
+            KEY CLIENT                : String(3);
+            KEY RECORD_ID             : String(100);
+            KEY Z_RUN_SEQ_ID          : Integer;
                 PARENT_ID             : String(100);
                 OBJECT_ID             : String(32);
                 INITIAL_FLAGS         : String(800);
@@ -231,10 +239,11 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1004LDL00000002 {
-            key CLIENT              : String(3);
-            key RECORD_ID           : String(100);
-            key Z_RUN_SEQ_ID        : Integer;
+        ENTITY Z1004LDL00000002
+        {
+            KEY CLIENT              : String(3);
+            KEY RECORD_ID           : String(100);
+            KEY Z_RUN_SEQ_ID        : Integer;
                 PARENT_ID           : String(100);
                 OBJECT_ID           : String(32);
                 INITIAL_FLAGS       : String(800);
@@ -251,10 +260,11 @@ context CDS_TRM2 {
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        entity Z1006LUL00000000 {
-            key CLIENT               : String(3);
-            key RECORD_ID            : String(100);
-            key Z_RUN_SEQ_ID         : Integer;
+        ENTITY Z1006LUL00000000
+        {
+            KEY CLIENT               : String(3);
+            KEY RECORD_ID            : String(100);
+            KEY Z_RUN_SEQ_ID         : Integer;
                 PARENT_ID            : String(32);
                 OBJECT_ID            : String(32);
                 BUNDLE_ID            : String(32);
@@ -286,6 +296,44 @@ context CDS_TRM2 {
                 Z_CURR_FLAG          : String(1);
                 Z_VALID_FROM         : UTCTimestamp;
                 Z_VALID_TO           : UTCTimestamp;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        ENTITY Z1009DCR00000000
+        {
+            KEY CLIENT                    : String(3);
+            KEY RECORD_ID                 : Binary(16);
+                PARENT_ID                 : String(32);
+                OBJECT_ID                 : String(32);
+                BUNDLE_ID                 : String(32);
+                VERSION                   : String(5);
+                FORM_NUMBER               : String(4);
+                TIMESTAMP                 : Decimal(15, 0);
+                INITIAL_FLAGS             : Binary(128);
+                A_REV_PT_REG_EXTACCT      : String(1);
+                A_REV_PT_REG_STAFF        : String(1);
+                A_REV_PT_REG_GRPMEM       : String(1);
+                A_REV_PT_REG_OSR          : String(1);
+                A_REV_PT_REG_EXTAUDIT     : String(1);
+                A_REV_PT_REG_WEBINAR      : String(1);
+                A_REV_PT_REG_OTHER        : String(1);
+                A_REV_PT_REG_OTHER_TXT    : String(30);
+                A_VER_NAME                : String(40);
+                A_VER_CONTACT_PHONE       : String(30);
+                A_VER_CONFIRM             : String(1);
+                C_VER_DATE                : String(8);
+                C_REV_PT_ICR_IND          : String(1);
+                A_REV_PT_ICR_FREQ         : String(1);
+                C_9DCR_HAPPY_PATH         : String(1);
+                C_9DCR_NOT_HAPPY_PATH_RSN : String(3);
+                Z_CHANGE_TYPE             : String(1);
+                Z_CHANGE_TIME             : UTCTimestamp;
+                Z_SOURCE_SYS              : String(5);
+                Z_RUN_ROW_NO              : Integer;
+            KEY Z_RUN_SEQ_ID              : Integer;
+                Z_CURR_FLAG               : String(1);
+                Z_VALID_FROM              : LocalDate;
+                Z_VALID_TO                : LocalDate;
         };
     };
 };
