@@ -1,15 +1,12 @@
-NAMESPACE osr.edw.source.md.rms;
+namespace osr.edw.source.md.rms;
 
-CONTEXT CDS_LAND
-{
-    CONTEXT TAB
-    {
+context CDS_LAND {
+    context TAB {
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY VILMPL
-        {
-            KEY MANDT          : String(3);
-            KEY INTRENO        : String(13);
+        entity VILMPL {
+            key MANDT          : String(3);
+            key INTRENO        : String(13);
                 LOCHIER        : String(30);
                 PLSUBDIVNO     : String(6);
                 PLNO           : String(20);
@@ -42,20 +39,19 @@ CONTEXT CDS_LAND
                 ZZ_DUP_NOA     : String(1);
                 CADASTERREF    : String(20);
                 Z_CURR_FLAG    : String(1);
-                Z_VALID_FROM   : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO     : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM   : LocalDate    default '1900-01-01';
+                Z_VALID_TO     : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE  : String(1);
-                Z_CHANGE_TIME  : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME  : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS   : String(5);
                 Z_RUN_ROW_NO   : Integer;
-            KEY Z_RUN_SEQ_ID   : Integer;
+            key Z_RUN_SEQ_ID   : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY VIBPOBJREL
-        {
-            KEY MANDT         : String(3);
-            KEY OBJRELGUID    : String(200);
+        entity VIBPOBJREL {
+            key MANDT         : String(3);
+            key OBJRELGUID    : String(200);
                 INTRENO       : String(13);
                 PARTNER       : String(10);
                 ROLE          : String(6);
@@ -70,38 +66,36 @@ CONTEXT CDS_LAND
                 RFAKT         : String(6);
                 VKONT         : String(12);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO    : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM  : LocalDate    default '1900-01-01';
+                Z_VALID_TO    : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE : String(1);
-                Z_CHANGE_TIME : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTLNDUSE
-        {
-            KEY CLIENT        : String(3);
-            KEY LAND_USE_CD   : String(3);
+        entity LTLNDUSE {
+            key CLIENT        : String(3);
+            key LAND_USE_CD   : String(3);
                 TEXT          : String(40);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO    : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM  : LocalDate    default '1900-01-01';
+                Z_VALID_TO    : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE : String(1);
-                Z_CHANGE_TIME : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTAXRATE
-        {
-            KEY CLIENT        : String(3);
-            KEY RATE_CODE     : String(4);
-            KEY VALID_FROM    : String(8);
-            KEY MIN_VALUE     : String(9);
+        entity LTAXRATE {
+            key CLIENT        : String(3);
+            key RATE_CODE     : String(4);
+            key VALID_FROM    : String(8);
+            key MIN_VALUE     : String(9);
                 MAX_VALUE     : String(9);
                 VALID_TO      : String(8);
                 BASE_AMOUNT   : Decimal(7, 0);
@@ -110,40 +104,38 @@ CONTEXT CDS_LAND
                 ABSURCHARGE   : Decimal(9, 6);
                 ABSURBASE_AMT : Decimal(7, 0);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO    : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM  : LocalDate    default '1900-01-01';
+                Z_VALID_TO    : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE : String(1);
-                Z_CHANGE_TIME : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTLGA
-        {
-            KEY CLIENT        : String(3);
-            KEY LGA_CODE      : String(6);
+        entity LTLGA {
+            key CLIENT        : String(3);
+            key LGA_CODE      : String(6);
                 TEXT          : String(40);
                 VAL_OFFICE    : String(6);
                 ACTIVE        : String(1);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO    : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM  : LocalDate    default '1900-01-01';
+                Z_VALID_TO    : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE : String(1);
-                Z_CHANGE_TIME : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY VIBDMEAS
-        {
-            KEY MANDT          : String(3);
-            KEY INTRENO        : String(13);
-            KEY MEAS           : String(4);
-            KEY VALIDTO        : String(8);
+        entity VIBDMEAS {
+            key MANDT          : String(3);
+            key INTRENO        : String(13);
+            key MEAS           : String(4);
+            key VALIDTO        : String(8);
                 VALIDFROM      : String(8);
                 MEASVALUE      : Decimal(17, 4);
                 MEASVALUECMPL  : Decimal(17, 4);
@@ -151,22 +143,21 @@ CONTEXT CDS_LAND
                 ISMANUALLYSET  : String(1);
                 ISHIERARCHICAL : String(1);
                 Z_CURR_FLAG    : String(1);
-                Z_VALID_FROM   : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO     : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM   : LocalDate    default '1900-01-01';
+                Z_VALID_TO     : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE  : String(1);
-                Z_CHANGE_TIME  : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME  : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS   : String(5);
                 Z_RUN_ROW_NO   : Integer;
-            KEY Z_RUN_SEQ_ID   : Integer;
+            key Z_RUN_SEQ_ID   : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTCNEXMD
-        {
-            KEY MANDT         : String(3);
-            KEY INTRENOCN     : String(13);
-            KEY INTRENOPL     : String(13);
-            KEY VALIDFROM     : String(8);
+        entity LTCNEXMD {
+            key MANDT         : String(3);
+            key INTRENOCN     : String(13);
+            key INTRENOPL     : String(13);
+            key VALIDFROM     : String(8);
                 VALIDTO       : String(8);
                 INVALID_EXMD  : String(1);
                 CONCESSCODE   : String(2);
@@ -189,23 +180,22 @@ CONTEXT CDS_LAND
                 BPNAME2       : String(35);
                 CONV          : String(1);
                 Z_CURR_FLAG   : String(1);
-                Z_VALID_FROM  : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO    : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM  : LocalDate    default '1900-01-01';
+                Z_VALID_TO    : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE : String(1);
-                Z_CHANGE_TIME : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTPLATS
-        {
-            KEY MANDT           : String(3);
-            KEY INTRENO         : String(13);
-            KEY ATS_DEALING_NBR : String(10);
-            KEY PROCESS_DATE    : String(8);
+        entity LTPLATS {
+            key MANDT           : String(3);
+            key INTRENO         : String(13);
+            key ATS_DEALING_NBR : String(10);
+            key PROCESS_DATE    : String(8);
                 POSESSION_DATE  : String(8);
                 ATS_DEALING_REF : String(10);
                 DEALING_TYPE    : String(3);
@@ -213,21 +203,20 @@ CONTEXT CDS_LAND
                 PLNO            : String(20);
                 OBJNRPL         : String(22);
                 Z_CURR_FLAG     : String(1);
-                Z_VALID_FROM    : LocalDate    DEFAULT '1900-01-01';
-                Z_VALID_TO      : LocalDate    DEFAULT '1900-01-01';
+                Z_VALID_FROM    : LocalDate    default '1900-01-01';
+                Z_VALID_TO      : LocalDate    default '1900-01-01';
                 Z_CHANGE_TYPE   : String(1);
-                Z_CHANGE_TIME   : UTCTimestamp DEFAULT '1900-01-01 23:59:59';
+                Z_CHANGE_TIME   : UTCTimestamp default '1900-01-01 23:59:59';
                 Z_SOURCE_SYS    : String(5);
                 Z_RUN_ROW_NO    : Integer;
-            KEY Z_RUN_SEQ_ID    : Integer;
+            key Z_RUN_SEQ_ID    : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY ATSDTTX
-        {
-            KEY MANDT            : String(3);
-            KEY LANGU            : String(1);
-            KEY DEALING_TYPE     : String(3);
+        entity ATSDTTX {
+            key MANDT            : String(3);
+            key LANGU            : String(1);
+            key DEALING_TYPE     : String(3);
                 DEALING_TYPE_DSC : String(40);
                 Z_VALID_FROM     : LocalDate;
                 Z_CURR_FLAG      : String(1);
@@ -236,21 +225,20 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME    : UTCTimestamp;
                 Z_SOURCE_SYS     : String(5);
                 Z_RUN_ROW_NO     : Integer;
-            KEY Z_RUN_SEQ_ID     : Integer;
+            key Z_RUN_SEQ_ID     : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTAXBPPL
-        {
-            KEY CLIENT           : String(3);
-            KEY INTRENO_CN       : String(13);
-            KEY VALIDFROM        : String(8);
-            KEY INTRENO_PL       : String(13);
-            KEY VALIDTO          : String(8);
+        entity LTAXBPPL {
+            key CLIENT           : String(3);
+            key INTRENO_CN       : String(13);
+            key VALIDFROM        : String(8);
+            key INTRENO_PL       : String(13);
+            key VALIDTO          : String(8);
                 BP_RELEV_VALUE   : Decimal(12, 2);
                 SUB_DIV_DISCOUNT : Decimal(3, 0);
                 PROP_TAX_AMOUNT  : Decimal(15, 2);
-            KEY PARTNER          : String(10);
+            key PARTNER          : String(10);
                 OWNERFRACTION    : Decimal(9, 3);
                 OWNERFACTOR      : String(6);
                 QVASPROPERTY     : String(40);
@@ -276,17 +264,16 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME    : UTCTimestamp;
                 Z_SOURCE_SYS     : String(5);
                 Z_RUN_ROW_NO     : Integer;
-            KEY Z_RUN_SEQ_ID     : Integer;
+            key Z_RUN_SEQ_ID     : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY VILMRCPLREL
-        {
-            KEY MANDT         : String(3);
-            KEY INTRENO       : String(13);
-            KEY INTRENOPL     : String(13);
-            KEY SEQNO         : String(4);
-            KEY RCSTATUS      : String(1);
+        entity VILMRCPLREL {
+            key MANDT         : String(3);
+            key INTRENO       : String(13);
+            key INTRENOPL     : String(13);
+            key SEQNO         : String(4);
+            key RCSTATUS      : String(1);
                 RCTYPE        : String(4);
                 Z_CURR_FLAG   : String(1);
                 Z_VALID_FROM  : UTCTimestamp;
@@ -295,14 +282,13 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY VILMRC
-        {
-            KEY MANDT         : String(3);
-            KEY INTRENO       : String(13);
+        entity VILMRC {
+            key MANDT         : String(3);
+            key INTRENO       : String(13);
                 RCCATEGORY    : String(2);
                 SURVEYOFFICE  : String(10);
                 RCNO          : String(25);
@@ -332,14 +318,13 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY TIVLMRCTYPE
-        {
-            KEY MANDT         : String(3);
-            KEY RCTYPE        : String(4);
+        entity TIVLMRCTYPE {
+            key MANDT         : String(3);
+            key RCTYPE        : String(4);
                 Z_CURR_FLAG   : String(1);
                 Z_VALID_FROM  : LocalDate;
                 Z_VALID_TO    : LocalDate;
@@ -347,15 +332,14 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY CODEID
-        {
-            KEY MANDT         : String(3);
-            KEY CODE_ID       : String(2);
-            KEY PERIOD_BEGIN  : String(8);
+        entity CODEID {
+            key MANDT         : String(3);
+            key CODE_ID       : String(2);
+            key PERIOD_BEGIN  : String(8);
                 PERIOD_END    : String(8);
                 CODE_DESC     : String(60);
                 ACTIVE        : String(1);
@@ -366,27 +350,25 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTPARISH
-        {
-            KEY CLIENT        : String(3);
-            KEY PARISH_ID     : String(5);
+        entity LTPARISH {
+            key CLIENT        : String(3);
+            key PARISH_ID     : String(5);
                 PARISH_NAME   : String(40);
                 Z_CHANGE_TYPE : String(1);
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTEDCODE
-        {
-            KEY CLIENT        : String(3);
-            KEY EXM_DED_CODE  : String(2);
+        entity LTEDCODE {
+            key CLIENT        : String(3);
+            key EXM_DED_CODE  : String(2);
                 TEXT          : String(40);
                 DEFAULT_PCT   : Decimal(3, 0);
                 Z_CHANGE_TIME : UTCTimestamp;
@@ -394,10 +376,9 @@ CONTEXT CDS_LAND
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY LTCFORMS
-        {
-            KEY MANDT            : String(3);
-            KEY RESULT_TYPE      : String(2);
+        entity LTCFORMS {
+            key MANDT            : String(3);
+            key RESULT_TYPE      : String(2);
                 FORMNAME         : String(30);
                 COVERFORM        : String(2);
                 COPYFORM         : String(2);
@@ -410,10 +391,9 @@ CONTEXT CDS_LAND
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY TJ02T
-        {
-            KEY ISTAT         : String(5);
-            KEY SPRAS         : String(1);
+        entity TJ02T {
+            key ISTAT         : String(5);
+            key SPRAS         : String(1);
                 TXT04         : String(4);
                 TXT30         : String(30);
                 Z_CHANGE_TIME : UTCTimestamp;
@@ -421,13 +401,12 @@ CONTEXT CDS_LAND
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY ATSBPS
-        {
-            KEY MANDT         : String(3);
-            KEY CYCLENO       : String(8);
-            KEY DEALINGNO     : String(10);
-            KEY DATASOURCE    : String(1);
-            KEY PARTYID       : String(30);
+        entity ATSBPS {
+            key MANDT         : String(3);
+            key CYCLENO       : String(8);
+            key DEALINGNO     : String(10);
+            key DATASOURCE    : String(1);
+            key PARTYID       : String(30);
                 LINKEDID      : String(30);
                 BPMATCH       : Integer;
                 TENANCYTYPE   : String(3);
@@ -462,15 +441,14 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY ATSHEAD
-        {
-            KEY MANDT               : String(3);
-            KEY CYCLE_NO            : String(8);
-            KEY DEALING_NO          : String(10);
+        entity ATSHEAD {
+            key MANDT               : String(3);
+            key CYCLE_NO            : String(8);
+            key DEALING_NO          : String(10);
                 DEALING_TYPE        : String(3);
                 ATS_STATUS          : String(1);
                 DNP                 : String(1);
@@ -508,17 +486,16 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME       : UTCTimestamp;
                 Z_SOURCE_SYS        : String(5);
                 Z_RUN_ROW_NO        : Integer;
-            KEY Z_RUN_SEQ_ID        : Integer;
+            key Z_RUN_SEQ_ID        : Integer;
         };
 
         /*@@layout{"layoutInfo":{}}*/
-        ENTITY ATSPCLC
-        {
-            KEY MANDT         : String(3);
-            KEY CYCLENO       : String(8);
-            KEY DEALINGNO     : String(10);
-            KEY PLNO          : String(20);
-            KEY TITLEREF      : String(10);
+        entity ATSPCLC {
+            key MANDT         : String(3);
+            key CYCLENO       : String(8);
+            key DEALINGNO     : String(10);
+            key PLNO          : String(20);
+            key TITLEREF      : String(10);
                 ADDRESS       : String(231);
                 AUTHORITY     : hana.VARCHAR(6);
                 PARISH        : hana.VARCHAR(5);
@@ -536,32 +513,7 @@ CONTEXT CDS_LAND
                 Z_CHANGE_TIME : UTCTimestamp;
                 Z_SOURCE_SYS  : String(5);
                 Z_RUN_ROW_NO  : Integer;
-            KEY Z_RUN_SEQ_ID  : Integer;
-        };
-
-        /*@@layout{"layoutInfo":{"x":-60,"y":403.5}}*/
-        ENTITY LTEXMDED
-        {
-            KEY CLIENT          : String(3);
-            KEY INTRENO_CN      : String(13);
-            KEY INTRENO_PL      : String(13);
-            KEY EXM_DED_CODE    : String(2);
-            KEY VALIDFROM       : String(8);
-                VALIDTO         : String(8);
-                EXMPT_DDCTN_PCT : Decimal(3, 0);
-                UPDATE_TS       : Decimal(15, 0);
-                PLNO            : String(20);
-                OBJNRPL         : String(22);
-                RECNNR          : String(13);
-                OBJNRCN         : String(22);
-                Z_CURR_FLAG     : String(1);
-                Z_VALID_FROM    : UTCTimestamp;
-                Z_VALID_TO      : UTCTimestamp;
-                Z_CHANGE_TYPE   : String(1);
-                Z_CHANGE_TIME   : UTCTimestamp;
-                Z_SOURCE_SYS    : String(5);
-                Z_RUN_ROW_NO    : Integer;
-            KEY Z_RUN_SEQ_ID    : Integer;
+            key Z_RUN_SEQ_ID  : Integer;
         };
     };
 };
