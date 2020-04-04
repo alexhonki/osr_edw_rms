@@ -1,0 +1,47 @@
+{
+	"description": "Adhoc: Meta-Chain - Confidential in cabinet information",
+	"responsible": {
+		"email": "dwfalerts@gmail.com"
+	},
+	"maxParallelExecution": 10,
+	"taskTimeout": 21600,
+	"resumeBehavior": "NO_RESUME",
+	"taskList": {
+		"1": {
+			"inline": {
+				"type": "START",
+				"taskGroup": "com.sap.dwf.toe.executionControl"
+			}
+		},
+		"2": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.2.1_SOURCE_CCI",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.2.1_SOURCE_CCI"
+				}]
+			},
+			"preconditions": [{
+				"from": "1",
+				"status": "NEUTRAL"
+			}]
+		},
+		"3": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.2.2_STAGING_CCI",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.2.2_STAGING_CCI"
+				}]
+			},
+			"preconditions": [{
+				"from": "2",
+				"status": "OK"
+			}]
+		}
+	}
+}

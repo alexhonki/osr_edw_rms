@@ -1,0 +1,452 @@
+{
+  "description": "Adhoc: Staging - Confidential in cabinet information",
+  "maxParallelExecution": 10,
+  "taskTimeout": 21600,
+  "resumeBehavior": "NO_RESUME",
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1000DCL00000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1000DCL00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1004LDL00000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1004LDL00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1004LDL00000001",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1004LDL00000001"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "5": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_CODEID",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_CODEID"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "2",
+          "status": "OK"
+        }
+      ]
+    },
+    "6": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_LTLNDUSE",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_LTLNDUSE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "3",
+          "status": "OK"
+        }
+      ]
+    },
+    "7": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_VILMPL",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.md.rms::FG_BT_LOAD_VILMPL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "4",
+          "status": "OK"
+        }
+      ]
+    },
+    "8": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_VIBPADDRREL",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_VIBPADDRREL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "5",
+          "status": "OK"
+        }
+      ]
+    },
+    "9": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_VICNCN",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_VICNCN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "6",
+          "status": "OK"
+        }
+      ]
+    },
+    "10": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_LTPLRES",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_LTPLRES"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "7",
+          "status": "OK"
+        }
+      ]
+    },
+    "11": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_LTCNRES",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_LTCNRES"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "8",
+          "status": "OK"
+        }
+      ]
+    },
+    "12": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_LTCNRESP",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_LTCNRESP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "9",
+          "status": "OK"
+        }
+      ]
+    },
+    "13": {
+      "inline": {
+        "type": "SYNC",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      },
+      "preconditions": [
+        {
+          "from": "10",
+          "status": "OK"
+        },
+        {
+          "from": "11",
+          "status": "OK"
+        },
+        {
+          "from": "12",
+          "status": "OK"
+        }
+      ]
+    },
+    "14": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Z1000DCL00000000",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM2.DSO.Z1000DCL00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "13",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "15": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Z1004LDL00000000",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM2.DSO.Z1004LDL00000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "13",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "16": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Z1004LDL00000001",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM2.DSO.Z1004LDL00000001"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "13",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "17": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "VIBPADDRREL",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.VIBPADDRREL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "20",
+          "status": "OK"
+        }
+      ]
+    },
+    "18": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "VICNCN",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.VICNCN"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "21",
+          "status": "OK"
+        }
+      ]
+    },
+    "19": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "LTPLRES",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.LTPLRES"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "22",
+          "status": "OK"
+        }
+      ]
+    },
+    "20": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "CODEID",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.CODEID"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "14",
+          "status": "OK"
+        }
+      ]
+    },
+    "21": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "LTLNDUSE",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.LTLNDUSE"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "15",
+          "status": "OK"
+        }
+      ]
+    },
+    "22": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "VILMPL",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.md.rms::CDS_LAND.DSO.VILMPL"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "16",
+          "status": "OK"
+        }
+      ]
+    },
+    "23": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "LTCNRES",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.LTCNRES"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "17",
+          "status": "OK"
+        }
+      ]
+    },
+    "24": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "LTCNRESP",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.LTCNRESP"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "18",
+          "status": "OK"
+        }
+      ]
+    }
+  }
+}

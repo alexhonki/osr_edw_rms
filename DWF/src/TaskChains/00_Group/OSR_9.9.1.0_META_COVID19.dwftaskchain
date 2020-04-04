@@ -1,0 +1,47 @@
+{
+	"description": "Adhoc: Meta-Chain - COVID19",
+	"responsible": {
+		"email": "dwfalerts@gmail.com"
+	},
+	"maxParallelExecution": 10,
+	"taskTimeout": 21600,
+	"resumeBehavior": "NO_RESUME",
+	"taskList": {
+		"1": {
+			"inline": {
+				"type": "START",
+				"taskGroup": "com.sap.dwf.toe.executionControl"
+			}
+		},
+		"2": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.1_SOURCE_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.1.1_SOURCE_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "1",
+				"status": "NEUTRAL"
+			}]
+		},
+		"3": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.2_STAGING_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.1.2_STAGING_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "2",
+				"status": "OK"
+			}]
+		}
+	}
+}
