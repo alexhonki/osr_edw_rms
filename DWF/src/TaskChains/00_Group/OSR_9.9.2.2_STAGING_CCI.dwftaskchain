@@ -226,15 +226,15 @@
       },
       "preconditions": [
         {
-          "from": "10",
-          "status": "OK"
-        },
-        {
           "from": "11",
           "status": "OK"
         },
         {
-          "from": "12",
+          "from": "26",
+          "status": "OK"
+        },
+        {
+          "from": "27",
           "status": "OK"
         }
       ]
@@ -444,6 +444,120 @@
       "preconditions": [
         {
           "from": "18",
+          "status": "OK"
+        }
+      ]
+    },
+    "25": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1004LD200000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1004LD200000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "10",
+          "status": "OK"
+        }
+      ]
+    },
+    "26": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1004LD200000001",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1004LD200000001"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "25",
+          "status": "OK"
+        }
+      ]
+    },
+    "27": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_Z1000DC200000000",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_Z1000DC200000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "12",
+          "status": "OK"
+        }
+      ]
+    },
+    "28": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Z1004LD200000000",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM2.DSO.Z1004LD200000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "19",
+          "status": "OK"
+        }
+      ]
+    },
+    "29": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Z1004LD200000001",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM2.DSO.Z1004LD200000001"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "28",
+          "status": "OK"
+        }
+      ]
+    },
+    "30": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "Z1000DC200000000",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_TRM2.DSO.Z1000DC200000000"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "24",
           "status": "OK"
         }
       ]
