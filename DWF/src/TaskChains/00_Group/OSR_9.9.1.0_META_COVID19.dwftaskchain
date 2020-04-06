@@ -42,6 +42,36 @@
 				"from": "2",
 				"status": "OK"
 			}]
+		},
+		"4": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.3_SOURCE_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.source.td.rms#OSR_9.9.1.3_SOURCE_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "3",
+				"status": "OK"
+			}]
+		},
+		"5": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.4_STAGING_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.source.td.rms#OSR_9.9.1.4_STAGING_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "4",
+				"status": "OK"
+			}]
 		}
 	}
 }
