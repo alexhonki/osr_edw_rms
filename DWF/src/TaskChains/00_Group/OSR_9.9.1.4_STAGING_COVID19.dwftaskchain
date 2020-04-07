@@ -226,15 +226,15 @@
       },
       "preconditions": [
         {
-          "from": "11",
-          "status": "OK"
-        },
-        {
           "from": "26",
           "status": "OK"
         },
         {
           "from": "27",
+          "status": "OK"
+        },
+        {
+          "from": "31",
           "status": "OK"
         }
       ]
@@ -558,6 +558,44 @@
       "preconditions": [
         {
           "from": "24",
+          "status": "OK"
+        }
+      ]
+    },
+    "31": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_LTAXBPPX",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.staging.td.rms::FG_BT_LOAD_LTAXBPPX"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "11",
+          "status": "OK"
+        }
+      ]
+    },
+    "32": {
+      "inline": {
+        "type": "activate",
+        "taskGroup": "ndso",
+        "description": "LTAXBPPX",
+        "parameterValues": [
+          {
+            "id": "dataStoreName",
+            "value": "osr.edw.staging.td.rms::CDS_LAND.DSO.LTAXBPPX"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "23",
           "status": "OK"
         }
       ]
