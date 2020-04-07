@@ -1,187 +1,166 @@
 {
-  "description": "2.2.2.7 Load Subs Staging RMS TD SAC landtax reporting",
-  "responsible": {
-    "email": "dwfalerts@gmail.com"
-  },
-  "maxParallelExecution": 3,
-  "taskTimeout": 4320000,
-  "taskList": {
-    "1": {
-      "inline": {
-        "type": "START",
-        "taskGroup": "com.sap.dwf.toe.executionControl"
-      }
-    },
-    "2": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD /OSRQLD/LTNAPLVL",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_LTNAPLVL"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "1",
-          "status": "NEUTRAL"
-        }
-      ]
-    },
-    "3": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD LTCNRESP",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_LTCNRESP"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "2",
-          "status": "OK"
-        }
-      ]
-    }, 
-    "4": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VICDCFPAY",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_VICDCFPAY"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "3",
-          "status": "OK"
-        }
-      ]
-    },  
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD DFKKKO",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_DFKKKO"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
-          "status": "OK"
-        }
-      ]
-    }, 
-    "6": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD DFKKOPK",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_DFKKOPK"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "5",
-          "status": "OK"
-        }
-      ]
-    }, 
-    "7": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD VIORRR",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_VIORRR"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "6",
-          "status": "OK"
-        }
-      ]
-    },
-    "8": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD Z1000DCL00000000",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_Z1000DCL00000000"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "7",
-          "status": "OK"
-        }
-      ]
-    }, 
-    "9": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD Z1004LDL00000000",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_Z1004LDL00000000"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "8",
-          "status": "OK"
-        }
-      ]
-    }, 
-    "10": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD Z1004LDL00000001",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.staging.td.rms#TC_LOAD_Z1004LDL00000001"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "9",
-          "status": "OK"
-        }
-      ]
-    }    
-  }
+	"description": "2.2.2.7 Load Subs Staging RMS TD SAC landtax reporting",
+	"responsible": {
+		"email": "dwfalerts@gmail.com"
+	},
+	"maxParallelExecution": 3,
+	"taskTimeout": 4320000,
+	"taskList": {
+		"1": {
+			"inline": {
+				"type": "START",
+				"taskGroup": "com.sap.dwf.toe.executionControl"
+			}
+		},
+		"2": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD /OSRQLD/LTNAPLVL",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_LTNAPLVL"
+				}]
+			},
+			"preconditions": [{
+				"from": "1",
+				"status": "NEUTRAL"
+			}]
+		},
+		"3": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD LTCNRESP",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_LTCNRESP"
+				}]
+			},
+			"preconditions": [{
+				"from": "2",
+				"status": "OK"
+			}]
+		},
+		"4": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD VICDCFPAY",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_VICDCFPAY"
+				}]
+			},
+			"preconditions": [{
+				"from": "3",
+				"status": "OK"
+			}]
+		},
+		"5": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD DFKKKO",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_DFKKKO"
+				}]
+			},
+			"preconditions": [{
+				"from": "4",
+				"status": "OK"
+			}]
+		},
+		"6": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD DFKKOPK",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_DFKKOPK"
+				}]
+			},
+			"preconditions": [{
+				"from": "5",
+				"status": "OK"
+			}]
+		},
+		"7": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD VIORRR",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_VIORRR"
+				}]
+			},
+			"preconditions": [{
+				"from": "6",
+				"status": "OK"
+			}]
+		},
+		"8": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD Z1000DCL00000000",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_Z1000DCL00000000"
+				}]
+			},
+			"preconditions": [{
+				"from": "7",
+				"status": "OK"
+			}]
+		},
+		"9": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD Z1004LDL00000000",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_Z1004LDL00000000"
+				}]
+			},
+			"preconditions": [{
+				"from": "8",
+				"status": "OK"
+			}]
+		},
+		"10": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC LOAD Z1004LDL00000001",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_Z1004LDL00000001"
+				}]
+			},
+			"preconditions": [{
+				"from": "9",
+				"status": "OK"
+			}]
+		},
+		"11": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC_LOAD_LTAXBPPX",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_LTAXBPPX"
+				}]
+			},
+			"preconditions": [{
+				"from": "10",
+				"status": "OK"
+			}]
+		}
+	}
 }
