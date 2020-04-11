@@ -1,93 +1,92 @@
 {
-  "description": "Scheduled: COVID-19 Meta Chain",
-  "responsible": {
-    "email": "dwfalerts@gmail.com"
-  },
-  "maxParallelExecution": 10,
-  "taskTimeout": 21600,
-  "resumeBehavior": "NO_RESUME",
-  "taskList": {
-    "1": {
-      "inline": {
-        "type": "START",
-        "taskGroup": "com.sap.dwf.toe.executionControl"
-      }
-    },
-    "2": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "OSR_9.9.1.1_SOURCE_COVID19",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#OSR_9.9.1.1_SOURCE_COVID19"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "1",
-          "status": "NEUTRAL"
-        }
-      ]
-    },
-    "3": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "OSR_9.9.1.2_STAGING_COVID19",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#OSR_9.9.1.2_STAGING_COVID19"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "2",
-          "status": "OK"
-        }
-      ]
-    },
-    "4": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "OSR_9.9.1.3_SOURCE_COVID19",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#OSR_9.9.1.3_SOURCE_COVID19"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "3",
-          "status": "OK"
-        }
-      ]
-    },
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "OSR_9.9.1.4_STAGING_COVID19",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.rms#OSR_9.9.1.4_STAGING_COVID19"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
-          "status": "OK"
-        }
-      ]
-    }
-  }
+	"description": "Scheduled: COVID-19 Meta Chain",
+	"responsible": {
+		"email": "dwfalerts@gmail.com"
+	},
+	"maxParallelExecution": 10,
+	"taskTimeout": 21600,
+	"resumeBehavior": "NO_RESUME",
+	"taskList": {
+		"1": {
+			"inline": {
+				"type": "START",
+				"taskGroup": "com.sap.dwf.toe.executionControl"
+			}
+		},
+		"2": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.1_SOURCE_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.1.1_SOURCE_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "1",
+				"status": "NEUTRAL"
+			}]
+		},
+		"3": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.2_STAGING_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.1.2_STAGING_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "2",
+				"status": "OK"
+			}]
+		},
+		"4": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.3_SOURCE_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.1.3_SOURCE_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "3",
+				"status": "OK"
+			}]
+		},
+		"5": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.1.4_STAGING_COVID19",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.1.4_STAGING_COVID19"
+				}]
+			},
+			"preconditions": [{
+				"from": "4",
+				"status": "OK"
+			}]
+		},
+		"6": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "OSR_9.9.9.8_SCHD_CMD",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.rms#OSR_9.9.9.8_SCHD_CMD"
+				}]
+			},
+			"preconditions": [{
+				"from": "5",
+				"status": "OK"
+			}]
+		}
+	}
 }
