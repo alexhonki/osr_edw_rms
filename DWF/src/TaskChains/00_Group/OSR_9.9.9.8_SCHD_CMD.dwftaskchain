@@ -1,105 +1,77 @@
 {
-  "description": "Scheduled: Critical Master Data Load",
-  "responsible": {
-    "email": "dwfalerts@gmail.com"
-  },
-  "maxParallelExecution": 10,
-  "taskTimeout": 21600,
-  "resumeBehavior": "NO_RESUME",
-  "taskList": {
-    "1": {
-      "inline": {
-        "type": "START",
-        "taskGroup": "com.sap.dwf.toe.executionControl"
-      }
-    },
-    "2": {
-      "inline": {
-        "type": "executeFlowGraph",
-        "taskGroup": "hanaNative",
-        "description": "FG_BT_LOAD_BUT000",
-        "parameterValues": [
-          {
-            "id": "flowGraphName",
-            "value": "osr.edw.source.md.rms::FG_BT_LOAD_BUT000"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "1",
-          "status": "NEUTRAL"
-        }
-      ]
-    },
-    "3": {
-      "inline": {
-        "type": "executeFlowGraph",
-        "taskGroup": "hanaNative",
-        "description": "FG_BT_LOAD_LTCOOWN",
-        "parameterValues": [
-          {
-            "id": "flowGraphName",
-            "value": "osr.edw.source.td.rms::FG_BT_LOAD_LTCOOWN"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "2",
-          "status": "OK"
-        }
-      ]
-    },
-    "4": {
-      "inline": {
-        "type": "SYNC",
-        "taskGroup": "com.sap.dwf.toe.executionControl"
-      },
-      "preconditions": [
-        {
-          "from": "3",
-          "status": "OK"
-        }
-      ]
-    },
-    "5": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC_LOAD_BUT000",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_BUT000"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
-          "status": "NEUTRAL"
-        }
-      ]
-    },
-    "6": {
-      "inline": {
-        "type": "SUB",
-        "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC_LOAD_LTCOOWN",
-        "parameterValues": [
-          {
-            "id": "taskChainId",
-            "value": "osr.edw.source.td.rms#TC_LOAD_LTCOOWN"
-          }
-        ]
-      },
-      "preconditions": [
-        {
-          "from": "4",
-          "status": "NEUTRAL"
-        }
-      ]
-    }
-  }
+	"description": "Master Data Load",
+	"responsible": {
+		"email": "dwfalerts@gmail.com"
+	},
+	"maxParallelExecution": 10,
+	"taskTimeout": 21600,
+	"resumeBehavior": "NO_RESUME",
+	"taskList": {
+		"1": {
+			"inline": {
+				"type": "START",
+				"taskGroup": "com.sap.dwf.toe.executionControl"
+			}
+		},
+		"2": {
+			"inline": {
+				"type": "executeProcedure",
+				"taskGroup": "hanaNative",
+				"description": "FG_BT_LOAD_BUT000_SP",
+				"parameterValues": [{
+					"id": "procName",
+					"value": "osr.edw.source.md.rms::FG_BT_LOAD_BUT000_SP"
+				}]
+			},
+			"preconditions": [{
+				"from": "1",
+				"status": "NEUTRAL"
+			}]
+		},
+		"3": {
+			"inline": {
+				"type": "executeProcedure",
+				"taskGroup": "hanaNative",
+				"description": "FG_BT_LOAD_LTCOOWN",
+				"parameterValues": [{
+					"id": "procName",
+					"value": "osr.edw.source.td.rms::FG_BT_LOAD_LTCOOWN_SP"
+				}]
+			},
+			"preconditions": [{
+				"from": "1",
+				"status": "NEUTRAL"
+			}]
+		},
+		"4": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC_LOAD_BUT000",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.md.rms#TC_LOAD_BUT000"
+				}]
+			},
+			"preconditions": [{
+				"from": "2",
+				"status": "OK"
+			}]
+		},
+		"5": {
+			"inline": {
+				"type": "SUB",
+				"taskGroup": "com.sap.dwf.toe.executionControl",
+				"description": "TC_LOAD_LTCOOWN",
+				"parameterValues": [{
+					"id": "taskChainId",
+					"value": "osr.edw.staging.td.rms#TC_LOAD_LTCOOWN"
+				}]
+			},
+			"preconditions": [{
+				"from": "3",
+				"status": "OK"
+			}]
+		}
+	}
 }
