@@ -339,7 +339,7 @@
       "inline": {
         "type": "SUB",
         "taskGroup": "com.sap.dwf.toe.executionControl",
-        "description": "TC LOAD TFK042ZT",        
+        "description": "TC LOAD TFK042ZT",
         "parameterValues": [
           {
             "id": "taskChainId",
@@ -350,6 +350,44 @@
       "preconditions": [
         {
           "from": "16",
+          "status": "OK"
+        }
+      ]
+    },
+    "20": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_TFK000ST",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_TFK000ST"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "17",
+          "status": "OK"
+        }
+      ]
+    },
+    "21": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_BT_LOAD_TFK080F",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.edw.source.md.rms::FG_BT_LOAD_TFK080F"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "20",
           "status": "OK"
         }
       ]
